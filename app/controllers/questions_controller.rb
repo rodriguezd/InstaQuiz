@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
+    # @questions = @quiz.questions
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +25,9 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   # GET /questions/new.json
   def new
+    # raise params.inspect
     @question = Question.new
+    @quiz = Quiz.find(params[:quiz_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +43,21 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(params[:question])
+    @question = Question.new(:content => params[:question][:content], :quiz_id => params[:quiz_id])
+    @question.save
+
+    params[:choices].each_with_index do |choice, i|
+      choice = @question.choices.build(:content => choice, :question_id => @question.id)
+      if i == params[:correct].to_i
+        choice.correct = true
+      end
+      choice.save
+
+    end
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
+        format.html { redirect_to @question} #notice: 'Question was successfully created.' }
         format.json { render json: @question, status: :created, location: @question }
       else
         format.html { render action: "new" }
@@ -56,10 +69,23 @@ class QuestionsController < ApplicationController
   # PUT /questions/1
   # PUT /questions/1.json
   def update
+    # raise params.inspect 
     @question = Question.find(params[:id])
 
     respond_to do |format|
-      if @question.update_attributes(params[:question])
+      if @question.update_attributes(:content => params[:question][:content])
+        # debugger
+        @question.choices.each_with_index do |c, i|
+          c.update_attributes(:content => params[:choices][i])
+        if i == params[:correct].to_i 
+          c.correct = true    
+        else
+          c.correct = false
+        end
+        c.save
+          # c.content = params[:choices][i]
+          # c.save
+        end
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else

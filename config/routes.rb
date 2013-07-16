@@ -1,7 +1,6 @@
 Openexam2::Application.routes.draw do
   resources :users
 
-
   resources :questions
 
  
@@ -10,7 +9,13 @@ Openexam2::Application.routes.draw do
       post 'answers', on: :member
       get 'answers', on: :member
       get 'score', on: :member
+      resources :questions
   end
+
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  root :to => 'quizzes#index'
 
 
   # The priority is based upon order of creation:
@@ -60,9 +65,7 @@ Openexam2::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+
 
   # See how all your routes lay out with "rake routes"
 

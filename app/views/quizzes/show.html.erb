@@ -5,6 +5,15 @@
   <%= @quiz.name %>
 </p>
 
+<% @quiz.questions.each do |q| %>
+    <%= q.content%> <br>
+    <ul>
+      <% q.choices.each do |c| %> 
+        <li><%= c.content %> </li>
+      <% end %>
+    </ul>
+    <% end %>
 
 <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
+<%= link_to 'Add questions', new_quiz_question_path(@quiz) %> |
 <%= link_to 'Back', quizzes_path %>

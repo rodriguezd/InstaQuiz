@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <p>
   <b>Content:</b>
   <%= @question.content %>
 </p>
+
+<ul>
+<% @question.choices.each do |choice| %>
+  <li>
+  <%= choice.content %> - <%= choice.correct %>
+  </li>
+  <% end %>
+</ul>
 
 
 <%= link_to 'Edit', edit_question_path(@question) %> |

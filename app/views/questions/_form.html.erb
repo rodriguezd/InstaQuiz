@@ -1,4 +1,4 @@
-<%= form_for(@question) do |f| %>
+<%= form_for([@quiz, @question]) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -13,8 +13,29 @@
 
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.text_field :content, :size => 100  %>
   </div>
+  <div>
+    <%= label_tag 'choices[]', 'Choice 1: ' %>
+    <%= text_field_tag 'choices[]', @question.choices[0].content %>
+    <%= radio_button_tag 'correct', 0, @question.choices[0].correct %>
+  </div>
+  <div>
+    <%= label_tag 'choices[]', 'Choice 2: ' %>
+    <%= text_field_tag 'choices[]', @question.choices[1].content %>
+    <%= radio_button_tag 'correct', 1, @question.choices[1].correct %>
+  </div>
+  <div>
+    <%= label_tag 'choices[]', 'Choice 3: ' %>
+    <%= text_field_tag 'choices[]', @question.choices[2].content %>
+    <%= radio_button_tag 'correct', 2, @question.choices[2].correct %>
+  </div>
+  <div>
+    <%= label_tag 'choices[]', 'Choice 4: ' %>
+    <%= text_field_tag 'choices[]', @question.choices[3].content %>
+    <%= radio_button_tag 'correct', 3, @question.choices[3].correct %>
+  </div>
+</br></br>
   <div class="actions">
     <%= f.submit %>
   </div>
