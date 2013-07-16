@@ -15,7 +15,27 @@
     <%= f.label :content %><br />
     <%= f.text_field :content, :size => 100  %>
   </div>
-
+  <div>
+    <%= label_tag 'choices[]', 'Choice 1: ' %>
+    <%= text_field_tag 'choices[]' %>
+    <%= radio_button_tag 'correct', 0 %>
+  </div>
+  <div>
+    <%= label_tag 'choices[]', 'Choice 2: ' %>
+    <%= text_field_tag 'choices[]' %>
+    <%= radio_button_tag 'correct', 1 %>
+  </div>
+  <div>
+    <%= label_tag 'choices[]', 'Choice 3: ' %>
+    <%= text_field_tag 'choices[]' %>
+    <%= radio_button_tag 'correct', 2 %>
+  </div>
+  <div>
+    <%= label_tag 'choices[]', 'Choice 4: ' %>
+    <%= text_field_tag 'choices[]' %>
+    <%= radio_button_tag 'correct', 3 %>
+  </div>
+</br></br>
   <div class="actions">
     <%= f.submit %>
   </div>

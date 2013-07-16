@@ -44,6 +44,16 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(:content => params[:question][:content], :quiz_id => params[:quiz_id])
+    @question.save
+
+    params[:choices].each_with_index do |choice, i|
+      choice = @question.choices.build(:content => choice, :question_id => @question.id)
+      if i == params[:correct].to_i
+        choice.correct = true
+      end
+      choice.save
+
+    end
 
     respond_to do |format|
       if @question.save
