@@ -1,0 +1,7 @@
+<!-- answers.html.erb -->
+
+Your answers: 
+<br>
+<% @user.answers.each do |answer| %>
+	Quiz: <%= answer.quiz.id %>| Question: <%= answer.choice.question.id %> | <%= answer.choice.content %> <br>
+<% end %> 

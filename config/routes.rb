@@ -4,8 +4,11 @@ Openexam2::Application.routes.draw do
 
   resources :questions
 
-
-  resources :quizzes
+ 
+  resources :quizzes do
+      get 'take', on: :member
+      post 'answers', on: :member
+  end
 
 
   # The priority is based upon order of creation:

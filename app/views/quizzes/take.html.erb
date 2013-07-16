@@ -1,0 +1,19 @@
+<%= form_tag answers_quiz_path(@quiz) do %>
+  <% @quiz.questions.each do |question| %>
+    <p>
+      <%= question.content %>
+      <ol>
+        <% question.choices.each do |choice| %>
+        <li>
+          <%= choice.content %>
+          <input type="radio" name="question[<%= question.id %>]choice[<%= choice.id %>][]"/>
+        </li>
+        <% end %>
+      </ol>
+    </p>
+  <% end %>
+
+  <%= submit_tag(value = "Submit Answers") %>
+<% end %>
+
+<%= %>

@@ -80,4 +80,26 @@ class QuizzesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def take
+    @quiz = Quiz.find(params[:id])
+  end
+
+  def answers
+    # <input type="radio" name="question[1]choices[1][]" value="1">
+    @quiz = Quiz.find(params[:id].to_i)
+    @user = User.find(1)
+    params[:question].each_pair do |question_num, choice_hash|
+      # question_id = num
+      choice_id = choice_hash[:choice].keys.first.to_i
+      @user.answers.create(:quiz_id => @quiz.id, :choice_id => choice_id)
+    end
+
+    # # find quiz referred to
+    # iterate through params
+    # find question referred to
+    # find choice that answer refers to
+    # create an answer that has the user id, quiz id, choice id
+  end 
 end
+
