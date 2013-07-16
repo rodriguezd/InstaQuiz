@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :choice_id, :user_id, :quiz_id
+  attr_accessible :choice_id, :user_id, :quiz_id, :question_id
 
   belongs_to :choice
   belongs_to :user

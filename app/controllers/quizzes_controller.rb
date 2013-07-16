@@ -92,7 +92,10 @@ class QuizzesController < ApplicationController
     params[:question].each_pair do |question_num, choice_hash|
       # question_id = num
       choice_id = choice_hash[:choice].keys.first.to_i
-      @user.answers.create(:quiz_id => @quiz.id, :choice_id => choice_id)
+      answer = @user.answers.find_or_create_by_question_id(:quiz_id => @quiz.id, :choice_id => choice_id, :question_id => question_num)
+      # if answer.choice.question.find_by_question_id(question_num) == nil && answer.find_by_user_id(@user.id) == nil
+      #   answer.save
+      # end
     end
 
     # # find quiz referred to
@@ -101,5 +104,12 @@ class QuizzesController < ApplicationController
     # find choice that answer refers to
     # create an answer that has the user id, quiz id, choice id
   end 
+
+  def score
+    @quiz = Quiz.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.find(1)
+  end
+
 end
 

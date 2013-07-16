@@ -8,6 +8,8 @@ Openexam2::Application.routes.draw do
   resources :quizzes do
       get 'take', on: :member
       post 'answers', on: :member
+      get 'answers', on: :member
+      get 'score', on: :member
   end
 
 

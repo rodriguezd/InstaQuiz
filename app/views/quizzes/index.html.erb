@@ -11,9 +11,11 @@
 <% @quizzes.each do |quiz| %>
   <tr>
     <td><%= quiz.name %></td>
-    <td><%= link_to 'Show', quiz %></td>
-    <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
-    <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', quiz %> | </td>
+    <td><%= link_to 'Edit', edit_quiz_path(quiz) %> | </td>
+    <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %> | </td>
+    <td><%= link_to 'Take', take_quiz_path(quiz) %> | </td>
+
   </tr>
 <% end %>
 </table>

@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716150430) do
+ActiveRecord::Schema.define(:version => 20130716213059) do
 
   create_table "answers", :force => true do |t|
     t.integer  "choice_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "quiz_id"
+    t.integer  "question_id"
   end
 
   create_table "choices", :force => true do |t|
