@@ -1,11 +1,13 @@
 Openexam2::Application.routes.draw do
   resources :users
 
+  resources :quizzes do 
+    resources :questions
+  end
 
-  resources :questions
-
-
-  resources :quizzes
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  root :to => 'quizzes#index'
 
 
   # The priority is based upon order of creation:
@@ -55,9 +57,7 @@ Openexam2::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+
 
   # See how all your routes lay out with "rake routes"
 
