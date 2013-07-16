@@ -17,23 +17,23 @@
   </div>
   <div>
     <%= label_tag 'choices[]', 'Choice 1: ' %>
-    <%= text_field_tag 'choices[]' %>
-    <%= radio_button_tag 'correct', 0 %>
+    <%= text_field_tag 'choices[]', @question.choices[0].content %>
+    <%= radio_button_tag 'correct', 0, @question.choices[0].correct %>
   </div>
   <div>
     <%= label_tag 'choices[]', 'Choice 2: ' %>
-    <%= text_field_tag 'choices[]' %>
-    <%= radio_button_tag 'correct', 1 %>
+    <%= text_field_tag 'choices[]', @question.choices[1].content %>
+    <%= radio_button_tag 'correct', 1, @question.choices[1].correct %>
   </div>
   <div>
     <%= label_tag 'choices[]', 'Choice 3: ' %>
-    <%= text_field_tag 'choices[]' %>
-    <%= radio_button_tag 'correct', 2 %>
+    <%= text_field_tag 'choices[]', @question.choices[2].content %>
+    <%= radio_button_tag 'correct', 2, @question.choices[2].correct %>
   </div>
   <div>
     <%= label_tag 'choices[]', 'Choice 4: ' %>
-    <%= text_field_tag 'choices[]' %>
-    <%= radio_button_tag 'correct', 3 %>
+    <%= text_field_tag 'choices[]', @question.choices[3].content %>
+    <%= radio_button_tag 'correct', 3, @question.choices[3].correct %>
   </div>
 </br></br>
   <div class="actions">

@@ -69,10 +69,23 @@ class QuestionsController < ApplicationController
   # PUT /questions/1
   # PUT /questions/1.json
   def update
+    # raise params.inspect 
     @question = Question.find(params[:id])
 
     respond_to do |format|
-      if @question.update_attributes(params[:question])
+      if @question.update_attributes(:content => params[:question][:content])
+        # debugger
+        @question.choices.each_with_index do |c, i|
+          c.update_attributes(:content => params[:choices][i])
+        if i == params[:correct].to_i 
+          c.correct = true    
+        else
+          c.correct = false
+        end
+        c.save
+          # c.content = params[:choices][i]
+          # c.save
+        end
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else
