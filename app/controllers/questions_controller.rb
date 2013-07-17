@@ -106,4 +106,13 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def review
+    @quiz = Quiz.find(params[:quiz_id])
+
+  end
+
+  def approve
+    debugger
+  end
 end

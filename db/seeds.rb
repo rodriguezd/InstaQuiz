@@ -37,3 +37,5 @@ Question.all[2].choices.create(:content => "infinitely many", :correct => true)
 User.first.answers.create(:user_id => 1, :choice_id => 1, :quiz_id => 1, :question_id =>1)
 User.first.answers.create(:user_id => 1, :choice_id => 7, :quiz_id => 1, :question_id => 2)
 User.first.answers.create(:user_id => 1, :choice_id => 12, :quiz_id => 1, :question_id =>3)
+
+

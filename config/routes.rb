@@ -1,16 +1,21 @@
 Openexam2::Application.routes.draw do
   resources :users
-
+  put 'questions/approve', :to => 'questions#approve'
   resources :questions
 
- 
+
   resources :quizzes do
       get 'take', on: :member
       post 'answers', on: :member
       get 'answers', on: :member
       get 'score', on: :member
-      resources :questions
+      resources :questions do
+        collection do
+          get 'review'
+        end
+      end
   end
+
 
 
   # You can have the root of your site routed with "root"
