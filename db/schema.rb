@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130717175236) do
 
+
   create_table "answers", :force => true do |t|
     t.integer  "choice_id"
     t.integer  "user_id"
