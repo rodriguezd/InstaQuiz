@@ -1,8 +1,8 @@
 <!-- score.html.erb -->
-<h2> This is your score! </h2>
+<h2> These are the scores for <%= @quiz.name %>! </h2>
 
 <% @quiz.users.each do |user|%>
-	<%= user.score(@quiz) %>
+	<%= user.name %>: <%= user.score(@quiz) %> <br>
 <% end %>
 
 
