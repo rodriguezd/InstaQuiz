@@ -69,7 +69,7 @@ class QuestionsController < ApplicationController
   # PUT /questions/1
   # PUT /questions/1.json
   def update
-    # raise params.inspect 
+    # raise params.inspect
     @question = Question.find(params[:id])
 
     respond_to do |format|
@@ -77,8 +77,8 @@ class QuestionsController < ApplicationController
         # debugger
         @question.choices.each_with_index do |c, i|
           c.update_attributes(:content => params[:choices][i])
-        if i == params[:correct].to_i 
-          c.correct = true    
+        if i == params[:correct].to_i
+          c.correct = true
         else
           c.correct = false
         end
