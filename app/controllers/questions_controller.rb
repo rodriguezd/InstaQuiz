@@ -106,4 +106,27 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def review
+    @quiz = Quiz.find(params[:quiz_id])
+
+  end
+
+  def approve
+    # raise params.inspect
+    # "status"=>{"1"=>"approved", "3"=>"approved"}
+    approved_ids = params[:status].keys.collect {|i| i.to_i}
+
+    questions = Quiz.find(params[:quiz_id]).questions
+    questions.each do |q|
+      if approved_ids.include?(q.id)
+        q.status = "approved"
+
+      else 
+        q.status = "pending"
+      end
+      q.save
+    end
+    redirect_to quiz_path(params[:quiz_id])
+  end
 end

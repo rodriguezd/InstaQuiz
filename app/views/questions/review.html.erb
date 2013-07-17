@@ -1,0 +1,27 @@
+<%= form_tag '/questions/approve', :method => :put do %>
+
+  <h1><%= @quiz.name %></h1>
+  Approved?
+
+    <%= hidden_field_tag 'quiz_id', @quiz.id %>
+
+  <% @quiz.questions.each_with_index do |question, i| %>
+    <p>
+
+      <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved' %><%= question.content %>
+    </p>
+
+
+    <ul>
+    <% question.choices.each do |choice| %>
+      <li>
+        <%= choice.content %> - <%= choice.correct %>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+  <div>
+    <%= submit_tag "Set Status" %>
+  </div>
+
+<% end %>
