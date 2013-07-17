@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name
   has_many :answers
-  has_many :quizzes, :through => :answers
+  has_many :quizzes, :through => :answers, :uniq => true
 
 
   def score(quiz)
