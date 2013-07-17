@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130717175236) do
 
-
   create_table "answers", :force => true do |t|
     t.integer  "choice_id"
     t.integer  "user_id"
@@ -36,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20130717175236) do
     t.integer  "quiz_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "status"
   end
 
   create_table "quizzes", :force => true do |t|

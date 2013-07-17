@@ -7,7 +7,7 @@
   <b>Instructions: </b><%= @quiz.instruction %> </br>
 </p>
 
-<% @quiz.questions.each do |q| %>
+<% @quiz.questions.where(:status => "approved").each do |q| %>
     <%= q.content%> <%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %><br>
     <ul>
       <% q.choices.each do |c| %>
