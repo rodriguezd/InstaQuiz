@@ -1,5 +1,5 @@
 class Quiz < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :instruction, :deadline
 
   has_many :questions
   has_many :answers

@@ -8,6 +8,9 @@
 
 
 User.create(:name => "Jordan", :email => "123@abc.com")
+User.create(:name => "Sarah", :email => "sarah@abc.com")
+User.create(:name => "David", :email => "david@abc.com")
+User.create(:name => "Kirin", :email => "kirin@abc.com")
 
 
 Quiz.create(:name => "Geometry")
@@ -34,6 +37,9 @@ Question.all[2].choices.create(:content => "1")
 Question.all[2].choices.create(:content => "2")
 Question.all[2].choices.create(:content => "infinitely many", :correct => true)
 
-User.first.answers.create(:user_id => 1, :choice_id => 1, :quiz_id => 1, :question_id =>1)
-User.first.answers.create(:user_id => 1, :choice_id => 7, :quiz_id => 1, :question_id => 2)
-User.first.answers.create(:user_id => 1, :choice_id => 12, :quiz_id => 1, :question_id =>3)
+User.first.answers.create(:choice_id => 1, :quiz_id => 1, :question_id =>1)
+User.first.answers.create(:choice_id => 7, :quiz_id => 1, :question_id => 2)
+User.first.answers.create(:choice_id => 12, :quiz_id => 1, :question_id =>3)
+User.all[1].answers.create(:choice_id => 2, :quiz_id => 1, :question_id =>1)
+User.all[2].answers.create(:choice_id => 6, :quiz_id => 1, :question_id =>2)
+User.all[3].answers.create(:choice_id => 11, :quiz_id => 1, :question_id =>3)

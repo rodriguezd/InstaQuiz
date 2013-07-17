@@ -108,7 +108,6 @@ class QuizzesController < ApplicationController
   def score
     @quiz = Quiz.find(params[:id])
     # @user = User.find(params[:id])
-    @user = User.find(1)
   end
 
 end

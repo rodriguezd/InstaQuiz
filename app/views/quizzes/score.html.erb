@@ -1,3 +1,13 @@
 <!-- score.html.erb -->
 <h2> This is your score! </h2>
-<%= @user.score(@quiz) %>
+
+<% @quiz.users.each do |user|%>
+	<%= user.score(@quiz) %>
+<% end %>
+
+
+
+
+
+
+

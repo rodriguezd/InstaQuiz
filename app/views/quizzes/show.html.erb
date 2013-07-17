@@ -2,7 +2,9 @@
 
 <p>
   <b>Name:</b>
-  <%= @quiz.name %> <%= link_to 'Edit', edit_quiz_path(@quiz) %>
+  <%= @quiz.name %> <%= link_to 'Edit', edit_quiz_path(@quiz) %> </br>
+  <b>Deadline: </b><%= @quiz.deadline %> </br>
+  <b>Instructions: </b><%= @quiz.instruction %> </br>
 </p>
 
 <% @quiz.questions.each do |q| %>
