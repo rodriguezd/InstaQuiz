@@ -2,7 +2,7 @@
 
 <p>
   <b>Name:</b>
-  <%= @quiz.name %>
+  <%= @quiz.name %> <%= link_to 'Edit', edit_quiz_path(@quiz) %>
 </p>
 
 <% @quiz.questions.each do |q| %>
