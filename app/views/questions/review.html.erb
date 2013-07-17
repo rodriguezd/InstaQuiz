@@ -3,12 +3,14 @@
   <h1><%= @quiz.name %></h1>
   Approved?
 
+    <%= hidden_field_tag 'quiz_id', @quiz.id %>
+
   <% @quiz.questions.each_with_index do |question, i| %>
     <p>
 
       <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved' %><%= question.content %>
     </p>
-    <%#= hidden_field_tag 'status[]question_id', question.id %>
+
 
     <ul>
     <% question.choices.each do |choice| %>
