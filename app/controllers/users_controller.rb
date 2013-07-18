@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # def dashboard
-  #   @user = User.find(params[:email])
-  # end
+  def dashboard
+    @user = current_user
+  end
 end

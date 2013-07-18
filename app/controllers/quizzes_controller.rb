@@ -110,5 +110,13 @@ class QuizzesController < ApplicationController
     # @user = User.find(params[:id])
   end
 
+  def set_status
+    # raise params.inspect
+    @quiz = Quiz.find(params[:id])
+    @quiz.status = params[:status]
+    @quiz.save
+    redirect_to dashboard_user_path(current_user)
+  end
+
 end
 

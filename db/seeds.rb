@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create(:name => "Jordan", :email => "123@abc.com")
-User.create(:name => "Sarah", :email => "sarah@abc.com")
-User.create(:name => "David", :email => "david@abc.com")
-User.create(:name => "Kirin", :email => "kirin@abc.com")
+User.create(:name => "Jordan", :email => "123@abc.com", :password => "test")
+User.create(:name => "Sarah", :email => "sarah@abc.com",:password => "test")
+User.create(:name => "David", :email => "david@abc.com",:password => "test")
+User.create(:name => "Kirin", :email => "kirin@abc.com",:password => "test")
 
 
 Quiz.create(:name => "Geometry")
