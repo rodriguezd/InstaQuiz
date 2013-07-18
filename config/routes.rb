@@ -1,5 +1,7 @@
 Openexam2::Application.routes.draw do
 
+  get "site/landing"
+
   get "sessions/new"
 
   get "sessions/create"
@@ -40,7 +42,7 @@ Openexam2::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'quizzes#index'
+  root :to => 'site#landing'
 
 
   # The priority is based upon order of creation:

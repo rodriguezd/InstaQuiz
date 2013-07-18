@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   	user = User.where(:email => params[:email]).first
   	if user && user.authenticate(params[:password])
   		login(user)
-  		redirect_to '/'
+  		redirect_to '/users/1/dashboard'
   	else
   		flash[:notice] = "Could not find you."
   		render :new

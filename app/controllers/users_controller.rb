@@ -80,4 +80,8 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # def dashboard
+  #   @user = User.find(params[:email])
+  # end
 end
