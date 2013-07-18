@@ -1,4 +1,10 @@
 Openexam2::Application.routes.draw do
+  get "sessions/new"
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
   resources :users
   put 'questions/approve', :to => 'questions#approve'
   resources :questions
@@ -15,6 +21,14 @@ Openexam2::Application.routes.draw do
         end
       end
   end
+
+  resources :sessions, :path_names => {:mew => 'login'}
+
+
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
 
 
