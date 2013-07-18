@@ -45,16 +45,8 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(:content => params[:question][:content], :quiz_id => params[:quiz_id])
     @question.save
-
-    params[:choices].each_with_index do |choice, i|
-      choice = @question.choices.build(:content => choice, :question_id => @question.id)
-      if i == params[:correct].to_i
-        choice.correct = true
-      end
-      choice.save
-
-    end
-
+    @question.add_choices(params[:choices], params[:correct])
+  
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question} #notice: 'Question was successfully created.' }
@@ -69,23 +61,12 @@ class QuestionsController < ApplicationController
   # PUT /questions/1
   # PUT /questions/1.json
   def update
-    # raise params.inspect
     @question = Question.find(params[:id])
+    @question.update_attributes(:content => params[:question][:content])
+    @question.update_choices(params[:choices], params[:correct])
 
     respond_to do |format|
-      if @question.update_attributes(:content => params[:question][:content])
-        # debugger
-        @question.choices.each_with_index do |c, i|
-          c.update_attributes(:content => params[:choices][i])
-        if i == params[:correct].to_i
-          c.correct = true
-        else
-          c.correct = false
-        end
-        c.save
-          # c.content = params[:choices][i]
-          # c.save
-        end
+      if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else
@@ -113,9 +94,10 @@ class QuestionsController < ApplicationController
   end
 
   def approve
-    # raise params.inspect
-    # "status"=>{"1"=>"approved", "3"=>"approved"}
-    approved_ids = params[:status].keys.collect {|i| i.to_i}
+    approved_ids = []
+    unless params[:status].nil?
+      approved_ids = params[:status].keys.collect {|i| i.to_i}
+    end
 
     questions = Quiz.find(params[:quiz_id]).questions
     questions.each do |q|
