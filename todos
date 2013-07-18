@@ -1,0 +1,7 @@
+todos
+
+/login => sessions#new
+/sessions => sessions#create
+/logout => session#destroy
+/register => users#new
+POST /users => users#create

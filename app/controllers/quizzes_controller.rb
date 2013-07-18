@@ -24,7 +24,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new
   # GET /quizzes/new.json
   def new
-    @quiz = Quiz.new
+    @quiz = current_user.quizzes.build(:name => params[:name])
 
     respond_to do |format|
       format.html # new.html.erb

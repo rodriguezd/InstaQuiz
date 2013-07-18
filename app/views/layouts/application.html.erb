@@ -5,8 +5,22 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+    	<li><a href="/users/1/dashboard">Dashboard</a></li>  
+  		<li><a href="/users/1/myprofile">My Profile</a></li>  
+  		<li><a href="/quizzes/new">Create Quiz</a></li> 
+  		<li><a href="/quizzes/1/questions/review">Review</a></li> 
+  		<li><a href="#">Settings</a></li> 
+  		<li><a href="#">Logout</a></li> 
+    </div>
+  </div>
+</div> 
 </head>
 <body>
+
+
 
 <%= yield %>
 
