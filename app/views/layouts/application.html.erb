@@ -1,24 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Openexam2</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
+<head>
+  <div class="navbar">
+<!--   <div class="navbar navbar-fixed-top">
+ -->  <div class="navbar-inner">
     <div class="container">
-    	<li><a href="/users/1/dashboard">Dashboard</a></li>  
-  		<li><a href="/users/1/myprofile">My Profile</a></li>  
-  		<li><a href="/quizzes/new">Create Quiz</a></li> 
-  		<li><a href="/quizzes/1/questions/review">Review</a></li> 
-  		<li><a href="#">Settings</a></li> 
-  		<li><a href="/logout">Logout</a></li> 
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span>Menu</span> </a>
+      <div class="nav-collapse collapse">
+      <ul class="nav">
+      <li><a href="/users/1/dashboard">Dashboard</a>  </li>
+      <li><a href="/users/1/myprofile">My Profile</a> </li> 
+      <li><a href="/quizzes/new">Create Quiz</a> </li>
+      <li><a href="/quizzes/1/questions/review">Review</a> </li>
+      <li><a href="#">Settings</a> </li>
+      <li><a href="/logout">Logout</a></li>
+    </div>
     </div>
   </div>
-</div> 
+  </div> 
+ </div>
 </head>
 <body>
+  <header>
+  <div class="container">
+    <div class="row">
+      <div class="span6">
+        <div class="logo">
+          <h1><a href="#">Open <span class="color">Exam</span></a></h1>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="form">
+          <form method="get" id="searchform" action="#" class="form-search">
+            <input type="text" value="" name="s" id="s" class="input-medium"/>
+            <button type="submit" class="btn">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
 
 
 
@@ -26,3 +53,7 @@
 
 </body>
 </html>
+
+
+
+
