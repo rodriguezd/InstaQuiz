@@ -1,13 +1,19 @@
 Openexam2::Application.routes.draw do
+
   get "sessions/new"
 
   get "sessions/create"
 
   get "sessions/destroy"
 
-  resources :users
+  resources :users do
+    get 'dashboard', on: :member
+    get 'myprofile', on: :member
+  end
+
   put 'questions/approve', :to => 'questions#approve'
   resources :questions
+
 
 
   resources :quizzes do
