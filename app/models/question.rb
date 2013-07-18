@@ -28,6 +28,15 @@ class Question < ActiveRecord::Base
       end
   end
 
+  def change_status(approved_questions)
+
+    if approved_questions.include?(self.id)
+      self.status = "approved"
+    else
+      self.status = "pending"
+    end
+    self.save
+  end
 
   private
 

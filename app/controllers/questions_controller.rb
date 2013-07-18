@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(:content => params[:question][:content], :quiz_id => params[:quiz_id])
     @question.save
     @question.add_choices(params[:choices], params[:correct])
-  
+
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question} #notice: 'Question was successfully created.' }
@@ -94,20 +94,15 @@ class QuestionsController < ApplicationController
   end
 
   def approve
+    questions = Quiz.find(params[:quiz_id]).questions
+
     approved_ids = []
     unless params[:status].nil?
       approved_ids = params[:status].keys.collect {|i| i.to_i}
     end
 
-    questions = Quiz.find(params[:quiz_id]).questions
     questions.each do |q|
-      if approved_ids.include?(q.id)
-        q.status = "approved"
-
-      else 
-        q.status = "pending"
-      end
-      q.save
+      q.change_status(approved_ids)
     end
     redirect_to quiz_path(params[:quiz_id])
   end
