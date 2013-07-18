@@ -23,5 +23,15 @@ class ApplicationController < ActionController::Base
   def current_user
   	@current_user ||= User.find(session[:user_id])
   end
+	
+	helper_method :current_user
+
+  # def can_current_user?(action, object)
+  # 	if object.editable_by? current_user
+  # 		redirect_to login_path, :notice => "Your are not authorized" and return
+  # 	else
+  # 		return true
+  # 	end
+  # end
 
 end

@@ -25,9 +25,11 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   # GET /questions/new.json
   def new
-    # raise params.inspect
-    @question = Question.new
+    # can the current user edit this quiz?
     @quiz = Quiz.find(params[:quiz_id])
+    # return if !can_current_user? :edit, @quiz
+
+    @question = Question.new
 
     respond_to do |format|
       format.html # new.html.erb

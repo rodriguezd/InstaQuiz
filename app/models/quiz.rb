@@ -4,4 +4,10 @@ class Quiz < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :users, :through => :answers, :uniq => true
+
+
+  def editable_by?(user)
+  	self.user_id == user
+  end
+
 end
