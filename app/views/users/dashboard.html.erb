@@ -1,1 +1,35 @@
-dashboard.html.erb
+<div id = "completed">
+  <h2>Completed Quizzes</h2>
+  <% completed = Quiz.where(:status => "completed") %>
+  <% completed.each do |q| %>
+    <%= q.name %>
+    <%= link_to "Score quiz", score_quiz_path(q) %> <br>
+  <% end %>
+</div>
+
+<div id = "active">
+  <h2>Active Quizzes</h2>
+  <% active = Quiz.where(:status => "active") %>
+  <% active.each do |q| %>
+    <%= q.name %>
+    <%= link_to "Take quiz", take_quiz_path(q) %> <br>
+  <% end %>
+</div>
+
+
+<div id = "finalized">
+  <h2>Finalized Quizzes</h2>
+  <% finalized = Quiz.where(:status => "finalized") %>
+  <% finalized.each do |q| %>
+  <%= link_to q.name, q %> | <%= link_to 'Activate!', set_status_quiz_path(q, :status => "active"), :method => :put %> <br>
+  <% end %>
+</div>
+
+
+<div id = "pending">
+  <h2>Pending Quizzes</h2>
+  <% pending = Quiz.where(:status => "pending") %>
+  <% pending.each do |q| %>
+  <%= link_to q.name, review_quiz_questions_path(q) %> <br>
+  <% end %>
+</div>
