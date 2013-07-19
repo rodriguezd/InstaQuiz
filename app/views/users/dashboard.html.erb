@@ -4,7 +4,7 @@
   <ul>
   <% completed.each do |q| %>
     <%= q.name %>
-    <%= link_to "Score quiz", score_quiz_path(q) %> <br>
+    <%= link_to "Score quiz", score_quiz_path(q), :class => "links" %> <br>
   <% end %>
   <ul>
 </div>
@@ -15,7 +15,7 @@
   <ul>
   <% active.each do |q| %>
     <%= q.name %>
-    <%= link_to "Take quiz", take_quiz_path(q) %> <br>
+    <%= link_to "Take quiz", take_quiz_path(q), :class => "links" %> <br>
   <% end %>
 </ul>
 </div>
@@ -25,7 +25,7 @@
   <% finalized = Quiz.where(:status => "finalized") %>
   <ul>
   <% finalized.each do |q| %>
-  <%= link_to q.name, q %> | <%= link_to 'Activate!', set_status_quiz_path(q, :status => "active"), :method => :put %> <br>
+  <%= link_to q.name, q %>  <%= link_to 'Activate!', set_status_quiz_path(q, :status => "active"), :method => :put, :class => "links" %> <br>
   <% end %>
 </ul>
 </div>
