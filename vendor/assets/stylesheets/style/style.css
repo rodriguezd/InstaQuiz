@@ -446,7 +446,11 @@ header .form{
 	text-shadow: none !important;
 	border-radius: 0px !important;
 	font-weight: normal !important; 
-	font-size: 14px !important;
+	font-size: 14px;
+}
+
+.navbar-brand{
+	font-size: 28px !important;
 }
 
 .navbar-inner{

@@ -136,3 +136,7 @@ background:#1ba1e2;
 .paging .current{
 	background: #178ec7;
 }
+
+#logo{
+	font-size: 20px;
+}
