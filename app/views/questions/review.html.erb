@@ -1,9 +1,12 @@
 <%= form_tag '/questions/approve', :method => :put do %>
 
-  <h1><%= @quiz.name %></h1>
-  Approved?
+  <h1><%= @quiz.name %></h1> <br>
 
     <%= hidden_field_tag 'quiz_id', @quiz.id %>
+
+<h6>
+  <%= "No questions submitted yet." if @quiz.questions.empty? %>
+</h6>
 
   <% @quiz.questions.each_with_index do |question, i| %>
     <p>
@@ -21,7 +24,10 @@
   </ul>
   <% end %>
   <div>
-    <%= submit_tag "Set Status" %>
+
+    <% unless @quiz.questions.empty? %>
+      <%= submit_tag "Approve" %>
+    <% end %>
   </div>
 
 <% end %>
