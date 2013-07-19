@@ -1,35 +1,41 @@
-<div id = "completed">
-  <h2>Completed Quizzes</h2>
+<div id = "completed" class="quiz-box">
+  <h3>Completed</h3>
   <% completed = Quiz.where(:status => "completed") %>
+  <ul>
   <% completed.each do |q| %>
     <%= q.name %>
     <%= link_to "Score quiz", score_quiz_path(q) %> <br>
   <% end %>
+  <ul>
 </div>
-
-<div id = "active">
-  <h2>Active Quizzes</h2>
+<hr>
+<div id = "active" class="quiz-box">
+  <h3>Active</h3>
   <% active = Quiz.where(:status => "active") %>
+  <ul>
   <% active.each do |q| %>
     <%= q.name %>
     <%= link_to "Take quiz", take_quiz_path(q) %> <br>
   <% end %>
+</ul>
 </div>
-
-
-<div id = "finalized">
-  <h2>Finalized Quizzes</h2>
+<hr>
+<div id = "finalized" class="quiz-box">
+  <h3>Finalized</h3>
   <% finalized = Quiz.where(:status => "finalized") %>
+  <ul>
   <% finalized.each do |q| %>
   <%= link_to q.name, q %> | <%= link_to 'Activate!', set_status_quiz_path(q, :status => "active"), :method => :put %> <br>
   <% end %>
+</ul>
 </div>
-
-
-<div id = "pending">
-  <h2>Pending Quizzes</h2>
+<hr>
+<div id = "pending" class="quiz-box">
+  <h3>Pending</h3>
   <% pending = Quiz.where(:status => "pending") %>
-  <% pending.each do |q| %>
-  <%= link_to q.name, review_quiz_questions_path(q) %> <br>
-  <% end %>
+  <ul>
+    <% pending.each do |q| %>
+    <%= link_to q.name, review_quiz_questions_path(q) %> <br>
+    <% end %>
+  </ul>
 </div>
