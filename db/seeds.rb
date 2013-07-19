@@ -14,7 +14,15 @@ User.create(:name => "Kirin", :email => "kirin@abc.com",:password => "test")
 
 
 Quiz.create(:name => "Geometry")
+Quiz.create(:name => "Europe, An Imagined Community: Essays on Identity since 1750", :status => "completed")
+Quiz.create(:name => "Lyrics of Mystical Love, East and West", :status => "active")
+Quiz.create(:name => "Existentialism", :status => "pending")
+Quiz.create(:name =>"The Literary 1960s: Years of Hope/Days of Rage", :status => "finalized")
+Quiz.create(:name => "Postmodern Fiction and Graphic Novels", :status => "completed")
+Quiz.create(:name => "Romantic Revolutions in European Music and Culture", :status => "completed")
+Quiz.create(:name => "Laughter: From Aristotle to Seinfeld", :status => "completed")
 
+Quiz.create(:name => "The Writing of the Indian Subcontinent", :status => "completed")
 
 Quiz.first.questions.create(:content => "How many sides in a triangle?")
 
@@ -36,6 +44,8 @@ Question.all[2].choices.create(:content => "0")
 Question.all[2].choices.create(:content => "1")
 Question.all[2].choices.create(:content => "2")
 Question.all[2].choices.create(:content => "infinitely many", :correct => true)
+
+
 
 User.first.answers.create(:choice_id => 1, :quiz_id => 1, :question_id =>1)
 User.first.answers.create(:choice_id => 7, :quiz_id => 1, :question_id => 2)

@@ -16,8 +16,12 @@
     </ul>
     <% end %>
 
-<%= link_to 'Add questions', new_quiz_question_path(@quiz) %> |
-<%= link_to 'Back', quizzes_path %> |
-<%= link_to 'Finalize', set_status_quiz_path(@quiz, :status => "finalized"), :method => :put %> |
-<%= link_to 'Return to Review', review_quiz_questions_path(@quiz)%> |
-<!-- <button formmethod="put" formaction= "<%=set_status_quiz_path%>" type="button" name="finalize">Finalize</button> -->
+<div style="float: left;margin-right: 10px"><%= button_to 'Add questions', new_quiz_question_path(@quiz), :method => :get %></div>
+<%#= link_to 'Add questions', new_quiz_question_path(@quiz) %>
+<%#= link_to 'Back', quizzes_path %>
+<% if @quiz.questions.present? %>
+ <%#= link_to 'Finalize', set_status_quiz_path(@quiz, :status => "finalized"), :method => :put %> <div style="float: left;margin-right: 10px"><%= button_to 'Finalize', set_status_quiz_path(@quiz, :status => "finalized"), :method => :put %> </div>
+
+  <%#= link_to 'Return to Review', review_quiz_questions_path(@quiz)%>
+  <div style="float: left;margin-right: 10px"><%= button_to 'Return to Review', review_quiz_questions_path(@quiz), :method => :get%></div>
+<% end %>

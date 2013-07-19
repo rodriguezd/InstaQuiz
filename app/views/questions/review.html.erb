@@ -14,7 +14,6 @@
       <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved' %><%= question.content %>
     </p>
 
-
     <ul>
     <% question.choices.each do |choice| %>
       <li>
