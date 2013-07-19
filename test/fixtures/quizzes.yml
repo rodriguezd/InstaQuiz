@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: quizzes
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  instruction :text
+#  deadline    :datetime
+#  status      :string(255)
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
