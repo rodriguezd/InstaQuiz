@@ -8,7 +8,8 @@
 </p>
 
 <% @quiz.questions.where(:status => "approved").each do |q| %>
-    <%= q.content%> <%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %><br>
+    <%= q.content%> <%#= link_to 'Edit', edit_quiz_question_path(@quiz, q) %>
+    <%= link_to 'Edit', edit_question_path(q) %><br>
     <ul>
       <% q.choices.each do |c| %>
         <li><%= c.content %> </li>
