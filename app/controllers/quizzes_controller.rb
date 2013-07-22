@@ -14,6 +14,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1.json
   def show
     @quiz = Quiz.find(params[:id])
+    @users = @quiz.users
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,6 +42,9 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(params[:quiz])
+    @quiz.save
+    @users = User.all
+    @users.each{|user| user.student_quizzes.create(:quiz_id => @quiz.id, :quiz_status => "pending")}
 
     respond_to do |format|
       if @quiz.save

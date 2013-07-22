@@ -5,6 +5,11 @@
   <%= @quiz.name %> <%= link_to 'Edit', edit_quiz_path(@quiz) %> </br>
   <b>Deadline: </b><%= @quiz.deadline %> </br>
   <b>Instructions: </b><%= @quiz.instruction %> </br>
+  <b>Students: </b>
+    <ul> <% @users.each do |user| %>
+        <li><%= user.name %> </li>
+        <% end %>
+    </ul>
 </p>
 
 <% @quiz.questions.where(:status => "approved").each do |q| %>
