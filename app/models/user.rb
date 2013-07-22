@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :answers
   has_many :quizzes, :through => :answers, :uniq => true
-  has_and_belongs_to_many :roles
+
+  has_many :role_users
+  has_many :roles, :through => :role_users
 
 
 

@@ -47,15 +47,15 @@ ActiveRecord::Schema.define(:version => 20130722190634) do
     t.string   "status"
   end
 
-  create_table "roles", :force => true do |t|
-    t.string   "name"
+  create_table "role_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "roles_users", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
+  create_table "roles", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
