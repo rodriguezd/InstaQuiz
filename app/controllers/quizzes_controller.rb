@@ -1,4 +1,5 @@
 class QuizzesController < ApplicationController
+  # load_and_authorize_resource
   # GET /quizzes
   # GET /quizzes.json
   def index
@@ -13,7 +14,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
-    @quiz = Quiz.find(params[:id])
+    # @quiz = Quiz.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -104,7 +105,7 @@ class QuizzesController < ApplicationController
     # find question referred to
     # find choice that answer refers to
     # create an answer that has the user id, quiz id, choice id
-  end 
+  end
 
   def score
     @quiz = Quiz.find(params[:id])
