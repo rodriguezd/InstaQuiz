@@ -34,4 +34,9 @@ class ApplicationController < ActionController::Base
   # 	end
   # end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:notice] = "Access denied!"
+    redirect_to quizzes_url
+  end
+
 end

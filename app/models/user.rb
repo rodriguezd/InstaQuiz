@@ -39,4 +39,8 @@ class User < ActiveRecord::Base
   	((correct/total.to_f)*100).round
   end
 
+  def role?(type)
+    self.roles.collect{|role| role.name}.include?(type.to_s)
+  end
+
 end
