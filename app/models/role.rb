@@ -11,6 +11,6 @@
 class Role < ActiveRecord::Base
   attr_accessible :name
 
-  has_many :users, :through => :roles_users
+  has_and_belongs_to_many :users
 
 end
