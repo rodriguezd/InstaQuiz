@@ -1,19 +1,27 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
 <p>
-  <b>Content:</b>
+  <b>Question:</b>
   <%= @question.content %>
 </p>
 
 <ul>
 <% @question.choices.each do |choice| %>
   <li>
-  <%= choice.content %> - <%= choice.correct %>
+  <%= choice.content %>  <%= " - Correct" if choice.correct %>
   </li>
   <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_quiz_question_path(@question.quiz_id, @question) %>
+<%#= link_to 'Edit', edit_quiz_question_path(@question.quiz_id, @question) %>
+<%= link_to 'Edit', edit_question_path(@question, :quiz_id => @question.quiz_id) %>
+<% if params[:quiz_id] %> |
+<%= link_to 'Add Another Question', new_quiz_question_path(params[:quiz_id])
+%> |
+<%= link_to 'Done', review_quiz_questions_path(params[:quiz_id]) %>
+<% end %>
+
+
 <%#= link_to 'Back', quiz_path(@question.quiz_id) %>
 <%#= link_to 'Finalize', quiz_path(@question.quiz_id) %>
 

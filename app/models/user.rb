@@ -20,12 +20,12 @@ class User < ActiveRecord::Base
   def score(quiz)
   	# total choices
   	total = self.answers.where(:quiz_id => quiz.id).size
-  	
+
   	# correct choices
   	correct = 0
-  	self.answers.each do |answer|
+  	self.answers.where(:quiz_id => quiz.id).each do |answer|
   		if answer.choice.correct
-  			correct += 1 
+  			correct += 1
   		end
   	end
 

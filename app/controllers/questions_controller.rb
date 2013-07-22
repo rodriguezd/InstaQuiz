@@ -2,7 +2,11 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    if params[:quiz_id]
+      @questions = Question.where(:quiz_id => params[:quiz_id])
+    else
+      @questions = Question.all
+    end
     # @questions = @quiz.questions
 
     respond_to do |format|
@@ -14,6 +18,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    # raise params.inspect
     @question = Question.find(params[:id])
 
     respond_to do |format|
@@ -39,6 +44,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    # raise params.inspect
     @question = Question.find(params[:id])
   end
 
@@ -51,7 +57,8 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question} #notice: 'Question was successfully created.' }
+        # format.html { redirect_to question_path(@question, :quiz_id => @question.quiz_id)} #notice: 'Question was successfully created.' }
+        format.html { redirect_to quiz_question_path(params[:quiz_id], @question)}
         format.json { render json: @question, status: :created, location: @question }
       else
         format.html { render action: "new" }
