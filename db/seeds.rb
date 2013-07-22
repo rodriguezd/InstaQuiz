@@ -56,3 +56,5 @@ User.all[3].answers.create(:choice_id => 11, :quiz_id => 1, :question_id =>3)
 
 Role.create(:name => :instructor)
 Role.create(:name => :student)
+
+
