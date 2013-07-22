@@ -2,5 +2,9 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @question %> |
-<%= link_to 'Back', quiz_questions_path %>
+<%#= link_to 'Show', @question %>
+<% if params[:quiz_id] %>
+  <%= link_to 'Back', quiz_question_path(params[:quiz_id], @question) %>
+<% else %>
+  <%= link_to 'Back', quiz_path(@question.quiz_id) %>
+<% end %>
