@@ -1,3 +1,4 @@
+<p><%= notice %></p>
 <h1>Listing quizzes</h1>
 
 <table>
@@ -12,9 +13,11 @@
   <tr>
     <td><%= quiz.name %></td>
     <td><%= link_to 'Show', quiz %> | </td>
-    <td><%= link_to 'Edit', edit_quiz_path(quiz) %> | </td>
-    <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %> | </td>
-    <td><%= link_to 'Take', take_quiz_path(quiz) %> | </td>
+    <% if can? :update, @quizzes %>
+      <td><%= link_to 'Edit', edit_quiz_path(quiz) %> | </td>
+      <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %> | </td>
+    <% end %>
+    <td><%= link_to 'Take', take_quiz_path(quiz) %> </td>
 
   </tr>
 <% end %>

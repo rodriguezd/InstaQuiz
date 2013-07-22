@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  # load_and_authorize_resource
+  load_and_authorize_resource
   # GET /quizzes
   # GET /quizzes.json
   def index

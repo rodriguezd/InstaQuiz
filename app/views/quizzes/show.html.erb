@@ -16,13 +16,15 @@
       <% end %>
     </ul>
     <% end %>
+<% if can? :update, @quizzes %>
+  <div style="float: left;margin-right: 10px"><%= button_to 'Add questions', new_quiz_question_path(@quiz), :method => :get %></div>
 
-<div style="float: left;margin-right: 10px"><%= button_to 'Add questions', new_quiz_question_path(@quiz), :method => :get %></div>
-<%#= link_to 'Add questions', new_quiz_question_path(@quiz) %>
-<%#= link_to 'Back', quizzes_path %>
-<% if @quiz.questions.present? %>
- <%#= link_to 'Finalize', set_status_quiz_path(@quiz, :status => "finalized"), :method => :put %> <div style="float: left;margin-right: 10px"><%= button_to 'Finalize', set_status_quiz_path(@quiz, :status => "finalized"), :method => :put %> </div>
 
-  <%#= link_to 'Return to Review', review_quiz_questions_path(@quiz)%>
-  <div style="float: left;margin-right: 10px"><%= button_to 'Return to Review', review_quiz_questions_path(@quiz), :method => :get%></div>
+  <% if @quiz.questions.present? %>
+   <div style="float: left;margin-right: 10px"><%= button_to 'Finalize', set_status_quiz_path(@quiz, :status => "finalized"), :method => :put %>
+   </div>
+
+    <div style="float: left;margin-right: 10px"><%= button_to 'Return to Review', review_quiz_questions_path(@quiz), :method => :get%>
+    </div>
+  <% end %>
 <% end %>
