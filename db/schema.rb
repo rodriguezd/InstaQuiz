@@ -11,7 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722190235) do
+
+ActiveRecord::Schema.define(:version => 20130722190634) do
+
 
   create_table "answers", :force => true do |t|
     t.integer  "choice_id"
@@ -47,12 +49,26 @@ ActiveRecord::Schema.define(:version => 20130722190235) do
     t.string   "status"
   end
 
+
   create_table "student_quizzes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "quiz_id"
     t.string   "quiz_status"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "role_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

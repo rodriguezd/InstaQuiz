@@ -304,7 +304,7 @@ User.create(:name => "Sarah", :email => "sarah@abc.com",:password => "test")
 User.create(:name => "David", :email => "david@abc.com",:password => "test")
 User.create(:name => "Kirin", :email => "kirin@abc.com",:password => "test")
 
-User.create(:name => "Jennifer Campbell", :email => "jennifer.campbell@flatironschool.com", :password => "test") 
+User.create(:name => "Jennifer Campbell", :email => "jennifer.campbell@flatironschool.com", :password => "test")
 User.create(:name => "Alisa", :email => "alisa.chang@flatironschool.com", :password => "test")
 User.create(:name => "Kristen", :email => "kristen.curtis@flatironschool.com", :password => "test")
 User.create(:name => "Sarah", :email => "sarah.duve@flatironschool.com", :password => "test")
@@ -348,6 +348,9 @@ User.first.answers.create(:choice_id => 12, :quiz_id => 1, :question_id =>3)
 User.all[1].answers.create(:choice_id => 2, :quiz_id => 1, :question_id =>1)
 User.all[2].answers.create(:choice_id => 6, :quiz_id => 1, :question_id =>2)
 User.all[3].answers.create(:choice_id => 11, :quiz_id => 1, :question_id =>3)
+
+Role.create(:name => :instructor)
+Role.create(:name => :student)
 
 ### Fake humanities quiz names
 
