@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :student_quizzes
   has_many :quizzes, :through => :student_quizzes, :uniq => true
+  has_many :quizzes, :through => :answers, :uniq => true
 
   has_many :role_users
   has_many :roles, :through => :role_users

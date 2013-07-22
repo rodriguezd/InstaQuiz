@@ -364,3 +364,13 @@ Quiz.create(:name => "Laughter: From Aristotle to Seinfeld", :status => "complet
 
 Quiz.create(:name => "The Writing of the Indian Subcontinent", :status => "completed")
 
+
+### Associating students to quizzes
+Quiz.all.each do |quiz|
+  User.all.each do |user|
+    quiz.student_quizzes.create(:quiz_id => quiz.id, :user_id => user.id, :quiz_status => "pending")
+  end
+end
+
+### Creating Roles
+

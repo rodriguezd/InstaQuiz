@@ -36,11 +36,8 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.0.4)
-<<<<<<< HEAD
     cancan (1.6.10)
-=======
     coderay (1.0.9)
->>>>>>> 39252f9b5dc346df5647a7d1dee45878264b17cf
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -131,9 +128,9 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby
-  cancan
   better_errors
   binding_of_caller
+  cancan
   coffee-rails (~> 3.2.1)
   debugger
   jquery-rails
