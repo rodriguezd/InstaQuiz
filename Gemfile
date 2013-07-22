@@ -8,6 +8,11 @@ gem 'rails', '3.2.13'
 gem 'sqlite3'
 gem 'bcrypt-ruby'
 
+gem "quiet_assets"
+gem "better_errors"
+gem "pry"
+gem "binding_of_caller"
+
 
 # Gems used only for assets and not required
 # in production environments by default.

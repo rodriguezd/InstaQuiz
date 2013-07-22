@@ -89,14 +89,14 @@ class QuizzesController < ApplicationController
   def answers
     # <input type="radio" name="question[1]choices[1][]" value="1">
     @quiz = Quiz.find(params[:id].to_i)
-    @user = User.find(1)
+    @user = current_user
     params[:question].each_pair do |question_num, choice_hash|
       # question_id = num
       choice_id = choice_hash[:choice].keys.first.to_i
       answer = @user.answers.find_or_create_by_question_id(:quiz_id => @quiz.id, :choice_id => choice_id, :question_id => question_num)
     @quiz.status = "completed"
     @quiz.save
-    redirect_to dashboard_user_path(current_user)
+    redirect_to dashboard_user_path(current_user) and return
 
     end
 
