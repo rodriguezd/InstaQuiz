@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password
   has_secure_password
   has_many :answers
-  has_many :quizzes, :through => :answers, :uniq => true
+  has_many :student_quizzes
+  has_many :quizzes, :through => :student_quizzes, :uniq => true
 
 
   def score(quiz)
