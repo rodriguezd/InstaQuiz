@@ -349,3 +349,15 @@ User.all[1].answers.create(:choice_id => 2, :quiz_id => 1, :question_id =>1)
 User.all[2].answers.create(:choice_id => 6, :quiz_id => 1, :question_id =>2)
 User.all[3].answers.create(:choice_id => 11, :quiz_id => 1, :question_id =>3)
 
+### Fake humanities quiz names
+
+Quiz.create(:name => "Europe, An Imagined Community: Essays on Identity since 1750", :status => "completed")
+Quiz.create(:name => "Lyrics of Mystical Love, East and West", :status => "active")
+Quiz.create(:name => "Existentialism", :status => "pending")
+Quiz.create(:name =>"The Literary 1960s: Years of Hope/Days of Rage", :status => "finalized")
+Quiz.create(:name => "Postmodern Fiction and Graphic Novels", :status => "completed")
+Quiz.create(:name => "Romantic Revolutions in European Music and Culture", :status => "completed")
+Quiz.create(:name => "Laughter: From Aristotle to Seinfeld", :status => "completed")
+
+Quiz.create(:name => "The Writing of the Indian Subcontinent", :status => "completed")
+
