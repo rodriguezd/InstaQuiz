@@ -337,10 +337,18 @@ User.create(:name => "Jordan", :email => "jordan.trevino@flatironschool.com", :p
 User.create(:name => "Adam", :email => "adam.waxman@flatironschool.com", :password => "test")
 User.create(:name => "Ning", :email => "ning.yap@flatironschool.com", :password => "test")
 
+Role.create(:name => :instructor)
+Role.create(:name => :student)
 
+User.all.each do |user|
+  user.roles << Role.where(:name => :student)
+  user.save
+end
 
-
-
+user = User.find_by_email('123@abc.com')
+user.roles.clear
+user.roles << Role.where(:name => :instructor)
+user.save
 
 User.first.answers.create(:choice_id => 1, :quiz_id => 1, :question_id =>1)
 User.first.answers.create(:choice_id => 7, :quiz_id => 1, :question_id => 2)
@@ -348,9 +356,6 @@ User.first.answers.create(:choice_id => 12, :quiz_id => 1, :question_id =>3)
 User.all[1].answers.create(:choice_id => 2, :quiz_id => 1, :question_id =>1)
 User.all[2].answers.create(:choice_id => 6, :quiz_id => 1, :question_id =>2)
 User.all[3].answers.create(:choice_id => 11, :quiz_id => 1, :question_id =>3)
-
-Role.create(:name => :instructor)
-Role.create(:name => :student)
 
 ### Fake humanities quiz names
 
