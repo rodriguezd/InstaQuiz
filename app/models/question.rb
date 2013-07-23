@@ -11,9 +11,10 @@
 #
 
 class Question < ActiveRecord::Base
-  attr_accessible :content, :quiz_id, :status
+  attr_accessible :content, :quiz_id, :status, :user_id
 
   belongs_to :quiz
+  belongs_to :user
   has_many :choices
 
   after_initialize :init
