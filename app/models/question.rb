@@ -50,7 +50,7 @@ class Question < ActiveRecord::Base
     self.save
   end
 
-  #private
+  private
 
   def init
     self.status ||= "pending"

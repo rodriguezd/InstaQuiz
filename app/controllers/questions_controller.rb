@@ -52,6 +52,9 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(:content => params[:question][:content], :quiz_id => params[:quiz_id])
+    if current_user.role?(:instructor)
+      @question.status = 'approved'
+    end
     @question.save
     @question.add_choices(params[:choices], params[:correct])
 
