@@ -24,6 +24,7 @@ Openexam2::Application.routes.draw do
       get 'answers', on: :member
       get 'score', on: :member
       put 'set_status', on: :member
+      get 'results', on: :member
       resources :questions do
         collection do
           get 'review'
