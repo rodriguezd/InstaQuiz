@@ -8,7 +8,8 @@ class Ability
         can :manage, :all
       else
         can :read, :all
-        can :take, Quiz
+        can [:take, :answers, :score], Quiz
+        # can [:update, :create], Answer
       end
 
     # Define abilities for the passed in user here. For example:
