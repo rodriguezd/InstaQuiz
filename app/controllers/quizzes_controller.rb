@@ -143,8 +143,6 @@ class QuizzesController < ApplicationController
   def results
     @quiz = Quiz.find(params[:id])
 
-
->>>>>>> results
   end
 
 end
