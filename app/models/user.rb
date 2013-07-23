@@ -38,7 +38,9 @@ class User < ActiveRecord::Base
   	end
 
   	# divide and return (correct choices/total choices)
-  	((correct/total.to_f)*100).round
+  	score = ((correct/total.to_f)*100).round
+    self.results.create(:user_id => self.id, :quiz_id => quiz.id, :score => score)
+    score
   end
 
   def role?(type)
