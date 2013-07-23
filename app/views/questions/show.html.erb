@@ -18,8 +18,14 @@
 <% if params[:quiz_id] %> |
 <%= link_to 'Add Another Question', new_quiz_question_path(params[:quiz_id])
 %> |
-<%= link_to 'Done', review_quiz_questions_path(params[:quiz_id]) %>
+  <% if current_user.role?(:instructor) %>
+    <%= link_to 'Done', review_quiz_questions_path(params[:quiz_id]) %>
+
+  <% elsif current_user.role?(:student) %>
+    <%= link_to 'Done', dashboard_user_path(params[:quiz_id]) %>
+  <% end %>
 <% end %>
+
 
 
 <%#= link_to 'Back', quiz_path(@question.quiz_id) %>
