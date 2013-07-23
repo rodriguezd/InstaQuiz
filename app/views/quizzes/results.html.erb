@@ -16,7 +16,8 @@
 </table>
 
 <h5>Class Average</h5>
-
+<% unless counter == 0 %>
 <%= (scores_total / counter).round(1) %> <br>
+<% end %>
 
 <%= button_to "Update", results_quiz_path, :method => :get %>

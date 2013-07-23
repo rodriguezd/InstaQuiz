@@ -121,7 +121,11 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
     @quiz.status = params[:status]
     @quiz.save
-    redirect_to dashboard_user_path(current_user)
+    if params[:status] == "active"
+      redirect_to results_quiz_path(@quiz)
+    else  
+      redirect_to dashboard_user_path(current_user)
+    end
   end
 
   def results
