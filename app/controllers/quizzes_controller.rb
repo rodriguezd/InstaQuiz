@@ -116,7 +116,9 @@ class QuizzesController < ApplicationController
   end
 
   def score
+
     @quiz = Quiz.find(params[:id])
+    @score = current_user.score(@quiz)
     # @user = User.find(params[:id])
   end
 

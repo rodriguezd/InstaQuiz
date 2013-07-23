@@ -2,7 +2,7 @@
   <% @quiz.questions.where(:status => "approved").each do |question| %>
     <p>
       <%= question.content %>
-      <ol>
+      <ol type='a'>
         <% question.choices.each do |choice| %>
         <li>
           <%= choice.content %>
