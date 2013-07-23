@@ -119,8 +119,17 @@ class QuizzesController < ApplicationController
   def set_status
     # raise params.inspect
     @quiz = Quiz.find(params[:id])
-    @quiz.status = params[:status]
-    @quiz.save
+    if current_user.role?(:instructor)
+      @quiz.status = params[:status]
+      @quiz.users.each do |user|
+        @student_quiz = user.student_quizzes.where(:quiz_id => @quiz.id).first
+        @student_quiz.quiz_status = params[:status]
+        @student_quiz.save
+      end
+      @quiz.save
+    elsif current_user.role?(:student)
+      format.html { redirect_to dashboard_user_path(current_user), notice: 'You do not have the privileges to change the status of this quiz.' }
+    end
     redirect_to dashboard_user_path(current_user)
   end
 
