@@ -4,7 +4,7 @@
         <% completed = Quiz.where(:status => "completed") %>
         <ul>
         <% completed.each do |q| %>
-          <%= link_to "Score", score_quiz_path(q), :class => "links" %>
+          <%= link_to "Results", results_quiz_path(q), :class => "links" %>
              <%= q.name %> <br>
         <% end %>
         <ul>
