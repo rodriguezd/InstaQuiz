@@ -1,5 +1,5 @@
 <%= form_tag answers_quiz_path(@quiz) do %>
-  <% @quiz.questions.each do |question| %>
+  <% @quiz.questions.where(:status => "approved").each do |question| %>
     <p>
       <%= question.content %>
       <ol>
