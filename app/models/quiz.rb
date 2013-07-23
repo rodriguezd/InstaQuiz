@@ -19,6 +19,7 @@ class Quiz < ActiveRecord::Base
   has_many :student_quizzes
   has_many :users, :through => :student_quizzes, :uniq => true
   has_many :users, :through => :answers, :uniq => true
+  has_many :results
 
   after_initialize :init
 
