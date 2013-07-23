@@ -58,7 +58,6 @@ class QuestionsController < ApplicationController
       @student_quiz = current_user.student_quizzes.where(:quiz_id => @question.quiz_id).first
       @student_quiz.quiz_status = "question submitted"
       @student_quiz.save
-      current_user.student_quizzes.create(:quiz_id => @question.quiz_id, :quiz_status => "question submitted")
     end
     @question.save
     @question.add_choices(params[:choices], params[:correct])
