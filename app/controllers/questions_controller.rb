@@ -54,6 +54,11 @@ class QuestionsController < ApplicationController
     @question = Question.new(:content => params[:question][:content], :quiz_id => params[:quiz_id], :user_id => current_user.id)
     if current_user.role?(:instructor)
       @question.status = 'approved'
+    elsif current_user.role?(:student)
+      @student_quiz = current_user.student_quizzes.where(:quiz_id => @question.quiz_id).first
+      @student_quiz.quiz_status = "question submitted"
+      @student_quiz.save
+      current_user.student_quizzes.create(:quiz_id => @question.quiz_id, :quiz_status => "question submitted")
     end
     @question.save
     @question.add_choices(params[:choices], params[:correct])
