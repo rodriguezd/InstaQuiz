@@ -88,6 +88,9 @@ class QuizzesController < ApplicationController
 
   def take
     @quiz = Quiz.find(params[:id])
+    @student_quiz = current_user.student_quizzes.where(:quiz_id => @quiz.id).first
+    @student_quiz.quiz_status = "completed"
+    @student_quiz.save
   end
 
   def answers
