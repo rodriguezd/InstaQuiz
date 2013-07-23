@@ -124,5 +124,11 @@ class QuizzesController < ApplicationController
     redirect_to dashboard_user_path(current_user)
   end
 
+  def results
+    @quiz = Quiz.find(params[:id])
+
+
+  end
+
 end
 

@@ -1,0 +1,22 @@
+<h4> <%= @quiz.name %> </h4>
+
+<table>
+<th >Name</th>
+<th>Score</th>
+<% counter = 0 %>
+<% scores_total = 0 %>
+<% @quiz.results.each do |result| %>
+  <% counter += 1 %>
+  <% scores_total += result.score %>
+  <tr>
+    <td><%= User.find(result.user_id).name %></td>
+    <td><%= result.score %></td>
+  </tr> 
+<% end %>
+</table>
+
+<h5>Class Average</h5>
+
+<%= (scores_total / counter).round(1) %> <br>
+
+<%= button_to "Update", results_quiz_path, :method => :get %>
