@@ -69,7 +69,6 @@
           <% questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question submitted"}) %>
           <ul>
           <% questions_submitted.each do |q| %>
-          <%= link_to 'Activate!', set_status_quiz_path(q, :status => "active"), :method => :put, :class => "links" %> 
           <%= link_to q.name, q %> <br>
           <% end %>
         </ul>

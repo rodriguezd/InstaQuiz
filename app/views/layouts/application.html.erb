@@ -14,7 +14,9 @@
       <ul class="nav">
       <li><a href="/users/1/dashboard">Dashboard</a>  </li>
       <li><a href="/users/1/myprofile">My Profile</a> </li> 
-      <li><a href="/quizzes/new">Create Quiz</a> </li>
+      <% if current_user.role?(:instructor) %>
+        <li><a href="/quizzes/new">Create Quiz</a> </li>
+      <% end %>
       <li><a href="/quizzes/1/questions/review">Review</a> </li>
       <li><a href="#">Settings</a> </li>
       <li><a href="/logout">Logout</a></li>
