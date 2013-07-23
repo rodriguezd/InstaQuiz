@@ -103,7 +103,8 @@ class QuizzesController < ApplicationController
       answer = @user.answers.find_or_create_by_question_id(:quiz_id => @quiz.id, :choice_id => choice_id, :question_id => question_num)
     @quiz.status = "completed"
     @quiz.save
-    redirect_to dashboard_user_path(current_user) and return
+    # redirect_to dashboard_user_path(current_user) and return
+    redirect_to score_quiz_path(@quiz) and return
 
     end
 
@@ -132,12 +133,12 @@ class QuizzesController < ApplicationController
       @quiz.save
       if params[:status] == "active"
         redirect_to results_quiz_path(@quiz)
-      else  
+      else
         redirect_to dashboard_user_path(current_user)
       end
     elsif current_user.role?(:student)
       format.html { redirect_to dashboard_user_path(current_user), notice: 'You do not have the privileges to change the status of this quiz.' }
-    end    
+    end
   end
 
   def results
