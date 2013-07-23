@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
   def score(quiz)
   	# total choices
   	total = self.answers.where(:quiz_id => quiz.id).size
-
   	# correct choices
   	correct = 0
   	self.answers.where(:quiz_id => quiz.id).each do |answer|
@@ -38,8 +37,12 @@ class User < ActiveRecord::Base
   	end
 
   	# divide and return (correct choices/total choices)
-  	score = ((correct/total.to_f)*100).round
-    self.results.create(:user_id => self.id, :quiz_id => quiz.id, :score => score)
+    score = 0
+    unless total == 0
+      score = ((correct/total.to_f)*100).round
+    end
+      self.results.create(:user_id => self.id, :quiz_id => quiz.id, :score => score)
+    
     score
   end
 
