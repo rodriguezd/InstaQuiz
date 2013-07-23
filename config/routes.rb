@@ -32,7 +32,7 @@ Openexam2::Application.routes.draw do
       end
   end
 
-  resources :sessions, :path_names => {:mew => 'login'}
+  resources :sessions, :path_names => {:new => 'login'}
 
 
 
