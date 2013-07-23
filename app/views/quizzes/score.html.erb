@@ -1,9 +1,12 @@
 <!-- score.html.erb -->
-<h2> These are the scores for <%= @quiz.name %>! </h2>
+<h2> Your score for the <%= @quiz.name %> quiz! </h2>
+<h5><%= @score %></h5>
 
-<% @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).each do |user|%>
-	<%= user.name %>: <%= user.score(@quiz) %> <br>
-<% end %>
+<%# @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).each do |user|%>
+	<%#= user.name %> <%#= user.score(@quiz) %>
+<%# end %>
+
+
 
 
 
