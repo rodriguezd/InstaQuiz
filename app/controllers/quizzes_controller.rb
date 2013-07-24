@@ -148,7 +148,7 @@ class QuizzesController < ApplicationController
       if params[:status] == "active"
         redirect_to results_quiz_path(@quiz)
       else
-        redirect_to dashboard_user_path(current_user)
+        redirect_to :back
       end
     elsif current_user.role?(:student)
       format.html { redirect_to dashboard_user_path(current_user), notice: 'You do not have the privileges to change the status of this quiz.' }
@@ -159,6 +159,7 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
 
   end
+
 
 end
 
