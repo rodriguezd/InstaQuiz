@@ -1,5 +1,25 @@
 <h4> <%= @quiz.name %> </h4>
 
+<% counter = 0 %>
+<% scores_total = 0 %>
+
+<% if @quiz.status == "active" %>
+    <table>
+    <th width="20px" align="left"></th>
+    <th width="160px" align="left">Name</th>
+    <th align="left">Score</th>
+    <% @quiz.results.each_with_index do |result, i| %>
+      <% counter += 1 %>
+      <% scores_total += result.score %>
+      <tr>
+        <td><%= i + 1 %>.</td>
+        <td><%= User.find(result.user_id).name %></td>
+        <td><%= number_to_percentage(result.score, precision: 1) %></td>
+      </tr>
+    <% end %>
+    </table>
+
+<% elsif @quiz.status == "completed" %>
 
 <% @quiz.users.each_with_index do |stu, i| %>
 
@@ -8,32 +28,19 @@
        Did not submit <br>
     <% else %>
       <%= stu.results.where(:quiz_id => @quiz.id).first.score %> <br>
+      <% counter += 1 %>
     <% end %>
-
 <br>
-
-<table>
-<th width="20px" align="left"></th>
-<th width="160px" align="left">Name</th>
-<th align="left">Score</th>
-<% counter = 0 %>
-<% scores_total = 0 %>
-<% @quiz.results.each_with_index do |result, i| %>
-  <% counter += 1 %>
-  <% scores_total += result.score %>
-  <tr>
-    <td><%= i + 1 %>.</td>
-    <td><%= User.find(result.user_id).name %></td>
-    <td><%= number_to_percentage(result.score, precision: 1) %></td>
-  </tr>
+  <% end %>
 <% end %>
 
 
 <h5>Class Average</h5>
-<!-- <#% unless counter == 0 %> -->
-<%#= number_to_percentage(scores_total / counter, precision: 1) %> <br>
-<!-- <#% end %> -->
+<% unless counter == 0 %>
+  <%= number_to_percentage(scores_total / counter, precision: 1) %> <br>
+<% end %> 
 </br>
+
 <%= button_to "Update", results_quiz_path, :method => :get %>
 <% unless @quiz.status == "completed" %>
 <%= button_to "End Quiz", set_status_quiz_path(@quiz, :status => "completed"), :method => :put %>
