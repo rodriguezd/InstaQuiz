@@ -1,17 +1,19 @@
 <h4> <%= @quiz.name %> </h4>
 
 <table>
+<th></th>
 <th >Name</th>
 <th>Score</th>
 <% counter = 0 %>
 <% scores_total = 0 %>
-<% @quiz.results.each do |result| %>
+<% @quiz.results.each_with_index do |result, i| %>
   <% counter += 1 %>
   <% scores_total += result.score %>
   <tr>
+    <td><%= i + 1 %></td>
     <td><%= User.find(result.user_id).name %></td>
     <td><%= result.score %></td>
-  </tr> 
+  </tr>
 <% end %>
 </table>
 
