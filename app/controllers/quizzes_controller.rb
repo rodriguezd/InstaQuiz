@@ -101,12 +101,13 @@ class QuizzesController < ApplicationController
       # question_id = num
       choice_id = choice_hash[:choice].keys.first.to_i
       answer = @user.answers.find_or_create_by_question_id(:quiz_id => @quiz.id, :choice_id => choice_id, :question_id => question_num)
+    end
     @quiz.status = "completed"
     @quiz.save
     # redirect_to dashboard_user_path(current_user) and return
     redirect_to score_quiz_path(@quiz) and return
 
-    end
+
 
     # # find quiz referred to
     # iterate through params
