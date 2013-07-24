@@ -11,7 +11,7 @@
     </div>
   <% end %> </br></br></br>
   <div>
-  <b>Deadline: </b><%= @quiz.deadline.strftime("%b %d, %Y - %I:%M %p") %> </br>
+  <b>Deadline: </b><%#= @quiz.deadline.strftime("%b %d, %Y - %I:%M %p") %> <%= @quiz.deadline %></br>
   <b>Instructions: </b><%= @quiz.instruction %> </br>
   <b>Classes: </b>
   </div>
