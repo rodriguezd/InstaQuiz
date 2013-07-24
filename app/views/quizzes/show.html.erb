@@ -2,13 +2,19 @@
 
 <p>
   <b>Name:</b>
+    <div style="float: left;margin-right: 10px">
   <%= @quiz.name %>
+</div>
   <% if can? :edit, @quizzes %>
+    <div style="float: left;margin-right: 10px">
     <%= link_to 'Edit', edit_quiz_path(@quiz) %>
+  </div>
   <% end %> </br>
+  <div>
   <b>Deadline: </b><%= @quiz.deadline %> </br>
   <b>Instructions: </b><%= @quiz.instruction %> </br>
   <b>Classes: </b>
+</div>
   <ul>
     <li>Flatiron School </li>
   </ul>
