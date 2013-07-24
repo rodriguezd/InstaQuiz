@@ -79,7 +79,7 @@
           <% pending = current_user.quizzes.where(:student_quizzes => {:quiz_status => "pending"}) %>
           <ul>
             <% pending.each do |q| %>
-            <%= link_to q.name, review_quiz_questions_path(q) %> <br>
+            <%= link_to q.name, new_quiz_question_path(q) %> <br>
             <% end %>
           </ul>
         </div>
