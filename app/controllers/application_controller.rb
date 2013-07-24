@@ -24,7 +24,16 @@ class ApplicationController < ActionController::Base
   	@current_user ||= User.find(session[:user_id])
   end
 
+  def logo_link
+    if (session[:user_id] != nil) && logged_in?
+      dashboard_user_path(current_user)
+    else
+      "/"
+    end
+  end
+
 	helper_method :current_user
+  helper_method :logo_link
 
   # def can_current_user?(action, object)
   # 	if object.editable_by? current_user
