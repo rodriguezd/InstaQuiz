@@ -45,6 +45,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1/edit
   def edit
     # raise params.inspect
+    @quiz = Quiz.find(params[:quiz_id])
     @question = Question.find(params[:id])
   end
 
@@ -77,13 +78,14 @@ class QuestionsController < ApplicationController
   # PUT /questions/1
   # PUT /questions/1.json
   def update
+    @quiz = Quiz.find(params[:quiz_id])
     @question = Question.find(params[:id])
     @question.update_attributes(:content => params[:question][:content])
     @question.update_choices(params[:choices], params[:correct])
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
+        format.html { redirect_to @quiz, notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

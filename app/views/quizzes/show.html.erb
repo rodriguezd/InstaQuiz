@@ -2,9 +2,9 @@
 
 <p>
   <b>Name:</b>
-  <%= @quiz.name %> 
+  <%= @quiz.name %>
   <% if can? :edit, @quizzes %>
-    <%= link_to 'Edit', edit_quiz_path(@quiz) %> 
+    <%= link_to 'Edit', edit_quiz_path(@quiz) %>
   <% end %> </br>
   <b>Deadline: </b><%= @quiz.deadline %> </br>
   <b>Instructions: </b><%= @quiz.instruction %> </br>
@@ -17,7 +17,7 @@
 
 <% @quiz.questions.where(:status => "approved").each do |q| %>
     <%= q.content%> <%#= link_to 'Edit', edit_quiz_question_path(@quiz, q) %>
-    <%= link_to 'Edit', edit_question_path(q) %><br>
+    <%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %><br>
     <ul>
       <% q.choices.each do |c| %>
         <li><%= c.content %> <%= " - Correct" if c.correct %></li>
