@@ -7,7 +7,7 @@
         <% question.choices.each do |choice| %>
         <li>
           <%= choice.content %>
-          <input type="radio" name="question[<%= question.id %>]choice[<%= choice.id %>][]"/>
+          <input type="radio" style="vertical-align: middle; margin: 0px;"name="question[<%= question.id %>]choice[<%= choice.id %>][]"/>
         </li>
         <% end %>
       </ol>
