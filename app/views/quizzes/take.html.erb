@@ -1,5 +1,5 @@
 <%= form_tag answers_quiz_path(@quiz) do %>
-<h2><%= @quiz.name %></h2>
+<h3><%= @quiz.name %></h3>
   <% @quiz.questions.where(:status => "approved").each_with_index do |question, i| %>
     <p>
       <%= i + 1 %>. <%= question.content %>
