@@ -2,14 +2,14 @@
 
 <p>
 
-  <div style="float: left;width: 110px">
+  <div style="float: left;width: 250px">
     <h5><%= @quiz.name %></h5>
   </div>
   <% if can? :edit, @quizzes %>
     <div style="float: left;position:relative;top: 11px">
       <%= link_to 'Edit', edit_quiz_path(@quiz) %>
     </div>
-  <% end %> </br></br></br>
+  <% end %> </br></br></br></br>
   <div>
   <b>Deadline: </b><%#= @quiz.deadline.strftime("%b %d, %Y - %I:%M %p") %> <%= @quiz.deadline %></br>
   <b>Instructions: </b><%= @quiz.instruction %> </br>
