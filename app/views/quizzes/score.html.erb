@@ -1,11 +1,11 @@
 <!-- score.html.erb -->
 <h2> Your score for the <%= @quiz.name %> quiz! </h2>
-<h5><%= @score %></h5>
+<h5><%= number_to_percentage(@score, precision: 1)%></h5>
 
 <%# @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).each do |user|%>
 	<%#= user.name %> <%#= user.score(@quiz) %>
 <%# end %>
-
+<%= render 'review' %>
 
 
 

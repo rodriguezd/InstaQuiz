@@ -14,7 +14,7 @@
       <% if session[:user_id] != nil %>
         <ul class="nav">
         <li><a href="<%=dashboard_user_path(current_user) %>">Dashboard</a>  </li>
-        <li><a href="/users/<%= current_user.id %>/myprofile">My Profile</a> </li> 
+        <li><a href="/users/<%= current_user.id %>/myprofile">My Profile</a> </li>
         <% if current_user.role?(:instructor) %>
           <li><a href="/quizzes/new">Create Quiz</a> </li>
         <% end %>
@@ -24,7 +24,7 @@
     </div>
     </div>
   </div>
-  </div> 
+  </div>
  </div>
 </head>
 <body>
@@ -34,6 +34,9 @@
       <div class="span6">
         <div class="logo">
           <h1><span class="color">Quizzes</span></h1>
+          <% if !!session[:user_id] %>
+            <%= current_user.name %>
+          <% end %>
         </div>
       </div>
       <div class="span6">
