@@ -13,12 +13,12 @@
       <div class="nav-collapse collapse pull-right">
       <% if session[:user_id] != nil %>
         <ul class="nav">
-        <li><a href="/users/1/dashboard">Dashboard</a>  </li>
-        <li><a href="/users/1/myprofile">My Profile</a> </li> 
+        <li><a href="<%=dashboard_user_path(current_user) %>">Dashboard</a>  </li>
+        <li><a href="/users/<%= current_user.id %>/myprofile">My Profile</a> </li> 
         <% if current_user.role?(:instructor) %>
           <li><a href="/quizzes/new">Create Quiz</a> </li>
+          <li><a href="/quizzes/1/questions/review">Review</a> </li>
         <% end %>
-        <li><a href="/quizzes/1/questions/review">Review</a> </li>
         <li><a href="#">Settings</a> </li>
         <li><a href="/logout">Logout</a></li>
       <% end %>
