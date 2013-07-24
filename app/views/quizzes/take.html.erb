@@ -1,13 +1,13 @@
 <%= form_tag answers_quiz_path(@quiz) do %>
-<h2><%= @quiz.name %></h2>
-  <% @quiz.questions.where(:status => "approved").each do |question| %>
+<h3><%= @quiz.name %></h3>
+  <% @quiz.questions.where(:status => "approved").each_with_index do |question, i| %>
     <p>
-      <%= question.content %>
+      <%= i + 1 %>. <%= question.content %>
       <ol type='a'>
         <% question.choices.each do |choice| %>
         <li>
           <%= choice.content %>
-          <input type="radio" name="question[<%= question.id %>]choice[<%= choice.id %>][]"/>
+          <input type="radio" style="vertical-align: middle; margin: 0px;"name="question[<%= question.id %>]choice[<%= choice.id %>][]"/>
         </li>
         <% end %>
       </ol>

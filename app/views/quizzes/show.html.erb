@@ -1,14 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @quiz.name %>
+
+  <div style="float: left;width: 110px">
+    <h5><%= @quiz.name %></h5>
+  </div>
   <% if can? :edit, @quizzes %>
-    <%= link_to 'Edit', edit_quiz_path(@quiz) %>
-  <% end %> </br>
-  <b>Deadline: </b><%= @quiz.deadline %> </br>
+    <div style="float: left;position:relative;top: 11px">
+      <%= link_to 'Edit', edit_quiz_path(@quiz) %>
+    </div>
+  <% end %> </br></br></br>
+  <div>
+  <b>Deadline: </b><%= @quiz.deadline.strftime("%b %d, %Y - %I:%M %p") %> </br>
   <b>Instructions: </b><%= @quiz.instruction %> </br>
   <b>Classes: </b>
+  </div>
+
   <ul>
     <li>Flatiron School </li>
   </ul>
