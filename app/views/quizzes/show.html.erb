@@ -17,7 +17,7 @@
     <%= link_to 'Edit', edit_question_path(q) %><br>
     <ul>
       <% q.choices.each do |c| %>
-        <li><%= c.content %> </li>
+        <li><%= c.content %> <%= " - Correct" if c.correct %></li>
       <% end %>
     </ul>
     <% end %>
