@@ -8,12 +8,19 @@
   <% end %> </br>
   <b>Deadline: </b><%= @quiz.deadline %> </br>
   <b>Instructions: </b><%= @quiz.instruction %> </br>
-  <b>Students: </b>
+  <b>Classes: </b>
+  <ul>
+    <li>Flatiron School </li>
+  </ul>
+
+</p>
+
+<!--   <b>Students: </b>
     <ul> <% @users.each do |user| %>
         <li><%= user.name %> </li>
         <% end %>
     </ul>
-</p>
+</p> -->
 
 <% @quiz.questions.where(:status => "approved").each do |q| %>
     <%= q.content%> <%#= link_to 'Edit', edit_quiz_question_path(@quiz, q) %>
