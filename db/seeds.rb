@@ -377,5 +377,22 @@ Quiz.all.each do |quiz|
   end
 end
 
+Quiz.where(:status => "active").each do |quiz|
+  quiz.student_quizzes.each do |student_quiz|
+    student_quiz.quiz_status = "active"
+    student_quiz.save
+  end
+end 
+
+Quiz.where(:status => "completed").each do |quiz|
+  quiz.student_quizzes.each do |student_quiz|
+    student_quiz.quiz_status = "completed"
+    student_quiz.save
+  end
+end 
+
+
+
+
 ### Creating Roles
 

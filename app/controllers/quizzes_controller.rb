@@ -88,9 +88,6 @@ class QuizzesController < ApplicationController
 
   def take
     @quiz = Quiz.find(params[:id])
-    @student_quiz = current_user.student_quizzes.where(:quiz_id => @quiz.id).first
-    @student_quiz.quiz_status = "completed"
-    @student_quiz.save
   end
 
   def answers
@@ -98,6 +95,11 @@ class QuizzesController < ApplicationController
     # <input type="radio" name="question[1]choices[1][]" value="1">
     @quiz = Quiz.find(params[:id].to_i)
     @user = current_user
+
+    @student_quiz = current_user.student_quizzes.where(:quiz_id => @quiz.id).first
+    @student_quiz.quiz_status = "completed"
+    @student_quiz.save
+
     if !params[:question].nil?
       params[:question].each_pair do |question_num, choice_hash|
       # question_id = num
@@ -105,8 +107,14 @@ class QuizzesController < ApplicationController
         answer = @user.answers.find_or_create_by_question_id(:quiz_id => @quiz.id, :choice_id => choice_id, :question_id => question_num)
       end
     end
-    @quiz.status = "completed"
-    @quiz.save
+    student_total = @quiz.users.joins(:roles).where(:roles =>{:name => "student"}).size
+    completed_students = @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).size
+    if student_total == completed_students
+      @quiz.status = "completed"
+      @quiz.save
+    end
+    
+    # Quiz.last.users.joins(:roles).where(:roles=> {:name=> "instructor"})
     # redirect_to dashboard_user_path(current_user) and return
 
     redirect_to score_quiz_path(@quiz) and return
