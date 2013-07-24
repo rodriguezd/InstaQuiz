@@ -12,14 +12,14 @@
   <tr>
     <td><%= i + 1 %></td>
     <td><%= User.find(result.user_id).name %></td>
-    <td><%= result.score %></td>
+    <td><%= number_to_percentage(result.score, precision: 1) %></td>
   </tr>
 <% end %>
 </table>
-
+</br>
 <h5>Class Average</h5>
 <% unless counter == 0 %>
-<%= (scores_total / counter).round(1) %> <br>
+<%= number_to_percentage(scores_total / counter, precision: 1) %> <br>
 <% end %>
-
+</br>
 <%= button_to "Update", results_quiz_path, :method => :get %>
