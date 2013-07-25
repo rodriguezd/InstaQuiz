@@ -1,5 +1,42 @@
+<div class="side-nav todo mrm span2">
+            <ul>
+              <li class="todo-done side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                    Active
+                  </h3>
+                </div>
+              </li>
+
+              <li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                    Finalized
+                  </h3>
+                </div>
+              </li>
+
+              <li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                   Pending
+                  </h3>
+                </div>
+              </li>
+
+              <li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                    Completed
+                  </h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+<div class="offset2">
 <% if current_user.role?(:instructor) %>
-      <div id = "completed" class="quiz-box">
+      <div id="completed" class="quiz-box">
         <h3>Completed</h3>
         <% completed = Quiz.where(:status => "completed") %>
         <ul>
@@ -84,3 +121,4 @@
           </ul>
         </div>
   <% end %>
+</div>

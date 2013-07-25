@@ -28,77 +28,21 @@
 <body>
   <header>
     <div class="container">
+    <div class="container-fluid" style="text-align: right">
       <% if !!session[:user_id] %>
         Currently logged in as <%= current_user.name %>
       <% end %>
     </div>
-  <div class="container">
-    <div class="row">
-      <div class="span6">
-        <div class="logo">
-          <h1><span class="color">Quizzes</span></h1>
-        </div>
-      </div>
-      <div class="span6">
-        <div class="form">
-        </div>
-      </div>
-    </div>
   </div>
-</header>
-<div class="container">
-  <div class="side-nav todo mrm span2">
-            <ul>
-              <li class="todo-done">
-                <div class="todo-icon fui-user"></div>
-                <div class="todo-content">
-                  <h4 class="todo-name">
-                    <b>Active Quizzes</b>
-                  </h4>
-                  Description
-                </div>
-              </li>
+  </header>
+</br>
 
-              <li>
-                <div class="todo-icon fui-list"></div>
-                <div class="todo-content">
-                  <h4 class="todo-name">
-                     <strong>Finalized</strong>
-                  </h4>
-                  description
-                </div>
-              </li>
-
-              <li>
-                <div class="todo-icon fui-eye"></div>
-                <div class="todo-content">
-                  <h4 class="todo-name">
-                   <strong>Pending</strong>
-                  </h4>
-                  description
-                </div>
-              </li>
-
-              <li>
-                <div class="todo-icon fui-time"></div>
-                <div class="todo-content">
-                  <h4 class="todo-name">
-                    <strong>Completed</strong>
-                  </h4>
-                  description
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-<div class="content span10 offset1">
-    <div class="container-fluid">
-      <div class="container-fluid offset1">
+  <div class="container">
+      <div class="container-fluid">
         <%= yield %>
       </div>
     </div>
-</div>
+  </div>
 
 </body>
 </html>
