@@ -4,12 +4,10 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 <head>
-  <div class="navbar">
-<!--   <div class="navbar navbar-fixed-top">
- -->  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a>
-      <a class="navbar-brand pull-left" href="<%= logo_link %>"><h1 class="navbar-brand">Open<span class="color" style="font-size: 28px">Exam</span></h1></a>
+ <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="navbar-brand brand" href="<%= logo_link %>">Insta<span style="color: white">Quiz</span></a>
       <div class="nav-collapse collapse pull-right">
       <% if session[:user_id] != nil %>
         <ul class="nav">
@@ -29,15 +27,16 @@
 </head>
 <body>
   <header>
-      <p><% if !!session[:user_id] %>
+    <div class="container">
+      <% if !!session[:user_id] %>
         Currently logged in as <%= current_user.name %>
-      <% end %></p>
+      <% end %>
+    </div>
   <div class="container">
     <div class="row">
       <div class="span6">
         <div class="logo">
           <h1><span class="color">Quizzes</span></h1>
-
         </div>
       </div>
       <div class="span6">
@@ -47,9 +46,8 @@
     </div>
   </div>
 </header>
-<div class="span3">
-  <div class="side-nav todo mrm">
-
+<div class="container">
+  <div class="side-nav todo mrm span2">
             <ul>
               <li class="todo-done">
                 <div class="todo-icon fui-user"></div>
@@ -94,11 +92,12 @@
           </div>
         </div>
 
-
-<div class="container-fluid">
-  <div class="container-fluid offset1">
-    <%= yield %>
-  </div>
+<div class="content span10 offset1">
+    <div class="container-fluid">
+      <div class="container-fluid offset1">
+        <%= yield %>
+      </div>
+    </div>
 </div>
 
 </body>
