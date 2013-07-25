@@ -40,6 +40,14 @@ Openexam2::Application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  get '/dashboard' => 'users#dashboard'
+
+  get '/dashboard/:status' => 'users#dashboard_status'
+
+
+
+
+
 
 
   # You can have the root of your site routed with "root"

@@ -1,0 +1,40 @@
+<!-- dashboard_status.html.erb -->
+<div class="side-nav todo mrm span2">
+            <ul>
+              <a href="/dashboard/active"><li class="todo-done side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name" href="/">
+                    Active
+                  </h3>
+                </div>
+              </li></a>
+
+              <a href="/dashboard/finalized"><li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                    Finalized
+                  </h3>
+                </div>
+              </li></a>
+
+              <a href="/dashboard/pending"><li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                   Pending
+                  </h3>
+                </div>
+              </li></a>
+
+              <a href="/dashboard/completed"><li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                    Completed
+                  </h3>
+                </div>
+              </li></a>
+            </ul>
+          </div>
+
+<div class="offset2">
+  <%= render 'quizzes' %>
+</div>

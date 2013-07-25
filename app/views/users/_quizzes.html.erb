@@ -1,0 +1,9 @@
+<div id="<%= @status %>" class="quiz-box">
+        <h3><%= @status.titleize %></h3>
+        <ul>
+        <% @quizzes.each do |q| %>
+          <%= link_to "Results", results_quiz_path(q), :class => "links" %>
+             <%= q.name %> <br>
+        <% end %>
+        <ul>
+</div>
