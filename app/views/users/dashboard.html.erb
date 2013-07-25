@@ -15,7 +15,7 @@
         <% active = Quiz.where(:status => "active") %>
         <ul>
         <% active.each do |q| %>
-          <%= link_to "Live Scores", results_quiz_path(q), :class => "links" %>
+          <%= link_to "Take quiz", take_quiz_path(q), :class => "links" %>
           <%= q.name %> <br>
         <% end %>
       </ul>

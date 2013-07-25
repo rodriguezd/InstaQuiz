@@ -2,7 +2,7 @@
 <h3><%= @quiz.name %></h3>
   <% @quiz.questions.where(:status => "approved").each_with_index do |question, i| %>
     <p>
-      <%= i + 1 %>. <%= question.content %>
+      <%= i + 1 %>. <%= question_parser(question.content)%>
       <ol type='a'>
         <% question.choices.each do |choice| %>
         <li>

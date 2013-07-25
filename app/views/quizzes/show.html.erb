@@ -30,7 +30,7 @@
 </p> -->
 
 <% @quiz.questions.where(:status => "approved").each do |q| %>
-    <%= q.content%> <%#= link_to 'Edit', edit_quiz_question_path(@quiz, q) %>
+    <%= question_parser(q.content)%> <%#= link_to 'Edit', edit_quiz_question_path(@quiz, q) %>
     <%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %><br>
     <ul>
       <% q.choices.each do |c| %>

@@ -44,3 +44,5 @@ gem 'cancan'
 
 # To use debugger
 gem 'debugger'
+
+gem 'pygments.rb'

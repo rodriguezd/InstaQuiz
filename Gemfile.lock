@@ -70,10 +70,14 @@ GEM
     mime-types (1.23)
     multi_json (1.7.7)
     polyglot (0.3.3)
+    posix-spawn (0.3.6)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pygments.rb (0.5.2)
+      posix-spawn (~> 0.3.6)
+      yajl-ruby (~> 1.1.0)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -122,6 +126,7 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -135,6 +140,7 @@ DEPENDENCIES
   debugger
   jquery-rails
   pry
+  pygments.rb
   quiet_assets
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)

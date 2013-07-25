@@ -2,7 +2,8 @@
 
 <p>
   <b>Question:</b>
-  <%= @question.content %>
+  <!-- <%#= raw Pygments.highlight(@question.content)%> -->
+  <%= question_parser(question.content)%>
 </p>
 
 <ul>

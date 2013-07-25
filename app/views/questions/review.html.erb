@@ -11,7 +11,7 @@
   <% @quiz.questions.each_with_index do |question, i| %>
     <p>
 
-      <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved' %><%= question.content %>
+      <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved' %><%= question_parser(question.content)%>
     </p>
 
     <ul>
