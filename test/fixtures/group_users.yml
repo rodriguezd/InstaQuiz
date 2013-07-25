@@ -1,11 +1,10 @@
 # == Schema Information
 #
-# Table name: results
+# Table name: group_users
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  quiz_id    :integer
-#  score      :float
+#  group_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -14,10 +13,8 @@
 
 one:
   user_id: 1
-  quiz_id: 1
-  score: 1.5
+  group_id: 1
 
 two:
   user_id: 1
-  quiz_id: 1
-  score: 1.5
+  group_id: 1

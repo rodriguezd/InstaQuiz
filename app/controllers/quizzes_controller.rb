@@ -49,7 +49,7 @@ class QuizzesController < ApplicationController
 
     respond_to do |format|
       if @quiz.save
-        # @quiz.questions_email
+        # self.questions_email
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
         format.json { render json: @quiz, status: :created, location: @quiz }
       else

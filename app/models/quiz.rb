@@ -20,6 +20,9 @@ class Quiz < ActiveRecord::Base
   has_many :users, :through => :student_quizzes, :uniq => true
   has_many :results
 
+  has_many :group_quizzes
+  has_many :groups, :through => :group_quizzes
+
 
   after_initialize :init
 
@@ -29,16 +32,20 @@ class Quiz < ActiveRecord::Base
   end
 
   def take_email
-    # self.groups.each do |group|
-      # group.each do |user|
-        # UserMailer.take_quiz_email(user, self).deliver
-        UserMailer.take_quiz_email("David Rodriguez <davidrodriguez212@gmail.com>", self).deliver
-      # end
-    # end
+    self.groups.each do |group|
+      group.users.each do |user|
+        UserMailer.take_quiz_email(user, self).deliver
+        # UserMailer.take_quiz_email("David Rodriguez <davidrodriguez212@gmail.com>", self).deliver
+      end
+    end
   end
 
   def questions_email
-    UserMailer.submit_questions_email("David Rodriguez <davidrodriguez212@gmail.com>", self).deliver
+    self.groups.each do |group|
+      group.users.each do |user|
+        UserMailer.submit_questions_email(user, self).deliver
+      end
+    end
   end
 
   private

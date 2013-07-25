@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :role_users
   has_many :results
 
+  has_many :group_users
+  has_many :groups, :through => :group_users
+
 
 
   def score(quiz)
@@ -42,7 +45,7 @@ class User < ActiveRecord::Base
       score = ((correct/total.to_f)*100).round
     end
       self.results.create(:user_id => self.id, :quiz_id => quiz.id, :score => score)
-    
+
     score
   end
 
