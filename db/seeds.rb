@@ -250,7 +250,7 @@ Question.all[30].choices.create(:content => "[3, 4, 5]", :correct => true)
 Question.all[30].choices.create(:content => "true")
 
 Quiz.all[3].questions.create(:content => "What is the value of the array variable at the end of this block of code?
-  array = [1, 2, 3, 4]
+array = [1, 2, 3, 4]
 array << 5
 array.clear")
 

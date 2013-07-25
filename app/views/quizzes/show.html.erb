@@ -30,7 +30,14 @@
 </p> -->
 
 <% @quiz.questions.where(:status => "approved").each do |q| %>
-    <%= q.content%> <%#= link_to 'Edit', edit_quiz_question_path(@quiz, q) %>
+
+    <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
+    <% if @quiz.id.in?(1..4) %>
+      <%= question_parser(q.content) %>
+    <% else %>
+      <%= markdown (q.content)%> 
+    <% end %>
+
     <%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %><br>
     <ul>
       <% q.choices.each do |c| %>
