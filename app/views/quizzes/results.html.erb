@@ -41,7 +41,7 @@
 <% end %>
 </br>
 
-<%= button_to "Update", results_quiz_path, :method => :get %>
+ <a href="<%= results_quiz_path(@quiz) %>" class="btn btn-large btn-primary">Update</a>
 <% unless @quiz.status == "completed" %>
-<%= button_to "End Quiz", set_status_quiz_path(@quiz, :status => "completed"), :method => :put %>
+<a href="<%= set_status_quiz_path(@quiz, :status=> "completed") %>" class="btn btn-large btn-primary">End Quiz</a>
 <% end %>
