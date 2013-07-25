@@ -11,7 +11,15 @@
   <% @quiz.questions.each_with_index do |question, i| %>
     <p>
 
-      <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved' %><%= markdown (question.content)%>
+      <%= check_box_tag "status[#{question.id}]",'approved', question.status == ' approved' %>
+      <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
+      <% if question.quiz_id.in?(1..4) %>
+        <%= question_parser(question.content) %>
+      <% else %>
+        <%= markdown (question.content)%> 
+      <% end %>
+
+
     </p>
 
     <ul>
