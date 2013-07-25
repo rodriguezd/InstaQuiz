@@ -57,7 +57,7 @@ class QuestionsController < ApplicationController
       @question.status = 'approved'
     elsif current_user.role?(:student)
       @student_quiz = current_user.student_quizzes.where(:quiz_id => @question.quiz_id).first
-      @student_quiz.quiz_status = "question submitted"
+      @student_quiz.quiz_status = "question_submitted"
       @student_quiz.save
     end
     @question.save

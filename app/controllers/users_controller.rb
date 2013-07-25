@@ -91,7 +91,7 @@ class UsersController < ApplicationController
     if current_user.role?(:instructor)
       @quizzes = Quiz.where(:status => @status)
       # render 'active'
-    elsif current_user?(:student)
+    elsif current_user.role?(:student)
       @quizzes = @user.quizzes.where(:student_quizzes => {:quiz_status => @status})
     end
     # redirect_to dashboard_path and return

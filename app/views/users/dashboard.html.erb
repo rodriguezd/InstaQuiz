@@ -103,7 +103,7 @@
         <hr>
         <div id = "finalized" class="quiz-box">
           <h3>Questions Submitted</h3>
-          <% questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question submitted"}) %>
+          <% questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"}) %>
           <ul>
           <% questions_submitted.each do |q| %>
           <%= link_to q.name, q %> <br>

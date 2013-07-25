@@ -1,4 +1,5 @@
 <!-- dashboard_status.html.erb -->
+
 <div class="side-nav todo mrm span2">
             <ul>
               <a href="/dashboard/active"><li class="todo-done side-item">
@@ -8,7 +9,7 @@
                   </h3>
                 </div>
               </li></a>
-
+<% if current_user.role?(:instructor) %>
               <a href="/dashboard/finalized"><li class="side-item">
                 <div class="todo-content">
                   <h3 class="todo-name">
@@ -17,14 +18,24 @@
                 </div>
               </li></a>
 
+<%elsif current_user.role?(:student) %>
+              <a href="/dashboard/question_submitted"><li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                    <span>Submitted</span>
+                  </h3>
+                </div>
+              </li></a>
+<% end %>
+
               <a href="/dashboard/pending"><li class="side-item">
                 <div class="todo-content">
                   <h3 class="todo-name">
                    Pending
                   </h3>
                 </div>
-              </li></a>
 
+              </li></a>
               <a href="/dashboard/completed"><li class="side-item">
                 <div class="todo-content">
                   <h3 class="todo-name">
@@ -34,6 +45,7 @@
               </li></a>
             </ul>
           </div>
+
 
 <div class="offset2">
   <%= render 'quizzes' %>
