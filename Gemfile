@@ -46,3 +46,4 @@ gem 'cancan'
 gem 'debugger'
 
 gem 'pygments.rb'
+gem 'redcarpet'

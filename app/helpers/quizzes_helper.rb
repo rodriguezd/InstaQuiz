@@ -9,4 +9,13 @@ module QuizzesHelper
 
   end
 
+    def example_parser(question_content)
+    lines = question_content.split("\n").reject{|line| line.empty?}
+
+    rest = lines.drop(1).join("\n")
+    rest_formatted = raw Pygments.highlight(rest)
+    return rest_formatted
+
+  end
+
 end
