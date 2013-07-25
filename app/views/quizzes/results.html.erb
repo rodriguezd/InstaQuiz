@@ -23,7 +23,7 @@
 
 <% @quiz.users.each_with_index do |stu, i| %>
 
-  <%= i+1 %> <%= stu.name %> 
+  <%= i+1 %>. <%= stu.name %>
     <% if stu.results.where(:quiz_id => @quiz.id).empty? %>
        Did not submit <br>
     <% else %>
@@ -38,7 +38,7 @@
 <h5>Class Average</h5>
 <% unless counter == 0 %>
   <%= number_to_percentage(scores_total / counter, precision: 1) %> <br>
-<% end %> 
+<% end %>
 </br>
 
 <%= button_to "Update", results_quiz_path, :method => :get %>
