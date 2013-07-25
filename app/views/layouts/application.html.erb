@@ -27,7 +27,7 @@
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="container" id="loggedin">
     <div class="container-fluid" style="text-align: right">
       <% if !!session[:user_id] %>
         Currently logged in as <%= current_user.name %>
@@ -37,7 +37,7 @@
   </header>
 </br>
 
-  <div class="container"  id="dashboard">
+  <div class="container clearfix"  id="wrapper">
       <div class="container-fluid">
         <%= yield %>
       </div>
