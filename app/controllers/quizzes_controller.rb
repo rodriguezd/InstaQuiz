@@ -49,7 +49,7 @@ class QuizzesController < ApplicationController
 
     respond_to do |format|
       if @quiz.save
-        # @quiz.questions_email
+        # self.questions_email
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
         format.json { render json: @quiz, status: :created, location: @quiz }
       else
@@ -147,10 +147,9 @@ class QuizzesController < ApplicationController
       @quiz.save
       if params[:status] == "active"
         # @quiz.take_email
-        redirect_to results_quiz_path(@quiz)
-      else
-        redirect_to :back
+        redirect_to results_quiz_path(@quiz) and return
       end
+      redirect_to dashboard_user_path(current_user) and return
     elsif current_user.role?(:student)
       format.html { redirect_to dashboard_user_path(current_user), notice: 'You do not have the privileges to change the status of this quiz.' }
     end

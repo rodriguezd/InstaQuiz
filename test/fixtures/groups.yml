@@ -1,11 +1,11 @@
 # == Schema Information
 #
-# Table name: results
+# Table name: groups
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer
-#  quiz_id    :integer
-#  score      :float
+#  name       :string(255)
+#  instructor :integer
+#  code       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -13,11 +13,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user_id: 1
-  quiz_id: 1
-  score: 1.5
+  name: MyString
+  instructor: 1
+  code: MyString
 
 two:
-  user_id: 1
-  quiz_id: 1
-  score: 1.5
+  name: MyString
+  instructor: 1
+  code: MyString
