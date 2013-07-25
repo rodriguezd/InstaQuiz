@@ -4,7 +4,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 <head>
- <div class="navbar navbar-inverse">
+ <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
         <a class="navbar-brand brand" href="<%= logo_link %>">Insta<span style="color: white">Quiz</span></a>
@@ -27,7 +27,7 @@
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="container" id="loggedin">
     <div class="container-fluid" style="text-align: right">
       <% if !!session[:user_id] %>
         Currently logged in as <%= current_user.name %>
@@ -37,7 +37,8 @@
   </header>
 </br>
 
-  <div class="container">
+
+  <div class="container clearfix"  id="wrapper">
       <div class="container-fluid">
         <%= yield %>
       </div>

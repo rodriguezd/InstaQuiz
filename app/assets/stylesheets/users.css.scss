@@ -28,5 +28,23 @@ h3.todo-name{
 }
 
 a {
-  text-decoration: none !important;  
+  text-decoration: none !important;
+}
+
+#wrapper {
+  padding-top: 30px;
+  background-color:rgb(254,254,254);
+  height: 800px;
+}
+
+#loggedin{
+  padding-top: 30px;
+}
+
+
+html, body {
+  min-height: 100% !important;
+  min-width: 100%;
+  background-image:url('/assets/binding_light.png');
+  background-repeat:repeat;
 }
