@@ -23,7 +23,7 @@ Openexam2::Application.routes.draw do
       post 'answers', on: :member
       get 'answers', on: :member
       get 'score', on: :member
-      put 'set_status', on: :member
+      get 'set_status', on: :member
       get 'results', on: :member
       resources :questions do
         collection do
