@@ -28,7 +28,21 @@ class Quiz < ActiveRecord::Base
   	self.user_id == user
   end
 
-  
+  def take_email
+    # self.groups.each do |group|
+      # group.each do |user|
+        # UserMailer.take_quiz_email(user, self).deliver
+        UserMailer.take_quiz_email("David Rodriguez <davidrodriguez212@gmail.com>", self).deliver
+      # end
+    # end
+  end
+
+  def questions_email
+    UserMailer.submit_questions_email("David Rodriguez <davidrodriguez212@gmail.com>", self).deliver
+  end
+
+  private
+
   def init
     self.status ||= "pending"
   end

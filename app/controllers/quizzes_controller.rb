@@ -49,6 +49,7 @@ class QuizzesController < ApplicationController
 
     respond_to do |format|
       if @quiz.save
+        # @quiz.questions_email
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
         format.json { render json: @quiz, status: :created, location: @quiz }
       else
@@ -113,7 +114,7 @@ class QuizzesController < ApplicationController
       @quiz.status = "completed"
       @quiz.save
     end
-    
+
     # Quiz.last.users.joins(:roles).where(:roles=> {:name=> "instructor"})
     # redirect_to dashboard_user_path(current_user) and return
 
@@ -135,7 +136,6 @@ class QuizzesController < ApplicationController
   end
 
   def set_status
-    # raise params.inspect
     @quiz = Quiz.find(params[:id])
     if current_user.role?(:instructor)
       @quiz.status = params[:status]
@@ -146,6 +146,7 @@ class QuizzesController < ApplicationController
       end
       @quiz.save
       if params[:status] == "active"
+        # @quiz.take_email
         redirect_to results_quiz_path(@quiz)
       else
         redirect_to :back
