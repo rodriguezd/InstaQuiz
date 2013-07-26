@@ -40,19 +40,19 @@
  <h3>Welcome to InstaQuiz!</h3>
 <br>
       <div id = "active" class="quiz-box">
-        <h4>Active: <%= active = Quiz.where(:status => "active").count %></h4>
+        <h4><a href="/dashboard/active">Active: <%= active = Quiz.where(:status => "active").count %></h4></a>
       </div>
       <hr>
       <div id = "finalized" class="quiz-box">
-        <h4>Finalized: <%= finalized = Quiz.where(:status => "finalized").count %></h4>
+        <h4><a href="/dashboard/finalized">Finalized: <%= finalized = Quiz.where(:status => "finalized").count %></h4></a>
       </div>
       <hr>
       <div id = "pending" class="quiz-box">
-        <h4>Pending: <%= pending = Quiz.where(:status => "pending").count%></h4>
+        <h4><a href="/dashboard/pending">Pending: <%= pending = Quiz.where(:status => "pending").count%></h4></a>
       </div>
       <hr>
       <div id="completed" class="quiz-box">
-        <h4>Completed: <%= completed = Quiz.where(:status => "completed").count %></h4>
+        <h4><a href="/dashboard/completed">Completed: <%= completed = Quiz.where(:status => "completed").count %></h4></a>
       </div>
 <% elsif current_user.role?(:student) %>
 <div id="side-nav" class="todo mrm span2">
@@ -94,19 +94,19 @@
  <h3>Welcome to InstaQuiz!</h3>
         <hr>
         <div id = "active" class="quiz-box">
-          <h4>Active Quizzes: <%= active = current_user.quizzes.where(:student_quizzes => {:quiz_status => "active"}).count  %></h4>
+          <h4><a href=/dashboard/active>Active Quizzes: <%= active = current_user.quizzes.where(:student_quizzes => {:quiz_status => "active"}).count  %></h4></a>
         </div>
         <hr>
         <div id = "finalized" class="quiz-box">
-          <h4>Questions Submitted: <%= questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"}).count %></h4>
+          <h4><a href=/dashboard/finalized>Questions Submitted: <%= questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"}).count %></h4></a>
         </div>
         <hr>
         <div id = "pending" class="quiz-box">
-          <h4>Pending Quizzes: <%= pending = current_user.quizzes.where(:student_quizzes => {:quiz_status => "pending"}).count %></h4>
+          <h4><a href=/dashboard/pending>Pending Quizzes: <%= pending = current_user.quizzes.where(:student_quizzes => {:quiz_status => "pending"}).count %></h4></a>
         </div>
         <hr>
         <div id = "completed" class="quiz-box">
-        <h4>Completed Quizzes: <%= completed = current_user.quizzes.where(:student_quizzes => {:quiz_status => "completed"}).count %></h4>
+        <h4><a href=/dashboard/completed>Completed Quizzes: <%= completed = current_user.quizzes.where(:student_quizzes => {:quiz_status => "completed"}).count %></h4></a>
         </div>
         <hr>
   <% end %>
