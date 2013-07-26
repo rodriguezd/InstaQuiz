@@ -49,7 +49,7 @@ class QuizzesController < ApplicationController
 
     respond_to do |format|
       if @quiz.save
-        # self.questions_email
+        # @quiz.questions_email
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
         format.json { render json: @quiz, status: :created, location: @quiz }
       else
@@ -146,7 +146,7 @@ class QuizzesController < ApplicationController
       end
       @quiz.save
       if params[:status] == "active"
-        # @quiz.take_email
+        @quiz.take_email
         redirect_to results_quiz_path(@quiz) and return
       end
       redirect_to dashboard_user_path(current_user) and return
