@@ -299,10 +299,7 @@ Question.all[36].choices.create(:content => "A combination of the two arrays.")
 Question.all[36].choices.create(:content => "The product of two arrays.")
 
 
-User.create(:name => "Jordan Trevino", :email => "123@abc.com", :password => "test")
-User.create(:name => "Sarah Duve", :email => "sarah@abc.com",:password => "test")
-User.create(:name => "David Rodriguez", :email => "david@abc.com",:password => "test")
-User.create(:name => "Kirin Masood", :email => "kirin@abc.com",:password => "test")
+User.create(:name => "Avi Flombaum", :email => "123@abc.com", :password => "test")
 
 User.create(:name => "Jennifer Campbell", :email => "jennifer.campbell@flatironschool.com", :password => "test")
 User.create(:name => "Alisa Chang", :email => "alisa.chang@flatironschool.com", :password => "test")

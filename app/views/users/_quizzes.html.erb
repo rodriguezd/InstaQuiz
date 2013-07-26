@@ -3,34 +3,27 @@
         <ul>
         <% @quizzes.each do |q| %>
         <% if current_user.role?(:instructor) %>
-             <%if @status == "active" %>
-                <%= link_to "Live Scores", results_quiz_path(q), :class => "links" %>
-              <%= q.name %> <br>
-              <%elsif @status == "finalized" %>
-                <%= link_to "Activate!", set_status_quiz_path(q), :class => "links" %>
-              <%= q.name %> <br>
-              <%elsif @status == "pending" %>
-                <%= link_to "Review", review_quiz_questions_path(q), :class => "links" %>
-              <%elsif @status == "completed" %>
-                <div class="quiz"><a href="<%=results_quiz_path(q)%>" class="btn btn-block btn-info control-group success" style="font-size: 12px;"><%= q.name %></a></div>
-              <%= q.name %> <br>
-
-              <%= q.name %> <br>
+            <% case @status %>
+            <% when "active" %>
+                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=results_quiz_path(q)%>"><u>Live updates: </u><%= q.name %></a></div>
+            <% when "finalized" %>
+                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=set_status_quiz_path(q)%>"><u>Activate: </u><%= q.name %></a></div>
+            <% when "pending" %>
+                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=review_quiz_questions_path(q)%>"><u>Finalize: </u><%= q.name %></a></div>
+            <% when "completed" %>
+                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=results_quiz_path(q)%>"><u>Results: </u><%= q.name %></a></div>
             <% end %>
         <% elsif current_user.role?(:student) %>
-            <% if @status == "completed" %>
-             <%= link_to "Score", score_quiz_path(q), :class => "links" %>
-              <%= q.name %> <br>
-            <% elsif @status == "active" %>
-             <%= link_to "Take quiz", take_quiz_path(q), :class => "links" %>
-              <%= q.name %> <br>
-            <% elsif @status == "question_submitted" %>
-             <%= link_to "Review", quiz_path(q), :class => "links" %>
-              <%= q.name %> <br>
-            <% elsif @status == "pending" %>
-             <%= link_to "Pending", new_quiz_question_path(q), :class => "links" %>
-              <%= q.name %> <br>
-        <% end %>
+            <% case @status %>
+            <% when "active" %>
+                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=take_quiz_path(q)%>"><u>Take Quiz: </u><%= q.name %></a></div>
+            <% when "question_submitted" %>
+                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=quiz_path(q)%>"><u>Edit Questions: </u><%= q.name %></a></div>
+            <% when "pending" %>
+                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=new_quiz_question_path(q)%>"><u>Submit questions: </u><%= q.name %></a></div>
+            <% when "completed" %>
+                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=score_quiz_path(q)%>"><u>See score: </u><%= q.name %></a></div>
+            <% end %>
       <% end %>
     <% end %>
         <ul>

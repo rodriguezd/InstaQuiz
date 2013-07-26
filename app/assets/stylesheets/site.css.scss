@@ -6,8 +6,11 @@
 a.brand {
   font-size: 30px !important;
   text-decoration: none !important;
-  padding: 0px !important;
+  padding: 0px 0px 0px 20px !important;
   height: 53px;
+  display: block;
+  margin-left: 30px;
+  margin-right: auto;
   vertical-align: middle;
 }
 
