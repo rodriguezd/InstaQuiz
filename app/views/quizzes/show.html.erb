@@ -11,7 +11,7 @@
     </div>
   <% end %> </br></br></br></br>
   <div>
-  <b>Deadline: </b><%#= @quiz.deadline.strftime("%b %d, %Y - %I:%M %p") %> <%= @quiz.deadline %></br>
+  <b>Deadline: </b><%= @quiz.deadline.strftime("%b %d, %Y - %l:%M %p") if !@quiz.deadline.nil? %> <%#= @quiz.deadline %></br>
   <b>Instructions: </b><%= @quiz.instruction %> </br>
   <b>Classes: </b>
   </div>
@@ -28,23 +28,26 @@
         <% end %>
     </ul>
 </p> -->
-
+<ol>
 <% @quiz.questions.where(:status => "approved").each do |q| %>
 
     <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
+    <li>
     <% if @quiz.id.in?(1..4) %>
       <%= question_parser(q.content) %>
     <% else %>
-      <%= markdown (q.content)%> 
+      <%= markdown (q.content)%>
     <% end %>
+    </li>
 
     <%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %><br>
-    <ul>
+    <ol type='a'>
       <% q.choices.each do |c| %>
         <li><%= c.content %> <%= " - Correct" if c.correct %></li>
       <% end %>
-    </ul>
+    </ol>
     <% end %>
+</ol>
 <span>
 <% if can? :update, @quizzes %>
   <a href="<%= new_quiz_question_path(@quiz) %>" class="btn btn-large btn-primary" style="">Add Questions</a>

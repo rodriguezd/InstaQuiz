@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "davidrodriguez212@gmail.com"
+  default :from => "instaquizapp@gmail.com"
 
   def take_quiz_email(user, quiz)
     @user = user
