@@ -1,6 +1,6 @@
-<div class="side-nav todo mrm span2">
+<div id="side-nav" class="todo mrm span2">
             <ul>
-              <a href="/dashboard/active"><li class="todo-done side-item">
+              <a href="/dashboard/active"><li class="side-item">
                 <div class="todo-content">
                   <h3 class="todo-name" href="/">
                     Active
@@ -41,8 +41,7 @@
         <% completed = Quiz.where(:status => "completed") %>
         <ul>
         <% completed.each do |q| %>
-          <%= link_to "Results", results_quiz_path(q), :class => "links" %>
-             <%= q.name %> <br>
+          <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=results_quiz_path(q)%>"><%= q.name %></a></div>
         <% end %>
         <ul>
       </div>

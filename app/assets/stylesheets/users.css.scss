@@ -3,21 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.quiz-box{
-	padding: 0px 0px 20px 0px;
-}
 
 .links{
   color: red;
   font-size: 18px;
 }
 
-div.side-nav{
+#side-nav{
   margin: 0px !important;
+  color: #ECF0F1 !important;
 }
 
 li.side-item{
   padding: 5px !important;
+  color: #ECF0F1 !important;
+}
+
+div.todo-content{
+  color: #ECF0F1 !important;
 }
 
 h3.todo-name{
@@ -33,18 +36,36 @@ a {
 
 #wrapper {
   padding-top: 30px;
-  background-color:#22f3c9;
+  margin-bottom: 40px;
+  background-color:rgb(254,254,254);
+  overflow-y:auto;
+  width: 80%;
   height: 800px;
 }
 
 #loggedin{
-  padding-top: 80px;
+  padding-top: 60px;
 }
-
 
 html, body {
   min-height: 100% !important;
   min-width: 100%;
   background-image:url('/assets/binding_light.png');
   background-repeat:repeat;
+}
+
+.quiz{
+  margin-right: auto;
+  margin-bottom: 8px;
+  height: 30px;
+  width: 80%;
+}
+
+a.quiz-name{
+  text-decoration: none !important;
+  font-size: 12px !important; 
+  color: white; 
+  margin-left: 5px;
+  margin-right: auto !important;
+  float: left !important;
 }
