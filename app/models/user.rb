@@ -39,6 +39,23 @@ class User < ActiveRecord::Base
   		end
   	end
 
+  def class_average(quiz)
+    100
+    # if self.questions.where(:quiz_id => quiz.id).empty?
+    #   "None"
+    # else
+    #   correct = 0
+    #   questions = self.questions.where(:quiz_id => quiz.id)
+    #   total_answers= questions.first.answers.size
+    #   questions.first.answers.each do |answer|
+    #     if answer.choice.correct
+    #       correct += 1
+    #     end 
+    #   end
+    #   correct/total_answers
+    # end
+  end
+
   	# divide and return (correct choices/total choices)
     score = 0
     unless total == 0

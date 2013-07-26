@@ -17,6 +17,7 @@ class Question < ActiveRecord::Base
   belongs_to :quiz
   belongs_to :user
   has_many :choices
+  has_many :answers
 
   after_initialize :init
 

@@ -19,7 +19,8 @@
         <td><%= i + 1 %>.</td>
         <td><%= User.find(result.user_id).name %></td>
         <td><%= number_to_percentage(result.score, precision: 1) %></td>
-        <td><%= @questions.where(:user_id => counter-1).size %> </td>
+        <td><%= @questions.where(:user_id => result.user_id).size %> </td>
+        <td> TBD <%#= User.find(result.user_id).class_average(@quiz)%> </td>
       </tr>
     <% end %>
 
@@ -35,7 +36,8 @@
       <td><%= stu.results.where(:quiz_id => @quiz.id).first.score %> </td>
       <% counter += 1 %>
     <% end %>
-      <td><%= @questions.where(:user_id => counter-1).size %> </td>
+      <td><%= @questions.where(:user_id => stu.id).size %> </td>
+      <td>TBD<%#= stu.class_average(@quiz) %></td>
   <% end %>
 <% end %>
     </table>
