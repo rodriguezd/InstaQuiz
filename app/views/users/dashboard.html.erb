@@ -11,7 +11,7 @@
               <a href="/dashboard/finalized"><li class="side-item">
                 <div class="todo-content">
                   <h3 class="todo-name">
-                    Finalized
+                    Submitted
                   </h3>
                 </div>
               </li></a>
@@ -78,46 +78,23 @@
         </ul>
       </div>
 <% elsif current_user.role?(:student) %>
-        <div id = "completed" class="quiz-box">
-          <h3>Completed</h3>
-          <% completed = current_user.quizzes.where(:student_quizzes => {:quiz_status => "completed"}) %>
-          <ul>
-          <% completed.each do |q| %>
-            <%= link_to "Score", score_quiz_path(q), :class => "links" %>
-               <%= q.name %> <br>
-          <% end %>
-          <ul>
-        </div>
+ <h3>Welcome to InstaQuiz!</h3>
         <hr>
         <div id = "active" class="quiz-box">
-          <h3>Active</h3>
-          <% active = current_user.quizzes.where(:student_quizzes => {:quiz_status => "active"}) %>
-          <ul>
-          <% active.each do |q| %>
-            <%= link_to "Take quiz", take_quiz_path(q), :class => "links" %>
-            <%= q.name %> <br>
-          <% end %>
-        </ul>
+          <h4>Active Quizzes: <%= active = current_user.quizzes.where(:student_quizzes => {:quiz_status => "active"}).count  %></h4>
         </div>
         <hr>
         <div id = "finalized" class="quiz-box">
-          <h3>Questions Submitted</h3>
-          <% questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"}) %>
-          <ul>
-          <% questions_submitted.each do |q| %>
-          <%= link_to q.name, q %> <br>
-          <% end %>
-        </ul>
+          <h4>Questions Submitted: <%= questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"}).count %></h4>
         </div>
         <hr>
         <div id = "pending" class="quiz-box">
-          <h3>Pending</h3>
-          <% pending = current_user.quizzes.where(:student_quizzes => {:quiz_status => "pending"}) %>
-          <ul>
-            <% pending.each do |q| %>
-            <%= link_to q.name, new_quiz_question_path(q) %> <br>
-            <% end %>
-          </ul>
+          <h4>Pending Quizzes: <%= pending = current_user.quizzes.where(:student_quizzes => {:quiz_status => "pending"}).count %></h4>
         </div>
+        <hr>
+        <div id = "completed" class="quiz-box">
+        <h4>Completed Quizzes: <%= completed = current_user.quizzes.where(:student_quizzes => {:quiz_status => "completed"}).count %></h4>
+        </div>
+        <hr>
   <% end %>
 </div>
