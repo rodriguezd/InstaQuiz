@@ -9,15 +9,19 @@
 </h6>
 
   <% @quiz.questions.each do |question| %>
-      <%= check_box_tag "status[#{question.id}]",'approved', question.status == ' approved' %>
+      
+      <%= check_box_tag "status[#{question.id}]",'approved', question.status == ' approved', :class => "approve"%>
       <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
       <% if question.quiz_id.in?(1..4) %>
         <%= question_parser(question.content) %>
       <% else %>
         <%= markdown (question.content)%>
+
       <% end %>
 
-    <ol type='a'>
+  
+
+    <ol type='a', class="review-set">
     <% question.choices.each do |choice| %>
       <li>
         <%= choice.content %> <%= " - Correct" if choice.correct %>

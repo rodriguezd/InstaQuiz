@@ -1,10 +1,13 @@
+<%= notice %>
 <h1>Editing question</h1>
 
 <%= render 'form' %>
 
 <%#= link_to 'Show', @question %>
 <% if params[:quiz_id] %>
-  <%= link_to 'Back', quiz_question_path(params[:quiz_id], @question) %>
+  <%#= link_to 'Back', quiz_question_path(params[:quiz_id], @question) %>
+  <%= link_to 'Back', :back %>
 <% else %>
-  <%= link_to 'Back', quiz_path(@question.quiz_id) %>
+  <%#= link_to 'Back', quiz_path(@question.quiz_id) %>
+  <%= link_to 'Back', :back %>
 <% end %>

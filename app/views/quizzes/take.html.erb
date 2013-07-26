@@ -9,12 +9,14 @@
         <% else %>
           <%= markdown (question.content)%>
         <% end %>
+
+
       </li>
-      <ol type='a'>
+      <ol type='a' class="choice-list">
         <% question.choices.each do |choice| %>
-        <li>
+        <li> <input type="radio" name="question[<%= question.id %>]choice[<%= choice.id %>][]" class="choice-set"/>
           <%= choice.content %>
-          <input type="radio" style="vertical-align: middle; margin: 0px;"name="question[<%= question.id %>]choice[<%= choice.id %>][]"/>
+          
         </li>
         <% end %>
       </ol>
