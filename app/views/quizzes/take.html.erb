@@ -10,11 +10,16 @@
           <%= markdown (question.content)%>
         <% end %>
 
+<!-- {  "choiceset"=>{"30"=>"117", "31"=>"122", "32"=>"126"}, 
+      "commit"=>"Submit Answers", 
+      "action"=>"answers", 
+      "controller"=>"quizzes", 
+      "id"=>"4"} -->
 
       </li>
       <ol type='a' class="choice-list">
         <% question.choices.each do |choice| %>
-        <li> <input type="radio" name="question[<%= question.id %>]choice[<%= choice.id %>][]" class="choice-set"/>
+        <li> <input type="radio" name="choiceset[<%= question.id %>]" value="<%= choice.id %>" class="choice-set"/>
           <%= choice.content %>
           
         </li>
