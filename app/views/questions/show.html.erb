@@ -7,18 +7,18 @@
   <% if @question.quiz_id.in?(1..4) %>
       <%= question_parser(@question.content) %>
   <% else %>
-      <%= markdown (@question.content)%> 
+      <%= markdown (@question.content)%>
   <% end %>
 
 </p>
 
-<ul>
+<ol type='a'>
 <% @question.choices.each do |choice| %>
   <li>
   <%= choice.content %>  <%= " - Correct" if choice.correct %>
   </li>
   <% end %>
-</ul>
+</ol>
 
 <%#= link_to 'Edit', edit_quiz_question_path(@question.quiz_id, @question) %>
 <%= link_to 'Edit', edit_question_path(@question, :quiz_id => @question.quiz_id) %>

@@ -1,15 +1,15 @@
 <%= form_tag answers_quiz_path(@quiz) do %>
 <h3><%= @quiz.name %></h3>
-  <% @quiz.questions.where(:status => "approved").each_with_index do |question, i| %>
-    <p>
-      <%= i + 1 %>. 
+  <ol>
+  <% @quiz.questions.where(:status => "approved").each do |question| %>
       <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
-      <% if @quiz.id.in?(1..4) %>
-        <%= question_parser(question.content) %>
-      <% else %>
-        <%= markdown (question.content)%> 
-      <% end %>
-
+      <li>
+        <% if @quiz.id.in?(1..4) %>
+          <%= question_parser(question.content) %>
+        <% else %>
+          <%= markdown (question.content)%>
+        <% end %>
+      </li>
       <ol type='a'>
         <% question.choices.each do |choice| %>
         <li>
@@ -18,8 +18,8 @@
         </li>
         <% end %>
       </ol>
-    </p>
   <% end %>
+  </ol>
 
   <%= submit_tag(value = "Submit Answers") %>
 <% end %>
