@@ -1,3 +1,60 @@
+
+<% if current_user.role?(:instructor) %>
+<div id="side-nav" class="todo mrm span2">
+            <ul>
+              <a href="/dashboard/active"><li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name" href="/">
+                    Active
+                  </h3>
+                </div>
+              </li></a>
+
+              <a href="/dashboard/finalized"><li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                    Finalized
+                  </h3>
+                </div>
+              </li></a>
+
+              <a href="/dashboard/pending"><li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                   Pending
+                  </h3>
+                </div>
+              </li></a>
+
+              <a href="/dashboard/completed"><li class="side-item">
+                <div class="todo-content">
+                  <h3 class="todo-name">
+                    Completed
+                  </h3>
+                </div>
+              </li></a>
+            </ul>
+          </div>
+
+<div class="offset2">
+ <h3>Welcome to InstaQuiz!</h3>
+<br>
+      <div id = "active" class="quiz-box">
+        <h4>Active: <%= active = Quiz.where(:status => "active").count %></h4>
+      </div>
+      <hr>
+      <div id = "finalized" class="quiz-box">
+        <h4>Finalized: <%= finalized = Quiz.where(:status => "finalized").count %></h4>
+      </div>
+      <hr>
+      <div id = "pending" class="quiz-box">
+        <h4>Pending: <%= pending = Quiz.where(:status => "pending").count%></h4>
+      </div>
+      <hr>
+      <div id="completed" class="quiz-box">
+        <h4>Completed: <%= completed = Quiz.where(:status => "completed").count %></h4>
+      </div>
+<% elsif current_user.role?(:student) %>
 <div id="side-nav" class="todo mrm span2">
             <ul>
               <a href="/dashboard/active"><li class="side-item">
@@ -33,51 +90,7 @@
               </li></a>
             </ul>
           </div>
-
-<div class="offset2">
-<% if current_user.role?(:instructor) %>
-      <div id="completed" class="quiz-box">
-        <h3>Completed</h3>
-        <% completed = Quiz.where(:status => "completed") %>
-        <ul>
-        <% completed.each do |q| %>
-          <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=results_quiz_path(q)%>"><%= q.name %></a></div>
-        <% end %>
-        <ul>
-      </div>
-      <hr>
-      <div id = "active" class="quiz-box">
-        <h3>Active</h3>
-        <% active = Quiz.where(:status => "active") %>
-        <ul>
-        <% active.each do |q| %>
-          <%= link_to "Take quiz", take_quiz_path(q), :class => "links" %>
-          <%= q.name %> <br>
-        <% end %>
-      </ul>
-      </div>
-      <hr>
-      <div id = "finalized" class="quiz-box">
-        <h3>Finalized</h3>
-        <% finalized = Quiz.where(:status => "finalized") %>
-        <ul>
-        <% finalized.each do |q| %>
-        <%= link_to 'Activate!', set_status_quiz_path(q, :status => "active"), :class => "links" %> 
-        <%= link_to q.name, q %> <br>
-        <% end %>
-      </ul>
-      </div>
-      <hr>
-      <div id = "pending" class="quiz-box">
-        <h3>Pending</h3>
-        <% pending = Quiz.where(:status => "pending") %>
-        <ul>
-          <% pending.each do |q| %>
-          <%= link_to q.name, review_quiz_questions_path(q) %> <br>
-          <% end %>
-        </ul>
-      </div>
-<% elsif current_user.role?(:student) %>
+ <div class="offset2">
  <h3>Welcome to InstaQuiz!</h3>
         <hr>
         <div id = "active" class="quiz-box">
