@@ -157,7 +157,7 @@ class QuizzesController < ApplicationController
 
   def results
     @quiz = Quiz.find(params[:id])
-
+    @questions = Question.where(:quiz_id => @quiz.id)
   end
 
 
