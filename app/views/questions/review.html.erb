@@ -15,7 +15,9 @@
       <% if question.quiz_id.in?(1..4) %>
         <%= question_parser(question.content) %>
       <% else %>
+      <div id="redcarpet">
         <%= markdown (question.content)%>
+       </div> 
 
       <% end %>
 
