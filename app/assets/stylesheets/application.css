@@ -19,7 +19,7 @@
 
 }
 
-input[type="checkbox"]{
+input[type="checkbox"].approve {
   display: inline-block;
   margin: 0 10px 5px 0;
 }
@@ -31,4 +31,8 @@ input[type="radio"].choice-set {
 
 .choice-list {
   margin: 0 0 0 39px;
+}
+
+.review-set {
+  margin: 0 0 10px 44px;
 }
