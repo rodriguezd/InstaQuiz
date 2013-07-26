@@ -39,8 +39,9 @@
       <%= markdown (q.content)%>
     <% end %>
     </li>
-
-    <%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %><br>
+    <% if can? :edit, q %>
+      <%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %><br>
+    <% end %>
     <ol type='a'>
       <% q.choices.each do |c| %>
         <li><%= c.content %> <%= " - Correct" if c.correct %></li>
