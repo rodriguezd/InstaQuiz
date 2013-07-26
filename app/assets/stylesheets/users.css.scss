@@ -33,12 +33,14 @@ a {
 
 #wrapper {
   padding-top: 30px;
+  margin-bottom: 40px;
   background-color:rgb(254,254,254);
-  height: 800px;
+  height: 600px;
+  overflow-y:auto;
 }
 
 #loggedin{
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 
@@ -47,4 +49,9 @@ html, body {
   min-width: 100%;
   background-image:url('/assets/binding_light.png');
   background-repeat:repeat;
+}
+
+.quiz{
+  padding: 10px 0px 10px 20px;
+  width: 60%;
 }

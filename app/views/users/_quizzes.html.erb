@@ -9,13 +9,11 @@
               <%elsif @status == "finalized" %>
                 <%= link_to "Activate!", set_status_quiz_path(q), :class => "links" %>
               <%= q.name %> <br>
-
-               <%elsif @status == "active" %>
-                <%= link_to "Pending", results_quiz_path(q), :class => "links" %>
-              <%= q.name %> <br>
-
               <%elsif @status == "pending" %>
                 <%= link_to "Review", review_quiz_questions_path(q), :class => "links" %>
+              <%elsif @status == "completed" %>
+                <div class="quiz"><a href="<%=results_quiz_path(q)%>" class="btn btn-block btn-info control-group success" style="font-size: 12px;"><%= q.name %></a></div>
+              <%= q.name %> <br>
 
               <%= q.name %> <br>
             <% end %>
@@ -35,6 +33,5 @@
         <% end %>
       <% end %>
     <% end %>
-
         <ul>
 </div>
