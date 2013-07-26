@@ -7,7 +7,7 @@
             <% when "active" %>
                 <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=results_quiz_path(q)%>"><u>Live updates: </u><%= q.name %></a></div>
             <% when "finalized" %>
-                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=set_status_quiz_path(q)%>"><u>Activate: </u><%= q.name %></a></div>
+                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=set_status_quiz_path(q, :status => "active")%>"><u>Activate: </u><%= q.name %></a></div>
             <% when "pending" %>
                 <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=review_quiz_questions_path(q)%>"><u>Finalize: </u><%= q.name %></a></div>
             <% when "completed" %>
