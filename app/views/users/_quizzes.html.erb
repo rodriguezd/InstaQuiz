@@ -18,7 +18,7 @@
             <% when "active" %>
                 <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=take_quiz_path(q)%>"><u>Take Quiz: </u><%= q.name %></a></div>
             <% when "question_submitted" %>
-                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=quiz_path(q)%>"><u>Edit Questions: </u><%= q.name %></a></div>
+                <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=edit_quiz_question_path(q, q.questions.find_by_user_id(current_user.id))%>"><u>Edit Questions: </u><%= q.name %></a></div>
             <% when "pending" %>
                 <div class="quiz btn btn-block btn-info control-group success"><a class="quiz-name" href="<%=new_quiz_question_path(q)%>"><u>Submit questions: </u><%= q.name %></a></div>
             <% when "completed" %>
