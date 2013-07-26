@@ -340,10 +340,14 @@ User.create(:name => "Ning Yap", :email => "ning.yap@flatironschool.com", :passw
 Role.create(:name => :instructor)
 Role.create(:name => :student)
 
+# g = Group.create(:name => 'Flatiron School - 002', :instructor => 1, :code => '123abc')
+
 User.all.each do |user|
+  # g.users << user
   user.roles << Role.where(:name => :student)
   user.save
 end
+# g.save
 
 user = User.find_by_email('123@abc.com')
 user.roles.clear
@@ -382,14 +386,14 @@ Quiz.where(:status => "active").each do |quiz|
     student_quiz.quiz_status = "active"
     student_quiz.save
   end
-end 
+end
 
 Quiz.where(:status => "completed").each do |quiz|
   quiz.student_quizzes.each do |student_quiz|
     student_quiz.quiz_status = "completed"
     student_quiz.save
   end
-end 
+end
 
 
 
