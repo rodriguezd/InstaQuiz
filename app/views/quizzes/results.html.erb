@@ -3,11 +3,15 @@
 <% counter = 0 %>
 <% scores_total = 0 %>
 
-<% if @quiz.status == "active" %>
+
     <table>
     <th width="20px" align="left"></th>
     <th width="160px" align="left">Name</th>
-    <th align="left">Score</th>
+    <th width="160px" align="left">Score</th>
+    <th width="160px" align="left"># of Qs</th>
+    <th width="160px" align="left">Class avg. on Qs</th>
+
+  <% if @quiz.status == "active" %>
     <% @quiz.results.each_with_index do |result, i| %>
       <% counter += 1 %>
       <% scores_total += result.score %>
@@ -15,24 +19,26 @@
         <td><%= i + 1 %>.</td>
         <td><%= User.find(result.user_id).name %></td>
         <td><%= number_to_percentage(result.score, precision: 1) %></td>
+        <td><%= @questions.where(:user_id => counter-1).size %> </td>
       </tr>
     <% end %>
-    </table>
 
 <% elsif @quiz.status == "completed" %>
 
 <% @quiz.users.each_with_index do |stu, i| %>
-
-  <%= i+1 %>. <%= stu.name %>
+  <tr>
+    <td><%= i+1 %>.</td> 
+    <td><%= stu.name %></td>
     <% if stu.results.where(:quiz_id => @quiz.id).empty? %>
-       Did not submit <br>
+       <td>Did not submit </td>
     <% else %>
-      <%= stu.results.where(:quiz_id => @quiz.id).first.score %> <br>
+      <td><%= stu.results.where(:quiz_id => @quiz.id).first.score %> </td>
       <% counter += 1 %>
     <% end %>
-<br>
+      <td><%= @questions.where(:user_id => counter-1).size %> </td>
   <% end %>
 <% end %>
+    </table>
 
 
 <h5>Class Average</h5>
