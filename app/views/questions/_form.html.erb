@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
+  <br>
+  <p><i>Tip: Use markdown to submit code snippets. Like so: </i><br>
+     <blockquote>``` ruby <br>
+     array = [1, 2, 3] <br>
+     array.first <br>
+     ``` </blockquote>
+  </p>
+<%= example_parser (Question.find(30).content) %>
+
 
   <div class="field">
     <%= f.label :content %><br />
