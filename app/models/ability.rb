@@ -8,6 +8,8 @@ class Ability
         can :manage, :all
       else
         can :read, :all
+        can [:read, :new, :create], Question
+        can [:edit, :update], Question, :user_id => user.id
         can [:take, :answers, :score], Quiz
         # can [:update, :create], Answer
       end
