@@ -11,9 +11,11 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :email_confirmation
 
-  validates_confirmation_of :password, :message => "Does not match!"
+  validates_confirmation_of :email#, :message => "Emails do not match!"
+  validates_presence_of :email_confirmation
+  validates_confirmation_of :password#, :message => "Passwords do not match!"
   validates_presence_of :password_confirmation
 
   has_secure_password
