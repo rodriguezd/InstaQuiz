@@ -92,7 +92,7 @@ class UsersController < ApplicationController
     @user = current_user
     @status = params[:status]
     if current_user.role?(:instructor)
-      @quizzes = Quiz.where(:status => @status)
+      @quizzes = Quiz.where(:status => @status, :instructor => current_user.id)
       # render 'active'
     elsif current_user.role?(:student)
       @quizzes = @user.quizzes.where(:student_quizzes => {:quiz_status => @status})
