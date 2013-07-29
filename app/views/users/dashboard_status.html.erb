@@ -2,7 +2,7 @@
 
 <div id="side-nav" class="todo mrm span2">
             <ul>
-              <a href="/dashboard/active"><li class="side-item">
+              <a href="/dashboard/active"><li class="side-item <%= "todo-done" if params[:status] =="active"%>">
                 <div class="todo-content">
                   <h3 class="todo-name" href="/">
                     Active
@@ -10,7 +10,7 @@
                 </div>
               </li></a>
 <% if current_user.role?(:instructor) %>
-              <a href="/dashboard/finalized"><li class="side-item">
+              <a href="/dashboard/finalized"><li class="side-item <%= "todo-done" if params[:status] =="finalized"%>">
                 <div class="todo-content">
                   <h3 class="todo-name">
                     Finalized
@@ -19,7 +19,7 @@
               </li></a>
 
 <%elsif current_user.role?(:student) %>
-              <a href="/dashboard/question_submitted"><li class="side-item">
+              <a href="/dashboard/question_submitted"><li class="side-item <%= "todo-done" if params[:status] =="question_submitted"%>">
                 <div class="todo-content">
                   <h3 class="todo-name">
                     <span>Submitted</span>
@@ -27,7 +27,7 @@
                 </div>
               </li></a>
 <% end %>
-              <a href="/dashboard/pending"><li class="side-item">
+              <a href="/dashboard/pending"><li class="side-item <%= "todo-done" if params[:status] =="pending"%>">
                 <div class="todo-content">
                   <h3 class="todo-name">
                    Pending
@@ -35,7 +35,7 @@
                 </div>
 
               </li></a>
-              <a href="/dashboard/completed"><li class="side-item">
+              <a href="/dashboard/completed"><li class="side-item <%= "todo-done" if params[:status] =="completed"%>">
                 <div class="todo-content">
                   <h3 class="todo-name">
                     Completed
