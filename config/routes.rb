@@ -2,6 +2,8 @@ Openexam2::Application.routes.draw do
 
   resources :groups
 
+  post '/groups/join' => 'groups#join', :as => :group_join
+
   resources :users do
     get 'dashboard', on: :member
     get 'myprofile', on: :member
