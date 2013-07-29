@@ -29,11 +29,11 @@
 <% @quiz.users.each_with_index do |stu, i| %>
   <tr>
     <td><%= i+1 %>.</td> 
-    <td><%= stu.name %></td>
+    <td><%= link_to stu.name, :action =>"score", :controller =>"quizzes", :id => @quiz.id, :user_id => stu.id  %></td>
     <% if stu.results.where(:quiz_id => @quiz.id).empty? %>
        <td>Did not submit </td>
     <% else %>
-      <td><%= stu.results.where(:quiz_id => @quiz.id).first.score %> </td>
+      <td><%= link_to stu.results.where(:quiz_id => @quiz.id).first.score, :action =>"score", :controller =>"quizzes", :id => @quiz.id, :user_id => stu.id%> </td>
       <% counter += 1 %>
     <% end %>
       <td><%= @questions.where(:user_id => stu.id).size %> </td>

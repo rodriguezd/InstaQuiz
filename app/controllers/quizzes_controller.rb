@@ -135,12 +135,26 @@ class QuizzesController < ApplicationController
     # create an answer that has the user id, quiz id, choice id
 
 
-  def score
+  # def score
 
+  #   @quiz = Quiz.find(params[:id])
+  #   @score = current_user.score(@quiz)
+  #   # @user = User.find(params[:id])
+  # end
+
+
+  def score
+    # raise params.inspect
+    if current_user.role?(:instructor) 
+      @user = User.find(params[:user_id]) 
+    else 
+      @user = current_user
+    end
     @quiz = Quiz.find(params[:id])
-    @score = current_user.score(@quiz)
+    @score = @user.score(@quiz)
     # @user = User.find(params[:id])
   end
+
 
   def set_status
     @quiz = Quiz.find(params[:id])

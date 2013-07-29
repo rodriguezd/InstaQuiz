@@ -1,4 +1,4 @@
-<% @answers = Answer.where(:user_id => current_user.id, :quiz_id => @quiz.id) %>
+<% @answers = Answer.where(:user_id => @user.id, :quiz_id => @quiz.id) %>
 <ol>
 <% @answers.each do |answer| %>
   <li><%= answer.choice.question.content %></li>
