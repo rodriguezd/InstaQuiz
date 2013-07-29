@@ -43,8 +43,9 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(params[:quiz])
+    @quiz.instructor = current_user.id
     @quiz.groups << Group.where(:code => params[:group_code])
-    @quiz.save    
+    @quiz.save
     @users = User.all
     @users.each{|user| user.student_quizzes.create(:quiz_id => @quiz.id, :quiz_status => "pending")}
 
@@ -96,13 +97,13 @@ class QuizzesController < ApplicationController
 
 
 # {  "choiceset"=>{
-#                     "30"=>"117", 
-#                     "31"=>"122", 
-#                     "32"=>"126"}, 
-#       "commit"=>"Submit Answers", 
-#       "action"=>"answers", 
-#       "controller"=>"quizzes", 
-#       "id"=>"4"} 
+#                     "30"=>"117",
+#                     "31"=>"122",
+#                     "32"=>"126"},
+#       "commit"=>"Submit Answers",
+#       "action"=>"answers",
+#       "controller"=>"quizzes",
+#       "id"=>"4"}
 
     @quiz = Quiz.find(params[:id].to_i)
     @user = current_user

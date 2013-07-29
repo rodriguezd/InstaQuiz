@@ -11,13 +11,16 @@
     </div>
   <% end %> </br></br></br></br>
   <div>
+  <b>Instructor: </b><%= User.find(@quiz.instructor).name %></br>
   <b>Deadline: </b><%= @quiz.deadline.strftime("%b %d, %Y - %l:%M %p") if !@quiz.deadline.nil? %> <%#= @quiz.deadline %></br>
   <b>Instructions: </b><%= @quiz.instruction %> </br>
   <b>Classes: </b>
   </div>
 
   <ul>
-    <li>Flatiron School </li>
+    <% @quiz.groups.each do |group| %>
+    <li><%= group.name %> </li>
+    <% end %>
   </ul>
 
 </p>

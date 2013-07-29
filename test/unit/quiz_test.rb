@@ -9,6 +9,7 @@
 #  instruction :text
 #  deadline    :datetime
 #  status      :string(255)
+#  instructor  :integer
 #
 
 require 'test_helper'

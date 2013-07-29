@@ -9,10 +9,11 @@
 #  instruction :text
 #  deadline    :datetime
 #  status      :string(255)
+#  instructor  :integer
 #
 
 class Quiz < ActiveRecord::Base
-  attr_accessible :name, :instruction, :deadline, :status
+  attr_accessible :name, :instruction, :deadline, :status, :instructor
 
   has_many :questions
   has_many :answers

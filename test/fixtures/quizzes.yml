@@ -9,6 +9,7 @@
 #  instruction :text
 #  deadline    :datetime
 #  status      :string(255)
+#  instructor  :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
