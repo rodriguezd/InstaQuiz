@@ -1,5 +1,4 @@
 <div id="<%= @status %>" class="quiz-box">
-        <h3><%= @status.titleize %></h3>
         <ul>
         <% @quizzes.each do |q| %>
         <% if current_user.role?(:instructor) %>

@@ -3,6 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+div.quiz-box{
+  text-align: center;
+  padding: 10px;
+}
+
+div.quiz-dashboard{
+  margin-left: 140px;
+}
+
+div.quiz.well{
+  margin: 5px auto 5px auto;
+}
+
 h4.for-dash{
   margin-bottom: 4px;
   float: left;
@@ -21,6 +34,9 @@ h4.for-dash{
 li.side-item{
   padding: 5px !important;
   color: #ECF0F1 !important;
+  border: solid;
+  border-width: 1px;
+  border-color: rgb(42,62,80);
 }
 
 div.todo-content{
@@ -62,7 +78,6 @@ html, body {
   margin-right: auto;
   margin-bottom: 8px;
   height: 30px;
-  width: 80%;
 }
 
 a.quiz-link{
