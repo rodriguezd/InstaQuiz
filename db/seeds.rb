@@ -10,7 +10,7 @@
 ######### Quiz 1 ##########################
 ###########################################
 
-Quiz.create(:name => "Ruby Objects, Classes, and Variables", :status => "active")
+Quiz.create(:name => "Ruby Objects, Classes, and Variables", :status => "active", :instructor => 1)
 Quiz.all[0].questions.create(:content => "What character denotes an instance variable?", :status => "approved")
 
 Question.all[0].choices.create(:content => "$")
@@ -85,7 +85,7 @@ Question.all[9].choices.create(:content => "case", :correct => true)
 
 ######### Quiz 2 ##########################
 ###########################################
-Quiz.create(:name => "Ruby Strings", :status => "active")
+Quiz.create(:name => "Ruby Strings", :status => "active", :instructor => 1)
 Quiz.all[1].questions.create(:content => "What method swaps the case of each letter in the entire string?", :status => "approved")
 
 Question.all[10].choices.create(:content => "recase")
@@ -138,7 +138,7 @@ Question.all[16].choices.create(:content => "position")
 
 ######### Quiz 3 ##########################
 ###########################################
-Quiz.create(:name => "Ruby Numbers", :status => "active")
+Quiz.create(:name => "Ruby Numbers", :status => "active", :instructor => 1)
 Quiz.all[2].questions.create(:content => "Which operator tests to see if two numbers are equal?", :status => "approved")
 
 Question.all[17].choices.create(:content => ">")
@@ -228,7 +228,7 @@ Question.all[28].choices.create(:content => "==", :correct => true)
 
 ######### Quiz 4 ##########################
 ###########################################
-Quiz.create(:name => "Ruby Arrays", :status => "active")
+Quiz.create(:name => "Ruby Arrays", :status => "active", :instructor => 1)
 Quiz.all[3].questions.create(:content => "What does the following code return?
 
 array = [1, 2, 3]
@@ -360,15 +360,15 @@ User.all[3].answers.create(:choice_id => 11, :quiz_id => 1, :question_id =>3)
 
 ### Fake humanities quiz names
 
-Quiz.create(:name => "Europe, An Imagined Community: Essays on Identity since 1750", :status => "completed")
-Quiz.create(:name => "Lyrics of Mystical Love, East and West", :status => "active")
-Quiz.create(:name => "Existentialism", :status => "pending")
-Quiz.create(:name =>"The Literary 1960s: Years of Hope/Days of Rage", :status => "finalized")
-Quiz.create(:name => "Postmodern Fiction and Graphic Novels", :status => "completed")
-Quiz.create(:name => "Romantic Revolutions in European Music and Culture", :status => "completed")
-Quiz.create(:name => "Laughter: From Aristotle to Seinfeld", :status => "completed")
+Quiz.create(:name => "Europe, An Imagined Community: Essays on Identity since 1750", :status => "completed", :instructor => 1)
+Quiz.create(:name => "Lyrics of Mystical Love, East and West", :status => "active", :instructor => 1)
+Quiz.create(:name => "Existentialism", :status => "pending", :instructor => 1)
+Quiz.create(:name =>"The Literary 1960s: Years of Hope/Days of Rage", :status => "finalized", :instructor => 1)
+Quiz.create(:name => "Postmodern Fiction and Graphic Novels", :status => "completed", :instructor => 1)
+Quiz.create(:name => "Romantic Revolutions in European Music and Culture", :status => "completed", :instructor => 1)
+Quiz.create(:name => "Laughter: From Aristotle to Seinfeld", :status => "completed", :instructor => 1)
 
-Quiz.create(:name => "The Writing of the Indian Subcontinent", :status => "completed")
+Quiz.create(:name => "The Writing of the Indian Subcontinent", :status => "completed", :instructor => 1)
 
 
 ### Associating students to quizzes
