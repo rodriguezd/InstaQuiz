@@ -1,2 +1,18 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @group.name %>
+</p>
+
+<p>
+  <b>Instructor:</b>
+  <%= User.find(@group.instructor).name %>
+</p>
+<p>
+  <b>Code:</b>
+  <%= @group.code %>
+</p>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
