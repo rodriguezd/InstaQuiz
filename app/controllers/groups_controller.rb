@@ -22,12 +22,27 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:id])
   end
 
   def destroy
+    raise params.inspect
+    @group = Group.find(params[:id])
+    @group.destroy
+
+    respond_to do |format|
+      format.html { redirect_to groups_url }
+      format.json { head :no_content }
+    end
   end
 
   def show
+    @group = Group.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @group }
+    end
   end
 
   def index
