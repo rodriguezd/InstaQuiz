@@ -46,7 +46,8 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    # @groups = Group.all
+    @groups = current_user.groups
 
     respond_to do |format|
       format.html # index.html.erb
@@ -55,6 +56,21 @@ class GroupsController < ApplicationController
   end
 
   def update
+  end
+
+  def join
+    @user = current_user
+    @user.groups << Group.where(:code => params[:group_code])
+    @user.save
+    redirect_to groups_url
+
+    # if @user.save
+    #     format.html { redirect_to groups_url, notice: 'Successfully joind group.' }
+    #     format.json { render json: groups_url, status: :created, location: groups_url }
+    #   else
+    #     format.html { render action: "index" }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
   end
 
   private
