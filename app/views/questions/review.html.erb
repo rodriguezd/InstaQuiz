@@ -33,6 +33,18 @@
   <% end %>
   <div>
 
+    <label class="checkbox" for="checkbox1">
+            <input type="checkbox" value="" id="checkbox1">
+            Unchecked
+          </label>
+
+          <label class="checkbox" for="checkbox2">
+            <span class="icon"></span>
+            <span class="icon-to-fade"></span>
+            <input type="checkbox" checked="checked" value="" id="checkbox2">
+            Checked
+          </label>
+
     <% unless @quiz.questions.empty? %>
       <%= submit_tag "Approve" %>
     <% end %>
