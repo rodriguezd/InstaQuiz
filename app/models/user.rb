@@ -44,32 +44,29 @@ class User < ActiveRecord::Base
   			correct += 1
   		end
   	end
-
-  def class_average(quiz)
-    100
-    # if self.questions.where(:quiz_id => quiz.id).empty?
-    #   "None"
-    # else
-    #   correct = 0
-    #   questions = self.questions.where(:quiz_id => quiz.id)
-    #   total_answers= questions.first.answers.size
-    #   questions.first.answers.each do |answer|
-    #     if answer.choice.correct
-    #       correct += 1
-    #     end
-    #   end
-    #   correct/total_answers
-    # end
-  end
-
   	# divide and return (correct choices/total choices)
     score = 0
     unless total == 0
       score = ((correct/total.to_f)*100).round
     end
       self.results.create(:user_id => self.id, :quiz_id => quiz.id, :score => score)
-
     score
+  end
+
+
+
+  def class_average(quiz)
+    if self.questions.where(:quiz_id => quiz.id).empty?
+      "None"
+    else
+      questions = self.questions.where(:quiz_id => quiz.id)
+      total_answers= questions.first.answers.size
+      correct = questions.first.answers.collect{ |answer| answer.choice.correct ? 1 : nil}.compact.size
+     if total_answers > 0
+       score = ((correct/total_answers.to_f)*100).round
+       "#{score}%"
+      end
+    end
   end
 
   def role?(type)

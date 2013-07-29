@@ -15,12 +15,13 @@
     <% @quiz.results.each_with_index do |result, i| %>
       <% counter += 1 %>
       <% scores_total += result.score %>
+      <% user = User.find_or_create_by_id(result.user_id) %>
       <tr>
         <td><%= i + 1 %>.</td>
-        <td><%= User.find(result.user_id).name %></td>
+        <td><%= user.name %></td>
         <td><%= number_to_percentage(result.score, precision: 1) %></td>
         <td><%= @questions.where(:user_id => result.user_id).size %> </td>
-        <td> TBD <%#= User.find(result.user_id).class_average(@quiz)%> </td>
+        <td><%= user.class_average(@quiz)%> </td>
       </tr>
     <% end %>
 
@@ -37,7 +38,7 @@
       <% counter += 1 %>
     <% end %>
       <td><%= @questions.where(:user_id => stu.id).size %> </td>
-      <td>TBD<%#= stu.class_average(@quiz) %></td>
+      <td><%= stu.class_average(@quiz) %></td>
   <% end %>
 <% end %>
     </table>
