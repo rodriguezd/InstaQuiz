@@ -1,4 +1,25 @@
-<h3>My Profile</h3>
+<h3><%=current_user.name %></h3>
+
+<table>
+<th width="20px" align="left"></th>
+<th width="160px" align="left">Quiz Name</th>
+<th width="160px" align="left">Score</th>
+<th width="160px" align="left"># of Qs</th>
+<th width="160px" align="left">Class avg. on Qs</th>
+
+<div class="quizzes">
+  <ul>
+    <% current_user.quizzes.each do |quiz| %>
+    <tr>
+      <td></td>
+      <td><%= quiz.name %></td>
+      <td><%=current_user.score(quiz) %></td>
+      <td> TBD </td>
+      <td> TBD </td>
+    <tr>
+    <% end %>
+  </ul>
+<div>
 
 
 
