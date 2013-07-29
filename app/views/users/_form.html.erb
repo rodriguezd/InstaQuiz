@@ -27,6 +27,13 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <div>
+    Select role: <br><br>
+    <%= radio_button_tag 'role', 'student' %> Student <br>
+
+    <%= radio_button_tag 'role', 'instructor' %> Instructor
+  </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
