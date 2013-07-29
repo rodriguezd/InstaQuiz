@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+h4.for-dash{
+  margin-bottom: 4px;
+  float: left;
+}
 
 .links{
   color: red;
@@ -61,10 +65,8 @@ html, body {
   width: 80%;
 }
 
-a.quiz-name{
-  text-decoration: none !important;
-  font-size: 12px !important; 
-  margin-left: 5px;
-  margin-right: auto !important;
-  float: left !important;
+a.quiz-link{
+  font-size: 16px !important; 
+  float: right !important;
+  vertical-align: middle;
 }

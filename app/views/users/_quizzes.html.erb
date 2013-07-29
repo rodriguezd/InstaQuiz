@@ -5,24 +5,47 @@
         <% if current_user.role?(:instructor) %>
             <% case @status %>
             <% when "active" %>
-                <div class="quiz well control-group success"><a class="quiz-name" href="<%=results_quiz_path(q)%>"><u>Live updates: </u><%= q.name %></a></div>
+                <div class="quiz well control-group success">
+                    <h4 class="for-dash"><%= q.name %></h4>
+                    <a class="quiz-link" href="<%=results_quiz_path(q)%>">Live updates</a>
+                </div>
             <% when "finalized" %>
-                <div class="quiz well control-group success"><a class="quiz-name" href="<%=set_status_quiz_path(q, :status => "active")%>"><u>Activate: </u><%= q.name %></a></div>
+                <div class="quiz well control-group success">
+                    <h4 class="for-dash"><%= q.name %></h4>
+                    <a class="quiz-link" href="<%=set_status_quiz_path(q, :status => "active")%>">Activate</a>
+                    </div>
             <% when "pending" %>
-                <div class="quiz well control-group success"><a class="quiz-name" href="<%=review_quiz_questions_path(q)%>"><u>Finalize: </u><%= q.name %></a></div>
+                <div class="quiz well control-group success">
+                    <h4 class="for-dash"><%= q.name %></h4>
+                    <a class="quiz-link" href="<%=review_quiz_questions_path(q)%>">Finalize</a>
+                    </div>
             <% when "completed" %>
-                <div class="quiz well control-group success"><a class="quiz-name" href="<%=results_quiz_path(q)%>"><u>Results: </u><%= q.name %></a></div>
+                <div class="quiz well control-group success">
+                    <h4 class="for-dash"><%= q.name %></h4>
+                    <a class="quiz-link" href="<%=results_quiz_path(q)%>">Results</a>
+                    </div>
             <% end %>
         <% elsif current_user.role?(:student) %>
             <% case @status %>
             <% when "active" %>
-                <div class="quiz well control-group success"><a class="quiz-name" href="<%=take_quiz_path(q)%>"><u>Take Quiz: </u><%= q.name %></a></div>
+                <div class="quiz well control-group success">
+                    <h4 class="for-dash"><%= q.name %></h4>
+                    <a class="quiz-link" href="<%=take_quiz_path(q)%>"><u>Take Quiz</a>
+                </div>
             <% when "question_submitted" %>
-                <div class="quiz well control-group success"><a class="quiz-name" href="<%=edit_quiz_question_path(q, q.questions.find_by_user_id(current_user.id))%>"><u>Edit Questions: </u><%= q.name %></a></div>
+                <div class="quiz well control-group success">
+                    <h4 class="for-dash"><%= q.name %></h4>
+                    <a class="quiz-link" href="<%=edit_quiz_question_path(q, q.questions.find_by_user_id(current_user.id))%>">Edit Questions</a></div>
             <% when "pending" %>
-                <div class="quiz well control-group success"><a class="quiz-name" href="<%=new_quiz_question_path(q)%>"><u>Submit questions: </u><%= q.name %></a></div>
+                <div class="quiz well control-group success">
+                    <h4 class="for-dash"><%= q.name %></h4>
+                    <a class="quiz-link" href="<%=new_quiz_question_path(q)%>">
+                        Submit questions</a></div>
             <% when "completed" %>
-                <div class="quiz well control-group success"><a class="quiz-name" href="<%=score_quiz_path(q)%>"><u>See score: </u><%= q.name %></a></div>
+                <div class="quiz well control-group success">
+                    <h4 class="for-dash"><%= q.name %></h4>
+                    <a class="quiz-link" href="<%=score_quiz_path(q)%>"><u>See score</a>
+                </div>
             <% end %>
       <% end %>
     <% end %>
