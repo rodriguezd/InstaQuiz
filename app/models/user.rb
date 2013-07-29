@@ -11,7 +11,13 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password
+  attr_accessible :email, :name, :password, :password_confirmation, :email_confirmation
+
+  validates_confirmation_of :email#, :message => "Emails do not match!"
+  validates_presence_of :email_confirmation
+  validates_confirmation_of :password#, :message => "Passwords do not match!"
+  validates_presence_of :password_confirmation
+
   has_secure_password
   has_many :answers
   has_many :student_quizzes
@@ -50,7 +56,7 @@ class User < ActiveRecord::Base
     #   questions.first.answers.each do |answer|
     #     if answer.choice.correct
     #       correct += 1
-    #     end 
+    #     end
     #   end
     #   correct/total_answers
     # end

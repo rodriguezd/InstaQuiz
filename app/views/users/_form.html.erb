@@ -18,10 +18,14 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
+    <%= f.label :email_confirmation %><br />
+    <%= f.text_field :email_confirmation %>
   </div>
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
     <%= f.submit %>
