@@ -47,12 +47,15 @@ class QuizzesController < ApplicationController
     params[:group_code].each do |code|
       @quiz.groups << Group.where(:code => code)
     end
-    @quiz.save
-    @users = User.all
-    @users.each{|user| user.student_quizzes.create(:quiz_id => @quiz.id, :quiz_status => "pending")}
+    # @quiz.save
+    # @users = User.all
+    # @users.each{|user| user.student_quizzes.create(:quiz_id => @quiz.id, :quiz_status => "pending")}
 
     respond_to do |format|
       if @quiz.save
+        @quiz.groups.each do |group|
+          group.users.each{|user| user.student_quizzes.create(:quiz_id => @quiz.id, :quiz_status => "pending")}
+        end
         # @quiz.questions_email
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
         format.json { render json: @quiz, status: :created, location: @quiz }
