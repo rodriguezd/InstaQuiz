@@ -44,7 +44,9 @@ class QuizzesController < ApplicationController
   def create
     @quiz = Quiz.new(params[:quiz])
     @quiz.instructor = current_user.id
-    @quiz.groups << Group.where(:code => params[:group_code])
+    params[:group_code].each do |code|
+      @quiz.groups << Group.where(:code => code)
+    end
     @quiz.save
     @users = User.all
     @users.each{|user| user.student_quizzes.create(:quiz_id => @quiz.id, :quiz_status => "pending")}

@@ -15,12 +15,17 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-
-  <div class="field">
-    <%= label_tag "group_code", "Group code:" %>
-    <%= text_field_tag "group_code" %> <br>
-  </div>
-
+  <br>
+  Groups<br><br>
+  <table>
+  <% Group.where(:instructor => current_user.id).each_with_index do |group, i| %>
+    <tr>
+      <td><%= label_tag 'group_code[]', group.name %></td>
+      <td><%= check_box_tag 'group_code[]', group.code, false %></td>
+    </tr>
+  <% end %>
+  </table>
+  <br>
 
   <div class="field">
     <%= f.label :deadline %><br />
