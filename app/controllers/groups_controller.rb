@@ -27,7 +27,6 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    raise params.inspect
     @group = Group.find(params[:id])
     @group.destroy
 
@@ -50,7 +49,7 @@ class GroupsController < ApplicationController
     # @groups = Group.all
     if current_user.role?(:instructor)
       @groups = Group.where(:instructor => current_user.id)
-    else
+    elsif current_user.role?(:student)
       @groups = current_user.groups
     end
 

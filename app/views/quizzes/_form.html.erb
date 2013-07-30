@@ -1,4 +1,7 @@
 <%= form_for(@quiz) do |f| %>
+  <% if Group.where(:instructor => current_user.id).empty? %>
+    A quiz must be assigned to at least one group. You currently have no groups. Create groups by going to MyGroups in the navigation bar.
+  <% else %>
   <% if @quiz.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
@@ -41,4 +44,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
 <% end %>
