@@ -1,0 +1,27 @@
+ <h4><% @group.name %></h4>
+
+<div class="container">  
+  <div class="row">  
+    <div class="span8">  
+      <ul class="nav nav-pills">    
+        <li class="<%= 'active' if params[:action] == 'grade' %> "><a href="<%= grade_group_path %>">Data</a></li>  
+        <li class="<%= 'active' if params[:action] == 'chart' %> "><a href="<%= chart_group_path %>">Chart</a></li>   
+      </ul>  
+    </div>  
+  </div>  
+</div>
+<table>
+    <th width="20px" align="left"></th>
+    <th width="160px" align="left">Student name</th>
+    <th width="160px" align="left">Grade</th>
+    <th width="160px" align="left"># of Quizzes</th>
+
+    <% @group.users.each_with_index do |student, i| %>
+      <tr>
+        <td><%= i + 1 %>.</td>
+        <td><%= student.name %></td>
+        <td><%= student.grade(@group) %></td>
+        <td>TBD </td>
+      </tr>
+    <% end %>
+</table>
