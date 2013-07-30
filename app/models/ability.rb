@@ -6,11 +6,14 @@ class Ability
 
     if user.role?(:instructor)
         can :manage, :all
+        # can :manage, [Group, Question, Result, User, Quiz, Choice]
+        # can :manage, Quiz
       else
         can :read, :all
         can [:read, :new, :create], Question
         can [:edit, :update], Question, :user_id => user.id
         can [:take, :answers, :score], Quiz
+        cannot :show, Quiz
         can [:read, :join], Group
         # can [:update, :create], Answer
       end
