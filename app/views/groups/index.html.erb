@@ -39,4 +39,6 @@
 </table>
 <br><br>
 
-<%= render 'join_form' %>
+<% if current_user.role?(:student) %>
+  <%= render 'join_form' %>
+<% end %>
