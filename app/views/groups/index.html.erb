@@ -1,7 +1,8 @@
 <%= notice %>
-<h1>Listing Groups</h1>
+<h1>Your Groups</h1>
 
 <table>
+  <% if !@groups.empty? %>
   <% if current_user.role?(:instructor) %>
     <tr>
       <th align="left" width="200px">Group</th>
@@ -33,13 +34,17 @@
     </tr>
   <% end %>
   <% end %>
+  <% else %>
+  No groups have been joined/created.
+  <% end %>
 </table>
 <br><br>
 
 <% if current_user.role?(:student) %>
   <%= render 'join_form' %>
 <% end %>
-
+<% if current_user.role?(:instructor) %>
 <div class="span2 create-group">
   <a class="btn" href="/groups/new">Create Group</a>
 </div>
+<% end %>
