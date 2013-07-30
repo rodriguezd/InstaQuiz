@@ -47,7 +47,11 @@ class GroupsController < ApplicationController
 
   def index
     # @groups = Group.all
-    @groups = current_user.groups
+    if current_user.role?(:instructor)
+      @groups = Group.where(:instructor => current_user.id)
+    else
+      @groups = current_user.groups
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -56,6 +60,17 @@ class GroupsController < ApplicationController
   end
 
   def update
+    @group = Group.find(params[:id])
+
+    respond_to do |format|
+      if @group.update_attributes(:name => params[:group][:name])
+        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def join
