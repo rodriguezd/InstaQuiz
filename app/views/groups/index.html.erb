@@ -5,26 +5,37 @@
   <a class="btn" href="/groups/new">Create Group</a>
 </div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Instructor</th>
-    <th>Group Code</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @groups.each do |group| %>
-  <tr>
-    <td><%= group.name %></td>
-    <td><%= User.find(group.instructor).name %></td>
-    <td><%= group.code %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table>
+  <% if current_user.role?(:instructor) %>
+    <tr>
+      <th>Name</th>
+      <th>Group Code</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @groups.each do |group| %>
+    <tr>
+      <td><%= group.name %></td>
+      <td><%= group.code %></td>
+      <td><%= link_to 'Edit', edit_group_path(group) %></td>
+      <td><%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  <% elsif current_user.role?(:student) %>
+    <tr>
+      <th>Name</th>
+      <th>Instructor</th>
+    </tr>
+
+  <% @groups.each do |group| %>
+    <tr>
+      <td><%= group.name %></td>
+      <td><%= User.find(group.instructor).name %></td>
+    </tr>
+  <% end %>
+  <% end %>
 </table>
 <br><br>
 

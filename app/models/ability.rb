@@ -11,6 +11,7 @@ class Ability
         can [:read, :new, :create], Question
         can [:edit, :update], Question, :user_id => user.id
         can [:take, :answers, :score], Quiz
+        can [:read, :join], Group
         # can [:update, :create], Answer
       end
 
