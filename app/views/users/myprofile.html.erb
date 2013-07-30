@@ -3,6 +3,7 @@
   <table>
     <th width="20px" align="left"></th>
     <th width="400px" align="left">Quiz Name</th>
+    <th width="400px" align="left">Quiz Number</th>
     <th width="100px" align="left">Score</th>
     <th width="100px" align="left"># of Qs</th>
     <th width="100px" align="left">Class avg. on Qs</th>
@@ -10,14 +11,58 @@
         <tr>
           <td></td>
           <td><%= quiz.name %></td>
-          <td><%=current_user.score(quiz) %></td>
+          <td><%= quiz.id %></td>
+          <td><%=current_user.results.where(:quiz_id => quiz.id).pop.score %></td>
           <td> TBD </td>
           <td> TBD </td>
         <tr>
         <% end %>
     <table>
-<div>
 
+<script type="text/javascript" charset-"utf-8">
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'line',
+                marginRight: 130,
+                marginBottom: 50
+            },
+            title: {
+                text: 'Quiz Scores',
+                x: -20 //center
+            },
 
+            xAxis: {
 
+                categories: []
+            },
+            yAxis: {
+                title: {
+                    text: 'Percentage'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '%'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Score',
+                data: <%=current_user.results.collect{|result|result.score}%>
 
+            }]
+        });
+    });
+</script>
+<div id="container" style="width:560px; height:400px;"></div>
