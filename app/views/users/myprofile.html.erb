@@ -10,7 +10,7 @@
         <tr>
           <td></td>
           <td><%= quiz.name %></td>
-          <td><%=current_user.score(quiz) %></td>
+          <td><%= current_user.results.where(:quiz_id => quiz.id).pop.score %></td>
           <td> TBD </td>
           <td> TBD </td>
         <tr>

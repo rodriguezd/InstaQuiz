@@ -29,7 +29,7 @@
 
 <% @quiz.users.each_with_index do |stu, i| %>
   <tr>
-    <td><%= i+1 %>.</td> 
+    <td><%= i+1 %>.</td>
     <td><%= stu.name %></td>
     <% if stu.results.where(:quiz_id => @quiz.id).empty? %>
        <td>Did not submit </td>
@@ -54,3 +54,7 @@
 <% unless @quiz.status == "completed" %>
 <a href="<%= set_status_quiz_path(@quiz, :status=> "completed") %>" class="btn btn-large btn-primary">End Quiz</a>
 <% end %>
+<br>
+<br>
+
+<div id="container" style="width: 560px; height: 300px;"></div>
