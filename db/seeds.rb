@@ -351,12 +351,6 @@ user.roles.clear
 user.roles << Role.where(:name => :instructor)
 user.save
 
-User.first.answers.create(:choice_id => 1, :quiz_id => 1, :question_id =>1)
-User.first.answers.create(:choice_id => 7, :quiz_id => 1, :question_id => 2)
-User.first.answers.create(:choice_id => 12, :quiz_id => 1, :question_id =>3)
-User.all[1].answers.create(:choice_id => 2, :quiz_id => 1, :question_id =>1)
-User.all[2].answers.create(:choice_id => 6, :quiz_id => 1, :question_id =>2)
-User.all[3].answers.create(:choice_id => 11, :quiz_id => 1, :question_id =>3)
 
 ### Fake humanities quiz names
 
