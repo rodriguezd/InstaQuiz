@@ -95,4 +95,9 @@ class GroupsController < ApplicationController
   def generate_code
     (0..5).map{rand(36).to_s(36)}.join
   end
+
+  def grade
+    @group = Group.find(params[:id])
+  end
+
 end

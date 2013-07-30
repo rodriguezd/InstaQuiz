@@ -1,6 +1,8 @@
 Openexam2::Application.routes.draw do
 
-  resources :groups
+  resources :groups do
+    get 'grade', on: :member
+  end
 
   post '/groups/join' => 'groups#join', :as => :group_join
 

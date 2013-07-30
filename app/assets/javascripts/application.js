@@ -12,7 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require highcharts
-//= require highcharts/highcharts-more
-//= require_tree ./../../../vendor/js
+//= require_tree ./../../../vendor/assets/javascripts
 //= require_tree .

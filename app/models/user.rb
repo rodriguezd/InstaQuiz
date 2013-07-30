@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   has_many :results
 
   has_many :group_users
-  has_many :groups, :through => :group_users
+  has_many :groups, :through => :group_users, :uniq => true
 
 
 
@@ -53,8 +53,6 @@ class User < ActiveRecord::Base
     score
   end
 
-
-
   def class_average(quiz)
     if self.questions.where(:quiz_id => quiz.id).empty?
       "None"
@@ -71,6 +69,19 @@ class User < ActiveRecord::Base
 
   def role?(type)
     self.roles.collect{|role| role.name}.include?(type.to_s)
+  end
+
+  def grade(group)
+    # grp = self.groups.where(:id=>group.id)
+    quizzes_score = 0
+    quizzes_count = 0
+    group.quizzes.each do|quiz|
+      quiz.results.where(:user_id => self.id).each do |result|
+        quizzes_score = quizzes_score + result.score
+        quizzes_count += 1
+      end
+    end
+    (quizzes_score/quizzes_count.to_f).ceil
   end
 
 end

@@ -1,0 +1,20 @@
+<!-- grade.html.erb -->
+ 
+ <h4><% @group.name %></h4>
+
+
+<table>
+    <th width="20px" align="left"></th>
+    <th width="160px" align="left">Student name</th>
+    <th width="160px" align="left">Grade</th>
+    <th width="160px" align="left"># of Quizzes</th>
+
+    <% @group.users.each_with_index do |student, i| %>
+      <tr>
+        <td><%= i + 1 %>.</td>
+        <td><%= student.name %></td>
+        <td><%= student.grade(@group) %></td>
+        <td>TBD </td>
+      </tr>
+    <% end %>
+</table>

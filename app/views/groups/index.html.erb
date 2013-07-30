@@ -1,18 +1,14 @@
 <%= notice %>
 <h1>Listing Groups</h1>
 
-<div class="span2 create-group">
-  <a class="btn" href="/groups/new">Create Group</a>
-</div>
-
-
 <table>
   <% if current_user.role?(:instructor) %>
     <tr>
-      <th>Name</th>
-      <th>Group Code</th>
-      <th></th>
-      <th></th>
+      <th align="left" width="200px">Group</th>
+      <th align="left" width="100px">Code</th>
+      <th align="left" width="100px">Edit</th>
+      <th align="left" width="100px">Delete</th>
+      <th align="left" width="100px">Grades</th>
     </tr>
 
   <% @groups.each do |group| %>
@@ -21,6 +17,7 @@
       <td><%= group.code %></td>
       <td><%= link_to 'Edit', edit_group_path(group) %></td>
       <td><%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Grades', grade_group_path(group) %></td>
     </tr>
     <% end %>
   <% elsif current_user.role?(:student) %>
@@ -42,3 +39,7 @@
 <% if current_user.role?(:student) %>
   <%= render 'join_form' %>
 <% end %>
+
+<div class="span2 create-group">
+  <a class="btn" href="/groups/new">Create Group</a>
+</div>
