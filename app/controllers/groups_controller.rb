@@ -97,16 +97,20 @@ class GroupsController < ApplicationController
 
   end
 
+  def chart
+    @group = Group.find(params[:id])
+  end
+
+  def leave
+    GroupUser.where(:user_id => current_user.id, :group_id => params[:id]).pop.destroy
+    redirect_to :action => :index
+  end
+
   private
 
   #generate random alphanumeric code for a new group
   def generate_code
     (0..5).map{rand(36).to_s(36)}.join
-  end
-
-
-  def chart
-    @group = Group.find(params[:id])
   end
 
 end

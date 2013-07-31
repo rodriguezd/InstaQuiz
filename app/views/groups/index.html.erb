@@ -25,12 +25,14 @@
     <tr>
       <th>Name</th>
       <th>Instructor</th>
+      <th></th>
     </tr>
 
   <% @groups.each do |group| %>
     <tr>
       <td><%= group.name %></td>
       <td><%= User.find(group.instructor).name %></td>
+      <td><%= link_to 'Leave Group', leave_group_path(group) %></td>
     </tr>
   <% end %>
   <% end %>
