@@ -13,18 +13,26 @@
     </div>  
   </div>  
 </div>
-<table>
-    <th width="20px" align="left"></th>
-    <th width="160px" align="left">Student name</th>
-    <th width="160px" align="left">Grade</th>
-    <th width="160px" align="left"># of Quizzes</th>
+<div class="container">
+  <div class="span8">
+    <table>
+        <th width="20px" align="left"></th>
+        <th width="160px" align="left">Student name</th>
+        <th width="160px" align="left">Grade</th>
+        <th width="160px" align="left"># of Quizzes</th>
 
-    <% @group.users.each_with_index do |student, i| %>
-      <tr>
-        <td><%= i + 1 %>.</td>
-        <td><%= student.name %></td>
-        <td><%= student.grade(@group) %></td>
-        <td>TBD </td>
-      </tr>
-    <% end %>
-</table>
+        <% @group.users.each_with_index do |student, i| %>
+          <tr>
+            <td><%= i + 1 %>.</td>
+            <td><%= student.name %></td>
+            <td><%= student.grade(@group) %></td>
+            <td>TBD </td>
+          </tr>
+        <% end %>
+    </table>
+  </div>
+  <div class="span4">
+    
+    
+  </div>
+</div>
