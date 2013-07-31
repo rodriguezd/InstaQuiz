@@ -10,6 +10,7 @@ Openexam2::Application.routes.draw do
   resources :users do
     get 'dashboard', on: :member
     get 'myprofile', on: :member
+        get 'chart', on: :member
   end
 
   put 'questions/approve', :to => 'questions#approve'
