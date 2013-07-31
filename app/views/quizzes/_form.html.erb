@@ -21,10 +21,11 @@
   <br>
   Groups<br><br>
   <table>
-  <% Group.where(:instructor => current_user.id).each_with_index do |group, i| %>
+
+  <% Group.where(:instructor => current_user.id).each do |group| %>
     <tr>
       <td><%= label_tag 'group_code[]', group.name %></td>
-      <td><%= check_box_tag 'group_code[]', group.code, false %></td>
+      <td><%= check_box_tag 'group_code[]', group.code, @quiz.groups.any?{|grp| grp.code == group.code} %></td>
     </tr>
   <% end %>
   </table>
