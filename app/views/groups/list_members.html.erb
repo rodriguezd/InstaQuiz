@@ -1,0 +1,11 @@
+<h4>Group Memebers</h4>
+<br>
+<% if !@members.empty? %>
+<ol>
+<% @members.each do |member|%>
+  <li><%= member.name %></li>
+<% end %>
+</ol>
+<% else %>
+<h5>No memebers for this group</h5>
+<% end %>

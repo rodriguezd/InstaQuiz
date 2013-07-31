@@ -92,6 +92,11 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def list_members
+    @members = Group.find(params[:id]).users
+
+  end
+
   private
 
   #generate random alphanumeric code for a new group
