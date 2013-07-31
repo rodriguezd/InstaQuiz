@@ -70,6 +70,10 @@ class QuizzesController < ApplicationController
   # PUT /quizzes/1.json
   def update
     @quiz = Quiz.find(params[:id])
+    @quiz.groups.clear
+    params[:group_code].each do |code|
+      @quiz.groups << Group.where(:code => code)
+    end
 
     respond_to do |format|
       if @quiz.update_attributes(params[:quiz])

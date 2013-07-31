@@ -1,0 +1,60 @@
+<div class="container">  
+  <div class="row">  
+    <div class="span8">  
+      <ul class="nav nav-pills">    
+        <li class="<%= 'active' if params[:action] == 'grade' %> "><a href="<%= myprofile_user_path %>">My Profile</a></li>  
+        <li class="<%= 'active' if params[:action] == 'chart' %> "><a href="<%= chart_user_path %>">Charts</a></li>   
+      </ul>  
+    </div>  
+  </div>  
+</div>
+<table>
+
+  <script type="text/javascript" charset-"utf-8">
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'line',
+                marginRight: 130,
+                marginBottom: 50
+            },
+            title: {
+                text: 'Quiz Scores',
+                x: -20 //center
+            },
+
+            xAxis: {
+              
+                categories: <%=raw current_user.quizzes.collect{|quiz|quiz.name}%>
+            },
+            yAxis: {
+                title: {
+                    text: 'Percentage'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '%'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Score',
+                data: <%=current_user.results.collect{|result|result.score}%>
+
+            }]
+        });
+    });
+</script>
+<div id="container" style="width:900px; height:600px;"></div>
+s
