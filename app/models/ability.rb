@@ -15,7 +15,7 @@ class Ability
         can [:edit, :update], Question, :user_id => user.id
         can [:take, :answers, :score], Quiz
         cannot :show, Quiz
-        can [:read, :join], Group
+        can [:read, :leave, :join], Group
         # can [:update, :create], Answer
       end
 

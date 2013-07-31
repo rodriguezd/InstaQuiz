@@ -3,6 +3,7 @@ Openexam2::Application.routes.draw do
   resources :groups do
     get 'grade', on: :member
     get 'chart', on: :member
+    get 'leave', :on => :member, :as => :leave
   end
 
   post '/groups/join' => 'groups#join', :as => :group_join
