@@ -178,6 +178,10 @@ class QuizzesController < ApplicationController
     @questions = Question.where(:quiz_id => @quiz.id)
   end
 
+  def chart
+    @questions = Question.find(params[:id])
+  end
+
 
 end
 

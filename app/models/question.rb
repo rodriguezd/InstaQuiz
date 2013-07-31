@@ -53,6 +53,16 @@ class Question < ActiveRecord::Base
     self.save
   end
 
+  def chart_labels
+    self.choices.collect do |choice|
+      if choice.correct
+        choice.content+ "-correct"
+      else
+        choice.content
+      end
+    end
+  end
+
   private
 
   def init
