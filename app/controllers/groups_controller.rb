@@ -100,4 +100,8 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def chart
+    @group = Group.find(params[:id])
+  end
+
 end
