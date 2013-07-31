@@ -16,6 +16,7 @@ Openexam2::Application.routes.draw do
   end
 
   put 'questions/approve', :to => 'questions#approve'
+
   resources :questions do
     get 'chart', on: :member
   end
@@ -30,6 +31,7 @@ Openexam2::Application.routes.draw do
       get 'score', on: :member
       get 'set_status', on: :member
       get 'results', on: :member
+      get 'chart', on: :member
       resources :questions do
         collection do
           get 'review'

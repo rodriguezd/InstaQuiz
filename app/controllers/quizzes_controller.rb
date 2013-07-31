@@ -186,6 +186,8 @@ class QuizzesController < ApplicationController
   end
 
   def chart
+    @quiz = Quiz.find(params[:id])
+    @questions = @quiz.questions
     @questions = Question.find(params[:id])
   end
 
