@@ -27,7 +27,6 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    raise params.inspect
     @group = Group.find(params[:id])
     @group.destroy
 
@@ -50,7 +49,7 @@ class GroupsController < ApplicationController
     # @groups = Group.all
     if current_user.role?(:instructor)
       @groups = Group.where(:instructor => current_user.id)
-    else
+    elsif current_user.role?(:student)
       @groups = current_user.groups
     end
 
@@ -89,6 +88,15 @@ class GroupsController < ApplicationController
     #   end
   end
 
+  def grade
+    @group = Group.find(params[:id])
+  end
+
+  def list_members
+    @members = Group.find(params[:id]).users
+
+  end
+
   private
 
   #generate random alphanumeric code for a new group
@@ -96,7 +104,8 @@ class GroupsController < ApplicationController
     (0..5).map{rand(36).to_s(36)}.join
   end
 
-  def grade
+
+  def chart
     @group = Group.find(params[:id])
   end
 

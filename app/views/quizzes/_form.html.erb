@@ -1,4 +1,7 @@
 <%= form_for(@quiz) do |f| %>
+  <% if Group.where(:instructor => current_user.id).empty? %>
+    A quiz must be assigned to at least one group. You currently have no groups. Create groups by going to MyGroups in the navigation bar.
+  <% else %>
   <% if @quiz.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
@@ -18,10 +21,11 @@
   <br>
   Groups<br><br>
   <table>
-  <% Group.where(:instructor => current_user.id).each_with_index do |group, i| %>
+
+  <% Group.where(:instructor => current_user.id).each do |group| %>
     <tr>
       <td><%= label_tag 'group_code[]', group.name %></td>
-      <td><%= check_box_tag 'group_code[]', group.code, false %></td>
+      <td><%= check_box_tag 'group_code[]', group.code, @quiz.groups.any?{|grp| grp.code == group.code} %></td>
     </tr>
   <% end %>
   </table>
@@ -41,4 +45,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
 <% end %>

@@ -1,4 +1,4 @@
- <h4><% @group.name %></h4>
+ <h3><%= @group.name %></h3>
 
 <div class="container">  
   <div class="row">  
@@ -10,18 +10,62 @@
     </div>  
   </div>  
 </div>
-<table>
-    <th width="20px" align="left"></th>
-    <th width="160px" align="left">Student name</th>
-    <th width="160px" align="left">Grade</th>
-    <th width="160px" align="left"># of Quizzes</th>
 
-    <% @group.users.each_with_index do |student, i| %>
-      <tr>
-        <td><%= i + 1 %>.</td>
-        <td><%= student.name %></td>
-        <td><%= student.grade(@group) %></td>
-        <td>TBD </td>
-      </tr>
-    <% end %>
-</table>
+<% hash = Hash.new %>
+<% @group.users.collect do |student| %>
+  <% if student.grade(@group) > 0 %>
+    <% hash[student.name] = student.grade(@group) %>
+  <% end %>
+<% end %>
+
+<% new_hash = hash.invert.sort %>
+<% values = new_hash.collect{|x|x.first} %>
+<% names = new_hash.collect{|x|x[1]}%>
+
+<script type="text/javascript" charset-"utf-8">
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'line',
+                marginRight: 130,
+                marginBottom: 50
+            },
+            title: {
+                text: 'Quiz Scores',
+                x: -20 //center
+            },
+
+            xAxis: {
+                categories:  <%= raw names %>
+            },
+            yAxis: {
+                title: {
+                    text: 'Percentage'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '%'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Score',
+                data: <%= values %>
+            }]
+        });
+    });
+</script>
+<div id="container" style="width:100%; height:400px;"></div>
+
+

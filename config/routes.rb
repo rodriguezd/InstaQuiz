@@ -6,6 +6,7 @@ Openexam2::Application.routes.draw do
   end
 
   post '/groups/join' => 'groups#join', :as => :group_join
+  get '/groups/:id/list_members' => 'groups#list_members', :as => :list_members
 
   resources :users do
     get 'dashboard', on: :member

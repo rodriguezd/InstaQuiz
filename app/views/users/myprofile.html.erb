@@ -21,6 +21,7 @@
         <tr>
           <td></td>
           <td><%= quiz.name %></td>
+
           <td><%= quiz.id %></td>
           <% if current_user.results.where(:quiz_id => quiz.id).pop %>
             <td><%=current_user.results.where(:quiz_id => quiz.id).pop.score %></td>
