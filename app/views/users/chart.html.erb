@@ -23,11 +23,11 @@ $(function () {
                 x: -20 //center
             },
 
-            yAxis: {
+            xAxis: {
               
                 categories: <%=raw current_user.quizzes.collect{|quiz|quiz.name}%>
             },
-            xAxis: {
+            yAxis: {
                 title: {
                     text: 'Percentage'
                 },
