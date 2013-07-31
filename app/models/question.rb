@@ -53,7 +53,7 @@ class Question < ActiveRecord::Base
     self.save
   end
 
-  def chart_labels
+  def labels
     self.choices.collect do |choice|
       if choice.correct
         choice.content+ "-correct"
@@ -63,6 +63,20 @@ class Question < ActiveRecord::Base
     end
   end
 
+
+
+  def waterfall
+    i = 0
+    values = []
+    self.choices.each do |choice|
+      chart_name = "Yo"
+      chart_data = 77
+      result = 
+      # values << "{name:" + chart_name+", "+"y:"+chart_data.to_s+"}"
+      values << "name: #{chart_name}, +y: #{chart_data}"
+    end
+    values
+  end 
   private
 
   def init

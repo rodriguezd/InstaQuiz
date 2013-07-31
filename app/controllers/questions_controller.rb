@@ -113,7 +113,7 @@ class QuestionsController < ApplicationController
   end
 
   def chart
-    @questions = Question.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def approve
