@@ -49,9 +49,8 @@
   <%= number_to_percentage(scores_total / counter, precision: 1) %> <br>
 <% end %>
 </br>
-
+<% if !@quiz.status == "completed" %>
  <a href="<%= results_quiz_path(@quiz) %>" class="btn btn-large btn-primary">Update</a>
-<% unless @quiz.status == "completed" %>
 <a href="<%= set_status_quiz_path(@quiz, :status=> "completed") %>" class="btn btn-large btn-primary">End Quiz</a>
 <% end %>
 <br>
