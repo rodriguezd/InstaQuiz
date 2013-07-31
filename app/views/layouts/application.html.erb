@@ -12,8 +12,10 @@
       <% if session[:user_id] != nil %>
         <ul class="nav">
         <li><a href="<%= dashboard_user_path(current_user) %>">Dashboard</a>  </li>
-        <li><a href="<%= groups_path %>">MyGroups</a>  </li>
+        <li><a href="<%= groups_path %>">My Groups</a>  </li>
+        <% if current_user.role?(:student) %>
         <li><a href="/users/<%= current_user.id %>/myprofile">My Profile</a> </li>
+        <% end %>
         <% if current_user.role?(:instructor) %>
           <li><a href="/quizzes/new">Create Quiz</a> </li>
         <% end %>
