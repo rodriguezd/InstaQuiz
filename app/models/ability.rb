@@ -6,6 +6,7 @@ class Ability
 
     if user.role?(:instructor)
         can :manage, :all
+
         # can :manage, [Group, Question, Result, User, Quiz, Choice]
         # can :manage, Quiz
       else
