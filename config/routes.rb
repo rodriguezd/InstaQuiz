@@ -15,7 +15,10 @@ Openexam2::Application.routes.draw do
   end
 
   put 'questions/approve', :to => 'questions#approve'
-  resources :questions
+  resources :questions do
+    get 'chart', on: :member
+  end
+
 
 
 

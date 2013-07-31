@@ -126,6 +126,14 @@ class QuizzesController < ApplicationController
         answer = @user.answers.find_or_create_by_question_id(:quiz_id => @quiz.id, :choice_id => choice_id, :question_id => question_id)
       end
     end
+    if @user.answers.where(:quiz_id => @quiz.id).count != @quiz.questions.count
+
+      questions_answered = @user.answers.where(:quiz_id => @quiz.id).collect{|answer| answer.question}
+      questions_not_answered = @quiz.questions - questions_answered
+      questions_not_answered.each do |question|
+        @user.answers.create(:quiz_id => @quiz.id, :choice_id => 0, :question_id => question.id)
+      end
+    end
     student_total = @quiz.users.joins(:roles).where(:roles =>{:name => "student"}).size
     completed_students = @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).size
     if student_total == completed_students
@@ -147,7 +155,6 @@ class QuizzesController < ApplicationController
 
 
   def score
-
     @quiz = Quiz.find(params[:id])
     @score = current_user.score(@quiz)
     # @user = User.find(params[:id])
@@ -176,6 +183,10 @@ class QuizzesController < ApplicationController
   def results
     @quiz = Quiz.find(params[:id])
     @questions = Question.where(:quiz_id => @quiz.id)
+  end
+
+  def chart
+    @questions = Question.find(params[:id])
   end
 
 

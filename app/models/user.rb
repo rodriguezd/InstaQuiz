@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   	# correct choices
   	correct = 0
   	self.answers.where(:quiz_id => quiz.id).each do |answer|
-  		if answer.choice.correct
+  		if !answer.choice.nil? && answer.choice.correct
   			correct += 1
   		end
   	end

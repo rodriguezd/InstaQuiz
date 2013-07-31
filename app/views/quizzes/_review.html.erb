@@ -1,13 +1,18 @@
 <% @answers = Answer.where(:user_id => current_user.id, :quiz_id => @quiz.id) %>
 <ol>
 <% @answers.each do |answer| %>
-  <li><%= answer.choice.question.content %></li>
+  <% if !answer.choice.nil? %>
+  <li><%= answer.question.content %></li>
 
          Your answer: <%= answer.choice.content %>
          <% if !answer.choice.correct? %>
            <br><b>Correct answer: <%= answer.choice.question.choices.where(:correct => true).first.content %></b>
-           <%#= answer.choice.question.choices.find_by_correct(true).content %>
-           <!-- Could have used find_by rather than where -->
           <% end %>
+  <% else %>
+    <li><%= answer.question.content %></li>
+
+         Your answer: No answer submitted
+           <br><b>Correct answer: <%= answer.question.choices.where(:correct => true).first.content %></b>
+  <% end %>
 <% end %>
 </ol>

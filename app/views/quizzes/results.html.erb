@@ -23,48 +23,57 @@
     <th width="160px" align="left">Class avg. on Qs</th>
 
   <% if @quiz.status == "active" %>
-    <% @quiz.results.each_with_index do |result, i| %>
-      <% counter += 1 %>
-      <% scores_total += result.score %>
-      <% user = User.find_or_create_by_id(result.user_id) %>
-      <tr>
-        <td><%= i + 1 %>.</td>
-        <td><%= user.name %></td>
-        <td><%= number_to_percentage(result.score, precision: 1) %></td>
-        <td><%= @questions.where(:user_id => result.user_id).size %> </td>
-        <td><%= user.class_average(@quiz)%> </td>
-      </tr>
+    <% @quiz.users.each_with_index do |student, i| %>
+      <% if student.results.where(:quiz_id => @quiz.id).pop %>
+        <% counter += 1 %>
+        <% scores_total += student.results.where(:quiz_id => @quiz.id).pop.score %>
+        <%# user = User.find(result.user_id) %>
+        <tr>
+          <td><%= i + 1 %>.</td>
+          <td><%= student.name %></td>
+          <td><%= number_to_percentage(student.results.where(:quiz_id => @quiz.id).pop.score, precision: 1) %></td>
+          <td><%= @questions.where(:user_id => student.id).size %> </td>
+          <td><%= student.class_average(@quiz)%> </td>
+        </tr>
+      <% end %>
     <% end %>
 
 <% elsif @quiz.status == "completed" %>
-
-<% @quiz.users.each_with_index do |stu, i| %>
-  <tr>
-    <td><%= i+1 %>.</td>
-    <td><%= stu.name %></td>
-    <% if stu.results.where(:quiz_id => @quiz.id).empty? %>
-       <td>Did not submit </td>
-    <% else %>
-      <td><%= stu.results.where(:quiz_id => @quiz.id).first.score %> </td>
-      <% counter += 1 %>
+  <% @quiz.users.each_with_index do |student, i| %>
+      <% if student.results.where(:quiz_id => @quiz.id).pop %>
+        <% counter += 1 %>
+        <% scores_total += student.results.where(:quiz_id => @quiz.id).pop.score %>
+        <%# user = User.find(result.user_id) %>
+        <tr>
+          <td><%= i + 1 %>.</td>
+          <td><%= student.name %></td>
+          <td><%= number_to_percentage(student.results.where(:quiz_id => @quiz.id).pop.score, precision: 1) %></td>
+          <td><%= @questions.where(:user_id => student.id).size %> </td>
+          <td><%= student.class_average(@quiz)%> </td>
+        </tr>
+      <% else %>
+        <tr>
+          <td><%= i + 1 %>.</td>
+          <td><%= student.name %></td>
+          <td> Did Not Submit </td>
+          <td><%= @questions.where(:user_id => student.id).size %> </td>
+          <td><%= student.class_average(@quiz)%> </td>
+        </tr>
+      <% end %>
     <% end %>
-      <td><%= @questions.where(:user_id => stu.id).size %> </td>
-      <td><%= stu.class_average(@quiz) %></td>
-  <% end %>
+
 <% end %>
     </table>
 
-
-<h5>Class Average</h5>
+<h5>Class Average (For submitted quizzes)</h5>
 <% unless counter == 0 %>
+
   <%= number_to_percentage(scores_total / counter, precision: 1) %> <br>
 <% end %>
 </br>
-<% if !@quiz.status == "completed" %>
+<% if @quiz.status != "completed" %>
  <a href="<%= results_quiz_path(@quiz) %>" class="btn btn-large btn-primary">Update</a>
 <a href="<%= set_status_quiz_path(@quiz, :status=> "completed") %>" class="btn btn-large btn-primary">End Quiz</a>
 <% end %>
 <br>
 <br>
-
-<div id="container" style="width: 560px; height: 300px;"></div>

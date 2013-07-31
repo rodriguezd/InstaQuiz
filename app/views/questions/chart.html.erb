@@ -1,0 +1,65 @@
+<div id="container" style="width:100%; height:600px;"></div>
+
+
+<script type="text/javascript" charset-"utf-8">
+
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'waterfall'
+        },
+
+        title: {
+            text: 'Highcharts Waterfall'
+        },
+
+        xAxis: {
+            type: 'category'
+        },
+
+        yAxis: {
+            title: {
+                text: '% of students'
+            }
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        tooltip: {
+            pointFormat: '<b>{y}</b>%'
+        },
+
+        series: [{
+            upColor: Highcharts.getOptions().colors[2],
+            color: Highcharts.getOptions().colors[3],
+            data: [{
+                name: 'A',
+                y: 10
+            }, {
+                name: 'B',
+                y: 30
+            }, {
+                name: 'C',
+                y: 40
+            }, {
+                name: 'D',
+                y: 20
+            }],
+            dataLabels: {
+                enabled: true,
+                formatter: function () {
+                    return Highcharts.numberFormat(this.y, 0, ',') + '%';
+                },
+                style: {
+                    color: '#FFFFFF',
+                    fontWeight: 'bold'
+                }
+            },
+            pointPadding: 0
+        }]
+    });
+});
+
+</script>
