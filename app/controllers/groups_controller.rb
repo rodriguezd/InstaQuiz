@@ -88,15 +88,15 @@ class GroupsController < ApplicationController
     #   end
   end
 
+  def grade
+    @group = Group.find(params[:id])
+  end
+
   private
 
   #generate random alphanumeric code for a new group
   def generate_code
     (0..5).map{rand(36).to_s(36)}.join
-  end
-
-  def grade
-    @group = Group.find(params[:id])
   end
 
 end
