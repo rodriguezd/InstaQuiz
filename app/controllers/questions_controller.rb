@@ -118,6 +118,7 @@ class QuestionsController < ApplicationController
 
   def chart
     @question = Question.find(params[:id])
+    @choice_count = @question.calculate_select_percentage
   end
 
   def approve
