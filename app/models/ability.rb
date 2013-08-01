@@ -13,7 +13,7 @@ class Ability
         can :read, :all
         can [:read, :new, :create], Question
         can [:edit, :update], Question, :user_id => user.id
-        can [:take, :answers, :score], Quiz
+        can [:take, :answers, :score, :submitted_questions], Quiz
         cannot :show, Quiz
         can [:read, :leave, :join], Group
         # can [:update, :create], Answer

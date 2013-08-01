@@ -34,7 +34,7 @@
             <% when "question_submitted" %>
                 <div class="quiz well">
                     <h6 class="for-dash"><%= q.name %></h6>
-                    <a class="span1.5 quiz-link btn btn-primary" href="<%=edit_quiz_question_path(q, q.questions.find_by_user_id(current_user.id))%>">Edit Questions</a></div>
+                    <a class="span1.5 quiz-link btn btn-primary" href="<%=submitted_questions_quiz_path(q)%>">Edit Questions</a></div>
             <% when "pending" %>
                 <div class="quiz well">
                     <h6 class="for-dash"><%= q.name %></h6>

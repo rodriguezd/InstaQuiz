@@ -7,20 +7,17 @@
 <h6>
   <%= "No questions submitted yet." if @quiz.questions.empty? %>
 </h6>
-
+  <ol>
   <% @quiz.questions.each do |question| %>
 
       <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved', :class => "approve"%>
       <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
-      <% if question.quiz_id.in?(1..4) %>
-        <%= question_parser(question.content) %>
-      <% else %>
-      <div id="redcarpet">
-        <%= markdown (question.content)%>
-       </div> 
+      <li>
 
-      <% end %>
-
+        <div id="redcarpet">
+          <%= markdown (question.content)%>
+         </div>
+     </li>
 
 
     <ol type='a', class="review-set">
@@ -31,6 +28,7 @@
     <% end %>
   </ol>
   <% end %>
+  </ol>
   <div>
 
     <% unless @quiz.questions.empty? %>

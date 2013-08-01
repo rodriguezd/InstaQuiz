@@ -191,6 +191,10 @@ class QuizzesController < ApplicationController
     @questions = Question.find(params[:id])
   end
 
+  def questions_submitted
+    @quiz = Quiz.find(params[:id])
+  end
+
 
 end
 

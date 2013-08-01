@@ -86,7 +86,11 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to quiz_question_path(@quiz, @question), notice: 'Question was successfully updated.' }
+        if current_user.role?(:instructor)
+          format.html { redirect_to quiz_question_path(@quiz, @question), notice: 'Question was successfully updated.' }
+        elsif current_user.role?(:student)
+          format.html { redirect_to submitted_questions_quiz_path(@quiz), notice: 'Question was successfully updated.' }
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

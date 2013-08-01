@@ -1,0 +1,23 @@
+<h5>Questions Submitted</h5>
+<ol>
+<% @quiz.questions.where(:user_id => current_user.id).each do |question| %>
+
+    <% if can? :edit, question %>
+      <%= link_to 'Edit', edit_quiz_question_path(@quiz, question) %><br>
+    <% end %>
+    <li>
+      <%= markdown (question.content)%>
+    </li>
+
+    <ol type='a'>
+      <% question.choices.each do |choice| %>
+        <li><%= choice.content %> <%= " - Correct" if choice.correct %></li>
+      <% end %>
+    </ol>
+    <% end %>
+  </ol>
+</ol>
+<span>
+  <a href="<%= new_quiz_question_path(@quiz) %>" class="btn btn-large btn-primary" style="">Add Questions</a>
+  <br><br>
+  <%= link_to 'Back to Submitted Questions','/dashboard/question_submitted' %>
