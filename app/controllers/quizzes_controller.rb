@@ -47,7 +47,24 @@ class QuizzesController < ApplicationController
     params[:group_code].each do |code|
       @quiz.groups << Group.where(:code => code)
     end
-    @users.each{|user| user.student_quizzes.create(:quiz_id => @quiz.id, :quiz_status => "pending")}
+
+    @quiz.update_attribute(:status, 'pending')
+
+    if !params[:copy].blank?
+      quiz_to_copy = Quiz.find(params[:copy])
+      quiz_to_copy.questions.each do |question|
+        new_question = question.dup
+        new_question.update_attribute(:quiz_id, @quiz.id)
+        @quiz.questions << new_question
+        question.choices.each do |choice|
+          new_choice = choice.dup
+          new_choice.update_attribute(:question_id, new_question.id)
+          new_question.choices << new_choice
+        end
+        new_question.save
+      end
+    end
+    # @users.each{|user| user.student_quizzes.create(:quiz_id => @quiz.id, :quiz_status => "pending")}
 
     respond_to do |format|
       if @quiz.save

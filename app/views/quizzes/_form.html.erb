@@ -19,8 +19,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= label_tag 'copy', 'Copy?' %><br />
-    <%= select_tag 'copy', options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :include_blank => true %>
+    <%= label_tag :copy, 'Copy?' %><br />
+    <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :include_blank => true %>
   </div>
   <br>
   Groups<br><br>
