@@ -91,6 +91,14 @@ class QuizzesController < ApplicationController
   def destroy
     @quiz = Quiz.find(params[:id])
     @quiz.destroy
+    Question.where(:quiz_id => params[:id]).each do |question|
+      question.choices.each{|choice| choice.destroy}
+      question.destroy
+    end
+    Answer.where(:quiz_id => params[:id]).each{|answer| answer.destroy}
+    Result.where(:quiz_id => params[:id]).each{|result| result.destroy}
+    GroupQuiz.where(:quiz_id => params[:id]).each{|relation| relation.destroy}
+    StudentQuiz.where(:quiz_id => params[:id]).each{|relation| relation.destroy}
 
     respond_to do |format|
       format.html { redirect_to quizzes_url }
