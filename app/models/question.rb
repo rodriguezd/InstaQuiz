@@ -53,30 +53,28 @@ class Question < ActiveRecord::Base
     self.save
   end
 
-  def labels
-    self.choices.collect do |choice|
-      if choice.correct
-        choice.content+ "-correct"
-      else
-        choice.content
-      end
-    end
+def question_answers_total
+  self.answers.size
+end 
+
+def choice_selects_totals
+  answer_counts = []
+  self.choices.each do |choice|
+    answer_counts << choice.answers.count
   end
+  return answer_counts  
+end 
+
+def calculate_select_percentage
+  percentage_array = []
+  choice_selects_totals.each do |count|
+  percentage_array << (count/question_answers_total)*100.0
+  end
+  return percentage_array 
+end 
 
 
 
-  def waterfall
-    i = 0
-    values = []
-    self.choices.each do |choice|
-      chart_name = "Yo"
-      chart_data = 77
-      result = 
-      # values << "{name:" + chart_name+", "+"y:"+chart_data.to_s+"}"
-      values << "name: #{chart_name}, +y: #{chart_data}"
-    end
-    values
-  end 
   private
 
   def init
