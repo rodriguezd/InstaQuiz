@@ -68,7 +68,7 @@ end
 def calculate_select_percentage
   percentage_array = []
   choice_selects_totals.each do |count|
-  percentage_array << (count/question_answers_total)*100.0
+  percentage_array << (count/question_answers_total.to_f)*100.0
   end
   return percentage_array 
 end 

@@ -20,6 +20,7 @@ $(function () {
             },
             yAxis: {
                 min: 0,
+                max: 100,
                 title: {
                     text: 'Answer Popularity (%)',
                     align: 'high'
@@ -44,7 +45,7 @@ $(function () {
                 verticalAlign: 'top',
                 x: -100,
                 y: 100,
-                floating: true,
+                floating: false,
                 borderWidth: 1,
                 backgroundColor: '#FFFFFF',
                 shadow: true
@@ -60,4 +61,4 @@ $(function () {
         });
     });
 </script>
-Question.first.answers.first.choice
+  <%= link_to 'Back to Quiz', :back %>
