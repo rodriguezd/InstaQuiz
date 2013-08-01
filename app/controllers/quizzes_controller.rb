@@ -142,12 +142,12 @@ class QuizzesController < ApplicationController
         @user.answers.create(:quiz_id => @quiz.id, :choice_id => 0, :question_id => question.id)
       end
     end
-    student_total = @quiz.users.joins(:roles).where(:roles =>{:name => "student"}).size
-    completed_students = @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).size
-    if student_total == completed_students
-      @quiz.status = "completed"
-      @quiz.save
-    end
+    # student_total = @quiz.users.joins(:roles).where(:roles =>{:name => "student"}).size
+    # completed_students = @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).size
+    # if student_total == completed_students
+    #   @quiz.status = "completed"
+    #   @quiz.save
+    # end
 
     # Quiz.last.users.joins(:roles).where(:roles=> {:name=> "instructor"})
     # redirect_to dashboard_user_path(current_user) and return
