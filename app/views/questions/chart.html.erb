@@ -9,7 +9,7 @@ $(function () {
                 type: 'bar'
             },
             title: {
-                text: 'Question Choices'
+                text: '<%= @question.content %>'
             },
 
             xAxis: {
@@ -20,6 +20,7 @@ $(function () {
             },
             yAxis: {
                 min: 0,
+                max: 100,
                 title: {
                     text: 'Answer Popularity (%)',
                     align: 'high'
@@ -53,8 +54,8 @@ $(function () {
                 enabled: false
             },
             series: [{
- 
-                name: 'Answer Given',
+                showInLegend: false,
+                name: '',
                 data: <%= raw @choice_count %>
             }]
         });
