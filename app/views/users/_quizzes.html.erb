@@ -6,12 +6,9 @@
             <% when "active" %>
                 <div class="quiz well">
                     <h6 class="for-dash"><%= link_to q.name, quiz_path(q) %></h6>
-
-
                     <%= link_to 'Delete', q, method: :delete, class: "span1.5 quiz-link btn btn-primary", data: { confirm: 'Are you sure?' } %>
-                    <a class="span1.5 quiz-link btn btn-primary" href="<%=set_status_quiz_path(q, :status => "finalized")%>">Deactivate</a>
+                    <%= link_to 'Deactivate', set_status_quiz_path(q, :status => "finalized"), class: "span1.5 quiz-link btn btn-primary", data: { confirm: 'Are you sure?' } %>
                     <a class="span1.5 quiz-link btn btn-primary" href="<%=results_quiz_path(q)%>">Live updates</a>
-
                 </div>
             <% when "finalized" %>
                 <div class="quiz well">
