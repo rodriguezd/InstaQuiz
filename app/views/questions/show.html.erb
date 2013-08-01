@@ -21,15 +21,15 @@
 </ol>
 
 <%#= link_to 'Edit', edit_quiz_question_path(@question.quiz_id, @question) %>
-<%= link_to 'Edit', edit_question_path(@question, :quiz_id => @question.quiz_id) %>
+<%= link_to 'Edit', edit_question_path(@question, :quiz_id => @question.quiz_id), class: "btn btn-primary" %>
 <% if params[:quiz_id] %> |
-<%= link_to 'Add Another Question', new_quiz_question_path(params[:quiz_id])
+<%= link_to 'Add Another Question', new_quiz_question_path(params[:quiz_id]), class: "btn btn-primary"
 %> |
   <% if current_user.role?(:instructor) %>
-    <%= link_to 'Done', review_quiz_questions_path(params[:quiz_id]) %>
+    <%= link_to 'Done', review_quiz_questions_path(params[:quiz_id]), class: "btn btn-primary" %>
 
   <% elsif current_user.role?(:student) %>
-    <%= link_to 'Done', dashboard_user_path(params[:quiz_id]) %>
+    <%= link_to 'Done', dashboard_user_path(params[:quiz_id]), class: "btn btn-primary" %>
   <% end %>
 <% end %>
 
