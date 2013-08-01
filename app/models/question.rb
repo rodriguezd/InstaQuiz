@@ -55,25 +55,23 @@ class Question < ActiveRecord::Base
 
 def question_answers_total
   self.answers.size
-end 
+end
 
 def choice_selects_totals
   answer_counts = []
   self.choices.each do |choice|
-    answer_counts << choice.answers.count
+      answer_counts <<  choice.answers.count
   end
-  return answer_counts  
-end 
+  return answer_counts
+end
 
 def calculate_select_percentage
   percentage_array = []
   choice_selects_totals.each do |count|
-  percentage_array << (count/question_answers_total.to_f)*100.0
+    percentage_array << ((count/question_answers_total.to_f)*100).round(1)
   end
-  return percentage_array 
-end 
-
-
+  return percentage_array
+end
 
   private
 

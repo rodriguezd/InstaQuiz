@@ -9,7 +9,7 @@ $(function () {
                 type: 'bar'
             },
             title: {
-                text: 'Question Choices'
+                text: '<%= @question.content %>'
             },
 
             xAxis: {
@@ -54,8 +54,8 @@ $(function () {
                 enabled: false
             },
             series: [{
- 
-                name: 'Answer Given',
+                showInLegend: false,
+                name: '',
                 data: <%= raw @choice_count %>
             }]
         });
