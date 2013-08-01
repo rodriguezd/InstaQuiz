@@ -11,10 +11,12 @@
       </div>  
     </div>  
   </div>
+  <h3> <%= @quiz.name %> Quiz </h3>
 <% end %>
-
-<h3> Your score for the <%= @quiz.name %> quiz! </h3>
-<h5><%= number_to_percentage(@score, precision: 1)%></h5>
+<% if current_user.role?(:student) %>
+  <h3> Your score for the <%= @quiz.name %> quiz! </h3>
+  <h5><%= number_to_percentage(@score, precision: 1)%></h5>
+<% end %>
 
 <%# @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).each do |user|%>
 	<%#= user.name %> <%#= user.score(@quiz) %>

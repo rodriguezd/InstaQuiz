@@ -50,7 +50,7 @@ $(function () {
             },
             series: [{
                 name: 'Score',
-                data: <%=current_user.results.collect{|result|result.score}%>
+                data: <%=raw current_user.results.collect{|result|result.score}%>
 
             }]
         });
