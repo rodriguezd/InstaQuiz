@@ -26,7 +26,7 @@ $(function () {
 
             xAxis: {
               
-                categories: <%=raw current_user.quizzes.collect{|quiz|quiz.name}%>
+                categories: <%=raw current_user.myprofile_chart_labels %>
             },
             yAxis: {
                 title: {
@@ -51,7 +51,7 @@ $(function () {
             },
             series: [{
                 name: 'Score',
-                data: <%=raw current_user.results.collect{|result|result.score}%>
+                data: <%=raw current_user.myprofile_chart_data %>
 
             }]
         });
