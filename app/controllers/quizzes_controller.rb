@@ -1,5 +1,6 @@
 class QuizzesController < ApplicationController
   load_and_authorize_resource
+
   # GET /quizzes
   # GET /quizzes.json
   def index
@@ -217,7 +218,6 @@ class QuizzesController < ApplicationController
   def questions_submitted
     @quiz = Quiz.find(params[:id])
   end
-
 
 end
 

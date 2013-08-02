@@ -1,12 +1,12 @@
-<div class="container">  
-  <div class="row">  
-    <div class="span8">  
-      <ul class="nav nav-pills">    
-        <li class="<%= 'active' if params[:action] == 'results' %> "><a href="<%= results_quiz_path(@quiz) %>">Students</a></li>  
-        <li class="<%= 'active' if params[:action] == 'score' %> "><a href="<%= score_quiz_path(@quiz) %>">Questions</a></li>   
-      </ul>  
-    </div>  
-  </div>  
+<div class="container">
+  <div class="row">
+    <div class="span8">
+      <ul class="nav nav-pills">
+        <li class="<%= 'active' if params[:action] == 'results' %> "><a href="<%= results_quiz_path(@quiz) %>">Students</a></li>
+        <li class="<%= 'active' if params[:action] == 'score' %> "><a href="<%= score_quiz_path(@quiz) %>">Questions</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <h4> <%= @quiz.name %> </h4>
@@ -14,7 +14,7 @@
 <% counter = 0 %>
 <% scores_total = 0 %>
 
-
+<% if !@quiz.results.empty? %>
     <table>
     <th width="20px" align="left"></th>
     <th width="160px" align="left">Name</th>
@@ -70,10 +70,15 @@
 
   <%= number_to_percentage(scores_total / counter, precision: 1) %> <br>
 <% end %>
+<% else %>
+  <br>
+  <h4>No students have submitted answers for this quiz yet.</h4>
+  <br>
+<% end %>
 </br>
 <% if @quiz.status != "completed" %>
- <a href="<%= results_quiz_path(@quiz) %>" class="btn btn-large btn-primary">Update</a>
-<a href="<%= set_status_quiz_path(@quiz, :status=> "completed") %>" class="btn btn-large btn-primary">End Quiz</a>
+ <a href="<%= results_quiz_path(@quiz) %>" class="btn btn-primary">Update</a>
+<a href="<%= set_status_quiz_path(@quiz, :status=> "completed") %>" class="btn btn-primary">End Quiz</a>
 <% end %>
 <br>
 <br>

@@ -10,10 +10,10 @@
           <%= markdown (question.content)%>
         <% end %>
 
-<!-- {  "choiceset"=>{"30"=>"117", "31"=>"122", "32"=>"126"}, 
-      "commit"=>"Submit Answers", 
-      "action"=>"answers", 
-      "controller"=>"quizzes", 
+<!-- {  "choiceset"=>{"30"=>"117", "31"=>"122", "32"=>"126"},
+      "commit"=>"Submit Answers",
+      "action"=>"answers",
+      "controller"=>"quizzes",
       "id"=>"4"} -->
 
       </li>
@@ -21,14 +21,14 @@
         <% question.choices.each do |choice| %>
         <li> <input type="radio" name="choiceset[<%= question.id %>]" value="<%= choice.id %>" class="choice-set"/>
           <%= choice.content %>
-          
+
         </li>
         <% end %>
       </ol>
   <% end %>
   </ol>
+  <%# if current_user.student_quizzes.where(:quiz_id => @quiz.id).pop.quiz_status != 'completed' %>
+    <%= submit_tag "Submit Answers", class: "btn btn-primary" %>
+  <%# end %>
 
-  <%= submit_tag(value = "Submit Answers") %>
 <% end %>
-
-<%= %>

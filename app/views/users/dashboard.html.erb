@@ -39,11 +39,11 @@
 <div class="offset2">
  <h3>Welcome to InstaQuiz!</h3>
 <br>
-      <div id = "active" class="well quiz-box">
+      <div id="active" class="well quiz-box">
         <h4><a href="/dashboard/active">Active: <%= active = Quiz.where(:instructor => current_user.id, :status => "active").count %></h4></a>
       </div>
       <hr>
-      <div id = "finalized" class="well quiz-box">
+      <div id="finalized" class="well quiz-box">
         <h4><a href="/dashboard/finalized">Finalized: <%= finalized = Quiz.where(:instructor => current_user.id, :status => "finalized").count %></h4></a>
       </div>
       <hr>

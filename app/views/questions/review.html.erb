@@ -32,11 +32,11 @@
   <div>
 
     <% unless @quiz.questions.empty? %>
-      <%= submit_tag "Approve" %>
+      <%= submit_tag "Approve", class: "btn btn-primary" %>
     <% end %>
   </div>
 
 <% end %>
 
-<%= link_to "Add Question", new_quiz_question_path(@quiz), class: "btn btn-primary" %>
+<%= link_to "Add Question", new_quiz_question_path(@quiz) %>
 
