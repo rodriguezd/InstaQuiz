@@ -23,6 +23,8 @@
 <%# end %>
 <% if @quiz.status == 'completed' %>
   <%= render 'review' %>
+<% else %>
+  <h4> The instructor has not yet ended the quiz. Check back here to review question after the quiz is complete. </h4> 
 <% end %>
 
 

@@ -16,8 +16,10 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :email
 
+  validates_presence_of :email
   validates_confirmation_of :email
   validates_presence_of :email_confirmation
+  validates_presence_of :password
   validates_confirmation_of :password
   validates_presence_of :password_confirmation
 
@@ -85,6 +87,24 @@ class User < ActiveRecord::Base
       end
     end
     (quizzes_score/quizzes_count.to_f).ceil
+  end
+
+  def submitted_questions(quiz)
+    self.questions.where(:quiz_id => quiz.id).size
+  end
+
+  def myprofile_chart_labels
+    self.quizzes.where(:student_quizzes => {:quiz_status => "completed"}).collect{|quiz|quiz.name}
+  end
+
+  def myprofile_chart_data
+    self.quizzes.where(:student_quizzes => {:quiz_status => "completed"}).collect do |quiz|
+      if self.results.where(:quiz_id => quiz.id).first == nil
+        0
+      else
+        self.results.where(:quiz_id => quiz.id).first.score
+      end
+    end
   end
 
 end

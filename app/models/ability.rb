@@ -10,11 +10,12 @@ class Ability
         # can :manage, [Group, Question, Result, User, Quiz, Choice]
         # can :manage, Quiz
       else
+        # can [:read], Quiz, :student_quizzes => {:quiz_status => true}
         can :read, :all
-        can [:read, :new, :create], Question
+        can [:read, :new, :create, :chart], Question
         can [:edit, :update], Question, :user_id => user.id
-        can [:take, :answers, :score, :submitted_questions], Quiz
-        cannot :show, Quiz
+        can [:take, :answers, :score, :submitted_questions, :chart], Quiz
+        can :show, Quiz, :student_quiz => {:quiz_status => "completed"}
         can [:read, :leave, :join], Group
         # can [:update, :create], Answer
       end

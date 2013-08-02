@@ -98,19 +98,19 @@
  <div class="offset2">
  <h3>Welcome to InstaQuiz!</h3>
         <hr>
-        <div id = "active" class="well quiz-box">
+        <div id = "active_student" class="well quiz-box">
           <h4><a href=/dashboard/active>Active Quizzes: <%= active = current_user.quizzes.where(:student_quizzes => {:quiz_status => "active"}).count  %></h4></a>
         </div>
         <hr>
-        <div id = "finalized" class="well quiz-box">
+        <div id = "finalized_student" class="well quiz-box">
           <h4><a href=/dashboard/question_submitted>Questions Submitted: <%= questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"}).count %></h4></a>
         </div>
         <hr>
-        <div id = "pending" class="well quiz-box">
+        <div id = "pending_student" class="well quiz-box">
           <h4><a href=/dashboard/pending>Pending Quizzes: <%= pending = current_user.quizzes.where(:student_quizzes => {:quiz_status => "pending"}).count %></h4></a>
         </div>
         <hr>
-        <div id = "completed" class="well quiz-box">
+        <div id = "completed_student" class="well quiz-box">
         <h4><a href=/dashboard/completed>Completed Quizzes: <%= completed = current_user.quizzes.where(:student_quizzes => {:quiz_status => "completed"}).count %></h4></a>
         </div>
         <hr>
