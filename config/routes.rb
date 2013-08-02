@@ -12,6 +12,7 @@ Openexam2::Application.routes.draw do
   resources :users do
     get 'dashboard', on: :member
     get 'myprofile', on: :member
+    get 'info', on: :member
         get 'chart', on: :member
   end
 
