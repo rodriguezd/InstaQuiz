@@ -27,14 +27,16 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <% if !@user.persisted? %>
   <div>
     Select role: <br><br>
     <%= radio_button_tag 'role', 'student' %> Student <br>
 
     <%= radio_button_tag 'role', 'instructor' %> Instructor
   </div>
+  <% end %>
   <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>

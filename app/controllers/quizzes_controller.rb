@@ -72,7 +72,7 @@ class QuizzesController < ApplicationController
         @quiz.groups.each do |group|
           group.users.each{|user| user.student_quizzes.create(:quiz_id => @quiz.id, :quiz_status => "pending")}
         end
-        # @quiz.questions_email
+        # @quiz.questions_email ###
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
         format.json { render json: @quiz, status: :created, location: @quiz }
       else
@@ -195,7 +195,7 @@ class QuizzesController < ApplicationController
       end
       @quiz.save
       if params[:status] == "active"
-        # @quiz.take_email
+        # @quiz.take_email   ###
         redirect_to results_quiz_path(@quiz) and return
       end
       redirect_to dashboard_user_path(current_user) and return
