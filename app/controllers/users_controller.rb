@@ -42,12 +42,21 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+
     @user = User.new(params[:user])
+
+    if params[:role] && !params[:role].empty?
+      @user.roles << Role.where(:name => params[:role])
+    else
+      flash[:error] = 'You must select a role.'
+      redirect_to :action => :new
+      return
+    end
 
     respond_to do |format|
       if @user.save
-        @user.roles << Role.where(:name => params[:role])
-        @user.save
+        # @user.roles << Role.where(:name => params[:role])
+        # @user.save
         login(@user)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }

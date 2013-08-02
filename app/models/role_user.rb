@@ -12,6 +12,8 @@
 class RoleUser < ActiveRecord::Base
   attr_accessible :role_id, :user_id, :group_id
 
+  validates_presence_of :role_id
+
   belongs_to :role
   belongs_to :user
 end

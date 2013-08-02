@@ -27,7 +27,7 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
-  <% if !@user.persisted? %>
+  <% if @user.new_record? %>
   <div>
     Select role: <br><br>
     <%= radio_button_tag 'role', 'student' %> Student <br>
