@@ -27,12 +27,11 @@
       <% if student.results.where(:quiz_id => @quiz.id).pop %>
         <% counter += 1 %>
         <% scores_total += student.results.where(:quiz_id => @quiz.id).pop.score %>
-        <%# user = User.find(result.user_id) %>
         <tr>
           <td><%= i + 1 %>.</td>
           <td><%= student.name %></td>
           <td><%= number_to_percentage(student.results.where(:quiz_id => @quiz.id).pop.score, precision: 1) %></td>
-          <td><%= @questions.where(:user_id => student.id).size %> </td>
+          <td><%= student.submitted_questions(@quiz) %> </td>
           <td><%= student.class_average(@quiz)%> </td>
         </tr>
       <% end %>
@@ -48,7 +47,7 @@
           <td><%= i + 1 %>.</td>
           <td><%= student.name %></td>
           <td><%= number_to_percentage(student.results.where(:quiz_id => @quiz.id).pop.score, precision: 1) %></td>
-          <td><%= @questions.where(:user_id => student.id).size %> </td>
+          <td><%= student.submitted_questions(@quiz) %> </td>
           <td><%= student.class_average(@quiz)%> </td>
         </tr>
       <% else %>
@@ -56,7 +55,7 @@
           <td><%= i + 1 %>.</td>
           <td><%= student.name %></td>
           <td> Did Not Submit </td>
-          <td><%= @questions.where(:user_id => student.id).size %> </td>
+          <td><%= student.submitted_questions(@quiz)  %> </td>
           <td><%= student.class_average(@quiz)%> </td>
         </tr>
       <% end %>
@@ -64,21 +63,20 @@
 
 <% end %>
     </table>
-
-<h5>Class Average (For submitted quizzes)</h5>
-<% unless counter == 0 %>
-
-  <%= number_to_percentage(scores_total / counter, precision: 1) %> <br>
 <% end %>
-<% else %>
-  <br>
+
+<br>
+
+<% if counter == 0 %>
   <h4>No students have submitted answers for this quiz yet.</h4>
+<% else %>
+  <h4>Class Average (For submitted quizzes): <span><%= number_to_percentage(scores_total / counter, precision: 1) %> </span></h4>
   <br>
 <% end %>
 </br>
 <% if @quiz.status != "completed" %>
- <a href="<%= results_quiz_path(@quiz) %>" class="btn btn-primary">Update</a>
-<a href="<%= set_status_quiz_path(@quiz, :status=> "completed") %>" class="btn btn-primary">End Quiz</a>
+  <a href="<%= results_quiz_path(@quiz) %>" class="btn btn-primary">Update</a>
+  <a href="<%= set_status_quiz_path(@quiz, :status=> "completed") %>" class="btn btn-primary">End Quiz</a>
 <% end %>
 <br>
 <br>

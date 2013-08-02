@@ -89,4 +89,7 @@ class User < ActiveRecord::Base
     (quizzes_score/quizzes_count.to_f).ceil
   end
 
+  def submitted_questions(quiz)
+    self.questions.where(:quiz_id => quiz.id).size
+  end
 end
