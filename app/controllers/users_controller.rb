@@ -42,18 +42,18 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    debugger
     @user = User.new(params[:user])
+    @user.roles << Role.where(:name => params[:role])
 
     respond_to do |format|
       if @user.valid? && params.has_key?(:role)
         @user.save
         login(@user)
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to dashboard_user_path(@user) }
         format.json { render json: @user, status: :created, location: @user }
       else
         @user.errors[:base] << "Role must be selected." if !params.has_key?(:role)
-        debugger
+        @user.errors.delete(:password_digest)
         format.html { render action: "new", notice: 'User was not created.' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
