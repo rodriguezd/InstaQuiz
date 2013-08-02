@@ -12,24 +12,26 @@
 <div class="quizzes">
   <table>
     <th width="20px" align="left"></th>
-    <th width="400px" align="left">Quiz Name</th>
-    <th width="400px" align="left">Quiz Number</th>
-    <th width="100px" align="left">Score</th>
+    <th width="370px" align="left">Quiz Name</th>
+    <th width="70px" align="left">Quiz #</th>
+    <th width="120px" align="left">Score</th>
     <th width="100px" align="left"># of Qs</th>
     <th width="100px" align="left">Class avg. on Qs</th>
-        <% current_user.quizzes.each do |quiz| %>
+        <% current_user.quizzes.where(:student_quizzes => {:quiz_status => "completed"}).each do |quiz| %>
         <tr>
           <td></td>
           <td><%= quiz.name %></td>
-
           <td><%= quiz.id %></td>
           <% if current_user.results.where(:quiz_id => quiz.id).pop %>
-            <td><%=current_user.results.where(:quiz_id => quiz.id).pop.score %></td>
+              <td><%=current_user.results.where(:quiz_id => quiz.id).pop.score %></td>
+          <% else %>
+              <td>No submission</td>
           <% end %>
-          <td> TBD </td>
-          <td> TBD </td>
-        <tr>
-        <% end %>
-    <table>
+          <td><%= current_user.submitted_questions(quiz) %> </td>
+          <td> <%= current_user.class_average(quiz) %> </td>
+          <% end %>
+        </tr>
+  <table>
+</div>
 
 
