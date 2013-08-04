@@ -5,7 +5,22 @@ class Ability
     user ||= User.new #user not logged in
 
     if user.role?(:instructor)
-        can :manage, :all
+        # can :manage, :all
+        can :create, Quiz
+        
+        can :manage, Quiz do |quiz|
+            quiz.instructor == user.id
+        end 
+
+        can :manage, Question do |question|
+            Quiz.find(question.quiz_id).instructor == user.id
+        end
+
+        can :manage, Group do |group|
+            group.instructor == user.id
+        end
+
+
 
         # can :manage, [Group, Question, Result, User, Quiz, Choice]
         # can :manage, Quiz
