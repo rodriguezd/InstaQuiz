@@ -45,7 +45,7 @@
         <%# user = User.find(result.user_id) %>
         <tr>
           <td><%= i + 1 %>.</td>
-          <td><%= student.name %></td>
+          <td><%= link_to student.name, :action =>"score", :controller =>"quizzes", :id => @quiz.id, :user_id => student.id  %></td>
           <td><%= number_to_percentage(student.results.where(:quiz_id => @quiz.id).pop.score, precision: 1) %></td>
           <td><%= student.submitted_questions(@quiz) %> </td>
           <td><%= student.class_average(@quiz)%> </td>

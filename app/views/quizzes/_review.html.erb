@@ -1,20 +1,6 @@
 
-<% if current_user.role?(:instructor) %>
-    <% @quiz.questions.each_with_index do |question, i| %>
-      <ol>
-        <li><%= question.content %> <span><a href="<%= chart_question_path(question) %>"> See question chart</a></span> </li>
-        <ol type='a'>
-          <% question.choices.each do |choice| %>
-            <li> <%= choice.content %> <%= "- Correct" if choice.correct %></li>
-          <%end%>
-        </ol>
-      </ol>
-    <% end %>
 
-<% end %>
-
-<% if current_user.role?(:student) %>
-  <% @answers = Answer.where(:user_id => current_user.id, :quiz_id => @quiz.id) %>
+  <% @answers = Answer.where(:user_id => @user.id, :quiz_id => @quiz.id) %>
   <ol>
   <% @answers.each do |answer| %>
     <% if !answer.choice.nil? %>
@@ -32,4 +18,3 @@
     <% end %>
   <% end %>
   </ol>
-<% end %>
