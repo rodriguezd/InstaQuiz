@@ -49,6 +49,26 @@ class Quiz < ActiveRecord::Base
     end
   end
 
+  def question_numbers
+    size = self.questions.size
+    (1..size).to_a
+  end
+
+
+  def performance_by_question 
+    self.questions.collect do |question|
+      question.average(self)
+    end
+  end
+
+  def question_paths
+    array = []
+    self.questions.each do |question|
+      array << "{ y: #{question.average(self)}, url: '/questions/#{question.id}/chart'}"
+    end
+    array.to_s.gsub('"', '')
+  end
+
   private
 
   def init

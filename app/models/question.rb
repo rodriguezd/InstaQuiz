@@ -73,6 +73,12 @@ def calculate_select_percentage
   return percentage_array
 end
 
+def average(quiz)
+  total_answers = self.answers.where(:quiz_id => quiz.id)
+  correct_choices = total_answers.collect{|answer| answer.choice.correct if answer.choice.correct}.compact
+  ((correct_choices.size / total_answers.size.to_f) * 100).ceil
+end
+
   private
 
   def init

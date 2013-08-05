@@ -22,21 +22,19 @@
 <%# end %>
 <% if @quiz.status == 'completed' %>
   <%= render 'review' %>
-  <div id="container" style="width:900px; height:600px;"></div>
+  <div id="container1" style="width:900px; height:600px;"></div>
 <% else %>
   <h4> The instructor has not yet ended the quiz. Check back here to review question after the quiz is complete. </h4> 
 <% end %>
 
 
 
-
-
- <script type="text/javascript" charset-"utf-8">
+<script type="text/javascript" charset-"utf-8">
 $(function () {
-        $('#container').highcharts({
+        $('#container1').highcharts({
             chart: {
-                type: 'line',
-                inverted: true,
+                type: 'column',
+                inverted: false,
                 marginRight: 130,
                 marginBottom: 100
             },
@@ -59,6 +57,18 @@ $(function () {
                     color: '#808080'
                 }]
             },
+            plotOptions: {
+              series: {
+                cursor: 'pointer',
+                point: {
+                    events: {
+                        click: function() {
+                            location.href = this.options.url;
+                        }
+                    }
+                }
+            }
+        },
             tooltip: {
                 valueSuffix: '%'
             },
@@ -71,13 +81,10 @@ $(function () {
                 borderWidth: 0
             },
             series: [{
-                name: 'Score',
-                data: <%=raw @quiz.performance_by_question %>
-
-            }]
+              data: <%= raw @quiz.question_paths %>
+          }]
         });
     });
 </script>
-
 
 
