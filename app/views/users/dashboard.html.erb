@@ -1,5 +1,62 @@
 
 <% if current_user.role?(:instructor) %>
+<!--             <head>
+            <link rel="stylesheet" href="liteAccordion.css">
+            </head>
+            <body>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+                <script type="text/javascript" src="../javascripts/liteaccordion.jquery.js"></script>     
+
+            </body> -->
+
+            <div id='container' class='container'>
+                <ol>
+                    <li>
+                        <h2 style="height: 200px; color:#F39C12;" class=""><span>Pending</span></h2>
+                        <div></div>
+                    </li>
+                    <li>
+                        <h2><span>Active</span></h2>
+                        <div id = 'active'></div>
+                    </li>
+                    <li>
+                        <h2><span>Finalized</span></h2>
+                        <div></div>
+                    </li>
+                    <li>
+                        <h2><span>Completed</span></h2>
+                        <div></div>
+                    </li>
+                    <li>
+                        <h2><span>Slide Five</span></h2>
+                        <div></div>
+                    </li>
+                </ol>
+                <noscript>
+                    <p>Please enable JavaScript to get the full experience.</p>
+                </noscript>
+            </div>
+
+          <script>
+              $(function() {
+                $('#container').liteAccordion();
+                });
+            </script>
+
+            <script>$('#active').liteAccordion({
+    theme : 'dark',
+    rounded : true,
+    enumerateSlides : true,
+    firstSlide : 2,
+    linkable : true,
+    easing: 'easeInOutQuart'
+});
+</script>
+<script type="text/javascript" src="http://nicolahibbert.com/demo/liteAccordion/js/liteaccordion.jquery.js"></script>
+<link rel="stylesheet" href="liteAccordion.css">
+
+
+
 <div id="side-nav" class="todo mrm span2">
             <ul>
               <a href="/dashboard/active"><li class="side-item">
