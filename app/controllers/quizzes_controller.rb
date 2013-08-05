@@ -179,15 +179,20 @@ class QuizzesController < ApplicationController
 
 
   def score
-    # raise params.inspect
+    
     @quiz = Quiz.find(params[:id])
 
     if can? :update, @quiz
-      @user = User.find(params[:user_id])
+      if params[:user_id]
+        @user = User.find(params[:user_id]) 
+      else
+        @user = current_user
+      end
     else
       @user = current_user
     end    
     @score = @user.score(@quiz)
+    # raise params.inspect
   end
 
   def set_status
