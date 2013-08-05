@@ -35,8 +35,10 @@
               </li></a>
             </ul>
           </div>
+<br>
 
 <div class="offset2">
+
  <h3>Welcome to InstaQuiz!</h3>
 <br>
       <div id="active" class="well quiz-box">
@@ -54,6 +56,8 @@
       <div id="completed" class="well quiz-box">
         <h4><a href="/dashboard/completed">Completed: <%= completed = Quiz.where(:instructor => current_user.id, :status => "completed").count %></h4></a>
       </div>
+         <%= link_to 'Info', info_user_path %>
+
 <% elsif current_user.role?(:student) %>
 <div id="side-nav" class="todo mrm span2">
             <ul>
@@ -90,6 +94,7 @@
               </li></a>
             </ul>
           </div>
+         
  <div class="offset2">
  <h3>Welcome to InstaQuiz!</h3>
         <hr>
