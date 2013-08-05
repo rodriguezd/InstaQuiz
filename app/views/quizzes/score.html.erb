@@ -12,8 +12,7 @@
     </div>  
   </div>
   <h3> <%= @quiz.name %> Quiz </h3>
-<% end %>
-<% if current_user.role?(:student) %>
+<% elsif current_user.role?(:student) %>
   <h3> Your score for the <%= @quiz.name %> quiz! </h3>
   <h5><%= number_to_percentage(@score, precision: 1)%></h5>
 <% end %>
@@ -23,6 +22,7 @@
 <%# end %>
 <% if @quiz.status == 'completed' %>
   <%= render 'review' %>
+  <div id="container" style="width:900px; height:600px;"></div>
 <% else %>
   <h4> The instructor has not yet ended the quiz. Check back here to review question after the quiz is complete. </h4> 
 <% end %>
@@ -31,6 +31,53 @@
 
 
 
+ <script type="text/javascript" charset-"utf-8">
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'line',
+                inverted: true,
+                marginRight: 130,
+                marginBottom: 100
+            },
+            title: {
+                text: 'Quiz Scores',
+                x: -20 //center
+            },
+
+            xAxis: {
+              
+                categories: <%=raw @quiz.question_numbers %>
+            },
+            yAxis: {
+                title: {
+                    text: 'Percentage'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '%'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Score',
+                data: <%=raw @quiz.performance_by_question %>
+
+            }]
+        });
+    });
+</script>
 
 
 
