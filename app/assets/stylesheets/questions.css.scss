@@ -13,3 +13,8 @@ div.inline {
 .spacer {
   margin: 50px;
 }
+
+ol {
+  /*overflow: hidden;*/
+  clear: left;
+}
