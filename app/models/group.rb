@@ -13,6 +13,9 @@
 class Group < ActiveRecord::Base
   attr_accessible :code, :instructor, :name
 
+  validates_presence_of :name
+  validates_uniqueness_of :name
+
   has_many :group_users
   has_many :users, :through => :group_users, :uniq => true
 
@@ -43,7 +46,7 @@ class Group < ActiveRecord::Base
 
 #   def grade_quiz_for_chart(quiz)
 #     hash = Hash.new
-#     self.users.collect do |student| 
+#     self.users.collect do |student|
 #       if student.grade(@group) > 0
 #         hash[student.name] = student.grade(@group)
 #       end
