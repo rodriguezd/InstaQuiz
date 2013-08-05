@@ -11,13 +11,21 @@ div.quiz-box{
   padding: 10px;
 }
 
-div.quiz-dashboard{
-  margin-left: 140px;
+
+div.accordion{
+  margin: 10px !important;
 }
 
 div.quiz.well{
   margin: 5px auto 5px auto;
-  vertical-align: middle;
+  vertical-align: middle !important;
+  height: 100px;
+  padding: 10px;
+  width: 90%;
+}
+
+div.quiz.well:hover{
+  box-shadow: 10px 10px 5px #888;
 }
 
 h6.for-dash{

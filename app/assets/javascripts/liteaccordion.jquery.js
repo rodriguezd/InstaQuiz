@@ -11,14 +11,14 @@
 *
 **************************************************/
 
-;(function($) {
+$(function() {
 
     var LiteAccordion = function(elem, options) {
 
         var defaults = {
-            containerWidth : 960,                   // fixed (px)
-            containerHeight : 320,                  // fixed (px)
-            headerWidth : 48,                       // fixed (px)
+            containerWidth : 900,                   // fixed (px)
+            containerHeight : 500,                  // fixed (px)
+            headerWidth : 60,                       // fixed (px)
 
             activateOn : 'click',                   // click or mouseover
             firstSlide : 1,                         // displays slide (n) on page load
@@ -31,8 +31,8 @@
             cycleSpeed : 6000,                      // time between slide cycles
             easing : 'swing',                       // custom easing function
 
-            theme : 'basic',                        // basic, dark, light, or stitch
-            rounded : false,                        // square or rounded corners
+            theme : 'stitch',                        // basic, dark, light, or stitch
+            rounded : true,                        // square or rounded corners
             enumerateSlides : false,                // put numbers on slides
             linkable : false                        // link slides via hash
         },

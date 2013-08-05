@@ -1,25 +1,14 @@
  <%= current_user.quizzes.each do |q| %>
-<% if current_user.role?(:instructor) %>
-<!--             <head>
-            <link rel="stylesheet" href="liteAccordion.css">
-            </head>
-            <body>
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-                <script type="text/javascript" src="../javascripts/liteaccordion.jquery.js"></script>     
-
-            </body> -->
-          <div>
-            <div id='container' class='container'>
+            <div id='container' class='accordion'>
                 <ol>
                     <li>
-                        <h2 style="height: 200px; color:#F39C12;" class=""><span>Pending</span></h2>
-                        <div>
-
-                          <h6 class="for-dash"><%= link_to q.name, quiz_path(q) %></h6>
-                <%= link_to 'Delete', q, method: :delete, class: "span1.5 quiz-link btn btn-primary", data: { confirm: 'Are you sure?' } %>
-                <%= link_to 'Deactivate', set_status_quiz_path(q, :status => "finalized"), class: "span1.5 quiz-link btn btn-primary", data: { confirm: 'Are you sure?' } %>
-                      <a class="span1.5 quiz-link btn btn-primary" href="<%=results_quiz_path(q)%>">Live updates</a>
-
+                        <h2><span>Pending</span></h2>
+                        <div id="pending" class="quizzes">
+                          <div class="quiz well">
+                            <h6 class="for-dash"><%= link_to q.name, quiz_path(q) %></h6>
+                            <%= link_to 'Delete', q, method: :delete, class: "span1.5 quiz-link btn btn-primary", data: { confirm: 'Are you sure?' } %>
+                            <a class="span1.5 quiz-link btn btn-primary" href="<%=review_quiz_questions_path(q)%>">View Submitted Questions</a>
+                          </div>
                         </div>
                     </li>
                     <li>
@@ -32,27 +21,21 @@
                     </li>
                     <li>
                         <h2><span>Completed</span></h2>
-                        <div>                    
-                        <h6 class="for-dash"><%= link_to q.name, quiz_path(q) %></h6>
-                        <%= link_to 'Delete', q, method: :delete, class: "span1.5 quiz-link btn btn-primary", data: { confirm: 'Are you sure?' } %>
-                          <a class="span1.5 quiz-link btn btn-primary" href="<%=results_quiz_path(q)%>">Results</a></div>
+                        <div id="completed" class="quizzes">
+                          <div class="quiz well">
+                            <h6 class="for-dash"><%= link_to q.name, quiz_path(q) %></h6>
+                            <%= link_to 'Delete', q, method: :delete, class: "span1.5 quiz-link btn btn-primary", data: { confirm: 'Are you sure?' } %>
+                            <a class="span1.5 quiz-link btn btn-primary" href="<%=results_quiz_path(q)%>">Results</a>
+                          </div>
+                        </div>
                      </li>
-
                 </ol>
-                <noscript>
-                    <p>Please enable JavaScript to get the full experience.</p>
-                </noscript>
-            </div>
-          </d>
+                <noscript><p>Please enable JavaScript to get the full experience.</p></noscript>
+          </div>
           <script>
               $(function() {
                 $('#container').liteAccordion();
                 });
             </script>
 
-<script type="text/javascript" src="http://nicolahibbert.com/demo/liteAccordion/js/liteaccordion.jquery.js"></script>
-<link rel="stylesheet" href="liteAccordion.css">
-
-  <% end %>
-  <% end %>
-</div>
+    <% end %>
