@@ -90,6 +90,17 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
+    if current_user.role?(:instructor)
+      @active = Quiz.where(:status => "active", :instructor => current_user.id)
+      @pending = Quiz.where(:status => "pending", :instructor => current_user.id)
+      @completed = Quiz.where(:status => "completed", :instructor => current_user.id)
+      @finalized = Quiz.where(:status => "finalized", :instructor => current_user.id)
+    elsif current_user.role?(:student)
+      @active = @user.quizzes.where(:student_quizzes => {:quiz_status => "active"})
+      @pending = @user.quizzes.where(:student_quizzes => {:quiz_status => "active"})
+      @completed = @user.quizzes.where(:student_quizzes => {:quiz_status => "active"})
+      @question_submitted = @user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"})
+    end
   end
 
   def dashboard_status

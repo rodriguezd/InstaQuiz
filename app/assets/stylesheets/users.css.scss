@@ -9,11 +9,16 @@
 div.quiz-box{
   text-align: center;
   padding: 10px;
+  margin: 10px 0px 10px 0px !important;
 }
 
+div.quizzes{
+  overflow-y:auto;
+}
 
 div.accordion{
   margin: 10px !important;
+  overflow-y: auto !important;
 }
 
 div.quiz.well{
@@ -67,7 +72,7 @@ a {
 }
 
 #wrapper {
-  padding-top: 30px;
+  padding-top: 10px;
   margin-bottom: 40px;
   background-color:rgb(254,254,254);
   overflow-y:auto;
