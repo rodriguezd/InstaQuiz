@@ -40,3 +40,12 @@ input[type="radio"].choice-set {
 #redcarpet {
   display: inline-block;
 }
+
+$('#active').liteAccordion({
+    theme : 'dark',
+    rounded : true,
+    enumerateSlides : true,
+    firstSlide : 2,
+    linkable : true,
+    easing: 'easeInOutQuart'
+});
