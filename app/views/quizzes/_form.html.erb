@@ -20,7 +20,7 @@
   </div>
   <br>
   <div class="field">
-    <%= label_tag :copy, 'Copy exiting quiz? (Select below)' %><br />
+    <%= label_tag :copy, 'Copy existing quiz? (Select below)' %><br />
     <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :include_blank => true %>
   </div>
   <br>

@@ -9,7 +9,7 @@ Openexam2::Application.routes.draw do
   post '/groups/join' => 'groups#join', :as => :group_join
   get '/groups/:id/list_members' => 'groups#list_members', :as => :list_members
 
-  resources :users do
+  resources :users, :except => [:index] do 
     get 'dashboard', on: :member
     get 'myprofile', on: :member
     get 'info', on: :member
@@ -18,7 +18,7 @@ Openexam2::Application.routes.draw do
 
   put 'questions/approve', :to => 'questions#approve'
 
-  resources :questions do
+  resources :questions, :except => [:index] do
     get 'chart', on: :member
   end
 
