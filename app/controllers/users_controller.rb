@@ -90,6 +90,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
+    @transparent = true
     if current_user.role?(:instructor)
       @active = Quiz.where(:status => "active", :instructor => current_user.id)
       @pending = Quiz.where(:status => "pending", :instructor => current_user.id)

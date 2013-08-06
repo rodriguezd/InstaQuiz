@@ -17,8 +17,10 @@ div.quizzes{
 }
 
 div.accordion{
-  margin: 10px !important;
-  overflow-y: auto !important;
+  margin: 0 auto !important;
+  // overflow-y: auto !important;
+  //overflow-y: hidden;
+
 }
 
 div.quiz.well{
@@ -75,9 +77,18 @@ a {
   padding-top: 10px;
   margin-bottom: 40px;
   background-color:rgb(254,254,254);
-  overflow-y:auto;
+  overflow-y: hidden;
   width: 80%;
+  min-width: 965px;
   height: 800px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+#wrapper.transparent {
+  background: none;
+  background-color: none;
 }
 
 #loggedin{
