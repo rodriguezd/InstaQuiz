@@ -25,12 +25,14 @@
   </div>
   <p>Clone existing quiz</p>
   <div class="field">
-    <%#= label_tag :copy, 'Copy existing quiz? (Select below)' %><br />
-    <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select quiz to clone', :id => "clone_select" %>
+    <td><%= label_tag :copy, 'Quiz to duplicate', :class => "clone_select" %></td>
+    <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select quiz to duplicate', :class => "clone_select" %>
   </div>
+  <div class="field">
   <%= label_tag 'num_choices', 'Number of answer choices', :class => "num_choices" %>
   <%= select_tag 'num_choices', "<option>2</option><option>3</option><option selected='selected'>4</option><option>5</option><option>6</option>".html_safe, :class => "num_choices" %>
-  <br><br>
+  </div>
+  <br>
   Groups<br><br>
   <table>
 
@@ -42,12 +44,6 @@
   <% end %>
   </table>
   <br>
-
-  <!-- <div class="field">
-    <%#= f.label :deadline %><br />
-    <%#= f.datetime_select :deadline %>
-  </div> -->
-
   <p>Date: <input name="deadline_date" type="text" id="datepicker" /></p>
   <br>
   <p>Time: <input name="deadline_time" type="text" id="timepicker" /></p>
