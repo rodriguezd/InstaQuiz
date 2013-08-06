@@ -43,7 +43,6 @@ class QuizzesController < ApplicationController
   # POST /quizzes
   # POST /quizzes.json
   def create
-    debugger
     @quiz = Quiz.new(params[:quiz])
     @quiz.num_choices = params[:num_choices]
     @quiz.deadline_date = params[:deadline_date]
