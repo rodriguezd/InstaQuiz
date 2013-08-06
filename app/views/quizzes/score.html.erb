@@ -1,16 +1,19 @@
 <!-- score.html.erb -->
 
 <% if current_user.role?(:instructor) %>
-  <div class="container">  
-    <div class="row">  
-      <div class="span8">  
-        <ul class="nav nav-pills">    
-          <li class="<%= 'active' if params[:action] == 'results' %> "><a href="<%= results_quiz_path(@quiz) %>">Students</a></li>  
-          <li class="<%= 'active' if params[:action] == 'score' %> "><a href="<%= score_quiz_path(@quiz) %>">Questions</a></li>   
-        </ul>  
-      </div>  
-    </div>  
+<div class="container">
+  <div class="row">
+    <div class="span8">
+      <ul class="nav nav-pills">
+        <li class="<%= 'active' if params[:action] == 'overview' %> "><a href="<%= overview_quiz_path(@quiz) %>">Overview</a></li>
+        <li class="<%= 'active' if params[:action] == 'chart' %> "><a href="<%= chart_quiz_path(@quiz) %>">Charts</a></li>
+        <li class="<%= 'active' if params[:action] == 'results' %> "><a href="<%= results_quiz_path(@quiz) %>">Students</a></li>
+        <li class="<%= 'active' if params[:action] == 'score' %> "><a href="<%= score_quiz_path(@quiz) %>">Questions</a></li>
+      </ul>
+    </div>
   </div>
+</div>
+
   <h3> <%= @quiz.name %> Quiz </h3>
 <% elsif current_user.role?(:student) %>
   <h3> Your score for the <%= @quiz.name %> quiz! </h3>
@@ -26,65 +29,3 @@
 <% else %>
   <h4> The instructor has not yet ended the quiz. Check back here to review question after the quiz is complete. </h4> 
 <% end %>
-
-
-
-<script type="text/javascript" charset-"utf-8">
-$(function () {
-        $('#container1').highcharts({
-            chart: {
-                type: 'column',
-                inverted: false,
-                marginRight: 130,
-                marginBottom: 100
-            },
-            title: {
-                text: 'Quiz Scores',
-                x: -20 //center
-            },
-
-            xAxis: {
-              
-                categories: <%=raw @quiz.question_numbers %>
-            },
-            yAxis: {
-                title: {
-                    text: 'Percentage'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            plotOptions: {
-              series: {
-                cursor: 'pointer',
-                point: {
-                    events: {
-                        click: function() {
-                            location.href = this.options.url;
-                        }
-                    }
-                }
-            }
-        },
-            tooltip: {
-                valueSuffix: '%'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -10,
-                y: 100,
-                borderWidth: 0
-            },
-            series: [{
-              data: <%= raw @quiz.question_paths %>
-          }]
-        });
-    });
-</script>
-
-

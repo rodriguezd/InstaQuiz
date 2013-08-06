@@ -6,6 +6,16 @@
   color: red;
 }
 
+li.overview:hover{
+  text-decoration: underline;
+}
+
+div#main{
+  //overflow-y: auto !important;
+  //overflow: scroll;
+  //overflow: visible;
+}
+
 div.quiz-box{
   text-align: center;
   padding: 10px;
@@ -18,8 +28,8 @@ div.quizzes{
 
 div.accordion{
   margin: 0 auto !important;
-  // overflow-y: auto !important;
-  //overflow-y: hidden;
+  overflow-y: auto !important;
+  overflow-y: hidden;
 
 }
 
@@ -77,7 +87,7 @@ a {
   padding-top: 10px;
   margin-bottom: 40px;
   background-color:rgb(254,254,254);
-  overflow-y: hidden;
+  overflow-y: auto;
   width: 80%;
   min-width: 965px;
   height: 800px;

@@ -33,6 +33,7 @@ Openexam2::Application.routes.draw do
       get 'set_status', on: :member
       get 'results', on: :member
       get 'chart', on: :member
+      get 'overview', on: :member
       get 'submitted_questions', :on => :member
       resources :questions do
         collection do
