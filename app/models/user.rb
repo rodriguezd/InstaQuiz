@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
       correct = questions.first.answers.collect{ |answer| answer.choice.correct ? 1 : nil}.compact.size
      if total_answers > 0
        score = ((correct/total_answers.to_f)*100).round
-       "#{score}%"
+       score
       end
     end
   end
