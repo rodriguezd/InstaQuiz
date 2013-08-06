@@ -45,10 +45,10 @@
                 <% @completed.each do |q| %>
                 <div class="quiz well">
                 <a class="span1.5 quiz-link btn btn-primary" href="<%=results_quiz_path(q)%>">Results</a>
-                  <h4 class="for-dash"><%= link_to q.name, quiz_path(q) %></h4><br>
+                  <h3 class="for-dash"><%= link_to q.name, quiz_path(q) %></h3>
                   <text>Questions: <%= q.questions.count %></text></br>
                   <text>Groups: <%= q.groups.name %></text></br>
-                  <text>Number of Quizzes: <%= q.results.count %></text>
+                  <text>Quizzes Submitted: <%= q.results.count %></text>
                    <%= link_to '✘', q, method: :delete, class: "span1.5 quiz-link  ", data: { confirm: 'Are you sure?' } %> <br><br>
                 </div>
                 <% end %>
@@ -72,7 +72,7 @@
                 <div class="quiz well">
                   <h6 class="for-dash"><%= q.name %></h6>
                   <a class="span1.5 quiz-link btn btn-primary" href="<%=new_quiz_question_path(q)%>">
-                        Submit questions</a></div>
+                        Submit questions</a>
                 </div>
                 <% end %>
               </div>
@@ -83,18 +83,18 @@
                 <% @active.each do |q| %>
                 <div class="quiz well">
                     <h6 class="for-dash"><%= q.name %></h6>
-                    <a class="span1.5 quiz-link btn btn-primary" href="<%=take_quiz_path(q)%>"><u>Take Quiz</a>
+                    <a class="span1.5 quiz-link btn btn-primary" href="<%=take_quiz_path(q)%>">Take Quiz</a>
                 </div>
                 <% end %>
               </div>
           </li>
           <li>
-              <h2><span>Question Submitted:<%= questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"}).count %></span><h>
+              <h2><span>Question Submitted:<%= questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"}).count %></span></h2>
               <div id="question_submitted" class="quizzes">
                 <% @question_submitted.each do |q| %>
                 <div class="quiz well">
                   <h6 class="for-dash"><%= q.name %></h6>
-                  <a class="span1.5 quiz-link btn btn-primary" href="<%=submitted_questions_quiz_path(q)%>">Edit Questions</a></div>
+                  <a class="span1.5 quiz-link btn btn-primary" href="<%=submitted_questions_quiz_path(q)%>">Edit Questions</a>
                 </div>
                 <% end %>
               </div>
@@ -105,7 +105,7 @@
                 <% @completed.each do |q| %>
                 <div class="quiz well">
                   <h6 class="for-dash"><%= q.name %></h6>
-                  <a class="span1.5 quiz-link btn btn-primary" href="<%=score_quiz_path(q)%>"><u>See score</a>
+                  <a class="span1.5 quiz-link btn btn-primary" href="<%=score_quiz_path(q)%>">See score</a>
                 </div>
                 <% end %>
               </div>
