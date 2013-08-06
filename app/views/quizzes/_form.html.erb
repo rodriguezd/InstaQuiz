@@ -26,9 +26,11 @@
   <p>Clone existing quiz</p>
   <div class="field">
     <%#= label_tag :copy, 'Copy existing quiz? (Select below)' %><br />
-    <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select Group', :id => "clone_select" %>
+    <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select quiz to clone', :id => "clone_select" %>
   </div>
-  <br>
+  <%= label_tag 'num_choices', 'Number of answer choices', :class => "num_choices" %>
+  <%= select_tag 'num_choices', "<option>2</option><option>3</option><option selected='selected'>4</option><option>5</option><option>6</option>".html_safe, :class => "num_choices" %>
+  <br><br>
   Groups<br><br>
   <table>
 

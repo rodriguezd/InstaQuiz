@@ -10,12 +10,15 @@ $(function() {
   $("#clone_check_box").change(function(){
     if(this.checked) {
       $("#clone_select").show();
+      $(".num_choices").hide();
     }
     else {
       $("#clone_select").hide();
+      $(".num_choices").show();
     }
-
   });
+
+
 
 
 });
