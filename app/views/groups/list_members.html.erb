@@ -1,11 +1,16 @@
-<h4>Group Members</h4>
-<br>
-<% if !@members.empty? %>
-<ol>
-<% @members.each do |member|%>
-  <li><%= member.name %></li>
-<% end %>
-</ol>
+<h4>Members of <%= @group.name %></h4>
+<% if !@group.users.empty? %>
+
+    <ol>
+      <% @group.users.each do |member|%>
+        <li>
+          <span class="wide200"><%= member.name %></span>
+          <span class="wide80"><%= 'avg grade' %></span>
+          <span class="wide200"><%= link_to 'Remove Student', remove_student_path(@group, member) %></span>
+        </li>
+      <% end %>
+    </ol>
+
 <% else %>
-<h5>No members for this group</h5>
+  <h5>No members for this group</h5>
 <% end %>

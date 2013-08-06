@@ -94,7 +94,7 @@ class GroupsController < ApplicationController
   end
 
   def list_members
-    @members = Group.find(params[:id]).users
+    @group = Group.find(params[:id])
 
   end
 
@@ -105,6 +105,12 @@ class GroupsController < ApplicationController
   def leave
     GroupUser.where(:user_id => current_user.id, :group_id => params[:id]).pop.destroy
     redirect_to :action => :index
+  end
+
+  def remove_student
+    # debugger
+    GroupUser.where(:user_id => params[:student_id], :group_id => params[:id]).pop.destroy
+    redirect_to list_members_path(params[:id])
   end
 
   private

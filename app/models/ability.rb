@@ -5,7 +5,7 @@ class Ability
     user ||= User.new #user not logged in
 
     if user.role?(:instructor)
-        
+
         can :create, Quiz
 
         can :create, Question
@@ -14,13 +14,13 @@ class Ability
 
         can :manage, Quiz do |quiz|
             quiz.instructor == user.id
-        end 
+        end
 
         can [:update, :destroy, :read, :review, :approve, :chart], Question do |question|
             Quiz.find(question.quiz_id).instructor == user.id
         end
 
-        can [:update, :destroy, :read, :grade, :chart, :list_members], Group do |group|
+        can [:update, :destroy, :read, :grade, :chart, :list_members, :remove_student], Group do |group|
             group.instructor == user.id
         end
 
@@ -28,13 +28,13 @@ class Ability
         # can [:read], Quiz, :student_quizzes => {:quiz_status => true}
         # Group.joins(:group_users).where(:group_users => {:user_id => user.id})
 
-        # a lot of these need to (or at least should) be according to whether 
+        # a lot of these need to (or at least should) be according to whether
         # or not the student belongs to the group that the quiz or question belongs to
 
         can [:create, :chart], Question # chart doesn't really belong here
         can [:edit, :update, :read], Question, :user_id => user.id
         can [:take, :answers, :score, :submitted_questions, :chart], Quiz
-        can :show, Quiz, :student_quizzes => {:quiz_status => "completed"} 
+        can :show, Quiz, :student_quizzes => {:quiz_status => "completed"}
         can [:read, :leave, :join], Group
         # can [:update, :create], Answer
       end

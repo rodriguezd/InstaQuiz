@@ -3,13 +3,15 @@ Openexam2::Application.routes.draw do
   resources :groups do
     get 'grade', on: :member
     get 'chart', on: :member
-    get 'leave', :on => :member, :as => :leave
+    get 'leave', on: :member, :as => :leave
   end
+
+  get '/groups/:id/remove_student/:student_id' => 'groups#remove_student', :as => :remove_student
 
   post '/groups/join' => 'groups#join', :as => :group_join
   get '/groups/:id/list_members' => 'groups#list_members', :as => :list_members
 
-  resources :users, :except => [:index] do 
+  resources :users, :except => [:index] do
     get 'dashboard', on: :member
     get 'myprofile', on: :member
     get 'info', on: :member
