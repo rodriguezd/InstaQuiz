@@ -3,15 +3,14 @@
     A quiz must be assigned to at least one group. You currently have no groups. Create groups by going to MyGroups in the navigation bar.
   <% else %>
   <% if @quiz.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
-
-      <ul>
-      <% @quiz.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+      <div id="error_explanation">
+        <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+        <ul>
+          <% @quiz.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
   <% end %>
 
   <div class="field">
@@ -23,32 +22,32 @@
       <%= hidden_field_tag 'clone', nil %>
       <%= check_box_tag 'clone', true, false, :id => "clone_check_box"%>
   </div>
-  <p>Clone existing quiz</p>
+  <p>Duplicate existing quiz</p>
   <div class="field">
-    <td><%= label_tag :copy, 'Quiz to duplicate', :class => "clone_select" %></td>
+    <%= label_tag :copy, 'Quiz to duplicate', :class => "clone_select" %>
     <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select quiz to duplicate', :class => "clone_select" %>
   </div>
   <div class="field">
-  <%= label_tag 'num_choices', 'Number of answer choices', :class => "num_choices" %>
-  <%= select_tag 'num_choices', "<option>2</option><option>3</option><option selected='selected'>4</option><option>5</option><option>6</option>".html_safe, :class => "num_choices" %>
+    <%= label_tag 'num_choices', 'Number of answer choices', :class => "num_choices" %>
+    <%= select_tag 'num_choices', "<option>2</option><option>3</option><option selected='selected'>4</option><option>5</option><option>6</option>".html_safe, :class => "num_choices" %>
   </div>
   <br>
   Groups<br><br>
+  <%#= select_tag 'group_code[]', options_from_collection_for_select(Group.where(:instructor => current_user.id), :code, :name), :multiple => true, :size => 8, :prompt => 'Select group(s)' %>
   <table>
-
-  <% Group.where(:instructor => current_user.id).each do |group| %>
-    <tr>
-      <td><%= label_tag 'group_code[]', group.name %></td>
-      <td><%= check_box_tag 'group_code[]', group.code, @quiz.groups.any?{|grp| grp.code == group.code} %></td>
-    </tr>
-  <% end %>
+    <% Group.where(:instructor => current_user.id).each do |group| %>
+     <tr>
+        <td><%= label_tag 'group_code[]', group.name %></td>
+        <td class="check_cell"><%= check_box_tag 'group_code[]', group.code, @quiz.groups.any?{|grp| grp.code == group.code} %></td>
+      </tr>
+    <% end %>
   </table>
   <br>
   <p>Date: <input name="deadline_date" type="text" id="datepicker" /></p>
   <br>
   <p>Time: <input name="deadline_time" type="text" id="timepicker" /></p>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :instructions %><br />
     <%= f.text_field :instructions %>
   </div>
@@ -57,9 +56,5 @@
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
   </div>
+  <% end %>
 <% end %>
-<% end %>
-
- <script>
-// $("#datepicker").datepicker();
- </script>
