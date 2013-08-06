@@ -45,6 +45,7 @@ class QuizzesController < ApplicationController
   def create
     debugger
     @quiz = Quiz.new(params[:quiz])
+    @quiz.num_choices = params[:num_choices]
     @quiz.deadline_date = params[:deadline_date]
     @quiz.deadline_time = params[:deadline_time]
     @quiz.instructor = current_user.id
