@@ -2,18 +2,19 @@
 #
 # Table name: quizzes
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  instruction :text
-#  deadline    :datetime
-#  status      :string(255)
-#  instructor  :integer
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  instructions  :text
+#  status        :string(255)
+#  instructor    :integer
+#  deadline_date :date
+#  deadline_time :time
 #
 
 class Quiz < ActiveRecord::Base
-  attr_accessible :name, :instruction, :deadline, :status, :instructor
+  attr_accessible :name, :instructions, :deadline_date, :deadline_time, :status, :instructor
 
   has_many :questions
   has_many :answers

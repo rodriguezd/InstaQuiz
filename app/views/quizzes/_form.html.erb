@@ -15,13 +15,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Title" %>
     <%= f.text_field :name %>
   </div>
-  <br>
+
+  <div class="inline">
+      <%= hidden_field_tag 'clone', nil %>
+      <%= check_box_tag 'clone','clone', false, :id => "clone_check_box"%>
+  </div>
+  <p>Clone existing quiz</p>
   <div class="field">
-    <%= label_tag :copy, 'Copy existing quiz? (Select below)' %><br />
-    <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :include_blank => true %>
+    <%#= label_tag :copy, 'Copy existing quiz? (Select below)' %><br />
+    <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select Group', :id => "clone_select" %>
   </div>
   <br>
   Groups<br><br>
@@ -36,14 +41,18 @@
   </table>
   <br>
 
-  <div class="field">
-    <%= f.label :deadline %><br />
-    <%= f.datetime_select :deadline %>
-  </div>
+  <!-- <div class="field">
+    <%#= f.label :deadline %><br />
+    <%#= f.datetime_select :deadline %>
+  </div> -->
+
+  <p>Date: <input name="deadline_date" type="text" id="datepicker" /></p>
+  <br>
+  <p>Time: <input name="deadline_time" type="text" id="timepicker" /></p>
 
     <div class="field">
-    <%= f.label :instruction %><br />
-    <%= f.text_field :instruction %>
+    <%= f.label :instructions %><br />
+    <%= f.text_field :instructions %>
   </div>
 
 
@@ -52,3 +61,7 @@
   </div>
 <% end %>
 <% end %>
+
+ <script>
+// $("#datepicker").datepicker();
+ </script>

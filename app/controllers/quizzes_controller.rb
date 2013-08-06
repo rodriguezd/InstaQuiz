@@ -43,7 +43,10 @@ class QuizzesController < ApplicationController
   # POST /quizzes
   # POST /quizzes.json
   def create
+    debugger
     @quiz = Quiz.new(params[:quiz])
+    @quiz.deadline_date = params[:deadline_date]
+    @quiz.deadline_time = params[:deadline_time]
     @quiz.instructor = current_user.id
     params[:group_code].each do |code|
       @quiz.groups << Group.where(:code => code)
@@ -179,18 +182,18 @@ class QuizzesController < ApplicationController
 
 
   def score
-    
+
     @quiz = Quiz.find(params[:id])
 
     if can? :update, @quiz
       if params[:user_id]
-        @user = User.find(params[:user_id]) 
+        @user = User.find(params[:user_id])
       else
         @user = current_user
       end
     else
       @user = current_user
-    end    
+    end
     @score = @user.score(@quiz)
     # raise params.inspect
   end
