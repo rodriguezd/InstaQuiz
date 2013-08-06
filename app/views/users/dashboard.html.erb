@@ -45,7 +45,7 @@
                 <div class="quiz well">
                   <h6 class="for-dash"><%= link_to q.name, quiz_path(q) %></h6>
                   <%= link_to 'Delete', q, method: :delete, class: "span1.5 quiz-link btn btn-primary", data: { confirm: 'Are you sure?' } %>
-                  <a class="span1.5 quiz-link btn btn-primary" href="<%=results_quiz_path(q)%>">Results</a>
+                  <a class="span1.5 quiz-link btn btn-primary" href="<%=overview_quiz_path(q)%>">Results</a>
                 </div>
                 <% end %>
               </div>

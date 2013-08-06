@@ -226,7 +226,11 @@ class QuizzesController < ApplicationController
   def chart
     @quiz = Quiz.find(params[:id])
     @questions = @quiz.questions
-    @questions = Question.find(params[:id])
+    # @questions = Question.find(params[:id])
+  end
+
+  def overview
+    @quiz = Quiz.find(params[:id])
   end
 
   def questions_submitted

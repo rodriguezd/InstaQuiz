@@ -19,7 +19,6 @@
         <% if current_user.role?(:instructor) %>
           <li><a href="/quizzes/new">Create Quiz</a> </li>
         <% end %>
-        <li><a href="#">Settings</a> </li>
         <li><a href="/logout">Logout</a></li>
       <% end %>
     </div>
@@ -41,8 +40,8 @@
 </br>
 
 
-  <div class="container clearfix"  id="wrapper">
-      <div class="container-fluid">
+  <div class="container <% if @transparent %> transparent <% end %> clearfix"  id="wrapper">
+      <div id = "main" class="container-fluid">
         <%= yield %>
       </div>
     </div>
