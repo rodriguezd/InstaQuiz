@@ -22,9 +22,15 @@
 
     <ol type='a', class="review-set">
     <% question.choices.each do |choice| %>
-      <li>
-        <%= choice.content %> <%= " - Correct" if choice.correct %>
-      </li>
+      <% if choice.correct %>
+        <li>
+          <span class="correct"><%= choice.content %></span>
+        </li>
+      <% else %>
+        <li>
+          <%= choice.content %>
+        </li>
+      <% end %>
     <% end %>
   </ol>
 
