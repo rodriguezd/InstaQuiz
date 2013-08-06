@@ -10,10 +10,11 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(:name => params[:group][:name], :instructor => current_user.id, :code => generate_code)
+    # debugger
+    @group = Group.new(:name => params[:name], :instructor => current_user.id, :code => generate_code)
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        format.html { redirect_to groups_path, notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else
         format.html { render action: "new" }
