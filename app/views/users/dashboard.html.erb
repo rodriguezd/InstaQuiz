@@ -2,7 +2,7 @@
   <div id='container' class='accordion'>
       <ol>
           <li>
-              <h2><span>Pending</span></h2>
+              <h2><span>Pending: <%= pending = Quiz.where(:instructor => current_user.id, :status => "pending").count%></span></h2>
               <div id="pending" class="quizzes">
                 <% @pending.each do |q| %>
                 <div class="quiz well">
@@ -14,7 +14,7 @@
               </div>
           </li>
           <li>
-              <h2><span>Active</span></h2>
+              <h2><span>Active: <%= active = Quiz.where(:instructor => current_user.id, :status => "active").count %></span></h2>
               <div id="active" class="quizzes">
                 <% @active.each do |q| %>
                 <div class="quiz well">
@@ -27,7 +27,7 @@
               </div>
           </li>
           <li>
-              <h2><span>Finalized</span></h2>
+              <h2><span>Finalized: <%= finalized = Quiz.where(:instructor => current_user.id, :status => "finalized").count %></span></h2>
               <div id="finalized" class="quizzes">
                 <% @finalized.each do |q| %>
                 <div class="quiz well">
@@ -39,7 +39,7 @@
               </div>
           </li>
           <li>
-              <h2><span>Completed</span></h2>
+              <h2><span>Completed: <%= completed = Quiz.where(:instructor => current_user.id, :status => "completed").count %></span></h2>
               <div id="completed" class="quizzes">
                 <% @completed.each do |q| %>
                 <div class="quiz well">
@@ -62,7 +62,7 @@
   <div id='container' class='accordion'>
       <ol>
           <li>
-              <h2><span>Pending</span></h2>
+              <h2><span>Pending:<%= pending = current_user.quizzes.where(:student_quizzes => {:quiz_status => "pending"}).count %></span></h2>
               <div id="pending" class="quizzes">
                 <% @pending.each do |q| %>
                 <div class="quiz well">
@@ -74,7 +74,7 @@
               </div>
           </li>
           <li>
-              <h2><span>Active</span></h2>
+              <h2><span>Active:<%= active = current_user.quizzes.where(:student_quizzes => {:quiz_status => "active"}).count %></span></h2>
               <div id="active" class="quizzes">
                 <% @active.each do |q| %>
                 <div class="quiz well">
@@ -85,7 +85,7 @@
               </div>
           </li>
           <li>
-              <h2><span>Question Submitted</span></h2>
+              <h2><span>Question Submitted:<%= questions_submitted = current_user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"}).count %></span><h>
               <div id="question_submitted" class="quizzes">
                 <% @question_submitted.each do |q| %>
                 <div class="quiz well">
@@ -96,7 +96,7 @@
               </div>
           </li>
           <li>
-              <h2><span>Completed</span></h2>
+              <h2><span>Completed:<%= completed = current_user.quizzes.where(:student_quizzes => {:quiz_status => "completed"}).count %></span></h2>
               <div id="completed" class="quizzes">
                 <% @completed.each do |q| %>
                 <div class="quiz well">
