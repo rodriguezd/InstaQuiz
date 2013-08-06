@@ -9,15 +9,28 @@
 div.quiz-box{
   text-align: center;
   padding: 10px;
+  margin: 10px 0px 10px 0px !important;
 }
 
-div.quiz-dashboard{
-  margin-left: 140px;
+div.quizzes{
+  overflow-y:auto;
+}
+
+div.accordion{
+  margin: 10px !important;
+  overflow-y: auto !important;
 }
 
 div.quiz.well{
   margin: 5px auto 5px auto;
-  vertical-align: middle;
+  vertical-align: middle !important;
+  height: 100px;
+  padding: 10px;
+  width: 90%;
+}
+
+div.quiz.well:hover{
+  box-shadow: 10px 10px 5px #888;
 }
 
 h6.for-dash{
@@ -59,7 +72,7 @@ a {
 }
 
 #wrapper {
-  padding-top: 30px;
+  padding-top: 10px;
   margin-bottom: 40px;
   background-color:rgb(254,254,254);
   overflow-y:auto;
