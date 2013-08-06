@@ -24,12 +24,14 @@
     <%= f.label :content %><br />
     <%= f.text_area :content, :rows => 5, :class => "span5"  %>
   </div>
-  <div>
-    <%= label_tag 'choices[]', 'Choice 1: ' %>
-    <%= text_field_tag 'choices[]', @question.new_record? ? "" : @question.choices[0].content, :class => "span5"  %>
-    <%= radio_button_tag 'correct', 0, @question.new_record? ? false : @question.choices[0].correct %>
-  </div>
-  <div>
+  <% @quiz.num_choices.to_i.times do |i|%>
+    <div>
+      <%= label_tag 'choices[]', "Choice #{i + 1}: " %>
+      <%= text_field_tag 'choices[]', @question.new_record? ? "" : @question.choices[0].content, :class => "span5"  %>
+      <%= radio_button_tag 'correct', 0, @question.new_record? ? false : @question.choices[0].correct %>
+    </div>
+  <% end %>
+  <!-- <div>
     <%= label_tag 'choices[]', 'Choice 2: ' %>
     <%= text_field_tag 'choices[]', @question.new_record? ? "" : @question.choices[1].content, :class => "span5" %>
     <%= radio_button_tag 'correct', 1, @question.new_record? ? false : @question.choices[1].correct %>
@@ -43,7 +45,7 @@
     <%= label_tag 'choices[]', 'Choice 4: ' %>
     <%= text_field_tag 'choices[]', @question.new_record? ? "" : @question.choices[3].content, :class => "span5" %>
     <%= radio_button_tag 'correct', 3, @question.new_record? ? false : @question.choices[3].correct %>
-  </div>
+  </div> -->
 </br></br>
   <div class="actions">
     <%= f.submit 'Add Question', class: "btn btn-primary"%>

@@ -14,7 +14,7 @@
 #
 
 class Quiz < ActiveRecord::Base
-  attr_accessible :name, :instructions, :deadline_date, :deadline_time, :status, :instructor
+  attr_accessible :name, :instructions, :num_choices, :deadline_date, :deadline_time, :status, :instructor
 
   has_many :questions
   has_many :answers
@@ -56,7 +56,7 @@ class Quiz < ActiveRecord::Base
   end
 
 
-  def performance_by_question 
+  def performance_by_question
     self.questions.collect do |question|
       question.average(self)
     end
