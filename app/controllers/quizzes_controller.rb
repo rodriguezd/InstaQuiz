@@ -120,7 +120,7 @@ class QuizzesController < ApplicationController
     StudentQuiz.where(:quiz_id => params[:id]).each{|relation| relation.destroy}
 
     respond_to do |format|
-      format.html { redirect_to quizzes_url }
+      format.html { redirect_to dashboard_user_path }
       format.json { head :no_content }
     end
   end
