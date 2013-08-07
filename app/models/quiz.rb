@@ -62,12 +62,55 @@ class Quiz < ActiveRecord::Base
     end
   end
 
+  def contributor_count
+    count = 0
+    self.users.each do |user|
+      if user.questions.where(:quiz_id => self.id, :status => "approved").empty? == false
+        count += 1
+      end
+    end
+    count
+  end 
+
+  def hardest_question_author
+    hardest_hash = Hash.new
+    lowest = 100
+    name = ""
+
+    unless self.questions.empty?
+      self.questions.each do |question|
+        if question.user && question.user.class_average(self).to_i < lowest
+          lowest = question.user.class_average(self)
+          name = question.user.name
+        end
+      end
+      [name, lowest]
+    end
+  end
+
   def question_paths
     array = []
     self.questions.each do |question|
       array << "{ y: #{question.average(self)}, url: '/questions/#{question.id}/chart'}"
     end
     array.to_s.gsub('"', '')
+  end
+
+  def total_students
+    self.users.size
+  end
+
+  def students_submitted
+    submitted_student_hash = Hash.new
+    self.users.collect do |student|
+      unless student.results.where(:quiz_id => self.id).empty?
+        if student.results.where(:quiz_id => self.id).first.score > 0
+          submitted_student_hash[student.name] = student.results.where(:quiz_id => self.id).first.score
+        end
+      end
+    end
+    puts submitted_student_hash
+    submitted_student_hash.size
   end
 
   private

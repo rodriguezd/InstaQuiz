@@ -38,8 +38,12 @@ class Group < ActiveRecord::Base
       student_count = 0
       student_scores = 0
         quiz.users.where(:student_quizzes=>{:quiz_status=>"completed"}).each do |student|
-          student_scores = student_scores + student.results.where(:quiz_id => quiz.id)
-          student_count += 1
+          if student.role?(:student)
+            unless student.results.where(:quiz_id => quiz.id).empty?
+              student_scores = student_scores + student.results.where(:quiz_id => quiz.id).first.score
+              student_count += 1
+          end
+          end
         end
       (student_scores/student_count.to_f).ceil
   end
