@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-    <h2><%= @quiz.name %></h2>
+    <h2 style="float: left"><%= @quiz.name %></h2>
   <%# if can? :edit, @quizzes %>
-    <div style="float: left;position:relative;top: 11px">
+    <div id="quiz_edit">
       <%= link_to 'Edit', edit_quiz_path(@quiz) %>
     </div>
   <%# end %> </br>
   <div>
-  <p><b>Submission Deadline: </b><%= @quiz.deadline_date.strftime("%b %d, %Y")if !@quiz.deadline_date.nil? %><%= @quiz.deadline_time.strftime("%l:%M %p") if !@quiz.deadline_time.nil? %> </p>
+  <p class="clearLeft"><b>Submission Deadline: </b><%= @quiz.deadline_date.strftime("%b %d, %Y")if !@quiz.deadline_date.nil? %><%= @quiz.deadline_time.strftime("%l:%M %p") if !@quiz.deadline_time.nil? %> </p>
   <p><b>Instructions: </b><%= @quiz.instructions %></p>
   <p><b>Group(s): </b></p>
   </div>
@@ -49,6 +49,7 @@
 </ol>
 <span>
   <a href="<%= new_quiz_question_path(@quiz) %>" class="btn btn-primary" style="">Add Questions</a>
+  <a href="#" class="btn btn-primary" style="">Notify Students</a>
   <% if @quiz.questions.present? %>
   <a href="<%= review_quiz_questions_path(@quiz) %>" class="btn btn-primary">Return to Review</a>
   <a href="<%= set_status_quiz_path(@quiz, :status => "finalized") %>" class="btn btn-primary">Finalize</a>
