@@ -17,7 +17,7 @@ $(function() {
 
         var defaults = {
             containerWidth : 900,                   // fixed (px)
-            containerHeight : 700,                  // fixed (px)
+            containerHeight : 600,                  // fixed (px)
             headerWidth : 60,                       // fixed (px)
 
             activateOn : 'click',                   // click or mouseover
