@@ -1,56 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-    <h2><%= @quiz.name %></h2>
-  <%# if can? :edit, @quizzes %>
-    <div style="float: left;position:relative;top: 11px">
-      <%= link_to 'Edit', edit_quiz_path(@quiz) %>
-    </div>
-  <%# end %> </br>
-  <div>
-  <p><b>Submission Deadline: </b><%= @quiz.deadline_date.strftime("%b %d, %Y")if !@quiz.deadline_date.nil? %><%= @quiz.deadline_time.strftime("%l:%M %p") if !@quiz.deadline_time.nil? %> </p>
-  <p><b>Instructions: </b><%= @quiz.instructions %></p>
-  <p><b>Group(s): </b></p>
-  </div>
+    <%= render :partial => '/quizzes/quizheading' %>
 
-  <ul>
-    <% @quiz.groups.each do |group| %>
-    <li><%= group.name %> </li>
-    <% end %>
-  </ul>
-  <br>
-<ol>
-<% @quiz.questions.where(:status => "approved").each do |q| %>
+  <ol>
+  <% @quiz.questions.where(:status => "approved").each do |q| %>
 
-    <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
-    <li>
-    <% if @quiz.id.in?(1..4) %>
-      <%= question_parser(q.content) %>
-    <% else %>
-      <%= markdown (q.content)%>
-    <% end %>
-    </li>
-    <% if can? :edit, q %>
-      <%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %><br>
-    <% end %>
-    <ol type='a'>
-      <% q.choices.each do |choice| %>
-        <% if choice.correct %>
-        <li>
-          <span class="correct"><%= choice.content %></span>
-        </li>
+      <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
+      <li>
+      <% if @quiz.id.in?(1..4) %>
+        <%= question_parser(q.content) %>
       <% else %>
-        <li>
-          <%= choice.content %>
-        </li>
+        <%= markdown (q.content)%>
       <% end %>
+      </li>
+      <% if can? :edit, q %>
+        <%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %><br>
       <% end %>
-    </ol>
+      <ol type='a'>
+        <% q.choices.each do |choice| %>
+          <% if choice.correct %>
+          <li>
+            <span class="correct"><%= choice.content %></span>
+          </li>
+        <% else %>
+          <li>
+            <%= choice.content %>
+          </li>
+        <% end %>
+        <% end %>
+      </ol>
+      <% end %>
+  </ol>
+  <span>
+    <a href="<%= new_quiz_question_path(@quiz) %>" class="btn btn-primary" style="">Add Questions</a>
+    <% if @quiz.questions.present? %>
+    <a href="<%= review_quiz_questions_path(@quiz) %>" class="btn btn-primary">Return to Review</a>
+    <a href="<%= set_status_quiz_path(@quiz, :status => "finalized") %>" class="btn btn-primary">Finalize</a>
+  </span>
     <% end %>
-</ol>
-<span>
-  <a href="<%= new_quiz_question_path(@quiz) %>" class="btn btn-primary" style="">Add Questions</a>
-  <% if @quiz.questions.present? %>
-  <a href="<%= review_quiz_questions_path(@quiz) %>" class="btn btn-primary">Return to Review</a>
-  <a href="<%= set_status_quiz_path(@quiz, :status => "finalized") %>" class="btn btn-primary">Finalize</a>
-</span>
-  <% end %>
