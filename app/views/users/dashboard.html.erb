@@ -44,12 +44,12 @@
               <div id="completed" class="quizzes">
                 <% @completed.each do |q| %>
                 <div class="quiz well">
-                <a class="span1.5 quiz-link btn btn-primary" href="<%=overview_quiz_path(q)%>">Results</a>
-                  <h3 class="for-dash"><%= link_to q.name, quiz_path(q) %></h3>
-                  <text>Questions: <%= q.questions.count %></text></br>
-                  <text>Groups: <%= q.groups.name %></text></br>
-                  <text>Quizzes Submitted: <%= q.results.count %></text>
-                   <%= link_to '✘', q, method: :delete, class: "span1.5 quiz-link  ", data: { confirm: 'Are you sure?' } %> <br><br>
+                  <h5><%= link_to q.name, quiz_path(q) %></h5>
+<!--                   <text>Questions: <%= q.questions.count %></text></br>
+ -->                  <h6>Groups: <%= q.groups.name %></h6>
+           <!--        <text>Quizzes Submitted: <%= q.results.count %></text> -->
+                      <%= link_to image_tag('pie.png'), score_quiz_path(q), :class=>"span1.5 quiz-link  " %><br>
+                      <%= link_to '✘', q, method: :delete, class: "span1.5 quiz-link  ", data: { confirm: 'Are you sure?' } %> <br><br>
 
                 </div>
                 <% end %>
