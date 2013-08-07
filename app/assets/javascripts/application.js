@@ -18,3 +18,8 @@
 //= require highcharts-more
 //= bootstrap-multiselect
 //= require_tree .
+
+$(function() {
+  $("tr:even").css("background-color", "#EDEDED");
+
+});

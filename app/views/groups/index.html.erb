@@ -1,7 +1,7 @@
 <%= notice %>
 <h1>Your Groups</h1>
 
-<table>
+<table class="groups">
   <% if !@groups.empty? %>
     <% if current_user.role?(:instructor) %>
       <tr>
@@ -23,9 +23,9 @@
       <% end %>
     <% elsif current_user.role?(:student) %>
       <tr>
-        <th>Name</th>
-        <th>Instructor</th>
-        <th></th>
+        <th align="left" width="150px">Name</th>
+        <th align="left" width="150px">Instructor</th>
+        <th align="left" width="100px"></th>
       </tr>
 
       <% @groups.each do |group| %>
@@ -43,11 +43,19 @@
 <br><br>
 
 <% if current_user.role?(:student) %>
-  <%= render 'join_form' %>
+  <%= form_tag group_join_path do %>
+
+    <%= label_tag "group_code", "Join a new group:" %>
+    <%= text_field_tag :group_code, nil, :placeholder => 'Enter group code here' %>
+    <br>
+    <%= submit_tag "Join", class: "btn btn-primary" %>
+
+<% end %>
 <% end %>
 <% if current_user.role?(:instructor) %>
   <%= form_tag '/groups' do%>
     <%= text_field_tag :name, nil, :placeholder => 'Enter group name here' %>
+    <br>
     <%= button_tag "Add New Group", :class => "btn btn-primary" %>
   <% end %>
 <% end %>

@@ -20,7 +20,7 @@ $(function() {
 
 
     $('.multiselect').multiselect({
-      buttonClass: 'btn',
+      buttonClass: 'btn btn-primary',
       buttonWidth: 'auto',
       buttonContainer: '<div class="btn-group" />',
       maxHeight: false,
