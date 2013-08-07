@@ -31,9 +31,9 @@
   <% if @user.new_record? %>
   <div>
     Select role: <br><br>
-    <%= radio_button_tag 'role', 'student' %> Student <br>
+    <%= radio_button_tag 'role', 'student' %> <span id="role_label">Student </span><br>
 
-    <%= radio_button_tag 'role', 'instructor' %> Instructor
+    <%= radio_button_tag 'role', 'instructor' %> <span id="role_label">Instructor</span>
   </div>
   <% end %>
   <br>

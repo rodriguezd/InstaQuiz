@@ -9,16 +9,14 @@
         <th align="left" width="100px">Code</th>
         <!-- <th align="left" width="100px">Edit</th> -->
         <th align="left" width="100px"></th>
-        <th align="left" width="100px"></th>
       </tr>
 
     <% @groups.each do |group| %>
       <tr>
-        <td><%= link_to group.name, list_members_path(group) %></td>
+        <td><%= link_to group.name, grade_group_path(group) %></td>
         <td><%= group.code %></td>
         <!-- <td><%= link_to 'Edit', edit_group_path(group) %></td> -->
         <td><%= link_to 'Delete Group', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Grades', grade_group_path(group) %></td>
       </tr>
       <% end %>
     <% elsif current_user.role?(:student) %>

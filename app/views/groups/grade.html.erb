@@ -1,38 +1,31 @@
-<!-- grade.html.erb -->
 <div class="container">
-  <h3><%= @group.name %></h3>
+  <h4>Members of <%= @group.name %></h4>
 </div>
+<% if !@group.users.empty? %>
 
-<div class="container">  
-  <div class="row">  
-    <div class="span8">  
-      <ul class="nav nav-pills">    
-        <li class="<%= 'active' if params[:action] == 'grade' %> "><a href="<%= grade_group_path(@group) %>">Data</a></li>  
-        <li class="<%= 'active' if params[:action] == 'chart' %> "><a href="<%= chart_group_path(@group) %>">Chart</a></li>   
-      </ul>  
-    </div>  
-  </div>  
-</div>
-<div class="container">
-  <div class="span8">
-    <table>
+  <div class="container">
+    <a href="<%= chart_group_path(@group) %>" class="btn btn-primary">Group Performance</a>
+    <br><br>
+  </div>
+  <div class="container">
+    <div class="span8">
+      <table class="groups">
         <th width="20px" align="left"></th>
-        <th width="160px" align="left">Student name</th>
+        <th width="160px" align="left">Name</th>
         <th width="160px" align="left">Grade</th>
-        <th width="160px" align="left"># of Quizzes</th>
+        <th width="160px" align="left"></th>
 
         <% @group.users.each_with_index do |student, i| %>
-          <tr>
-            <td><%= i + 1 %>.</td>
-            <td><%= student.name %></td>
-            <td><%= student.grade(@group) %></td>
-            <td>TBD </td>
-          </tr>
-        <% end %>
-    </table>
+        <tr>
+          <td><%= i + 1 %>.</td>
+          <td><%= student.name %></td>
+          <td><%= student.grade(@group) %></td>
+          <td><%= link_to 'Remove Student', remove_student_path(@group, student) %></td>
+        </tr>
+          <% end %>
+      </table>
+    </div>
   </div>
-  <div class="span4">
-    
-    
-  </div>
-</div>
+<% else %>
+  <h5>No members for this group</h5>
+<% end %>

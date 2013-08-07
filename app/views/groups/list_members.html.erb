@@ -5,7 +5,6 @@
       <% @group.users.each do |member|%>
         <li>
           <span class="wide200"><%= member.name %></span>
-          <span class="wide80"><%= 'avg grade' %></span>
           <span class="wide200"><%= link_to 'Remove Student', remove_student_path(@group, member) %></span>
         </li>
       <% end %>
