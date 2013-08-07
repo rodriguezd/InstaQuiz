@@ -14,6 +14,12 @@ div.overview.well {
   margin-bottom: 10px;
 }
 
+div.chart{
+  width: 80%;
+  margin: auto;
+  height: 100%;
+}
+
 div.overview.well:hover{
   box-shadow: 5px 5px 5px #888;
 }
@@ -23,6 +29,7 @@ li.overview:hover{
 }
 
 div#main{
+  height: 600px;
   //overflow-y: auto !important;
   //overflow: scroll;
   //overflow: visible;
