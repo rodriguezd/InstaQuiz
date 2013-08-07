@@ -22,8 +22,8 @@
                 <div class="quiz well">
                 <div class="active-icons">
                     <%= link_to image_tag('ex.png'), q, method: :delete, class: "span1.5 quiz-link", data: { confirm: 'Are you sure?' } %>
-                    <%= link_to image_tag('deactivatehand.png'), set_status_quiz_path(q, :status => "finalized"), class: "span1.5 quiz-link", data: { confirm: 'Are you sure?' } %>
-                    <%= link_to image_tag('antenna1.png'), results_quiz_path(q, :status => "finalized"), class: "span1.5 quiz-link", data: { confirm: 'Are you sure?' } %>
+                    <%=link_to image_tag('deactivatehand.png'),set_status_quiz_path(q), :class=>"span1.5 quiz-link  " %>
+                     <%=link_to image_tag('antenna1.png'),results_quiz_path(q), :class=>"span1.5 quiz-link  " %>
                 </div>
                 <h6 class="for-dash"><%= link_to truncate(q.name, length: 20, separator: ' '), quiz_path(q) %></h6>
 
@@ -41,8 +41,6 @@
                     <%= link_to image_tag('ex.png'), q, method: :delete, class: "span1.5 quiz-link  ", data: { confirm: 'Are you sure?' } %> </div> 
                   <h5 class="for-dash"><%= link_to q.name, quiz_path(q) %></h5>
                   <h6>Groups: <%= q.groups.name %></h6>
-                  
-
                 </div>
                 <% end %>
               </div>
