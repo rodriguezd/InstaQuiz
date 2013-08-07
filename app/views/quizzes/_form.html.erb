@@ -50,12 +50,13 @@
     <option value=<%= group.code %>><%= group.name %></option>
   <% end %>
 </select></p>
+<div id="deadline">
 <h4 id="instructions" >Deadline for student question submission:</h4>
   <label for="datepicker">Date</label>
   <p><input name="deadline_date" type="text" id="datepicker" /></p>
   <label for="timepicker">Time</label>
   <p><input name="deadline_time" type="text" id="timepicker" /></p>
-
+</div>
   <div class="field">
     <%= f.label :instructions %>
     <%= f.text_area :instructions, :rows => 5, :cols => 20%>
