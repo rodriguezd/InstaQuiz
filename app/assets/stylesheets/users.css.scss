@@ -6,11 +6,30 @@
   color: red;
 }
 
+div.overview.well {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div.chart{
+  width: 80%;
+  margin: auto;
+  height: 100%;
+}
+
+div.overview.well:hover{
+  box-shadow: 5px 5px 5px #888;
+}
+
 li.overview:hover{
   text-decoration: underline;
 }
 
 div#main{
+  height: 600px;
   //overflow-y: auto !important;
   //overflow: scroll;
   //overflow: visible;
@@ -45,9 +64,29 @@ div.quiz.well:hover{
   box-shadow: 10px 10px 5px #888;
 }
 
-h6.for-dash{
+h4.for-dash{
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+span.for-dash{
+  font-size: 16px;
+}
+
+span.quiz-heading{
+  font-size: 16px;
+  display: table;
+}
+
+div.quiz-title{
+  float:left;
+}
+
+div.quiz-info {
+  float: right;
   margin: auto;
-  float: left;
+  display: table-cell;
+  vertical-align:middle;
 }
 
 .links{
@@ -89,7 +128,7 @@ a {
   background-color:rgb(254,254,254);
   overflow-y: auto;
   width: 80%;
-  min-width: 965px;
+  min-width: 400px;
   height: 800px;
   border-radius: 10px;
   -moz-border-radius: 10px;

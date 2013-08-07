@@ -1,0 +1,8 @@
+<div class="quiz-heading clearfix">
+  <div class="quiz-title"><h1><%= @quiz.name %></h1></div>
+  <div class="quiz-info">
+    <span class="quiz-heading"><%= @quiz.groups.first %> </span>
+    <span class="quiz-heading"><%= @quiz.questions.size %> questions submitted </span>
+    <span class="quiz-heading"><%= @quiz.questions.where(:status => "approved").size %> questions approved </span>
+  </div>
+</div>

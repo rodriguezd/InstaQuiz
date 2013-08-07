@@ -1,6 +1,6 @@
 <%= form_tag '/questions/approve', :method => :put do %>
 
-  <h1><%= @quiz.name %></h1> <br>
+  <%= render :partial => '/quizzes/quizheading' %>
 
     <%= hidden_field_tag 'quiz_id', @quiz.id %>
 
