@@ -14,8 +14,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name, "Title" %>
-    <%= f.text_field :name %>
+    <%= f.label :name, "Title" %><%= f.text_field :name %>
+
   </div>
 
   <div class="inline">
@@ -31,20 +31,28 @@
     <%= label_tag 'num_choices', 'Number of answer choices', :class => "num_choices" %>
     <%= select_tag 'num_choices', "<option>2</option><option>3</option><option selected='selected'>4</option><option>5</option><option>6</option>".html_safe, :class => "num_choices" %>
   </div>
-  <br>
-  Groups<br><br>
+
+
   <%#= select_tag 'group_code[]', options_from_collection_for_select(Group.where(:instructor => current_user.id), :code, :name), :multiple => true, :size => 8, :prompt => 'Select group(s)' %>
-  <table>
+  <!-- <table>
     <% Group.where(:instructor => current_user.id).each do |group| %>
      <tr>
         <td><%= label_tag 'group_code[]', group.name %></td>
         <td class="check_cell"><%= check_box_tag 'group_code[]', group.code, @quiz.groups.any?{|grp| grp.code == group.code} %></td>
       </tr>
     <% end %>
-  </table>
+  </table> -->
   <br>
+
+<p>Groups: <select name="group_code[]" class="multiselect" multiple="multiple">
+  <% Group.where(:instructor => current_user.id).each do |group| %>
+    <option value=<%= group.code %>><%= group.name %></option>
+  <% end %>
+</select></p>
+<br>
+
   <p>Date: <input name="deadline_date" type="text" id="datepicker" /></p>
-  <br>
+
   <p>Time: <input name="deadline_time" type="text" id="timepicker" /></p>
 
   <div class="field">
