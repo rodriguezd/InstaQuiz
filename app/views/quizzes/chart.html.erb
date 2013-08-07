@@ -31,12 +31,15 @@
                   marginBottom: 100
               },
               title: {
-                  text: 'Quiz Scores',
-                  x: -20 //center
+                  text: 'Class performance by question',
+                  x: 0
               },
 
               xAxis: {
                 
+                  title: {
+                    text: 'Question number'
+                  },
                   categories: <%=raw @quiz.question_numbers %>
               },
               yAxis: {
@@ -73,6 +76,8 @@
                   borderWidth: 0
               },
               series: [{
+                name: 'Percentage of class answering correctly',
+                showInLegend: false,
                 data: <%= raw @quiz.question_paths %>
             }]
           });

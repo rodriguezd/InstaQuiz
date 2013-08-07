@@ -18,7 +18,12 @@
     <% unless @quiz.groups.empty? %>
       <li class="overview"><h3>Average score: <%= @quiz.groups.first.grade_quiz(@quiz)%>%</h3></li>
     <% end %>
-    <li class="overview"><h3>Hardest question provided by: <%= @quiz.hardest_question_author[0] %> with a class average of <%= @quiz.hardest_question_author[1]%>% </h3></li>
-    <li class="overview"><h3><%= @quiz.contributor_count %> students contributed questions</h3></li>
+    <li class"overview"><h3> <%= @quiz.questions.size %> questions in this quiz</h3></li>
+    <% if @quiz.questions.size > 0 %>
+      <% unless @quiz.hardest_question_author[0].empty? %>
+        <li class="overview"><h3>Hardest question provided by: <%= @quiz.hardest_question_author[0] %> with a class average of <%= @quiz.hardest_question_author[1]%>% </h3></li>
+      <% end %>
+      <li class="overview"><h3><%= @quiz.contributor_count %> students contributed questions</h3></li>
+    <% end %>
   </ul>
 <% end %>
