@@ -73,6 +73,22 @@ span.for-dash{
   font-size: 16px;
 }
 
+span.quiz-heading{
+  font-size: 16px;
+  display: table;
+}
+
+div.quiz-title{
+  float:left;
+}
+
+div.quiz-info {
+  float: right;
+  margin: auto;
+  display: table-cell;
+  vertical-align:middle;
+}
+
 .links{
   color: red;
   font-size: 18px;

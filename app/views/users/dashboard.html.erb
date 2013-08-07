@@ -48,7 +48,7 @@
                   <h4 class="for-dash"><%= link_to q.name, quiz_path(q) %></h4>
                   <span class="for-dash">Questions: <%= q.questions.count %></span></br>
                   <span class="for-dash">Groups: <%= q.groups.name %></span></br>
-                  <span class="for-dash">Quizzes Submitted: <%= q.results.count %></span>
+                  <span class="for-dash">Submissions: <%= q.results.count %></span>
                    <%= link_to '✘', q, method: :delete, class: "span1.5 quiz-link  ", data: { confirm: 'Are you sure?' } %> <br><br>
 
                 </div>
