@@ -5,7 +5,7 @@
 $(function() {
   $("#datepicker").datepicker();
 
-  $("#timepicker").timepicker();
+  $("#timepicker").timepicker({'scrollDefaultNow': true});
 
   $("#clone_check_box").change(function(){
     if(this.checked) {

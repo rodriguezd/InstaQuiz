@@ -1,20 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-
-  <div style="float: left;width: 250px">
-    <h5><%= @quiz.name %></h5>
-  </div>
-  <% if can? :edit, @quizzes %>
+    <h2><%= @quiz.name %></h2>
+  <%# if can? :edit, @quizzes %>
     <div style="float: left;position:relative;top: 11px">
       <%= link_to 'Edit', edit_quiz_path(@quiz) %>
     </div>
-  <% end %> </br></br></br></br>
+  <%# end %> </br>
   <div>
-  <b>Instructor: </b><%= User.find(@quiz.instructor).name %></br>
-  <b>Deadline: </b><%= @quiz.deadline_date.strftime("%b %d, %Y") if !@quiz.deadline_date.nil? %><%= @quiz.deadline_time.strftime("%l:%M %p") if !@quiz.deadline_time.nil? %> </br>
-  <b>Instructions: </b><%= @quiz.instructions %> </br>
-  <b>Classes: </b>
+  <p><b>Submission Deadline: </b><%= @quiz.deadline_date.strftime("%b %d, %Y")if !@quiz.deadline_date.nil? %><%= @quiz.deadline_time.strftime("%l:%M %p") if !@quiz.deadline_time.nil? %> </p>
+  <p><b>Instructions: </b><%= @quiz.instructions %></p>
+  <p><b>Group(s): </b></p>
   </div>
 
   <ul>
@@ -22,15 +17,7 @@
     <li><%= group.name %> </li>
     <% end %>
   </ul>
-
-</p>
-
-<!--   <b>Students: </b>
-    <ul> <% @users.each do |user| %>
-        <li><%= user.name %> </li>
-        <% end %>
-    </ul>
-</p> -->
+  <br>
 <ol>
 <% @quiz.questions.where(:status => "approved").each do |q| %>
 
