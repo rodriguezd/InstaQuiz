@@ -98,8 +98,8 @@ class UsersController < ApplicationController
       @finalized = Quiz.where(:status => "finalized", :instructor => current_user.id)
     elsif current_user.role?(:student)
       @active = @user.quizzes.where(:student_quizzes => {:quiz_status => "active"})
-      @pending = @user.quizzes.where(:student_quizzes => {:quiz_status => "active"})
-      @completed = @user.quizzes.where(:student_quizzes => {:quiz_status => "active"})
+      @pending = @user.quizzes.where(:student_quizzes => {:quiz_status => "pending"})
+      @completed = @user.quizzes.where(:student_quizzes => {:quiz_status => "completed"})
       @question_submitted = @user.quizzes.where(:student_quizzes => {:quiz_status => "question_submitted"})
     end
   end
