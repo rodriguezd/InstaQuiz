@@ -16,4 +16,5 @@
 //= require liteaccordion.jquery.js
 //= require highcharts
 //= require highcharts-more
+//= bootstrap-multiselect
 //= require_tree .

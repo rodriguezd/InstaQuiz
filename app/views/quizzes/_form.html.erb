@@ -1,3 +1,4 @@
+<div class="span 6 offset2">
 <%= form_for(@quiz) do |f| %>
   <% if Group.where(:instructor => current_user.id).empty? %>
     A quiz must be assigned to at least one group. You currently have no groups. Create groups by going to MyGroups in the navigation bar.
@@ -14,15 +15,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name, "Title" %>
-    <%= f.text_field :name %>
+    <%= f.label :name, "Quiz Title" %><%= f.text_field :name %>
+    <!-- <p>Title: <%= f.text_field :name %></p> -->
   </div>
 
   <div class="inline">
       <%= hidden_field_tag 'clone', nil %>
       <%= check_box_tag 'clone', true, false, :id => "clone_check_box"%>
   </div>
-  <p>Duplicate existing quiz</p>
+  <p id="checkbox_label">Duplicate existing quiz</p>
   <div class="field">
     <%= label_tag :copy, 'Quiz to duplicate', :class => "clone_select" %>
     <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select quiz to duplicate', :class => "clone_select" %>
@@ -31,25 +32,34 @@
     <%= label_tag 'num_choices', 'Number of answer choices', :class => "num_choices" %>
     <%= select_tag 'num_choices', "<option>2</option><option>3</option><option selected='selected'>4</option><option>5</option><option>6</option>".html_safe, :class => "num_choices" %>
   </div>
-  <br>
-  Groups<br><br>
+
+
   <%#= select_tag 'group_code[]', options_from_collection_for_select(Group.where(:instructor => current_user.id), :code, :name), :multiple => true, :size => 8, :prompt => 'Select group(s)' %>
-  <table>
+  <!-- <table>
     <% Group.where(:instructor => current_user.id).each do |group| %>
      <tr>
         <td><%= label_tag 'group_code[]', group.name %></td>
         <td class="check_cell"><%= check_box_tag 'group_code[]', group.code, @quiz.groups.any?{|grp| grp.code == group.code} %></td>
       </tr>
     <% end %>
-  </table>
-  <br>
-  <p>Date: <input name="deadline_date" type="text" id="datepicker" /></p>
-  <br>
-  <p>Time: <input name="deadline_time" type="text" id="timepicker" /></p>
+  </table> -->
+
+<label>Groups</label>
+<p><select name="group_code[]" class="multiselect" id="groupselector" multiple="multiple">
+  <% Group.where(:instructor => current_user.id).each do |group| %>
+    <option value=<%= group.code %>><%= group.name %></option>
+  <% end %>
+</select></p>
+<br>
+<p>Deadline for student question submission:</p>
+  <label for="datepicker">Date</label>
+  <p><input name="deadline_date" type="text" id="datepicker" /></p>
+  <label for="timepicker">Time</label>
+  <p><input name="deadline_time" type="text" id="timepicker" /></p>
 
   <div class="field">
-    <%= f.label :instructions %><br />
-    <%= f.text_field :instructions %>
+    <%= f.label :instructions %>
+    <%= f.text_area :instructions, :size => "10x10"%>
   </div>
 
 
@@ -58,3 +68,4 @@
   </div>
   <% end %>
 <% end %>
+</div>

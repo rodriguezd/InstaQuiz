@@ -10,8 +10,9 @@
  *
  *= require jquery.ui.all
  *= require_self
+ *= require_tree ./../../../app/assets/stylesheets
  *= require_tree ./../../../vendor/assets/css
- *= require_tree .
+ * require_tree .
  */
 
 .quest-content {
