@@ -6,6 +6,18 @@
   color: red;
 }
 
+div.overview.well {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div.overview.well:hover{
+  box-shadow: 5px 5px 5px #888;
+}
+
 li.overview:hover{
   text-decoration: underline;
 }
