@@ -64,9 +64,13 @@ div.quiz.well:hover{
   box-shadow: 10px 10px 5px #888;
 }
 
-h6.for-dash{
-  margin: auto;
-  float: left;
+h4.for-dash{
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+span.for-dash{
+  font-size: 16px;
 }
 
 .links{
@@ -108,7 +112,7 @@ a {
   background-color:rgb(254,254,254);
   overflow-y: auto;
   width: 80%;
-  min-width: 965px;
+  min-width: 400px;
   height: 800px;
   border-radius: 10px;
   -moz-border-radius: 10px;
