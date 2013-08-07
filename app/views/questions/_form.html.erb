@@ -27,8 +27,8 @@
   <% @quiz.num_choices.to_i.times do |i|%>
     <div>
       <%= label_tag 'choices[]', "Choice #{i + 1}: " %>
-      <%= text_field_tag 'choices[]', @question.new_record? ? "" : @question.choices[0].content, :class => "span5"  %>
-      <%= radio_button_tag 'correct', 0, @question.new_record? ? false : @question.choices[0].correct %>
+      <%= text_field_tag 'choices[]', @question.new_record? ? "" : @question.choices[i].content, :class => "span5"  %>
+      <%= radio_button_tag 'correct', i, @question.new_record? ? false : @question.choices[i].correct %>
     </div>
   <% end %>
   <!-- <div>
