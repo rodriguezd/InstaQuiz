@@ -12,8 +12,7 @@
   <% end %> </br></br></br></br>
   <div>
   <b>Instructor: </b><%= User.find(@quiz.instructor).name %></br>
-  <b>Deadline Date: </b><%= @quiz.deadline_date.strftime("%b %d, %Y") if !@quiz.deadline_date.nil? %> </br>
-  <b>Deadline Time: </b><%= @quiz.deadline_time.strftime("%l:%M %p") if !@quiz.deadline_time.nil? %> </br>
+  <b>Deadline: </b><%= @quiz.deadline_date.strftime("%b %d, %Y") if !@quiz.deadline_date.nil? %><%= @quiz.deadline_time.strftime("%l:%M %p") if !@quiz.deadline_time.nil? %> </br>
   <b>Instructions: </b><%= @quiz.instructions %> </br>
   <b>Classes: </b>
   </div>
