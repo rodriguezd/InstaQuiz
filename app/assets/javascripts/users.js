@@ -36,8 +36,6 @@ $(function(){
     $("#completed_student").attr('title', 'Quizzes that you have completed.');
   });
 
-
-  $('#example').tooltip()
 });
 
 
