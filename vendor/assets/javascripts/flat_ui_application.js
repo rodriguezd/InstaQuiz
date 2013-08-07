@@ -14,6 +14,8 @@ $(document).ready(function() {
     // Init tooltips
     $("[data-toggle=tooltip]").tooltip("show");
 
+    
+
     // Init tags input
     $("#tagsinput").tagsInput();
 
