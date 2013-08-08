@@ -1,59 +1,63 @@
-<h1>Your Groups</h1>
-
-<table class="groups">
-  <% if !@groups.empty? %>
-    <% if current_user.role?(:instructor) %>
-      <tr>
-        <th align="left" width="200px">Group</th>
-        <th align="left" width="100px">Code</th>
-        <!-- <th align="left" width="100px">Edit</th> -->
-        <th align="left" width="100px"></th>
-      </tr>
-
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= link_to group.name, grade_group_path(group) %></td>
-        <td><%= group.code %></td>
-        <!-- <td><%= link_to 'Edit', edit_group_path(group) %></td> -->
-        <td><%= link_to 'Delete Group', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    <% elsif current_user.role?(:student) %>
-      <tr>
-        <th align="left" width="150px">Name</th>
-        <th align="left" width="150px">Instructor</th>
-        <th align="left" width="100px"></th>
-      </tr>
+<h1 class="heading">Your Groups</h1>
+<hr>
+<div class="center span8">
+  <table class="groups">
+    <% if !@groups.empty? %>
+      <% if current_user.role?(:instructor) %>
+        <tr>
+          <th align="left" width="200px">Group</th>
+          <th align="left" width="100px">Code</th>
+          <!-- <th align="left" width="100px">Edit</th> -->
+          <th align="left" width="100px"></th>
+        </tr>
 
       <% @groups.each do |group| %>
         <tr>
-          <td><%= group.name %></td>
-          <td><%= User.find(group.instructor).name %></td>
-          <td><%= link_to 'Leave Group', leave_group_path(group) %></td>
+          <td><%= link_to group.name, grade_group_path(group) %></td>
+          <td><%= group.code %></td>
+          <!-- <td><%= link_to 'Edit', edit_group_path(group) %></td> -->
+          <td><%= link_to 'Delete Group', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
+        <% end %>
+      <% elsif current_user.role?(:student) %>
+        <tr>
+          <th align="left" width="150px">Name</th>
+          <th align="left" width="150px">Instructor</th>
+          <th align="left" width="100px"></th>
+        </tr>
+
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= group.name %></td>
+            <td><%= User.find(group.instructor).name %></td>
+            <td><%= link_to 'Leave Group', leave_group_path(group) %></td>
+          </tr>
+        <% end %>
       <% end %>
+    <% else %>
+      No groups have been joined/created.
     <% end %>
-  <% else %>
-    No groups have been joined/created.
-  <% end %>
-</table>
-<br>
-<%= notice %>
-<br>
-<% if current_user.role?(:student) %>
-  <%= form_tag group_join_path do %>
+  </table>
+  <br>
+  <%= notice %>
+  <br>
+</div>
+  <div class="offset4">
+  <% if current_user.role?(:student) %>
+    <% form_tag group_join_path do %>
 
-    <%= label_tag "group_code", "Join a new group:" %>
-    <%= text_field_tag :group_code, nil, :placeholder => 'Enter group code here' %>
-    <br>
-    <%= submit_tag "Join", class: "btn btn-primary" %>
+      <%= label_tag "group_code", "Join a new group:" %>
+      <%= text_field_tag :group_code, nil, :placeholder => 'Enter group code here' %>
+      <br>
+      <%= submit_tag "Join", class: "btn btn-primary" %>
 
-<% end %>
-<% end %>
-<% if current_user.role?(:instructor) %>
-  <%= form_tag '/groups' do%>
-    <%= text_field_tag :name, nil, :placeholder => 'Enter group name here' %>
-    <br>
-    <%= button_tag "Add New Group", :class => "btn btn-primary" %>
   <% end %>
-<% end %>
+  <% end %>
+  <% if current_user.role?(:instructor) %>
+    <%= form_tag '/groups' do%>
+      <%= text_field_tag :name, nil, :placeholder => 'Enter group name here' %>
+      <br>
+      <%= button_tag "Add New Group", :class => "btn btn-primary", :style => "margin-left: 25px;" %>
+    <% end %>
+  <% end %>
+</div>
