@@ -9,8 +9,9 @@
 #  instructions  :text
 #  status        :string(255)
 #  instructor    :integer
-#  deadline_date :date
 #  deadline_time :time
+#  num_choices   :integer
+#  deadline_date :date
 #
 
 class Quiz < ActiveRecord::Base

@@ -43,10 +43,14 @@ class QuizzesController < ApplicationController
   # POST /quizzes
   # POST /quizzes.json
   def create
+    debugger
     @quiz = Quiz.new(params[:quiz])
+    date = params[:deadline_date]
+    deadline = "#{date[3,2]}/#{date[0,2]}/#{date[6,4]}"
     @quiz.num_choices = params[:num_choices]
-    @quiz.deadline_date = params[:deadline_date]
+    @quiz.deadline_date = deadline
     @quiz.deadline_time = params[:deadline_time]
+    debugger
     @quiz.instructor = current_user.id
     params[:group_code].each do |code|
       @quiz.groups << Group.where(:code => code)
@@ -89,11 +93,14 @@ class QuizzesController < ApplicationController
   # PUT /quizzes/1.json
   def update
     @quiz = Quiz.find(params[:id])
+    @quiz.num_choices = params[:num_choices]
+    # @quiz.deadline_date = params[:deadline_date]
+    @quiz.update_attribute(:deadline_date, params[:deadline_date])
+    @quiz.deadline_time = params[:deadline_time]
     @quiz.groups.clear
     params[:group_code].each do |code|
       @quiz.groups << Group.where(:code => code)
     end
-
     respond_to do |format|
       if @quiz.update_attributes(params[:quiz])
         format.html { redirect_to @quiz, notice: 'Quiz was successfully updated.' }

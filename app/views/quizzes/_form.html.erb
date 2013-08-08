@@ -18,16 +18,17 @@
     <%= f.label :name, "Quiz Title" %><%= f.text_field :name %>
     <!-- <p>Title: <%= f.text_field :name %></p> -->
   </div>
-
-  <div class="inline">
-      <%= hidden_field_tag 'clone', nil %>
-      <%= check_box_tag 'clone', true, false, :id => "clone_check_box"%>
-  </div>
-  <p id="checkbox_label">Duplicate existing quiz</p>
-  <div class="field">
-    <%= label_tag :copy, 'Quiz to duplicate', :class => "clone_select" %>
-    <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select quiz to duplicate', :class => "clone_select" %>
-  </div>
+  <% if params[:action] != 'edit' %>
+    <div class="inline">
+        <%= hidden_field_tag 'clone', nil %>
+        <%= check_box_tag 'clone', true, false, :id => "clone_check_box"%>
+    </div>
+    <p id="checkbox_label">Duplicate existing quiz</p>
+    <div class="field">
+      <%= label_tag :copy, 'Quiz to duplicate', :class => "clone_select" %>
+      <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select quiz to duplicate', :class => "clone_select" %>
+    </div>
+  <% end %>
   <div class="field">
     <%= label_tag 'num_choices', 'Number of answer choices', :class => "num_choices" %>
     <%= select_tag 'num_choices', "<option>2</option><option>3</option><option selected='selected'>4</option><option>5</option><option>6</option>".html_safe, :class => "num_choices" %>

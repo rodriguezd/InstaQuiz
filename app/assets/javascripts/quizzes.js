@@ -3,7 +3,7 @@
 // You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(function() {
-  $("#datepicker").datepicker();
+  $("#datepicker").datepicker({dateFormate: ""});
 
   $("#timepicker").timepicker({'scrollDefaultNow': true});
 

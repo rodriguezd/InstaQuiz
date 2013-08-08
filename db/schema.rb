@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806131016) do
+ActiveRecord::Schema.define(:version => 20130808005530) do
 
   create_table "answers", :force => true do |t|
     t.integer  "choice_id"
@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(:version => 20130806131016) do
     t.text     "instructions"
     t.string   "status"
     t.integer  "instructor"
-    t.date     "deadline_date"
     t.time     "deadline_time"
     t.integer  "num_choices"
+    t.date     "deadline_date"
   end
 
   create_table "results", :force => true do |t|
