@@ -1,10 +1,10 @@
-<div class="quiz-heading clearfix row">
-  <div class="quiz-title clearfix col-lg-6">
+<div class="quiz-heading clearfix row-fluid">
+  <div class="quiz-title clearfix span6">
     <h2 id="quiztitle"><%= @quiz.name %></h2>
     <span class="pull-left"><%= link_to 'Edit', edit_quiz_path(@quiz) %></span>
   </div>
 
-  <div class="col-lg-6 quiz-info pull-right">
+  <div class="span6 quiz-info pull-right">
     <dl class="quiz-info dl-horizontal">
       <dt>Groups:</dt>
         <% if @quiz.groups.empty? %>
