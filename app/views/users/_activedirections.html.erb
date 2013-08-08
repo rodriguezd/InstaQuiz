@@ -1,0 +1,14 @@
+<% if current_user.role?(:instructor) %>
+<div class ="directions">
+  <p class="directions">You do not currently have any active quizzes</p>
+  <p class="directions">Be sure to review the questions for pending quizzes, and activate the quiz when it is ready</p>
+  <p class="directions">An active quiz will be live for your group to take</p>
+  <p class="directions">You will be able to monitor live progress in this section for each live quiz</p>
+</div>
+<% elsif current_user.role?(:student) %>
+  <div class ="directions">
+    <p class="directions">You do not currently have any active quizzes</p>
+    <p class="directions">Once a teacher activates a quiz it will appear here</p>
+    <p class="directions">Active quizzes are ready to take</p>
+  </div>
+<% end %>

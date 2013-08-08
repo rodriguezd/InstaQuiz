@@ -327,3 +327,18 @@ div.quiz-link{
   -o-transition: none;
   transition: none;
 }
+
+div.directions {
+  float: left !important;
+  padding: 30px !important;
+  margin: 100px 30px 30px 30px !important;
+  border: dotted;
+  border-width: 1px;
+  border-color: gray;
+}
+
+p.directions{
+  padding: 10px;
+  line-height: 125%;
+  text-align: center;
+}

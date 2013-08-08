@@ -4,9 +4,12 @@
           <li>
               <h2><span>Active: <%= @active.count %></span></h2>
               <div id="active" class="quizzes">
+                <% if @active.empty? %>
+                  <%= render 'activedirections' %>
+                <% else %>
                 <% @active.each do |q| %>
-                <div class="quiz well">
-                <div class="active-icons">
+                  <div class="quiz well">
+                  <div class="active-icons">
                     <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: { confirm: 'Are you sure?' } %>
                     <%=link_to "Deactivate", set_status_quiz_path(q), :class=>"span1.5 quiz-link deactivate-icon" %>
                      <%=link_to "Live Updates", results_quiz_path(q), :class=>"span1.5 quiz-link updates-icon" %>
@@ -15,19 +18,24 @@
 
                 </div>
                 <% end %>
+                <% end %>
               </div>
           </li>
           <li>
               <h2><span>Pending: <%= @pending.count%></span></h2>
               <div id="pending" class="quizzes">
+                <% if @active.empty? %>
+                  <%= render '  pendingdirections' %>
+                <% else %>
                 <% @pending.each do |q| %>
-                <div class="quiz well">
-                <div class="pending-icons">
-                  <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: { confirm: 'Are you sure?' } %>
-                  <%=link_to "Review questions", review_quiz_questions_path(q), :class=>"span1.5 quiz-link review-icon" %>
-                </div>
+                  <div class="quiz well">
+                    <div class="pending-icons">
+                       <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: { confirm: 'Are you sure?' } %>
+                       <%=link_to "Review questions", review_quiz_questions_path(q), :class=>"span1.5 quiz-link review-icon" %>
+                  </div>
                 <h6 class="for-dash"><%= link_to truncate(q.name), quiz_path(q) %></h6>
               </div>
+                <% end %>
                 <% end %>
               </div>
           </li>
@@ -37,9 +45,9 @@
                 <% @completed.each do |q| %>
                 <div class="quiz well">
                     <div class="completed-icons">
-
+                      <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon  ", data: { confirm: 'Are you sure?' } %>
                       <%= link_to "Result", overview_quiz_path(q), :class=>"span1.5 quiz-link results-icon " %>
-                      <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon  ", data: { confirm: 'Are you sure?' } %> 
+                     
 
                     </div> 
                   <h5><%= link_to q.name, quiz_path(q) %></h5>
@@ -66,6 +74,9 @@
             <li>
               <h2><span>Active:<%= @active.count%></span></h2>
               <div id="active" class="quizzes">
+                <% if @active.empty? %>
+                  <%= render 'activedirections' %>
+                <% else %>
                 <% @active.each do |q| %>
                 <div class="quiz well">
                     <div class="icon">
@@ -74,11 +85,15 @@
                 <h6 class="for-dash"><%= q.name %></h6>
                 </div>
                 <% end %>
+                <% end %>
               </div>
           </li>
           <li>
               <h2><span>Pending: <%= @pending.count %></span></h2>
               <div id="pending" class="quizzes">
+                <% if @pending.empty? %>
+                  <%= render 'pendingdirections' %>
+                <% else %>
                 <% @pending.each do |q| %>
                 <div class="quiz well">
                   <div class="icon2">
@@ -87,11 +102,15 @@
                   <h6 class="for-dash"><%= q.name %></h6>
                 </div>
                 <% end %>
+                <% end %>
               </div>
           </li>
           <li>
               <h2><span>Question Submitted: <%=@question_submitted.count %></span></h2>
               <div id="question_submitted" class="quizzes">
+                <% if @question_submitted.empty? %>
+                  <%= render 'studentsubmit' %>
+                <% else %>
                 <% @question_submitted.each do |q| %>
                 <div class="quiz well">
                   <div class="icon3">
@@ -100,11 +119,15 @@
                 <h6 class="for-dash"><%= q.name %></h6>
                 </div>
                 <% end %>
+                <% end %>
               </div>
           </li>
           <li>
               <h2><span>Completed:<%=@completed.count %></span></h2>
               <div id="completed" class="quizzes">
+                <% if @completed.empty? %>
+                  <%= render 'completeddirections' %>
+                <% else %>
                 <% @completed.each do |q| %>
                 <div class="quiz well">
                   <div class="icon4">
@@ -112,6 +135,7 @@
                   </div>
                   <h6 class="for-dash"><%= q.name %></h6>
                 </div>
+                <% end %>
                 <% end %>
               </div>
            </li>
