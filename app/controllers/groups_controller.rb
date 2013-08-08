@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
         format.html { redirect_to groups_path, notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to groups_path, notice: 'Group name must be entered.' }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
