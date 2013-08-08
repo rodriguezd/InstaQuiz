@@ -1,4 +1,3 @@
-<%= notice %>
 <h1>Your Groups</h1>
 
 <table class="groups">
@@ -38,8 +37,9 @@
     No groups have been joined/created.
   <% end %>
 </table>
-<br><br>
-
+<br>
+<%= notice %>
+<br>
 <% if current_user.role?(:student) %>
   <%= form_tag group_join_path do %>
 
