@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <%= render :partial => '/quizzes/quizheading' %>
-<span class="correct">CORRECT ANSWER</span>
+<% if @quiz.questions.present? %>
+  <span class="correct">CORRECT ANSWER</span>
+<% end %>
 <br><br>
 <ol>
 <% @quiz.questions.where(:status => "approved").each do |q| %>
