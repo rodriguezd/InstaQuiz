@@ -30,10 +30,10 @@
               <h2><span>Pending: <%= @pending.count%></span></h2>
               <div id="pending" class="quizzes">
                 <% if @active.empty? %>
-                  <%= render '  pendingdirections' %>
+                  <%= render 'pendingdirections' %>
                 <% else %>
                 <% @pending.each do |q| %>
-<<<<<<< HEAD
+
                 <div class="quiz well">
                 <div class="pending-icons">
                   <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: {confirm: 'Are you sure?', toggle: "tooltip" }, :title => "Delete quiz" %>
