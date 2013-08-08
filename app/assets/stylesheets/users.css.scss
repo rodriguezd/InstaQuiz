@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#registration, #login{
+  float: none !important;
+  margin: 30px auto auto auto !important;
+
+}
+
 .flash_error {
   color: red;
 }

@@ -1,10 +1,13 @@
-<h1>Login</h1>
-<%= form_tag login_path do %>
-	<p>
-		<%= label_tag "Email" %>
-		<%= text_field_tag "email" %> <br>
-		<%= label_tag "Password" %>
-		<%= password_field_tag "password" %>
-		<%= submit_tag "Login", class: "btn btn-primary" %>
-	</p>
-<% end %>
+<h1 style="text-align: center">Login</h1>
+<div id ="login" class="span3">
+
+  <%= form_tag login_path do %>
+  	<p>
+    <div class="field">
+  		<%= text_field_tag "email", nil,  :placeholder => "Email" %> <br>
+    </div>
+  		<%= password_field_tag "password", nil, :placeholder => "Password" %>
+  		<%= submit_tag "Login", class: "btn btn-primary" %>
+  	</p>
+  <% end %>
+</div>
