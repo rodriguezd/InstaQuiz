@@ -10,8 +10,12 @@ class GroupsController < ApplicationController
   end
 
   def create
-    # debugger
     @group = Group.new(:name => params[:name], :instructor => current_user.id, :code => generate_code)
+    if current_user.role?(:instructor)
+      @groups = Group.where(:instructor => current_user.id)
+    elsif current_user.role?(:student)
+      @groups = current_user.groups
+    end
     respond_to do |format|
       if @group.save
         format.html { redirect_to groups_path, notice: 'Group was successfully created.' }
@@ -47,7 +51,6 @@ class GroupsController < ApplicationController
   end
 
   def index
-    # @groups = Group.all
     if current_user.role?(:instructor)
       @groups = Group.where(:instructor => current_user.id)
     elsif current_user.role?(:student)
@@ -76,15 +79,20 @@ class GroupsController < ApplicationController
 
   def join
     @user = current_user
-    @user.groups << Group.where(:code => params[:group_code])
-    @user.save
+    if !@user.groups.where(:code => params[:group_code])
+      @user.groups << Group.where(:code => params[:group_code])
+      @user.save
+      flash[:notice] = 'Successfully joined group.'
+    else
+      flash[:notice] = 'Already a member of group entered.'
+    end
     redirect_to groups_url
 
     # if @user.save
-    #     format.html { redirect_to groups_url, notice: 'Successfully joind group.' }
-    #     format.json { render json: groups_url, status: :created, location: groups_url }
+    #     format.html { redirect_to groups_path, notice: 'Successfully joind group.' }
+    #     format.json { render json: groups_path, status: :created, location: groups_url }
     #   else
-    #     format.html { render action: "index" }
+    #     format.html { redirect_to groups_path, notice: 'Group code must be entered.' }
     #     format.json { render json: @user.errors, status: :unprocessable_entity }
     #   end
   end
@@ -108,7 +116,6 @@ class GroupsController < ApplicationController
   end
 
   def remove_student
-    # debugger
     GroupUser.where(:user_id => params[:student_id], :group_id => params[:id]).pop.destroy
     redirect_to list_members_path(params[:id])
   end
