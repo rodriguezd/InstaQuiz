@@ -5,10 +5,13 @@
   <span class="correct">CORRECT ANSWER</span>
 <% end %>
 <br><br>
+
 <ol>
+
 <% @quiz.questions.where(:status => "approved").each do |q| %>
-    <%= markdown (q.content)%>
-  </li>
+<li>
+    <p style="float: left;"><%= markdown (q.content)%></p>
+
   <% if can? :edit, q %>
     <p id="edit_link"><%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %></p><br>
   <% end %>
@@ -26,6 +29,7 @@
     <% end %>
   </ol>
   <br>
+</li>
 <% end %>
 </ol>
 
