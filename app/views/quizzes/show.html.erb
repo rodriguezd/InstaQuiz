@@ -38,7 +38,7 @@
 
   <% if @quiz.questions.present? %>
   <a href="<%= review_quiz_questions_path(@quiz) %>" class="btn btn-primary">Return to Review</a>
-  <a href="<%= set_status_quiz_path(@quiz, :status => "finalized") %>" class="btn btn-primary">Activate</a>
+  <a href="<%= set_status_quiz_path(@quiz, :status => "active") %>" class="btn btn-primary">Activate</a>
 </span>
   <% else %>
   <a href="#" class="btn btn-primary" style="">Notify Students</a>
