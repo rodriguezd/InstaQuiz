@@ -1,7 +1,9 @@
 <div class="quiz-heading clearfix row-fluid">
   <div class="quiz-title clearfix span6">
     <h2 id="quiztitle"><%= @quiz.name %></h2>
-    <span class="pull-left"><%= link_to 'Edit', edit_quiz_path(@quiz) %></span>
+    <%if current_user.role?(:instructor) && !['active','completed'].include?(@quiz.status) %>
+      <span class="pull-left"><%= link_to 'Edit', edit_quiz_path(@quiz) %></span>
+    <% end %>
   </div>
 
   <div class="span6 quiz-info pull-right">
@@ -24,7 +26,7 @@
           <%= current_user.student_quizzes.where(:quiz_id => @quiz.id).first.quiz_status.titleize %>
       </dd>
         <% end %>
-<!--         <dt>Deadline:</dt> 
+<!--         <dt>Deadline:</dt>
         <dd><%= @quiz.deadline_date.strftime("%b %d, %Y")if !@quiz.deadline_date.nil? %><%= @quiz.deadline_time.strftime("%l:%M %p") if !@quiz.deadline_time.nil? %></dd>
       <dt>Instructions:</dt><dd><%= @quiz.instructions %></dd> -->
     </dl>

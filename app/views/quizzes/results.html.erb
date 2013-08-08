@@ -3,12 +3,14 @@
 <div class="container">
   <div class="row">
     <div class="span8">
+     <% if @quiz.status == "completed" %>
       <ul class="nav nav-pills">
         <li class="<%= 'active' if params[:action] == 'overview' %> "><a href="<%= overview_quiz_path(@quiz) %>">Overview</a></li>
         <li class="<%= 'active' if params[:action] == 'chart' %> "><a href="<%= chart_quiz_path(@quiz) %>">Charts</a></li>
         <li class="<%= 'active' if params[:action] == 'results' %> "><a href="<%= results_quiz_path(@quiz) %>">Students</a></li>
         <li class="<%= 'active' if params[:action] == 'score' %> "><a href="<%= score_quiz_path(@quiz) %>">Questions</a></li>
       </ul>
+      <% end %>
     </div>
   </div>
 </div>

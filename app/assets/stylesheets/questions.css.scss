@@ -27,8 +27,13 @@ ol {
   clear: left;
 }
 
-span.correct {
+.correct {
   color: black;
   font-weight: bold;
   background-color: #99FF66;
+}
+
+#edit_link {
+  float: left;
+  margin-left: 15px;
 }
