@@ -7,9 +7,12 @@
                 <% @active.each do |q| %>
                 <div class="quiz well">
                 <div class="active-icons">
-                    <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: { confirm: 'Are you sure?' } %>
-                    <%=link_to "Deactivate", set_status_quiz_path(q), :class=>"span1.5 quiz-link deactivate-icon" %>
-                     <%=link_to "Live Updates", results_quiz_path(q), :class=>"span1.5 quiz-link updates-icon" %>
+
+      
+                    <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: { confirm: 'Are you sure?', :toggle => "tooltip"}, :title => "Delete quiz"  %>
+
+                    <%=link_to "Deactivate", set_status_quiz_path(q), :class=>"span1.5 quiz-link deactivate-icon", data: {:toggle => "tooltip"}, :title => "Deactivate quiz" %>
+                     <%=link_to "Live Updates", results_quiz_path(q), :class=>"span1.5 quiz-link updates-icon", data: {:toggle => "tooltip"}, :title => "Live updates" %>
                 </div>
                 <h6 class="for-dash"><%= link_to truncate(q.name, length: 20, separator: ' '), results_quiz_path(q) %></h6>
 
