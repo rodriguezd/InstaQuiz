@@ -26,10 +26,10 @@
                 <% @pending.each do |q| %>
                 <div class="quiz well">
                 <div class="pending-icons">
-                  <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: { confirm: 'Are you sure?' } %>
-                  <%=link_to "Review questions", review_quiz_questions_path(q), :class=>"span1.5 quiz-link review-icon" %>
+                  <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: {confirm: 'Are you sure?', toggle: "tooltip" }, :title => "Delete quiz" %>
+                  <%=link_to "Review questions", review_quiz_questions_path(q), :class=>"span1.5 quiz-link review-icon", data: {:toggle => "tooltip"}, :title => "Review submitted questions" %>
                 </div>
-                <h6 class="for-dash"><%= link_to truncate(q.name), quiz_path(q) %></h6>
+                <h6 class="for-dash"><%= link_to q.name, quiz_path(q) %></h6>
               </div>
                 <% end %>
               </div>
@@ -41,8 +41,8 @@
                 <div class="quiz well">
                     <div class="completed-icons">
 
-                      <%= link_to "Result", overview_quiz_path(q), :class=>"span1.5 quiz-link results-icon " %>
-                      <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon  ", data: { confirm: 'Are you sure?' } %> 
+                      <%= link_to "Result", overview_quiz_path(q), :class=>"span1.5 quiz-link results-icon", data: {:toggle => "tooltip"}, :title => "View quiz results" %>
+                      <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon  ", data: { confirm: 'Are you sure?', toggle: "tooltip"}, :title => "Delete quiz" %> 
 
                     </div> 
                   <h5><%= link_to q.name, quiz_path(q) %></h5>
@@ -72,7 +72,7 @@
                 <% @active.each do |q| %>
                 <div class="quiz well">
                     <div class="icon">
-                    <%= link_to "Take Quiz",take_quiz_path(q), :class=>"span1.5 quiz-link take-icon" %>
+                    <%= link_to "Take Quiz",take_quiz_path(q), :class=>"span1.5 quiz-link take-icon", :data => {:toggle => "tooltip"}, :title => "Take quiz" %>
                     </div>
                 <h6 class="for-dash"><%= q.name %></h6>
                 </div>
@@ -85,7 +85,7 @@
                 <% @pending.each do |q| %>
                 <div class="quiz well">
                   <div class="icon2">
-                   <%= link_to "Submit Question", new_quiz_question_path(q), :class=>"span1.5 quiz-link submit-icon" %>
+                   <%= link_to "Submit Question", new_quiz_question_path(q), :class=>"span1.5 quiz-link submit-icon", :data => {:toggle => "tooltip"}, :title => "Submit questions" %>
                   </div>
                   <h6 class="for-dash"><%= q.name %></h6>
                 </div>
@@ -98,7 +98,7 @@
                 <% @question_submitted.each do |q| %>
                 <div class="quiz well">
                   <div class="icon3">
-                  <%= link_to "Edit", submitted_questions_quiz_path(q), :class=>"span1.5 quiz-link edit-icon" %>
+                  <%= link_to "Edit", submitted_questions_quiz_path(q), :class=>"span1.5 quiz-link edit-icon", :data => {:toggle => "tooltip"}, :title => "Edit submitted questions"%>
                 </div>
                 <h6 class="for-dash"><%= q.name %></h6>
                 </div>
@@ -111,7 +111,7 @@
                 <% @completed.each do |q| %>
                 <div class="quiz well">
                   <div class="icon4">
-                  <%= link_to "Results", score_quiz_path(q), :class=>"span1.5 quiz-link score-icon" %>
+                  <%= link_to "Results", score_quiz_path(q), :class=>"span1.5 quiz-link score-icon", :data => {:toggle => "tooltip"}, :title => "View results" %>
                   </div>
                   <h6 class="for-dash"><%= q.name %></h6>
                 </div>
