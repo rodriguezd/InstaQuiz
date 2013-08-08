@@ -51,3 +51,8 @@ $('#active').liteAccordion({
     linkable : true,
     easing: 'easeInOutQuart'
 });
+
+.active-icons img:hover {
+ 
+    color: #96ba5f;
+}
