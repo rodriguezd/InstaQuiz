@@ -8,6 +8,29 @@
 
 }
 
+h1.heading{
+  text-align: center;
+}
+
+div.center{
+  float: none !important;
+  margin: auto !important;
+}
+
+table.groups{
+  margin: auto;
+}
+
+.center{
+  float: none !important;
+  margin: auto !important;
+}
+
+.instaform{
+  //float: none !important;
+  //margin: 30px auto auto auto !important;
+}
+
 .flash_error {
   color: red;
 }
@@ -90,7 +113,7 @@ span.for-dash{
 div.quiz-heading{
   border-bottom: solid !important;
   border-bottom-width: 1px !important;
-  border-bottom-color: gray !important;
+  border-bottom-color: #eeeeee !important;
   margin-bottom: 20px !important;
 }
 
@@ -326,4 +349,19 @@ div.quiz-link{
   -moz-transition: none;
   -o-transition: none;
   transition: none;
+}
+
+div.directions {
+  float: left !important;
+  padding: 30px !important;
+  margin: 100px 30px 30px 30px !important;
+  border: dotted;
+  border-width: 1px;
+  border-color: gray;
+}
+
+p.directions{
+  padding: 10px;
+  line-height: 125%;
+  text-align: center;
 }
