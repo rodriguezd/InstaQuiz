@@ -44,9 +44,9 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(params[:quiz])
+    @quiz.num_choices = params[:num_choices]
     date = params[:deadline_date]
     deadline = "#{date[3,2]}/#{date[0,2]}/#{date[6,4]}"
-    @quiz.num_choices = params[:num_choices]
     @quiz.deadline_date = deadline
     @quiz.deadline_time = params[:deadline_time]
     @quiz.instructor = current_user.id
@@ -92,8 +92,9 @@ class QuizzesController < ApplicationController
   def update
     @quiz = Quiz.find(params[:id])
     @quiz.num_choices = params[:num_choices]
-    # @quiz.deadline_date = params[:deadline_date]
-    @quiz.update_attribute(:deadline_date, params[:deadline_date])
+    date = params[:deadline_date]
+    deadline = "#{date[3,2]}/#{date[0,2]}/#{date[6,4]}"
+    @quiz.deadline_date = deadline
     @quiz.deadline_time = params[:deadline_time]
     @quiz.groups.clear
     params[:group_code].each do |code|
@@ -243,6 +244,12 @@ class QuizzesController < ApplicationController
 
   def questions_submitted
     @quiz = Quiz.find(params[:id])
+  end
+
+  def notify_students
+    @quiz = Quiz.find(params[:id])
+    @quiz.questions_email
+    redirect_to :back, notice: 'Group members have been notified.'
   end
 
 end
