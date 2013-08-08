@@ -1,0 +1,18 @@
+<% if current_user.role?(:instructor) %>
+
+  <div class ="directions">
+    <p class="directions">Currently there are no completed quizzes</p>
+    <p class="directions">You must click end quiz in the active state in order to complete a quiz</p>
+    <p class="directions">You can see scores and charts for each quiz in this section</p>
+    <p class="directions"></p>
+  </div>
+
+<% elsif current_user.role?(:student) %>
+  <div class ="directions">
+    <p class="directions">Currently there are no completed quizzes</p>
+    <p class="directions">Once you have taken an quiz and the teacher ends the quiz it will appear here</p>
+    <p class="directions">You can see scores and charts for each quiz in this section</p>
+    <p class="directions"></p>
+  </div>
+
+<% end %>

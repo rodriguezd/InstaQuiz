@@ -7,7 +7,6 @@ Openexam2::Application.routes.draw do
   end
 
   get '/groups/:id/remove_student/:student_id' => 'groups#remove_student', :as => :remove_student
-
   post '/groups/join' => 'groups#join', :as => :group_join
   get '/groups/:id/list_members' => 'groups#list_members', :as => :list_members
 
@@ -36,7 +35,8 @@ Openexam2::Application.routes.draw do
       get 'results', on: :member
       get 'chart', on: :member
       get 'overview', on: :member
-      get 'submitted_questions', :on => :member
+      get 'submitted_questions', on: :member
+      get 'notify_students', on: :member
       resources :questions do
         collection do
           get 'review'
