@@ -25,7 +25,7 @@
               <h2><span>Pending: <%= @pending.count%></span></h2>
               <div id="pending" class="quizzes">
                 <% if @active.empty? %>
-                  <%= render '  pendingdirections' %>
+                  <%= render 'pendingdirections' %>
                 <% else %>
                 <% @pending.each do |q| %>
                   <div class="quiz well">
