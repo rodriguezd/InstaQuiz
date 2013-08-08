@@ -67,7 +67,7 @@
                 <% @active.each do |q| %>
                 <div class="quiz well">
                     <div class="icon">
-                    <%= link_to image_tag('pencil.png'),take_quiz_path(q), :class=>"span1.5 quiz-link  " %>
+                    <%= link_to "Take Quiz",take_quiz_path(q), :class=>"span1.5 quiz-link take-icon" %>
                     </div>
                 <h6 class="for-dash"><%= q.name %></h6>
                 </div>
@@ -80,7 +80,7 @@
                 <% @pending.each do |q| %>
                 <div class="quiz well">
                   <div class="icon2">
-                   <%= link_to image_tag('brain1.png'),new_quiz_question_path(q), :class=>"span1.5 quiz-link  " %>
+                   <%= link_to "Submit Question", new_quiz_question_path(q), :class=>"span1.5 quiz-link submit-icon" %>
                   </div>
                   <h6 class="for-dash"><%= q.name %></h6>
                 </div>
@@ -93,7 +93,7 @@
                 <% @question_submitted.each do |q| %>
                 <div class="quiz well">
                   <div class="icon3">
-                  <%= link_to image_tag('eraser.png'),submitted_questions_quiz_path(q), :class=>"span1.5 quiz-link  " %>
+                  <%= link_to "Edit", submitted_questions_quiz_path(q), :class=>"span1.5 quiz-link edit-icon" %>
                 </div>
                 <h6 class="for-dash"><%= q.name %></h6>
                 </div>
@@ -106,7 +106,7 @@
                 <% @completed.each do |q| %>
                 <div class="quiz well">
                   <div class="icon4">
-                  <%= link_to image_tag('barchart.png'),score_quiz_path(q), :class=>"span1.5 quiz-link  " %>
+                  <%= link_to "Results", score_quiz_path(q), :class=>"span1.5 quiz-link score-icon" %>
                   </div>
                   <h6 class="for-dash"><%= q.name %></h6>
                 </div>

@@ -181,7 +181,7 @@ div.quiz-link{
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-image: url(insta-quiz-instructor-icons.png);
+  background-image: url(insta-quiz-student-icons.png);
   overflow: hidden;
   white-space: nowrap;
   text-indent: 100%;
@@ -248,6 +248,74 @@ div.quiz-link{
 
 .results-icon:hover {
   background-position: -80px -20px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+// student icons
+
+.take-icon, .submit-icon, .edit-icon, .score-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url(insta-quiz-student-icons.png);
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100%;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  margin-left: 3px;
+}
+
+.take-icon {
+  background-position: 0 0;
+
+}
+
+.submit-icon {
+  background-position: -30px 0;
+} 
+
+.edit-icon {
+  background-position: -60px 0;
+} 
+
+.score-icon {
+  background-position: -90px 0;
+}
+
+
+
+.take-icon:hover {
+  background-position: 0 -30px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+.submit-icon:hover {
+  background-position: -30px -30px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+} 
+
+.edit-icon:hover {
+  background-position: -60px -30px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+} 
+
+.score-icon:hover {
+  background-position: -90px -30px;
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
