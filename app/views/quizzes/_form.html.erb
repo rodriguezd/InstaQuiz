@@ -1,72 +1,64 @@
-<div class="span 6 offset2">
-<%= form_for(@quiz) do |f| %>
-  <% if Group.where(:instructor => current_user.id).empty? %>
-    A quiz must be assigned to at least one group. You currently have no groups. Create groups by going to MyGroups in the navigation bar.
-  <% else %>
-  <% if @quiz.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
-        <ul>
-          <% @quiz.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
+
+  <div class="span6 offset4 instaform">
+    <%= form_for(@quiz) do |f| %>
+      <% if Group.where(:instructor => current_user.id).empty? %>
+        A quiz must be assigned to at least one group. You currently have no groups. Create groups by going to MyGroups in the navigation bar.
+      <% else %>
+      <% if @quiz.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+            <ul>
+              <% @quiz.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.text_field :name, :placeholder => "Quiz Title" %>
+        <!-- <p>Title: <%= f.text_field :name %></p> -->
       </div>
-  <% end %>
+      <% if params[:action] != 'edit' %>
+        <div class="inline">
+            <%= hidden_field_tag 'clone', nil %>
+            <%= check_box_tag 'clone', true, false, :id => "clone_check_box"%>
+        </div>
+        <p id="checkbox_label">Duplicate existing quiz</p>
+        <div class="field">
+          <%= label_tag :copy, 'Quiz to duplicate', :class => "clone_select" %>
+          <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select quiz to duplicate', :class => "clone_select" %>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= label_tag 'num_choices', 'Number of answer choices', :class => "num_choices" %>
+        <%= select_tag 'num_choices', "<option>2</option><option>3</option><option selected='selected'>4</option><option>5</option><option>6</option>".html_safe, :class => "num_choices" %>
 
-  <div class="field">
-    <%= f.label :name, "Quiz Title" %><%= f.text_field :name %>
-    <!-- <p>Title: <%= f.text_field :name %></p> -->
-  </div>
-  <% if params[:action] != 'edit' %>
-    <div class="inline">
-        <%= hidden_field_tag 'clone', nil %>
-        <%= check_box_tag 'clone', true, false, :id => "clone_check_box"%>
-    </div>
-    <p id="checkbox_label">Duplicate existing quiz</p>
-    <div class="field">
-      <%= label_tag :copy, 'Quiz to duplicate', :class => "clone_select" %>
-      <%= select_tag :copy, options_from_collection_for_select(Quiz.where(:instructor => current_user.id), :id, :name), :prompt => 'Select quiz to duplicate', :class => "clone_select" %>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= label_tag 'num_choices', 'Number of answer choices', :class => "num_choices" %>
-    <%= select_tag 'num_choices', "<option>2</option><option>3</option><option selected='selected'>4</option><option>5</option><option>6</option>".html_safe, :class => "num_choices" %>
-  </div>
-
-
-  <%#= select_tag 'group_code[]', options_from_collection_for_select(Group.where(:instructor => current_user.id), :code, :name), :multiple => true, :size => 8, :prompt => 'Select group(s)' %>
-  <!-- <table>
+  <label>Groups</label>
+  <p><select name="group_code[]" class="multiselect" id="groupselector" multiple="multiple">
     <% Group.where(:instructor => current_user.id).each do |group| %>
-     <tr>
-        <td><%= label_tag 'group_code[]', group.name %></td>
-        <td class="check_cell"><%= check_box_tag 'group_code[]', group.code, @quiz.groups.any?{|grp| grp.code == group.code} %></td>
-      </tr>
+      <option value=<%= group.code %>><%= group.name %></option>
     <% end %>
-  </table> -->
-
-<label>Groups</label>
-<p><select name="group_code[]" class="multiselect" id="groupselector" multiple="multiple">
-  <% Group.where(:instructor => current_user.id).each do |group| %>
-    <option value=<%= group.code %>><%= group.name %></option>
-  <% end %>
-</select></p>
-<div id="deadline">
-<h4 id="instructions" >Deadline for student question submission:</h4>
-  <label for="datepicker">Date</label>
-  <p><input name="deadline_date" type="text" id="datepicker" /></p>
-  <label for="timepicker">Time</label>
-  <p><input name="deadline_time" type="text" id="timepicker" /></p>
-</div>
-  <div class="field">
-    <%= f.label :instructions %>
-    <%= f.text_area :instructions, :rows => 5, :cols => 20%>
+  </select></p>
+    </div>
   </div>
 
-
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
+  <div class="span6 offset4 instaform">
+    <div id="deadline">
+      <p id="instructions" >Deadline for student question submission:</p>
+        <p><input name="deadline_date" type="text" id="datepicker", placeholder="Date" /></p>
+        <p><input name="deadline_time" type="text" id="timepicker", placeholder="Time" /></p>
+    </div>
   </div>
-  <% end %>
-<% end %>
-</div>
+
+  <div class="span6 offset4 instaform">
+      <div class="field">
+        <%= f.text_area :instructions, :rows => 10, :cols => 100, :placeholder => "instructions"%>
+      </div>
+
+      <div class="actions">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
