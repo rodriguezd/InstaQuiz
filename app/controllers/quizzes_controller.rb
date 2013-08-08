@@ -216,7 +216,10 @@ class QuizzesController < ApplicationController
       if params[:status] == "active"
         # @quiz.take_email   ###
         redirect_to results_quiz_path(@quiz) and return
+      elsif params[:status] == "completed"
+        redirect_to results_quiz_path(@quiz) and return
       end
+
       redirect_to dashboard_user_path(current_user) and return
     elsif current_user.role?(:student)
       format.html { redirect_to dashboard_user_path(current_user), notice: 'You do not have the privileges to change the status of this quiz.' }
