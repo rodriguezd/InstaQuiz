@@ -1,3 +1,4 @@
+<div style="margin-top: 30px">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -13,26 +14,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :placeholder => "Name" %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-    <%= f.label :email_confirmation %><br />
-    <%= f.text_field :email_confirmation %>
+    <%= f.text_field :email, :placeholder => "Email" %> </br>
+    <%= f.text_field :email_confirmation, :placeholder => "Confirm Email" %>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password, :placeholder => "Password" %> </br>
+    <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %>
   </div>
+  </br>
   <% if @user.new_record? %>
   <div>
-    Select role: <br><br>
+    Select role: <br>
     <%= radio_button_tag 'role', 'student' %> <span id="role_label">Student </span><br>
-
     <%= radio_button_tag 'role', 'instructor' %> <span id="role_label">Instructor</span>
   </div>
   <% end %>
@@ -41,3 +37,4 @@
     <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>
+</div>
