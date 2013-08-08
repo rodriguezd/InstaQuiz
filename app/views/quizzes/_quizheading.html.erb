@@ -1,8 +1,32 @@
-<div class="quiz-heading clearfix">
-  <div class="quiz-title"><h1><%= @quiz.name %></h1></div>
-  <div class="quiz-info">
-    <span class="quiz-heading"><%= @quiz.groups.first %> </span>
-    <span class="quiz-heading"><%= @quiz.questions.size %> questions submitted </span>
-    <span class="quiz-heading"><%= @quiz.questions.where(:status => "approved").size %> questions approved </span>
+<div class="quiz-heading clearfix row">
+  <div class="quiz-title clearfix col-lg-6">
+    <h2 id="quiztitle"><%= @quiz.name %></h2>
+    <span class="pull-left"><%= link_to 'Edit', edit_quiz_path(@quiz) %></span>
+  </div>
+
+  <div class="col-lg-6 quiz-info pull-right">
+    <dl class="quiz-info dl-horizontal">
+      <dt>Groups:</dt>
+        <% if @quiz.groups.empty? %>
+          <dd> </dd>
+        <% else %>
+        <dd>
+          <% @quiz.groups.each do |group| %>
+            <span class="label quiz-heading"><%= group.name %> </span>
+          <% end %>
+        </dd>
+        <% end %>
+      <dt>Status:</dt>
+      <dd>
+        <%if current_user.role?(:instructor) %>
+          <%= @quiz.status.titleize %>
+        <% else %>
+          <%= current_user.student_quizzes.where(:quiz_id => @quiz.id).first.quiz_status.titleize %>
+      </dd>
+        <% end %>
+<!--         <dt>Deadline:</dt> 
+        <dd><%= @quiz.deadline_date.strftime("%b %d, %Y")if !@quiz.deadline_date.nil? %><%= @quiz.deadline_time.strftime("%l:%M %p") if !@quiz.deadline_time.nil? %></dd>
+      <dt>Instructions:</dt><dd><%= @quiz.instructions %></dd> -->
+    </dl>
   </div>
 </div>

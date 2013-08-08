@@ -6,12 +6,20 @@
   color: red;
 }
 
+dl.quiz-info.dl-horizontal{
+  margin: auto;
+  vertical-align: middle !important;
+}
 div.overview.well {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 10px !important;
+}
+h2#quiztitle{
+  margin-top: 0px;
 }
 
 div.chart{
@@ -73,20 +81,18 @@ span.for-dash{
   font-size: 16px;
 }
 
-span.quiz-heading{
-  font-size: 16px;
-  display: table;
+div.quiz-heading{
+  border-bottom: solid !important;
+  border-bottom-width: 1px !important;
+  border-bottom-color: gray !important;
+  margin-bottom: 20px !important;
 }
 
-div.quiz-title{
-  float:left;
-}
 
-div.quiz-info {
-  float: right;
-  margin: auto;
-  display: table-cell;
-  vertical-align:middle;
+div.col-lg-6.quiz-info {
+  margin-top: 10px;
+  min-height: 60px !important;
+  vertical-align: middle !important;
 }
 
 .links{

@@ -2,20 +2,6 @@
   <div id='container' class='accordion'>
       <ol>
           <li>
-              <h2><span>Pending: <%= @pending.count%></span></h2>
-              <div id="pending" class="quizzes">
-                <% @pending.each do |q| %>
-                <div class="quiz well">
-                <div class="pending-icons">
-                  <%= link_to image_tag('ex.png'), q, method: :delete, class: "span1.5 quiz-link", data: { confirm: 'Are you sure?' } %>
-                  <%=link_to image_tag('view1.png'),review_quiz_questions_path(q), :class=>"span1.5 quiz-link  " %>
-                </div>
-                <h6 class="for-dash"><%= link_to truncate(q.name), quiz_path(q) %></h6>
-              </div>
-                <% end %>
-              </div>
-          </li>
-          <li>
               <h2><span>Active: <%= @active.count %></span></h2>
               <div id="active" class="quizzes">
                 <% @active.each do |q| %>
@@ -32,16 +18,16 @@
               </div>
           </li>
           <li>
-              <h2><span>Finalized: <%= @finalized.count%></span></h2>
-              <div id="finalized" class="quizzes">
-                <% @finalized.each do |q| %>
+              <h2><span>Pending: <%= @pending.count%></span></h2>
+              <div id="pending" class="quizzes">
+                <% @pending.each do |q| %>
                 <div class="quiz well">
-                  <div class="finalized-icons">
-                    <%= link_to image_tag('active.png'),set_status_quiz_path(q, :status => "active"), :class=>"span1.5 quiz-link  " %>
-                    <%= link_to image_tag('ex.png'), q, method: :delete, class: "span1.5 quiz-link  ", data: { confirm: 'Are you sure?' } %> </div> 
-                  <h5 class="for-dash"><%= link_to q.name, quiz_path(q) %></h5>
-                  <h6>Groups: <%= q.groups.name %></h6>
+                <div class="pending-icons">
+                  <%= link_to image_tag('ex.png'), q, method: :delete, class: "span1.5 quiz-link", data: { confirm: 'Are you sure?' } %>
+                  <%=link_to image_tag('view1.png'),review_quiz_questions_path(q), :class=>"span1.5 quiz-link  " %>
                 </div>
+                <h6 class="for-dash"><%= link_to truncate(q.name), quiz_path(q) %></h6>
+              </div>
                 <% end %>
               </div>
           </li>
@@ -50,10 +36,10 @@
               <div id="completed" class="quizzes">
                 <% @completed.each do |q| %>
                 <div class="quiz well">
-
                     <div class="completed-icons">
-                      <%= link_to image_tag('pie.png'),overview_quiz_path(q), :class=>"span1.5 quiz-link  " %>
-                      <%= link_to image_tag('ex.png'), q, method: :delete, class: "span1.5 quiz-link  ", data: { confirm: 'Are you sure?' } %> </div> 
+                      <%= link_to image_tag('barchart.png'),overview_quiz_path(q), :class=>"span1.5 quiz-link  " %>
+                      <%= link_to image_tag('ex.png'), q, method: :delete, class: "span1.5 quiz-link  ", data: { confirm: 'Are you sure?' } %> 
+                    </div> 
                   <h5><%= link_to q.name, quiz_path(q) %></h5>
 <!--                   <text>Questions: <%= q.questions.count %></text></br>
  -->                  <h6>Groups: <%= q.groups.name %></h6>

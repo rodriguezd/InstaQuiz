@@ -24,7 +24,7 @@ class Quiz < ActiveRecord::Base
   has_many :results
 
   has_many :group_quizzes
-  has_many :groups, :through => :group_quizzes
+  has_many :groups, :through => :group_quizzes, :uniq => true
 
 
   after_initialize :init
