@@ -7,33 +7,27 @@
                 <% if @active.empty? %>
                   <%= render 'activedirections' %>
                 <% else %>
-                <% @active.each do |q| %>
-
-                <div class="quiz well">
-                <div class="active-icons">
-
-      
+                  <% @active.each do |q| %>
+                    <div class="quiz well">
+                    <div class="active-icons">      
                     <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: { confirm: 'Are you sure?', :toggle => "tooltip"}, :title => "Delete quiz"  %>
-
                     <%=link_to "Deactivate", set_status_quiz_path(q), :class=>"span1.5 quiz-link deactivate-icon", data: {:toggle => "tooltip"}, :title => "Deactivate quiz" %>
                      <%=link_to "Live Updates", results_quiz_path(q), :class=>"span1.5 quiz-link updates-icon", data: {:toggle => "tooltip"}, :title => "Live updates" %>
-
                 </div>
                 <h6 class="for-dash"><%= link_to truncate(q.name, length: 20, separator: ' '), results_quiz_path(q) %></h6>
 
                 </div>
-                <% end %>
+                  <% end %>
                 <% end %>
               </div>
           </li>
           <li>
               <h2><span>Pending: <%= @pending.count%></span></h2>
               <div id="pending" class="quizzes">
-                <% if @active.empty? %>
+                <% if @pending.empty? %>
                   <%= render 'pendingdirections' %>
                 <% else %>
                 <% @pending.each do |q| %>
-<<<<<<< HEAD
                 <div class="quiz well">
                 <div class="pending-icons">
                   <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: {confirm: 'Are you sure?', toggle: "tooltip" }, :title => "Delete quiz" %>
@@ -48,24 +42,21 @@
           </li>
           <li>
               <h2><span>Completed: <%= @completed.count %></span></h2>
+                <% if @completed.empty? %>
+                  <%= render 'completeddirections' %>
+                <% else %>
               <div id="completed" class="quizzes">
                 <% @completed.each do |q| %>
                 <div class="quiz well">
                     <div class="completed-icons">
-
-
                       <%= link_to "Result", overview_quiz_path(q), :class=>"span1.5 quiz-link results-icon", data: {:toggle => "tooltip"}, :title => "View quiz results" %>
                       <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon  ", data: { confirm: 'Are you sure?', toggle: "tooltip"}, :title => "Delete quiz" %> 
-
-
-                    </div> 
+                     </div> 
                   <h5><%= link_to q.name, quiz_path(q) %></h5>
 <!--                   <text>Questions: <%= q.questions.count %></text></br>
  -->                  <h6>Groups: <%= q.groups.name %></h6>
-           <!--        <text>Quizzes Submitted: <%= q.results.count %></text> -->
-         
-
                 </div>
+                <% end %>
                 <% end %>
               </div>
            </li>
@@ -137,14 +128,14 @@
                 <% if @completed.empty? %>
                   <%= render 'completeddirections' %>
                 <% else %>
-                <% @completed.each do |q| %>
-                <div class="quiz well">
-                  <div class="icon4">
-                  <%= link_to "Results", score_quiz_path(q), :class=>"span1.5 quiz-link score-icon", :data => {:toggle => "tooltip"}, :title => "View results" %>
-                  </div>
-                  <h6 class="for-dash"><%= q.name %></h6>
-                </div>
-                <% end %>
+                  <% @completed.each do |q| %>
+                     <div class="quiz well">
+                     <div class="icon4">
+                        <%= link_to "Results", score_quiz_path(q), :class=>"span1.5 quiz-link score-icon", :data => {:toggle => "tooltip"}, :title => "View results" %>
+                      </div>
+                      <h6 class="for-dash"><%= q.name %></h6>
+                    </div>
+                  <% end %>
                 <% end %>
               </div>
            </li>
