@@ -7,9 +7,9 @@
                 <% @active.each do |q| %>
                 <div class="quiz well">
                 <div class="active-icons">
-                    <%= link_to image_tag('ex.png'), q, method: :delete, class: "span1.5 quiz-link", data: { confirm: 'Are you sure?' } %>
-                    <%=link_to image_tag('deactivatehand.png'),set_status_quiz_path(q), :class=>"span1.5 quiz-link  " %>
-                     <%=link_to image_tag('antenna1.png'),results_quiz_path(q), :class=>"span1.5 quiz-link  " %>
+                    <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: { confirm: 'Are you sure?' } %>
+                    <%=link_to "Deactivate", set_status_quiz_path(q), :class=>"span1.5 quiz-link deactivate-icon" %>
+                     <%=link_to "Live Updates", results_quiz_path(q), :class=>"span1.5 quiz-link updates-icon" %>
                 </div>
                 <h6 class="for-dash"><%= link_to truncate(q.name, length: 20, separator: ' '), results_quiz_path(q) %></h6>
 
@@ -23,8 +23,8 @@
                 <% @pending.each do |q| %>
                 <div class="quiz well">
                 <div class="pending-icons">
-                  <%= link_to image_tag('ex.png'), q, method: :delete, class: "span1.5 quiz-link", data: { confirm: 'Are you sure?' } %>
-                  <%=link_to image_tag('view1.png'),review_quiz_questions_path(q), :class=>"span1.5 quiz-link  " %>
+                  <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: { confirm: 'Are you sure?' } %>
+                  <%=link_to "Review questions", review_quiz_questions_path(q), :class=>"span1.5 quiz-link review-icon" %>
                 </div>
                 <h6 class="for-dash"><%= link_to truncate(q.name), quiz_path(q) %></h6>
               </div>
@@ -37,9 +37,10 @@
                 <% @completed.each do |q| %>
                 <div class="quiz well">
                     <div class="completed-icons">
-                      
-                  <%= link_to image_tag('ex.png'), q, method: :delete, class: "span1.5 quiz-link  ", data: { confirm: 'Are you sure?' } %> 
-                  <%= link_to image_tag('barchart.png'),overview_quiz_path(q), :class=>"span1.5 quiz-link  " %>
+
+                      <%= link_to "Result", overview_quiz_path(q), :class=>"span1.5 quiz-link results-icon " %>
+                      <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon  ", data: { confirm: 'Are you sure?' } %> 
+
                     </div> 
                   <h5><%= link_to q.name, quiz_path(q) %></h5>
 <!--                   <text>Questions: <%= q.questions.count %></text></br>
@@ -68,7 +69,7 @@
                 <% @active.each do |q| %>
                 <div class="quiz well">
                     <div class="icon">
-                    <%= link_to image_tag('pencil.png'),take_quiz_path(q), :class=>"span1.5 quiz-link  " %>
+                    <%= link_to "Take Quiz",take_quiz_path(q), :class=>"span1.5 quiz-link take-icon" %>
                     </div>
                 <h6 class="for-dash"><%= q.name %></h6>
                 </div>
@@ -81,7 +82,7 @@
                 <% @pending.each do |q| %>
                 <div class="quiz well">
                   <div class="icon2">
-                   <%= link_to image_tag('brain1.png'),new_quiz_question_path(q), :class=>"span1.5 quiz-link  " %>
+                   <%= link_to "Submit Question", new_quiz_question_path(q), :class=>"span1.5 quiz-link submit-icon" %>
                   </div>
                   <h6 class="for-dash"><%= q.name %></h6>
                 </div>
@@ -94,7 +95,7 @@
                 <% @question_submitted.each do |q| %>
                 <div class="quiz well">
                   <div class="icon3">
-                  <%= link_to image_tag('eraser.png'),submitted_questions_quiz_path(q), :class=>"span1.5 quiz-link  " %>
+                  <%= link_to "Edit", submitted_questions_quiz_path(q), :class=>"span1.5 quiz-link edit-icon" %>
                 </div>
                 <h6 class="for-dash"><%= q.name %></h6>
                 </div>
@@ -107,7 +108,7 @@
                 <% @completed.each do |q| %>
                 <div class="quiz well">
                   <div class="icon4">
-                  <%= link_to image_tag('barchart.png'),score_quiz_path(q), :class=>"span1.5 quiz-link  " %>
+                  <%= link_to "Results", score_quiz_path(q), :class=>"span1.5 quiz-link score-icon" %>
                   </div>
                   <h6 class="for-dash"><%= q.name %></h6>
                 </div>
