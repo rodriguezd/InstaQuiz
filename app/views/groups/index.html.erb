@@ -38,7 +38,7 @@
   <% end %>
 </table>
 <br>
-<%= notice %>
+<span style="color: red"><%= notice %></span>
 <br>
 <% if current_user.role?(:student) %>
   <%= form_tag group_join_path do %>
