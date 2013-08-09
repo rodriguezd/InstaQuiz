@@ -17,6 +17,9 @@
 class Quiz < ActiveRecord::Base
   attr_accessible :name, :instructions, :num_choices, :deadline_date, :deadline_time, :status, :instructor
 
+  validates_presence_of :name
+  validates_uniqueness_of :name
+
   has_many :questions
   has_many :answers
   has_many :student_quizzes
@@ -71,7 +74,7 @@ class Quiz < ActiveRecord::Base
       end
     end
     count
-  end 
+  end
 
   def hardest_question_author
     hardest_hash = Hash.new

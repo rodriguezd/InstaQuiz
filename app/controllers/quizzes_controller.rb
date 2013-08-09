@@ -50,8 +50,15 @@ class QuizzesController < ApplicationController
     @quiz.deadline_date = deadline
     @quiz.deadline_time = params[:deadline_time]
     @quiz.instructor = current_user.id
-    params[:group_code].each do |code|
-      @quiz.groups << Group.where(:code => code)
+    if params.has_key?(:group_code)
+      params[:group_code].each do |code|
+        @quiz.groups << Group.where(:code => code)
+      end
+    else
+      @quiz.valid?
+      @quiz.errors[:base] << "Must select at least one group"
+      render action: 'new'
+      return
     end
 
     @quiz.update_attribute(:status, 'pending')
@@ -81,7 +88,7 @@ class QuizzesController < ApplicationController
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
         format.json { render json: @quiz, status: :created, location: @quiz }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
     end
