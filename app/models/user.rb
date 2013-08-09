@@ -80,13 +80,15 @@ class User < ActiveRecord::Base
     # grp = self.groups.where(:id=>group.id)
     quizzes_score = 0
     quizzes_count = 0
-    group.quizzes.each do|quiz|
-      quiz.results.where(:user_id => self.id).each do |result|
-        quizzes_score = quizzes_score + result.score
-        quizzes_count += 1
+    if !group.quizzes.empty?
+      group.quizzes.each do|quiz|
+        quiz.results.where(:user_id => self.id).each do |result|
+          quizzes_score = quizzes_score + result.score
+          quizzes_count += 1
+        end
       end
+      (quizzes_score/quizzes_count.to_f).ceil
     end
-    (quizzes_score/quizzes_count.to_f).ceil
   end
 
   def submitted_questions(quiz)
