@@ -79,14 +79,14 @@ class GroupsController < ApplicationController
 
   def join
     @user = current_user
-    if !@user.groups.where(:code => params[:group_code])
+    if @user.groups.where(:code => params[:group_code]).empty?
       @user.groups << Group.where(:code => params[:group_code])
       @user.save
       flash[:notice] = 'Successfully joined group.'
     else
       flash[:notice] = 'Already a member of group entered.'
     end
-    redirect_to groups_url
+    redirect_to groups_path
 
     # if @user.save
     #     format.html { redirect_to groups_path, notice: 'Successfully joind group.' }

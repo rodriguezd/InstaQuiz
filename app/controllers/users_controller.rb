@@ -89,6 +89,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+
     @user = current_user
     @transparent = true
     if current_user.role?(:instructor)

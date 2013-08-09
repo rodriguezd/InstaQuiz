@@ -1,4 +1,5 @@
 <% if current_user.role?(:instructor) %>
+
   <div id='container' class='accordion'>
       <ol>
           <li>
@@ -7,14 +8,18 @@
                 <% if @active.empty? %>
                   <%= render 'activedirections' %>
                 <% else %>
-                  <% @active.each do |q| %>
+                  <% @active.reverse.each do |q| %>
                     <div class="quiz well">
                     <div class="active-icons">      
                     <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: { confirm: 'Are you sure?', :toggle => "tooltip"}, :title => "Delete quiz"  %>
                     <%=link_to "Deactivate", set_status_quiz_path(q), :class=>"span1.5 quiz-link deactivate-icon", data: {:toggle => "tooltip"}, :title => "Deactivate quiz" %>
                      <%=link_to "Live Updates", results_quiz_path(q), :class=>"span1.5 quiz-link updates-icon", data: {:toggle => "tooltip"}, :title => "Live updates" %>
                 </div>
-                <h6 class="for-dash"><%= link_to truncate(q.name, length: 20, separator: ' '), results_quiz_path(q) %></h6>
+
+               <!-- Possible implementation of Quiz title truncation   -->
+               <!--  <#%= link_to truncate(q.name, length: 20, separator: ' '), results_quiz_path(q) %> -->
+
+                <h6 class="for-dash"><%= link_to q.name, results_quiz_path(q) %></h6>
 
                 </div>
                   <% end %>
@@ -27,7 +32,7 @@
                 <% if @pending.empty? %>
                   <%= render 'pendingdirections' %>
                 <% else %>
-                <% @pending.each do |q| %>
+                <% @pending.reverse.each do |q| %>
                 <div class="quiz well">
                 <div class="pending-icons">
                   <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: {confirm: 'Are you sure?', toggle: "tooltip" }, :title => "Delete quiz" %>
@@ -46,7 +51,7 @@
                   <%= render 'completeddirections' %>
                 <% else %>
               <div id="completed" class="quizzes">
-                <% @completed.each do |q| %>
+                <% @completed.reverse.each do |q| %>
                 <div class="quiz well">
                     <div class="completed-icons">
                       <%= link_to "Result", overview_quiz_path(q), :class=>"span1.5 quiz-link results-icon", data: {:toggle => "tooltip"}, :title => "View quiz results" %>
@@ -77,7 +82,7 @@
                 <% if @active.empty? %>
                   <%= render 'activedirections' %>
                 <% else %>
-                <% @active.each do |q| %>
+                <% @active.reverse.each do |q| %>
                 <div class="quiz well">
                     <div class="icon">
                     <%= link_to "Take Quiz",take_quiz_path(q), :class=>"span1.5 quiz-link take-icon", :data => {:toggle => "tooltip"}, :title => "Take quiz" %>
@@ -94,7 +99,7 @@
                 <% if @pending.empty? %>
                   <%= render 'pendingdirections' %>
                 <% else %>
-                <% @pending.each do |q| %>
+                <% @pending.reverse.each do |q| %>
                 <div class="quiz well">
                   <div class="icon2">
                    <%= link_to "Submit Question", new_quiz_question_path(q), :class=>"span1.5 quiz-link submit-icon", :data => {:toggle => "tooltip"}, :title => "Submit questions" %>
@@ -111,7 +116,7 @@
                 <% if @question_submitted.empty? %>
                   <%= render 'studentsubmit' %>
                 <% else %>
-                <% @question_submitted.each do |q| %>
+                <% @question_submitted.reverse.each do |q| %>
                 <div class="quiz well">
                   <div class="icon3">
                   <%= link_to "Edit", submitted_questions_quiz_path(q), :class=>"span1.5 quiz-link edit-icon", :data => {:toggle => "tooltip"}, :title => "Edit submitted questions"%>
@@ -128,7 +133,7 @@
                 <% if @completed.empty? %>
                   <%= render 'completeddirections' %>
                 <% else %>
-                  <% @completed.each do |q| %>
+                  <% @completed.reverse.each do |q| %>
                      <div class="quiz well">
                      <div class="icon4">
                         <%= link_to "Results", score_quiz_path(q), :class=>"span1.5 quiz-link score-icon", :data => {:toggle => "tooltip"}, :title => "View results" %>
