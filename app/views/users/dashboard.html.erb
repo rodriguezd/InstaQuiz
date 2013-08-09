@@ -54,8 +54,8 @@
                 <% @completed.reverse.each do |q| %>
                 <div class="quiz well">
                     <div class="completed-icons">
-                      <%= link_to "Result", overview_quiz_path(q), :class=>"span1.5 quiz-link results-icon", data: {:toggle => "tooltip"}, :title => "View quiz results" %>
                       <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon  ", data: { confirm: 'Are you sure?', toggle: "tooltip"}, :title => "Delete quiz" %> 
+                      <%= link_to "Result", overview_quiz_path(q), :class=>"span1.5 quiz-link results-icon", data: {:toggle => "tooltip"}, :title => "View quiz results" %>
                      </div> 
                   <h5><%= link_to q.name, quiz_path(q) %></h5>
 <!--                   <text>Questions: <%= q.questions.count %></text></br>
