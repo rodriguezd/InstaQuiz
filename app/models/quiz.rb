@@ -18,7 +18,7 @@ class Quiz < ActiveRecord::Base
   attr_accessible :name, :instructions, :num_choices, :deadline_date, :deadline_time, :status, :instructor
 
   validates_presence_of :name
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :on => :create
 
   has_many :questions
   has_many :answers
@@ -41,7 +41,6 @@ class Quiz < ActiveRecord::Base
     self.groups.each do |group|
       group.users.each do |user|
         UserMailer.take_quiz_email(user, self).deliver
-        # UserMailer.take_quiz_email("David Rodriguez <davidrodriguez212@gmail.com>", self).deliver
       end
     end
   end
