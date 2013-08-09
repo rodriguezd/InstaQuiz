@@ -76,7 +76,11 @@ end
 def average(quiz)
   total_answers = self.answers.where(:quiz_id => quiz.id)
   correct_choices = total_answers.collect{|answer| answer.choice.correct if answer.choice.correct}.compact
-  ((correct_choices.size / total_answers.size.to_f) * 100).ceil
+  if total_answers.size == 0
+    0
+  else
+    ((correct_choices.size / total_answers.size.to_f) * 100).ceil
+  end
 end
 
   private

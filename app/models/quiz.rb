@@ -82,9 +82,11 @@ class Quiz < ActiveRecord::Base
 
     unless self.questions.empty?
       self.questions.each do |question|
-        if question.user && question.user.class_average(self).to_i < lowest
-          lowest = question.user.class_average(self)
-          name = question.user.name
+        unless question.user.nil? || question.user.class_average(self).nil?
+          if question.user && question.user.class_average(self).to_i < lowest
+            lowest = question.user.class_average(self)
+            name = question.user.name
+          end
         end
       end
       [name, lowest]
