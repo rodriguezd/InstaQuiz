@@ -19,7 +19,7 @@
         <%= f.text_field :name, :placeholder => "Quiz Title" %>
         <!-- <p>Title: <%= f.text_field :name %></p> -->
       </div>
-      <% if params[:action] != 'edit' %>
+      <% if !['edit', 'update'].include?(params[:action]) %>
         <div class="inline">
             <%= hidden_field_tag 'clone', nil %>
             <%= check_box_tag 'clone', true, false, :id => "clone_check_box"%>

@@ -103,9 +103,15 @@ class QuizzesController < ApplicationController
     deadline = "#{date[3,2]}/#{date[0,2]}/#{date[6,4]}"
     @quiz.deadline_date = deadline
     @quiz.deadline_time = params[:deadline_time]
-    @quiz.groups.clear
-    params[:group_code].each do |code|
-      @quiz.groups << Group.where(:code => code)
+    if params.has_key?(:group_code)
+      @quiz.groups.clear
+      params[:group_code].each do |code|
+        @quiz.groups << Group.where(:code => code)
+      end
+    else
+      @quiz.errors[:base] << "Must select at least one group"
+      render action: 'edit'
+      return
     end
     respond_to do |format|
       if @quiz.update_attributes(params[:quiz])
