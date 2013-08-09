@@ -18,7 +18,7 @@
         <% @group.users.each_with_index do |student, i| %>
         <tr>
           <td><%= i + 1 %>.</td>
-          <td><%= student.name %></td>
+          <td><%= link_to student.name, chart_user_path(student.id) %></td>
           <td><%= student.grade(@group) %></td>
           <td><%= link_to 'Remove Student', remove_student_path(@group, student) %></td>
         </tr>

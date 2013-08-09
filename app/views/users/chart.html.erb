@@ -1,12 +1,16 @@
-<div class="container">  
-  <div class="row">  
-    <div class="span8">  
-      <ul class="nav nav-pills">    
-        <li class="<%= 'active' if params[:action] == 'grade' %> "><a href="<%= myprofile_user_path %>">My Profile</a></li>  
-        <li class="<%= 'active' if params[:action] == 'chart' %> "><a href="<%= chart_user_path %>">Charts</a></li>   
-      </ul>  
-    </div>  
-  </div>  
+<div class="container">
+  <div class="row">
+    <div class="span8">
+        <% if current_user.role?(:student) %>
+      <ul class="nav nav-pills">
+        <li class="<%= 'active' if params[:action] == 'grade' %> "><a href="<%= myprofile_user_path %>">My Profile</a></li>
+        <li class="<%= 'active' if params[:action] == 'chart' %> "><a href="<%= chart_user_path %>">Charts</a></li>
+      </ul>
+        <% else %>
+            <%= link_to 'Back', :back, :class => "btn btn-primary" %>
+        <% end %>
+    </div>
+  </div>
 </div>
 <table>
 
@@ -25,8 +29,12 @@ $(function () {
             },
 
             xAxis: {
-              
-                categories: <%=raw current_user.myprofile_chart_labels %>
+
+                <% if current_user.role?(:student) %>
+                    data: <%=raw current_user.myprofile_chart_labels %>
+                <% else %>
+                    data: <%= raw User.find(params[:id]).myprofile_chart_labels %>
+                <% end %>
             },
             yAxis: {
                 title: {
@@ -51,7 +59,11 @@ $(function () {
             },
             series: [{
                 name: 'Score',
-                data: <%=raw current_user.myprofile_chart_data %>
+                <% if current_user.role?(:student) %>
+                    data: <%=raw current_user.myprofile_chart_data %>
+                <% else %>
+                    data: <%= raw User.find(params[:id]).myprofile_chart_data %>
+                <% end %>
 
             }]
         });
