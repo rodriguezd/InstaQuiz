@@ -6,7 +6,7 @@
 
 <% hash = Hash.new %>
 <% @group.users.collect do |student| %>
-  <% if student.grade(@group) > 0 %>
+  <% if student.grade(@group) && student.grade(@group) > 0 %>
     <% hash[student.name] = student.grade(@group) %>
   <% end %>
 <% end %>

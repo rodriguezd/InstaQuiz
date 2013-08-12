@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
       if quizzes_count != 0
         (quizzes_score/quizzes_count.to_f).ceil
       else
-        "None"
+        nil
       end
     end
   end
