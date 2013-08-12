@@ -10,10 +10,10 @@
 
 <% @quiz.questions.where(:status => "approved").each do |q| %>
 <li>
-    <p style="float: left;"><%= markdown (q.content)%></p>
+    <span id="quest_content"><%= markdown (q.content)%></span>
 
   <% if can? :edit, q %>
-    <p id="edit_link"><%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %></p><br>
+    <span id="edit_link"><%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %></span><br>
   <% end %>
   <ol type='a'>
     <% q.choices.each do |choice| %>

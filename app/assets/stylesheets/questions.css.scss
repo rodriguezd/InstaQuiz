@@ -34,6 +34,10 @@ ol {
 }
 
 #edit_link {
-  float: left;
+  display: inline-block;
   margin-left: 15px;
+}
+
+#quest_content {
+  display: inline-block;
 }
