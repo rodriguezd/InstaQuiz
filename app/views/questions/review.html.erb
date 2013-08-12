@@ -1,41 +1,48 @@
 <%= form_tag '/questions/approve', :method => :put do %>
 
   <%= render :partial => '/quizzes/quizheading' %>
-
+  <% if @quiz.questions.present? %>
+  The <span class="correct">correct answer</span> is marked in green.
+<% end %>
+<br><br>
     <%= hidden_field_tag 'quiz_id', @quiz.id %>
 
 <div class="offset1">
-  <h6>
-    <%= "No questions submitted yet." if @quiz.questions.empty? %>
-  </h6>
-    <!-- <ol> -->
-    <% @quiz.questions.each do |question| %>
+<h6>
+  <%= "No questions submitted yet." if @quiz.questions.empty? %>
+</h6>
+  <!-- <ol> -->
+  <% @quiz.questions.each do |question| %>
 
-        <div class="inline">
-        <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved', :class => "approve"%>
-        </div>
-  <!-- <li> -->
+      <div class="inline">
+      <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved', :class => "approve"%>
+      </div>
+<!-- <li> -->
 
-          <div class="inline" id="redcarpet">
-            <%= markdown (question.content)%>
-           </div>
-  <!-- </li> -->
+        <div class="inline" id="redcarpet">
 
-      <ol type='a', class="review-set">
-      <% question.choices.each do |choice| %>
-        <% if choice.correct %>
-          <li>
-            <span class="correct"><%= choice.content %></span>
-          </li>
-        <% else %>
-          <li>
-            <%= choice.content %>
-          </li>
-        <% end %>
+
+          <i><%#= current_user.id == question.user_id ? "Created by you:" : "Submitted by #{User.find(question.user_id).name}:" %></i>
+          <%= markdown (question.content)%>
+
+         </div>
+          <br>
+<!-- </li> -->
+
+    <ol type='a', class="review-set">
+    <% question.choices.each do |choice| %>
+      <% if choice.correct %>
+        <li>
+          <span class="correct"><%= choice.content %></span>
+        </li>
+      <% else %>
+        <li>
+          <%= choice.content %>
+        </li>
       <% end %>
-    </ol>
-
     <% end %>
+    </ol>
+  <% end %>
   <% end %>
 
 <!-- </ol> -->

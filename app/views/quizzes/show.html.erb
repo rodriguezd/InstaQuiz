@@ -8,6 +8,12 @@
 
 <ol>
 
+<% if @quiz.questions.where(:status => "approved").empty? %>
+<h5>You have not approved any questions for this quiz</h5>
+<h6>Click on "Review Questions" to approve.
+<br><br>
+<% end %>
+
 <% @quiz.questions.where(:status => "approved").each do |q| %>
 <li>
     <span id="quest_content"><%= markdown (q.content)%></span>
@@ -36,7 +42,7 @@
     <a href="<%= new_quiz_question_path(@quiz) %>" class="btn btn-primary">Add Questions</a>
 
     <% if @quiz.questions.present? %>
-      <a href="<%= review_quiz_questions_path(@quiz) %>" class="btn btn-primary">Return to Review</a>
+      <a href="<%= review_quiz_questions_path(@quiz) %>" class="btn btn-primary">Review Questions</a>
       <a href="<%= set_status_quiz_path(@quiz, :status => "active") %>" class="btn btn-primary">Activate</a>
     <% else %>
       <a href="<%= notify_students_quiz_path(@quiz) %>" class="btn btn-primary" style="">Notify Students</a>
