@@ -3,7 +3,7 @@
 <p>
   <b>Question:</b>
   <br><br>
-  <span class="correct">CORRECT ANSWER</span>
+  The <span class="correct">correct answer</span> is marked in green. 
   <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
   <% if @question.quiz_id.in?(1..4) %>
       <%= question_parser(@question.content) %>

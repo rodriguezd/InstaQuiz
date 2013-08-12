@@ -19,7 +19,8 @@
                <!-- Possible implementation of Quiz title truncation   -->
                <!--  <#%= link_to truncate(q.name, length: 20, separator: ' '), results_quiz_path(q) %> -->
 
-                <h6 class="for-dash"><%= link_to q.name, results_quiz_path(q) %></h6>
+                <h6 class="for-dash"><%= link_to q.name, results_quiz_path(q) %><br>
+                Group: <%= q.groups.name %></h6>
 
                 </div>
                   <% end %>
@@ -38,7 +39,8 @@
                   <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon", data: {confirm: 'Are you sure?', toggle: "tooltip" }, :title => "Delete quiz" %>
                   <%=link_to "Review questions", review_quiz_questions_path(q), :class=>"span1.5 quiz-link review-icon", data: {:toggle => "tooltip"}, :title => "Review submitted questions" %>
                 </div>
-                <h6 class="for-dash"><%= link_to q.name, quiz_path(q) %></h6>
+                <h6 class="for-dash"><%= link_to q.name, quiz_path(q) %></br>
+                 <h6>Group: <%= q.groups.name %></h6>
 
               </div>
                 <% end %>
@@ -57,9 +59,8 @@
                       <%= link_to "Delete", q, method: :delete, class: "span1.5 quiz-link delete-icon  ", data: { confirm: 'Are you sure?', toggle: "tooltip"}, :title => "Delete quiz" %> 
                       <%= link_to "Result", overview_quiz_path(q), :class=>"span1.5 quiz-link results-icon", data: {:toggle => "tooltip"}, :title => "View quiz results" %>
                      </div> 
-                  <h5><%= link_to q.name, quiz_path(q) %></h5>
-<!--                   <text>Questions: <%= q.questions.count %></text></br>
- -->                  <h6>Groups: <%= q.groups.name %></h6>
+                  <h6><%= link_to q.name, quiz_path(q) %></br>
+                  Group: <%= q.groups.name %></h6>
                 </div>
                 <% end %>
                 <% end %>
@@ -87,7 +88,9 @@
                     <div class="icon">
                     <%= link_to "Take Quiz",take_quiz_path(q), :class=>"span1.5 quiz-link take-icon", :data => {:toggle => "tooltip"}, :title => "Take quiz" %>
                     </div>
-                <h6 class="for-dash"><%= q.name %></h6>
+                <h6 class="for-dash"><%= q.name %></br>
+                  Group: <%= q.groups.name %></h6>
+
                 </div>
                 <% end %>
                 <% end %>
@@ -104,7 +107,9 @@
                   <div class="icon2">
                    <%= link_to "Submit Question", new_quiz_question_path(q), :class=>"span1.5 quiz-link submit-icon", :data => {:toggle => "tooltip"}, :title => "Submit questions" %>
                   </div>
-                  <h6 class="for-dash"><%= q.name %></h6>
+                  <h6 class="for-dash"><%= q.name %></br>
+                   Group: <%= q.groups.name %></h6>
+
                 </div>
                 <% end %>
                 <% end %>
@@ -121,7 +126,8 @@
                   <div class="icon3">
                   <%= link_to "Edit", submitted_questions_quiz_path(q), :class=>"span1.5 quiz-link edit-icon", :data => {:toggle => "tooltip"}, :title => "Edit submitted questions"%>
                 </div>
-                <h6 class="for-dash"><%= q.name %></h6>
+                <h6 class="for-dash"><%= q.name %></br>
+                  Group: <%= q.groups.name %></h6>
                 </div>
                 <% end %>
                 <% end %>
@@ -138,7 +144,8 @@
                      <div class="icon4">
                         <%= link_to "Results", score_quiz_path(q), :class=>"span1.5 quiz-link score-icon", :data => {:toggle => "tooltip"}, :title => "View results" %>
                       </div>
-                      <h6 class="for-dash"><%= q.name %></h6>
+                      <h6 class="for-dash"><%= q.name %></br>
+                      Group: <%= q.groups.name %></h6>
                     </div>
                   <% end %>
                 <% end %>
