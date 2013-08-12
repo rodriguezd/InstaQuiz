@@ -16,8 +16,13 @@
 <!-- <li> -->
 
         <div class="inline" id="redcarpet">
+
+         
+          <i><%= current_user.id == question.user_id ? "Created by you:" : "Submitted by #{User.find(question.user_id).name}:" %></i>
           <%= markdown (question.content)%>
-         </div>
+
+         </div> 
+          <br>
 <!-- </li> -->
 
     <ol type='a', class="review-set">
