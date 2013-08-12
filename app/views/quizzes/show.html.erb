@@ -2,7 +2,7 @@
 
 <%= render :partial => '/quizzes/quizheading' %>
 <% if @quiz.questions.present? %>
-  <span class="correct">CORRECT ANSWER</span>
+  The <span class="correct">correct answer</span> is marked in green. 
 <% end %>
 <br><br>
 
@@ -12,9 +12,6 @@
 <li>
     <p style="float: left;"><%= markdown (q.content)%></p>
 
-  <% if can? :edit, q %>
-    <p id="edit_link"><%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %></p><br>
-  <% end %>
   <ol type='a'>
     <% q.choices.each do |choice| %>
       <% if choice.correct %>
