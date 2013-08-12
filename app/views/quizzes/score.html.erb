@@ -15,7 +15,6 @@
   <% if params[:action] != 'score' %>
     <span class="correct">CORRECT ANSWER</span>
   <% end %>
-  <h3> <%= @quiz.name %> Quiz </h3>
 <% elsif current_user.role?(:student) %>
   <h3> Your score for the <%= @quiz.name %> quiz! </h3>
   <h5><%= number_to_percentage(@score, precision: 1)%></h5>
