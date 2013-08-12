@@ -87,7 +87,11 @@ class User < ActiveRecord::Base
           quizzes_count += 1
         end
       end
-      (quizzes_score/quizzes_count.to_f).ceil
+      if quizzes_count != 0
+        (quizzes_score/quizzes_count.to_f).ceil
+      else
+        "None"
+      end
     end
   end
 
