@@ -4,47 +4,49 @@
 
     <%= hidden_field_tag 'quiz_id', @quiz.id %>
 
-<h6>
-  <%= "No questions submitted yet." if @quiz.questions.empty? %>
-</h6>
-  <!-- <ol> -->
-  <% @quiz.questions.each do |question| %>
+<div class="offset1">
+  <h6>
+    <%= "No questions submitted yet." if @quiz.questions.empty? %>
+  </h6>
+    <!-- <ol> -->
+    <% @quiz.questions.each do |question| %>
 
-      <div class="inline">
-      <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved', :class => "approve"%>
-      </div>
-<!-- <li> -->
+        <div class="inline">
+        <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved', :class => "approve"%>
+        </div>
+  <!-- <li> -->
 
-        <div class="inline" id="redcarpet">
-          <%= markdown (question.content)%>
-         </div>
-<!-- </li> -->
+          <div class="inline" id="redcarpet">
+            <%= markdown (question.content)%>
+           </div>
+  <!-- </li> -->
 
-    <ol type='a', class="review-set">
-    <% question.choices.each do |choice| %>
-      <% if choice.correct %>
-        <li>
-          <span class="correct"><%= choice.content %></span>
-        </li>
-      <% else %>
-        <li>
-          <%= choice.content %>
-        </li>
+      <ol type='a', class="review-set">
+      <% question.choices.each do |choice| %>
+        <% if choice.correct %>
+          <li>
+            <span class="correct"><%= choice.content %></span>
+          </li>
+        <% else %>
+          <li>
+            <%= choice.content %>
+          </li>
+        <% end %>
       <% end %>
+    </ol>
+
     <% end %>
-  </ol>
-
-
   <% end %>
+
 <!-- </ol> -->
-  <div>
+      </br>
+    <div>
+      <% unless @quiz.questions.empty? %>
+        <%= submit_tag "Approve", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+      </br>
+  <%= link_to "Add Question", new_quiz_question_path(@quiz) %>
 
-    <% unless @quiz.questions.empty? %>
-      <%= submit_tag "Approve", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-<% end %>
-
-<%= link_to "Add Question", new_quiz_question_path(@quiz) %>
+</div>
 
