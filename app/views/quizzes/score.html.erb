@@ -16,7 +16,7 @@
       <span class="correct">Correct Answer</span>
   <% end %>
 <% elsif current_user.role?(:student) %>
-  <div class = "span9">
+  <div class = "span9 container clearfix">
     <h3 class="pull-right"><%= number_to_percentage(@score, precision: 1)%></h3>
     <h3> Your score for the <%= @quiz.name %> quiz! </h3>
   </div>
