@@ -77,7 +77,6 @@ class User < ActiveRecord::Base
   end
 
   def grade(group)
-    # grp = self.groups.where(:id=>group.id)
     quizzes_score = 0
     quizzes_count = 0
     if !group.quizzes.empty?

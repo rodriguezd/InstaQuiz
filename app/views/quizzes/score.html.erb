@@ -13,11 +13,13 @@
   </div>
 </div>
   <% if params[:action] != 'score' %>
-    <span class="correct">CORRECT ANSWER</span>
+      <span class="correct">Correct Answer</span>
   <% end %>
 <% elsif current_user.role?(:student) %>
-  <h3> Your score for the <%= @quiz.name %> quiz! </h3>
-  <h5><%= number_to_percentage(@score, precision: 1)%></h5>
+  <div class = "span9">
+    <h3 class="pull-right"><%= number_to_percentage(@score, precision: 1)%></h3>
+    <h3> Your score for the <%= @quiz.name %> quiz! </h3>
+  </div>
 <% end %>
 
 <%# @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).each do |user|%>
@@ -25,7 +27,6 @@
 <%# end %>
 <% if @quiz.status == 'completed' %>
   <%= render 'review' %>
-  <div id="container1" style="width:900px; height:600px;"></div>
 <% else %>
   <h4> The instructor has not yet ended the quiz. Check back here to review questions after the quiz is complete. </h4>
 <% end %>

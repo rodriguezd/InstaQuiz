@@ -20,29 +20,27 @@
     </ol>
 <% end %>
 
-  <% @answers = Answer.where(:user_id => @user.id, :quiz_id => @quiz.id) %>
-  <ol>
-  <% @answers.each do |answer| %>
-    <% if !answer.choice.nil? %>
-    <li><%= answer.question.content %> <span><a href="<%= chart_question_path(answer.question) %>"> See question chart</a></span></li>
-
-      <% if User.find(answer.question.user_id).role?(:instructor) %>
-        <i>(Submitted by instructor)</i><br>
-      <% elsif current_user.id == answer.question.user_id %>
-        <i>(Submitted by you)</i><br>  
-      <% else %>
-        <i>(Submitted by <%= User.find(answer.question.user_id).name %>)</i> <br>
-      <% end %>
-
-           <%= current_user.role?(:student) ? "Your" : "#{User.find(params[:user_id]).name}'s" %> answer: <%= answer.choice.content %>
-           <% if !answer.choice.correct? %>
-             <br><b>Correct answer: <%= answer.choice.question.choices.where(:correct => true).first.content %></b>
-            <% end %>
-    <% else %>
-      <li><%= answer.question.content %> <span><a href="<%= chart_question_path(answer.question) %>"> See question chart</a></span> </li>
-
-           Your answer: No answer submitted
-             <br><b>Correct answer: <%= answer.question.choices.where(:correct => true).first.content %></b>
-    <% end %>
-  <% end %>
-  </ol>
+<div class="questionlist offset1">
+    <ol>
+      <% @answers = Answer.where(:user_id => @user.id, :quiz_id => @quiz.id) %>
+      <% @answers.each do |answer| %>
+      <div class="question span8">
+        <% if !answer.choice.nil? && !answer.question.nil? %>
+          <li><%= answer.question.content %> <span><a href="<%= chart_question_path(answer.question) %>"> See question chart</a></span></li>
+                 <%= current_user.role?(:student) ? "Your" : "#{User.find(params[:user_id]).name}'s" %> answer: <%= answer.choice.content %>
+                 <% if !answer.choice.correct? %>
+                   <br><b>Correct answer: <%= answer.choice.question.choices.where(:correct => true).first.content %></b>
+                  <% end %>
+                  <br><span class="label label-info"> <%= answer.choice.question.submitter(current_user) %></span>
+                  <hr>
+          <% else %>
+            <% unless answer.question.nil? %>
+            <li> <%= answer.question.content %> <span><a href="<%= chart_question_path(answer.question)%>"> See question chart</a></span> </li>
+                 Your answer: No answer submitted
+                   <br><b>Correct answer: <%= answer.question.choices.where(:correct => true).first.content %></b>
+              <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </ol>
+</div>
