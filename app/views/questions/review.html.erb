@@ -7,24 +7,19 @@
 <br><br>
     <%= hidden_field_tag 'quiz_id', @quiz.id %>
 
-<div class="offset1">
+<div id="questionlist" class="offset1">
 <h6>
   <%= "No questions submitted yet." if @quiz.questions.empty? %>
 </h6>
   <!-- <ol> -->
   <% @quiz.questions.each do |question| %>
-
+    <div class="question">
       <div class="inline">
       <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved', :class => "approve"%>
       </div>
 <!-- <li> -->
-
         <div class="inline" id="redcarpet">
-
-
-          <i><%#= current_user.id == question.user_id ? "Created by you:" : "Submitted by #{User.find(question.user_id).name}:" %></i>
-          <%= markdown (question.content)%>
-
+            <%= markdown (question.content)%>
          </div>
           <br>
 <!-- </li> -->
@@ -42,6 +37,9 @@
       <% end %>
     <% end %>
     </ol>
+    <span class="label label-info"> <%= question.submitter(current_user) %></span>
+  </div>
+  <hr>
   <% end %>
   <% end %>
 

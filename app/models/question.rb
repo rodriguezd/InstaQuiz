@@ -83,6 +83,17 @@ def average(quiz)
   end
 end
 
+def submitter(viewer)
+  if viewer.id == self.user_id
+    "You"
+  else
+    if self.user_id
+      "#{User.find(self.user_id).name}"
+    else
+    end
+  end
+end
+
   private
 
   def init

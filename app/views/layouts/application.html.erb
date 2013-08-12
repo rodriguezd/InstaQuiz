@@ -33,7 +33,7 @@
 <body>
   <header>
     <div class="container" id="loggedin">
-    <div class="container-fluid" style="text-align: right">
+    <div class="container-fluid" style="text-align: right; margin-bottom:10px;">
       <% if !!session[:user_id] %>
         Currently logged in as <%= current_user.name %>
       <% end %>
