@@ -43,15 +43,6 @@ input[type="radio"].choice-set {
   display: inline-block;
 }
 
-$('#active').liteAccordion({
-    theme : 'dark',
-    rounded : true,
-    enumerateSlides : true,
-    firstSlide : 2,
-    linkable : true,
-    easing: 'easeInOutQuart'
-});
-
 .active-icons img:hover {
  
     color: #96ba5f;
