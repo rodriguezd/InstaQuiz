@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require liteaccordion.jquery.js
+// require liteaccordion.jquery.js
 //= require highcharts
 //= require highcharts-more
 //= bootstrap-multiselect
+//= require liteaccordion.jquery.js
 //= require_tree .
 
 $(function() {
