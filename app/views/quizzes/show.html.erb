@@ -12,7 +12,7 @@
 <li>
     <span id="quest_content"><%= markdown (q.content)%></span>
 
-  <% if can? :edit, q %>
+  <% if can?(:edit, q) && @quiz.status != 'completed' %>
     <span id="edit_link"><%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %></span><br>
   <% end %>
   <ol type='a'>
