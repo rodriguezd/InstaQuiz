@@ -1,7 +1,10 @@
 <%= form_tag '/questions/approve', :method => :put do %>
 
   <%= render :partial => '/quizzes/quizheading' %>
-
+  <% if @quiz.questions.present? %>
+  <span class="correct">CORRECT ANSWER</span>
+<% end %>
+<br><br>
     <%= hidden_field_tag 'quiz_id', @quiz.id %>
 
 <h6>
