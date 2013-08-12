@@ -25,6 +25,7 @@
   <% @answers.each do |answer| %>
     <% if !answer.choice.nil? %>
     <li><%= answer.question.content %> <span><a href="<%= chart_question_path(answer.question) %>"> See question chart</a></span></li>
+      <i>(Submitted by <%= User.find(answer.question.user_id).name %>)</i> <br>
 
            <%= current_user.role?(:student) ? "Your" : "#{User.find(params[:user_id]).name}'s" %> answer: <%= answer.choice.content %>
            <% if !answer.choice.correct? %>

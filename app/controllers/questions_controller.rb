@@ -113,7 +113,6 @@ class QuestionsController < ApplicationController
 
   def review
     @quiz = Quiz.find(params[:quiz_id])
-
   end
 
   def chart
