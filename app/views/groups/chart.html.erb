@@ -1,8 +1,9 @@
- <h3><%= @group.name %></h3>
+<h3><%= @group.name %></h3>
 
-<div class="container">
-        <a href="<%= grade_group_path %>" class="btn btn-primary">Members</a>
-</div>
+  <ul class="nav nav-pills">
+    <li class="<%= 'active' if params[:action] == 'grade' %> "><a href="<%= grade_group_path(@group) %>">Members</a></li>
+    <li class="<%= 'active' if params[:action] == 'chart' %> "><a href="<%= chart_group_path(@group) %>">Performance</a></li>
+  </ul>
 
 <% hash = Hash.new %>
 <% @group.users.collect do |student| %>

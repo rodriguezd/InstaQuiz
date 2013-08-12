@@ -3,10 +3,11 @@
 </div>
 <% if !@group.users.empty? %>
 
-  <div class="container">
-    <a href="<%= chart_group_path(@group) %>" class="btn btn-primary">Group Performance</a>
-    <br><br>
-  </div>
+  <ul class="nav nav-pills">
+    <li class="<%= 'active' if params[:action] == 'grade' %> "><a href="<%= grade_group_path(@group) %>">Members</a></li>
+    <li class="<%= 'active' if params[:action] == 'chart' %> "><a href="<%= chart_group_path(@group) %>">Performance</a></li>
+  </ul>
+
   <div class="container">
     <div class="span8">
       <table class="groups">
