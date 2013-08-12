@@ -12,12 +12,9 @@
 <li>
     <span id="quest_content"><%= markdown (q.content)%></span>
 
-<<<<<<< HEAD
-=======
   <% if can?(:edit, q) && @quiz.status != 'completed' %>
     <span id="edit_link"><%= link_to 'Edit', edit_quiz_question_path(@quiz, q) %></span><br>
   <% end %>
->>>>>>> 00cff52f54ba56b31d85d0df5bd98873a8c83284
   <ol type='a'>
     <% q.choices.each do |choice| %>
       <% if choice.correct %>
