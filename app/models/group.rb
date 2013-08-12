@@ -35,19 +35,20 @@ class Group < ActiveRecord::Base
 
   def grade_quiz(quiz)
     # returns average grades for all members of group and all quizzes
-      student_count = 0
-      student_scores = 0
-      unless quiz.users.where(:student_quizzes=>{:quiz_status=>"completed"}).empty?
-        quiz.users.where(:student_quizzes=>{:quiz_status=>"completed"}).each do |student|
-          if student.role?(:student)
-            unless student.results.where(:quiz_id => quiz.id).empty?
-              student_scores = student_scores + student.results.where(:quiz_id => quiz.id).first.score
-              student_count += 1
-            end
+    student_count = 0
+    student_scores = 0
+    if quiz.users.where(:student_quizzes=>{:quiz_status=>"completed"}).empty?
+      "No students were included in this group."
+    else
+      quiz.users.where(:student_quizzes=>{:quiz_status=>"completed"}).each do |student|
+        if student.role?(:student)
+          unless student.results.where(:quiz_id => quiz.id).empty?
+            student_scores = student_scores + student.results.where(:quiz_id => quiz.id).first.score
+            student_count += 1
           end
         end
-      (student_scores/student_count.to_f).ceil
-      "No students were included in this group."
+      end
+      "#{(student_scores/student_count.to_f).ceil}%"
     end
   end
 
