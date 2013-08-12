@@ -8,14 +8,13 @@
 
 <% hash = Hash.new %>
 <% @group.users.collect do |student| %>
-  <% if student.grade(@group) && student.grade(@group) > 0 %>
     <% hash[student.name] = student.grade(@group) %>
-  <% end %>
 <% end %>
 
-<% new_hash = hash.invert.sort %>
-<% values = new_hash.collect{|x|x.first} %>
-<% names = new_hash.collect{|x|x[1]}%>
+<% new_hash = hash.select{|k,v| v != nil && v!= 0} %>
+<% x = new_hash.sort_by{|k,v| v} %>
+<% names = x.collect{|x|x.first} %>
+<% values = x.collect{|x|x[1]}%>
 
 <script type="text/javascript" charset-"utf-8">
 $(function () {
@@ -35,7 +34,7 @@ $(function () {
             },
             yAxis: {
                 title: {
-                    text: 'Percentage'
+                    text: 'Percentage across all quizzes of group'
                 },
                 plotLines: [{
                     value: 0,
@@ -61,6 +60,6 @@ $(function () {
         });
     });
 </script>
-<div id="container" style="width:100%; height:400px;"></div>
+<div id="container" style="width:100%; height:540px;"></div>
 
 

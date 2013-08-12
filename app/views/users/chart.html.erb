@@ -31,9 +31,9 @@ $(function () {
             xAxis: {
 
                 <% if current_user.role?(:student) %>
-                    data: <%=raw current_user.myprofile_chart_labels %>
+                    categories: <%=raw current_user.myprofile_chart_labels %>
                 <% else %>
-                    data: <%= raw User.find(params[:id]).myprofile_chart_labels %>
+                    categories: <%= raw User.find(params[:id]).myprofile_chart_labels %>
                 <% end %>
             },
             yAxis: {
