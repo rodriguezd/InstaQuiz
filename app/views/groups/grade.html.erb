@@ -4,6 +4,7 @@
 <% if !@group.users.empty? %>
 
   <ul class="nav nav-pills">
+    <li class="<%= 'active' if params[:action] == 'groups' %> "><a href="<%= groups_path %>">Groups</a></li>
     <li class="<%= 'active' if params[:action] == 'grade' %> "><a href="<%= grade_group_path(@group) %>">Members</a></li>
     <li class="<%= 'active' if params[:action] == 'chart' %> "><a href="<%= chart_group_path(@group) %>">Performance</a></li>
   </ul>
