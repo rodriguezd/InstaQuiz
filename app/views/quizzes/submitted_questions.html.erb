@@ -1,14 +1,14 @@
 <%= render :partial => '/quizzes/quizheading' %>
 <h5>Questions Submitted</h5>
 <ol>
-<% @quiz.questions.where(:user_id => current_user.id).each do |question| %>
+<% @quiz.questions.where(:user_id => current_user.id).each do |question| %> <br>
 
-    <% if can? :edit, question %>
-      <%= link_to 'Edit', edit_quiz_question_path(@quiz, question) %><br>
-    <% end %>
+
     <li>
-      <%= markdown (question.content)%>
-    </li>
+      <span id="quest_content"><%= markdown (question.content)%></span>
+    <% if can? :edit, question %>
+    <span id="edit_link"><%= link_to 'Edit', edit_quiz_question_path(@quiz, question) %></span><br>
+    <% end %>
 
     <ol type='a'>
       <% question.choices.each do |choice| %>
