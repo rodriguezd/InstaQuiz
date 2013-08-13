@@ -26,11 +26,11 @@
  *= require questions.css.scss
  *= require quizzes.css.scss
  *= require sessions.css.scss
- *= require site.css.scss
  *
  *= require bootstrap.css
  *= require flat-ui.css
  *= require liteaccordion.css
+ *= require site.css.scss
  *= require users.css.scss
 */
 
