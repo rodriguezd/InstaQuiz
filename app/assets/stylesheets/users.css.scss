@@ -48,7 +48,7 @@ div.overview.well {
   padding: 10px;
 }
 h2#quiztitle{
-  margin-top: 0px;  
+  margin-top: 0px;
 }
 
 div.chart{
@@ -228,11 +228,11 @@ div.quiz-link{
 
 .delete-icon {
   background-position: -40px 0;
-} 
+}
 
 .deactivate-icon {
   background-position: -20px 0;
-} 
+}
 
 .review-icon {
   background-position: -60px 0;
@@ -256,7 +256,7 @@ div.quiz-link{
   -moz-transition: none;
   -o-transition: none;
   transition: none;
-} 
+}
 
 .deactivate-icon:hover {
   background-position: -20px -20px;
@@ -264,7 +264,7 @@ div.quiz-link{
   -moz-transition: none;
   -o-transition: none;
   transition: none;
-} 
+}
 
 .review-icon:hover {
   background-position: -60px -20px;
@@ -306,11 +306,11 @@ div.quiz-link{
 
 .submit-icon {
   background-position: -30px 0;
-} 
+}
 
 .edit-icon {
   background-position: -60px 0;
-} 
+}
 
 .score-icon {
   background-position: -90px 0;
@@ -332,7 +332,7 @@ div.quiz-link{
   -moz-transition: none;
   -o-transition: none;
   transition: none;
-} 
+}
 
 .edit-icon:hover {
   background-position: -60px -30px;
@@ -340,7 +340,7 @@ div.quiz-link{
   -moz-transition: none;
   -o-transition: none;
   transition: none;
-} 
+}
 
 .score-icon:hover {
   background-position: -90px -30px;
@@ -364,4 +364,11 @@ p.directions{
   line-height: 125%;
   text-align: center;
   font-size: 20px;
+}
+
+#magic {
+  height: 40px;
+  padding-bottom: 20px;
+  margin-top: -1px;
+  font-size: 40px;
 }
