@@ -8,12 +8,31 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require jquery.ui.all
- *= require_self
- *= require_tree ./../../../app/assets/stylesheets
- *= require_tree ./../../../vendor/assets/css
- * require_tree .
+ * require jquery.ui.all
+ * require_self
+ * require_tree ./../../../app/assets/stylesheets
+ * require_tree ./../../../vendor/assets/css
  */
+
+/*
+ *= require jquery.ui.all
+ *= require application.css
+ *= require bootstrap-multiselect.css
+ *= require bootstrp-2.3.2.min.css
+ *= require groups.css.scss
+ *= require jquery-timepicker.css
+ *= require liteaccordion.css
+ *= require pygments.css.erb
+ *= require questions.css.scss
+ *= require quizzes.css.scss
+ *= require sessions.css.scss
+ *= require site.css.scss
+ *
+ *= require bootstrap.css
+ *= require users.css.scss
+ *= require flat-ui.css
+ *= require liteaccordion.css
+*/
 
 .quest-content {
   display: inline-block;
@@ -44,6 +63,6 @@ input[type="radio"].choice-set {
 }
 
 .active-icons img:hover {
- 
+
     color: #96ba5f;
 }
