@@ -11,7 +11,7 @@
         <a class="navbar-brand brand" id="magic" href="<%= logo_link %>">Insta<span style="color: white">Quiz</span></a>
       <div class="nav-collapse collapse pull-right">
       <% if session[:user_id] != nil %>
-        <ul class="nav">
+        <ul class="nav" id="best-id-ever">
         <li><a href="<%= dashboard_user_path(current_user) %>">Dashboard</a>  </li>
         <li><a href="<%= groups_path %>">My Groups</a>  </li>
         <% if current_user.role?(:student) %>
