@@ -29,9 +29,9 @@
  *= require site.css.scss
  *
  *= require bootstrap.css
- *= require users.css.scss
  *= require flat-ui.css
  *= require liteaccordion.css
+ *= require users.css.scss
 */
 
 .quest-content {
