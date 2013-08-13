@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #registration, #login{
-  float: none !important;
-  margin: 30px auto auto auto !important;
+  float: none ;
+  margin: 30px auto auto auto ;
 
 }
 
@@ -13,8 +13,8 @@ h1.heading{
 }
 
 div.center{
-  float: none !important;
-  margin: auto !important;
+  float: none ;
+  margin: auto ;
 }
 
 table.groups{
@@ -22,13 +22,13 @@ table.groups{
 }
 
 .center{
-  float: none !important;
-  margin: auto !important;
+  float: none ;
+  margin: auto ;
 }
 
 .instaform{
-  //float: none !important;
-  //margin: 30px auto auto auto !important;
+  //float: none ;
+  //margin: 30px auto auto auto ;
 }
 
 .flash_error {
@@ -37,7 +37,7 @@ table.groups{
 
 dl.quiz-info.dl-horizontal{
   margin: auto;
-  vertical-align: middle !important;
+  vertical-align: middle ;
 }
 div.overview.well {
   width: 80%;
@@ -45,7 +45,7 @@ div.overview.well {
   margin-right: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding: 10px !important;
+  padding: 10px;
 }
 h2#quiztitle{
   margin-top: 0px;  
@@ -67,7 +67,7 @@ li.overview:hover{
 
 div#main{
   height: 600px;
-  //overflow-y: auto !important;
+  //overflow-y: auto;
   //overflow: scroll;
   //overflow: visible;
 }
@@ -75,7 +75,7 @@ div#main{
 div.quiz-box{
   text-align: center;
   padding: 10px;
-  margin: 10px 0px 10px 0px !important;
+  margin: 10px 0px 10px 0px;
 }
 
 div.quizzes{
@@ -83,15 +83,15 @@ div.quizzes{
 }
 
 div.accordion{
-  margin: 0 auto !important;
-  // overflow-y: auto !important;
+  margin: 0 auto;
+  // overflow-y: auto;
   // overflow-y: hidden;
 
 }
 
 div.quiz.well{
   margin: 30px auto 0px auto;
-  vertical-align: middle !important;
+  vertical-align: middle;
   height: 30px;
   width: 80%;
 }
@@ -110,17 +110,17 @@ span.for-dash{
 }
 
 div.quiz-heading{
-  border-bottom: solid !important;
-  border-bottom-width: 1px !important;
-  border-bottom-color: #eeeeee !important;
-  margin-bottom: 20px !important;
+  border-bottom: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #eeeeee;
+  margin-bottom: 20px;
 }
 
 
 div.quiz-info {
   margin-top: 10px;
-  min-height: 60px !important;
-  vertical-align: middle !important;
+  min-height: 60px;
+  vertical-align: middle;
 }
 
 .links{
@@ -129,20 +129,20 @@ div.quiz-info {
 }
 
 #side-nav{
-  margin: 0px !important;
-  color: #ECF0F1 !important;
+  margin: 0px;
+  color: #ECF0F1;
 }
 
 li.side-item{
-  padding: 5px !important;
-  color: #ECF0F1 !important;
+  padding: 5px;
+  color: #ECF0F1;
   border: solid;
   border-width: 1px;
   border-color: rgb(42,62,80);
 }
 
 div.todo-content{
-  color: #ECF0F1 !important;
+  color: #ECF0F1;
 }
 
 h3.todo-name{
@@ -153,7 +153,7 @@ h3.todo-name{
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 #wrapper {
@@ -179,21 +179,21 @@ a {
 }
 
 html, body {
-  min-height: 100% !important;
+  min-height: 100%;
   min-width: 100%;
   background-image:url('/assets/binding_light.png');
   background-repeat:repeat;
 }
 
 a.quiz-link{
-  font-size: 16px !important;
-  float: right !important;
+  font-size: 16px;
+  float: right;
   vertical-align: middle;
 }
 
 div.quiz-link{
-  font-size: 16px !important;
-  float: right !important;
+  font-size: 16px;
+  float: right;
   vertical-align: middle;
   margin: auto;
 }
@@ -351,9 +351,9 @@ div.quiz-link{
 }
 
 div.directions {
-  float: left !important;
-  padding: 30px !important;
-  margin: 80px 70px 40px 70px !important;
+  float: left;
+  padding: 30px;
+  margin: 80px 70px 40px 70px;
   border: dotted;
   border-width: 1px;
   border-color: gray;
