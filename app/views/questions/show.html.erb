@@ -3,14 +3,8 @@
 <p>
   <b>Question:</b>
   <br><br>
-  The <span class="correct">correct answer</span> is marked in green. 
-  <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
-  <% if @question.quiz_id.in?(1..4) %>
-      <%= question_parser(@question.content) %>
-  <% else %>
-      <%= markdown (@question.content)%>
-  <% end %>
-
+  The <span class="correct">correct answer</span> is marked in green.
+  <%= markdown (@question.content)%>
 </p>
 
 <ol type='a'>
@@ -27,22 +21,27 @@
   <% end %>
 </ol>
 
-<%#= link_to 'Edit', edit_quiz_question_path(@question.quiz_id, @question) %>
-<%= link_to 'Edit', edit_question_path(@question, :quiz_id => @question.quiz_id), class: "btn btn-primary" %>
+<%= link_to 'Edit',
+    edit_question_path(@question,
+    :quiz_id => @question.quiz_id),
+    class: "btn btn-primary"
+%>
 
 <% if params[:quiz_id] %>
-<%= link_to 'Add Another Question', new_quiz_question_path(params[:quiz_id]), class: "btn btn-primary"
-%>
-  <% if current_user.role?(:instructor) %>
-    <%= link_to 'Done', review_quiz_questions_path(params[:quiz_id]), class: "btn btn-primary" %>
+    <%= link_to 'Add Another Question',
+        new_quiz_question_path(params[:quiz_id]),
+        class: "btn btn-primary"
+    %>
+    <% if current_user.role?(:instructor) %>
+      <%= link_to 'Done',
+          review_quiz_questions_path(params[:quiz_id]),
+          class: "btn btn-primary"
+      %>
 
-  <% elsif current_user.role?(:student) %>
-    <%= link_to 'Done', dashboard_user_path(params[:quiz_id]), class: "btn btn-primary" %>
-  <% end %>
+    <% elsif current_user.role?(:student) %>
+      <%= link_to 'Done',
+          dashboard_user_path(params[:quiz_id]),
+          class: "btn btn-primary"
+    %>
+    <% end %>
 <% end %>
-
-
-
-<%#= link_to 'Back', quiz_path(@question.quiz_id) %>
-<%#= link_to 'Finalize', quiz_path(@question.quiz_id) %>
-

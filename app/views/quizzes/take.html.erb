@@ -1,34 +1,18 @@
 <%= render :partial => '/quizzes/quizheading' %>
 <%= form_tag answers_quiz_path(@quiz) do %>
   <ol>
-  <% @quiz.questions.where(:status => "approved").each do |question| %>
-      <!-- This if / else logic is strictly for properly formatting seed quizzes. Can be removed in production. -->
+    <% @quiz.questions.where(:status => "approved").each do |question| %>
       <li>
-        <% if @quiz.id.in?(1..4) %>
-          <%= question_parser(question.content) %>
-        <% else %>
-          <%= markdown (question.content)%>
-        <% end %>
-
-<!-- {  "choiceset"=>{"30"=>"117", "31"=>"122", "32"=>"126"},
-      "commit"=>"Submit Answers",
-      "action"=>"answers",
-      "controller"=>"quizzes",
-      "id"=>"4"} -->
-
+        <%= markdown (question.content)%>
       </li>
       <ol type='a' class="choice-list">
-        <% question.choices.each do |choice| %>
-        <li> <input type="radio" name="choiceset[<%= question.id %>]" value="<%= choice.id %>" class="choice-set"/>
-          <%= choice.content %>
-
-        </li>
+       <% question.choices.each do |choice| %>
+          <li> <input type="radio" name="choiceset[<%= question.id %>]" value="<%= choice.id %>" class="choice-set"/>
+            <%= choice.content %>
+          </li>
         <% end %>
       </ol>
-  <% end %>
+    <% end %>
   </ol>
-  <%# if current_user.student_quizzes.where(:quiz_id => @quiz.id).pop.quiz_status != 'completed' %>
-    <%= submit_tag "Submit Answers", class: "btn btn-primary" %>
-  <%# end %>
-
+  <%= submit_tag "Submit Answers", class: "btn btn-primary" %>
 <% end %>
