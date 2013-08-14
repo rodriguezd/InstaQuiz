@@ -29,6 +29,10 @@
 <%# @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).each do |user|%>
 	<%#= user.name %> <%#= user.score(@quiz) %>
 <%# end %>
+<br>
+<br>
+<br>
+<br>
 <% if @quiz.status == 'completed' %>
   <%= render 'review' %>
 <% else %>
