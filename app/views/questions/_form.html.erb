@@ -27,7 +27,7 @@
   <% @quiz.num_choices.to_i.times do |i|%>
     <div>
       <%= label_tag 'choices[]', "Choice #{i + 1}: " %>
-      <%= text_field_tag 'choices[]', @question.new_record? ? "" : @question.choices[i].content, :class => "span5"  %>
+      <%= text_field_tag 'choices[]', @question.new_record? ? "" : @question.choices[i].content, :class => "span5", :autocomplete => :off  %>
       <%= radio_button_tag 'correct', i, @question.new_record? ? false : @question.choices[i].correct %>
     </div>
   <% end %>

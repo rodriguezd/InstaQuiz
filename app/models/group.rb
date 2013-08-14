@@ -48,7 +48,9 @@ class Group < ActiveRecord::Base
           end
         end
       end
-      "#{(student_scores/student_count.to_f).ceil}%"
+      if student_count != 0
+        "#{(student_scores/student_count.to_f).ceil}%"
+      end
     end
   end
 

@@ -2,7 +2,7 @@
 
 <%= render :partial => '/quizzes/quizheading' %>
 <% if @quiz.questions.present? %>
-  The <span class="correct">correct answer</span> is marked in green. 
+  The <span class="correct">correct answer</span> is marked in green.
 <% end %>
 <br><br>
 
@@ -10,7 +10,6 @@
 
 <% if @quiz.questions.where(:status => "approved").empty? %>
 <h5>You have not approved any questions for this quiz</h5>
-<h6>Click on "Review Questions" to approve.
 <br><br>
 <% end %>
 

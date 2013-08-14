@@ -57,7 +57,7 @@
     <%= form_tag '/groups' do%>
       <%= text_field_tag :name, nil, :placeholder => 'Enter group name here' %>
       <br>
-      <%= button_tag "Add New Group", :class => "btn btn-primary group-button" %>
+      <span style="postion: absolute; right: -20px;"><%= button_tag "Add New Group", :class => "btn btn-primary group-button" %></span>
     <% end %>
   <% end %>
 </div>

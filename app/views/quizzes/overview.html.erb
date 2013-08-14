@@ -15,16 +15,16 @@
 
 
   <div>
-    <div class="overview well"><h4 class="overview"><%= @quiz.students_submitted%> of <%=@quiz.total_students %> students completed</h4></div>
+    <div class="overview well"><h4 class="overview"><%= @quiz.students_submitted%> of <%= pluralize(@quiz.total_students, 'student') %> completed</h4></div>
     <% unless @quiz.groups.empty? %>
       <div class="overview well"><h4 class="overview">Average score: <%= @quiz.groups.first.grade_quiz(@quiz)%></h4></div>
     <% end %>
-    <div class="overview well"><h4 class="overview"> <%= @quiz.questions.size %> questions in this quiz</h4></div>
+    <div class="overview well"><h4 class="overview"> <%= pluralize(@quiz.questions.size, 'question') %> on this quiz</h4></div>
     <% if @quiz.questions.size > 0 %>
       <% unless @quiz.hardest_question_author[0].empty? %>
         <div class="overview well"><h4 class="overview">Hardest question: <%= @quiz.hardest_question_author[0] %> with a class average of <%= @quiz.hardest_question_author[1]%>% </h4></div>
       <% end %>
-      <div class="overview well"><h4 class="overview"><%= @quiz.contributor_count %> students contributed questions</h4></div>
+      <div class="overview well"><h4 class="overview"><%= pluralize(@quiz.contributor_count, 'student') %> contributed questions</h4></div>
     <% end %>
   </div>
 <% end %>

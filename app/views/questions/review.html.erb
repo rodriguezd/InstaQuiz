@@ -7,7 +7,7 @@
 <br><br>
     <%= hidden_field_tag 'quiz_id', @quiz.id %>
 
-<div id="questionlist" class="offset1">
+<div id="questionlist" >
 <h6>
   <%= "No questions submitted yet." if @quiz.questions.empty? %>
 </h6>
@@ -51,7 +51,7 @@
       <% end %>
     </div>
       </br>
-  <%= link_to "Add Question", new_quiz_question_path(@quiz) %>
+  <%= link_to "Add Questions", new_quiz_question_path(@quiz), :class => "btn btn-primary" %>
 
 </div>
 
