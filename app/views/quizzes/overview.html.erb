@@ -20,7 +20,9 @@
     <% unless @quiz.groups.empty? %>
       <div class="overview well"><h4 class="overview">Average score: <%= @quiz.groups.first.grade_quiz(@quiz)%></h4></div>
     <% end %>
-    <div class="overview well"><h4 class="overview"> You submitted <%= pluralize(@quiz.questions.size, 'question') %> that were used on this quiz</h4></div>
+    <% if current_user.role?(:student) %>
+      <div class="overview well"><h4 class="overview"> You submitted <%= pluralize(@quiz.questions.size, 'question') %> that were used on this quiz</h4></div>
+    <% end %>
     <% if @quiz.questions.size > 0 %>
       <% unless @quiz.hardest_question_author[0].empty? %>
         <div class="overview well"><h4 class="overview">Hardest question: <%= @quiz.hardest_question_author[0] %> with a class average of <%= @quiz.hardest_question_author[1]%>% </h4></div>
