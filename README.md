@@ -4,9 +4,9 @@ InstaQuiz is a collaborative quiz application where students create the question
 
 ##Versions / Database
 
-Ruby 1.9.3
-Rails 3.2
-SQLite3 database
+- Ruby 1.9.3
+- Rails 3.2
+- SQLite3 database
 
 ##Setting Up InstaQuiz
 
@@ -20,15 +20,16 @@ Note: Currently the `database.yml` file is configured for sqlite3
 
 URL for development environment: `http://localhost:3000`
 
+
 1. Click on "Sign Up" from the landing page, fill out the form for registration, and select the instructor role. 
 2. Sign in and select "My Groups" from the navigation bar and create at least one group. Once the group is created, the code provided must be used by students to join that group.
 3. Click on "Create Quiz" from the nav bar and create a quiz. (Quiz will now apear under pending tab of the dashboard.)
-4. Once a quiz is created you may add questions
+4. Once a quiz is created you may add questions and registered students can add questions as well. 
 
 
-##Setting up Email
-
+<!-- ##Setting up Email
+ -->
 
 
 ##About us
-Created by [Flatiron School](http://flatironschool.com/), [David Rodriguez](https://github.com/rodriguezd), [Jordan Trevino](https://github.com/jgtr), [Kirin Masood](https://github.com/kirinm1), [Sarah Duve](https://github.com/sarahduve).
+Created by Summer 2013 [Flatiron School](http://flatironschool.com/), students [David Rodriguez](https://github.com/rodriguezd), [Jordan Trevino](https://github.com/jgtr), [Kirin Masood](https://github.com/kirinm1), [Sarah Duve](https://github.com/sarahduve).
