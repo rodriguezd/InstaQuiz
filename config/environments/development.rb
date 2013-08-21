@@ -39,10 +39,10 @@ Openexam2::Application.configure do
   config.action_mailer.smtp_settings = {
     address:       "smtp.gmail.com",
     port:           587,
-    domain:        "gmail.com",
+    domain:        "DOMAIN (e.g. google.com)",
     authentication: "plain",
-    user_name:      "instaquizapp",
-    password:       "inferno0",
+    user_name:      "USER NAME",
+    password:       "PASSWORD",
     enable_starttls_auto: true
   }
 end
