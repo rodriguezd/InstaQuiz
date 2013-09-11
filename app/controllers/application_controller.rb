@@ -35,17 +35,4 @@ class ApplicationController < ActionController::Base
 	helper_method :current_user
   helper_method :logo_link
 
-  # def can_current_user?(action, object)
-  # 	if object.editable_by? current_user
-  # 		redirect_to login_path, :notice => "Your are not authorized" and return
-  # 	else
-  # 		return true
-  # 	end
-  # end
-
-  # rescue_from CanCan::AccessDenied do |exception|
-  #   flash[:notice] = "Access denied!"
-  #   redirect_to quizzes_url
-  # end
-
 end

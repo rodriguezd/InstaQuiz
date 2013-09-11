@@ -87,14 +87,6 @@ class GroupsController < ApplicationController
       flash[:notice] = 'Already a member of group entered.'
     end
     redirect_to groups_path
-
-    # if @user.save
-    #     format.html { redirect_to groups_path, notice: 'Successfully joind group.' }
-    #     format.json { render json: groups_path, status: :created, location: groups_url }
-    #   else
-    #     format.html { redirect_to groups_path, notice: 'Group code must be entered.' }
-    #     format.json { render json: @user.errors, status: :unprocessable_entity }
-    #   end
   end
 
   def grade

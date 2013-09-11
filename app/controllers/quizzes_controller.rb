@@ -150,16 +150,6 @@ class QuizzesController < ApplicationController
 
   def answers
 
-
-# {  "choiceset"=>{
-#                     "30"=>"117",
-#                     "31"=>"122",
-#                     "32"=>"126"},
-#       "commit"=>"Submit Answers",
-#       "action"=>"answers",
-#       "controller"=>"quizzes",
-#       "id"=>"4"}
-
     @quiz = Quiz.find(params[:id].to_i)
     @user = current_user
 
@@ -180,25 +170,8 @@ class QuizzesController < ApplicationController
         @user.answers.create(:quiz_id => @quiz.id, :choice_id => 0, :question_id => question.id)
       end
     end
-    # student_total = @quiz.users.joins(:roles).where(:roles =>{:name => "student"}).size
-    # completed_students = @quiz.users.where(:student_quizzes => {:quiz_status => "completed"}).size
-    # if student_total == completed_students
-    #   @quiz.status = "completed"
-    #   @quiz.save
-    # end
-
-    # Quiz.last.users.joins(:roles).where(:roles=> {:name=> "instructor"})
-    # redirect_to dashboard_user_path(current_user) and return
-
     redirect_to score_quiz_path(@quiz) and return
   end
-
-    # # find quiz referred to
-    # iterate through params
-    # find question referred to
-    # find choice that answer refers to
-    # create an answer that has the user id, quiz id, choice id
-
 
   def score
 
@@ -214,7 +187,6 @@ class QuizzesController < ApplicationController
       @user = current_user
     end
     @score = @user.score(@quiz)
-    # raise params.inspect
   end
 
   def set_status
@@ -247,7 +219,6 @@ class QuizzesController < ApplicationController
   def chart
     @quiz = Quiz.find(params[:id])
     @questions = @quiz.questions
-    # @questions = Question.find(params[:id])
   end
 
   def overview
