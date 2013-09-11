@@ -26,9 +26,6 @@
           <%= current_user.student_quizzes.where(:quiz_id => @quiz.id).first.quiz_status.titleize %>
       </dd>
         <% end %>
-<!--         <dt>Deadline:</dt>
-        <dd><%= @quiz.deadline_date.strftime("%b %d, %Y")if !@quiz.deadline_date.nil? %><%= @quiz.deadline_time.strftime("%l:%M %p") if !@quiz.deadline_time.nil? %></dd>
-      <dt>Instructions:</dt><dd><%= @quiz.instructions %></dd> -->
     </dl>
   </div>
 </div>

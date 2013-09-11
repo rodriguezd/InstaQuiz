@@ -11,40 +11,37 @@
 <h6>
   <%= "No questions submitted yet." if @quiz.questions.empty? %>
 </h6>
-  <!-- <ol> -->
   <% @quiz.questions.each do |question| %>
     <div class="question">
       <div class="inline">
       <%= check_box_tag "status[#{question.id}]",'approved', question.status == 'approved', :class => "approve"%>
       </div>
-<!-- <li> -->
-        <div class="inline" id="redcarpet">
-            <%= markdown (question.content)%>
-         </div>
-          <br>
-<!-- </li> -->
+      <div class="inline" id="redcarpet">
+        <%= markdown (question.content)%>
+      </div>
+      <br>
 
-    <ol type='a', class="review-set">
-    <% question.choices.each do |choice| %>
-      <% if choice.correct %>
-        <li>
-          <span class="correct"><%= choice.content %></span>
-        </li>
-      <% else %>
-        <li>
-          <%= choice.content %>
-        </li>
+      <ol type='a', class="review-set">
+      <% question.choices.each do |choice| %>
+        <% if choice.correct %>
+          <li>
+            <span class="correct"><%= choice.content %></span>
+          </li>
+        <% else %>
+          <li>
+            <%= choice.content %>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
-    </ol>
-    <span class="label label-info"> <%= question.submitter(current_user) %></span>
-  </div>
-  <hr>
+      </ol>
+      <span class="label label-info"> <%= question.submitter(current_user) %>
+      </span>
+    </div>
+    <hr>
   <% end %>
   <% end %>
 
-<!-- </ol> -->
-      </br>
+    </br>
     <div>
       <% unless @quiz.questions.empty? %>
         <%= submit_tag "Approve", class: "btn btn-primary" %>

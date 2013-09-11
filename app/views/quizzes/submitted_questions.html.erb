@@ -1,9 +1,8 @@
 <%= render :partial => '/quizzes/quizheading' %>
 <h5>Questions Submitted</h5>
 <ol>
-<% @quiz.questions.where(:user_id => current_user.id).each do |question| %> <br>
-
-
+<% @quiz.questions.where(:user_id => current_user.id).each do |question| %>
+<br>
     <li>
       <span id="quest_content"><%= markdown (question.content)%></span>
     <% if can? :edit, question %>
