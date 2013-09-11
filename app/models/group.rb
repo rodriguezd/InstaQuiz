@@ -53,19 +53,4 @@ class Group < ActiveRecord::Base
       end
     end
   end
-
-#   def grade_quiz_for_chart(quiz)
-#     hash = Hash.new
-#     self.users.collect do |student|
-#       if student.grade(@group) > 0
-#         hash[student.name] = student.grade(@group)
-#       end
-#     end
-
-
-# new_hash = hash.invert.sort
-# values = new_hash.collect{|x|x.first}
-# names = new_hash.collect{|x|x[1]}
-#   end
-
 end
